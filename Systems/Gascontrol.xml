@@ -1,0 +1,368 @@
+<?xml version="1.0"?>
+
+<!--
+	Author: Slavutinsky Victor
+-->
+
+<system>
+
+	<fileheader>
+		<author> Slavutinsky Victor </author>
+		<filecreationdate> 2011 </filecreationdate>
+		<version>$Revision: 1.00 $</version>
+		<description> Gascontrol </description>
+	</fileheader>
+
+<!--	That must be aded to set file
+
+	<fdm>
+		<jsbsim>
+			<systems>
+				<gascontrol>
+					<serviceable type="bool">1</serviceable>
+					<lock-command type="float">1</lock-command>
+					<lock-pos type="float">1</lock-pos>
+					<lever-command type="float">0</lever-command>
+					<lever-pos type="float">0</lever-pos>
+					<pilot-oscillator-pos>0</pilot-oscillator-pos>
+					<shift-oscillator-command>0</shift-oscillator-command>
+					<shift-oscillator-pos>0</shift-oscillator-pos>
+				</gascontrol>
+			</systems>
+		</jsbsim>
+	</fdm>
+
+-->
+
+	<channel name="Gascontrol">
+
+		<!-- Lock Up/Down-->
+
+		<switch name="calculations/gascontrol/lock-serviceabled">
+			<default value="systems/gascontrol/lock-switch"/>
+			<test logic="AND" value="systems/gascontrol/lock-command">
+				systems/gascontrol/serviceable eq 1.0
+			</test>
+			<output>systems/gascontrol/lock-command</output>
+		</switch>
+
+		<kinematic name="calculations/gascontrol/lock-pos">
+			<input>systems/gascontrol/lock-command</input>
+			<traverse>
+			<setting>
+				<position>0</position>
+				<time>0</time>
+			</setting>
+			<setting>
+				<position>1</position>
+				<time>0.2</time>
+			</setting>
+			</traverse>
+			<output>systems/gascontrol/lock-pos</output>
+		</kinematic>
+
+		<switch name="calculations/gascontrol/lock-switch">
+			<default value="0"/>
+			<test logic="AND" value="1">
+				systems/gascontrol/lock-pos gt 0.5
+			</test>
+			<output>systems/gascontrol/lock-switch</output>
+		</switch>
+
+		<!-- Lever Up/Down -->
+
+		<!-- Shift by pilots command  -->
+
+		<fcs_function name="calculations/gascontrol/lever-command-diff">
+		<function>
+			<difference>
+				<property>fcs/throttle-cmd-norm</property>
+				<property>systems/gascontrol/lever-pos</property>
+			</difference>
+		</function>
+			<output>systems/gascontrol/lever-command-diff</output>
+		</fcs_function>
+
+		<fcs_function name="calculations/gascontrol/lever-command-diff-abs">
+		<function>
+			<abs>
+				<property>systems/gascontrol/lever-command-diff</property>
+			</abs>
+		</function>
+			<output>systems/gascontrol/lever-command-diff-abs</output>
+		</fcs_function>
+
+		<!-- Shift by g force -->
+
+		<!-- Lever moves by pid to make timed shift by g force.
+			Pid speed is 100/sec to fast reaction on pilots move. 
+			Need to maximum g shift be ~0.1/sec.
+			Maximum pitch rate change speed is ~20% experimentally, it's 0.35rad\sec.
+			So value must be 0.1/0.35/100=~0.003
+			Make it little bigger by experiment
+		 -->
+
+		<fcs_function name="calculations/gascontrol/shift-by-g">
+		<function>
+			<product>
+				<property>velocities/q-rad_sec</property>
+				<value>0.006</value>
+			</product>
+		</function>
+			<output>systems/gascontrol/shift-by-g</output>
+		</fcs_function>
+
+		<fcs_function name="calculations/gascontrol/shift-by-g-abs">
+		<function>
+			<abs>
+				<property>systems/gascontrol/shift-by-g</property>
+			</abs>
+		</function>
+			<output>systems/gascontrol/shift-by-g-abs</output>
+		</fcs_function>
+
+		<!-- Pilot command oscillator  -->
+
+		<!-- Have maximum at 0.9 because of JSB kinematics 
+			seems to never reach 1 or 0.
+		 -->
+
+		<!-- Ignore shift by g force ~1 sec after pilot moves control -->
+
+		<switch name="calculations/gascontrol/pilot-oscillator-command">
+			<default value="systems/gascontrol/pilot-oscillator-command"/>
+			<test logic="AND" value="1">
+				systems/gascontrol/lever-command-diff-abs gt 0.0001
+				systems/gascontrol/pilot-oscillator-pos lt 0.1
+				systems/gascontrol/shift-oscillator-command eq 0
+			</test>
+			<test logic="OR" value="0">
+				systems/gascontrol/pilot-oscillator-pos gt 0.9
+			</test>
+			<output>systems/gascontrol/pilot-oscillator-command</output>
+		</switch>
+
+		<kinematic name="calculations/gascontrol/pilot-oscillator">
+			<input>systems/gascontrol/pilot-oscillator-command</input>
+			<traverse>
+			<setting>
+				<position>0</position>
+				<time>0</time>
+			</setting>
+			<setting>
+				<position>1</position>
+				<time>0.5</time>
+			</setting>
+			</traverse>
+			<output>systems/gascontrol/pilot-oscillator-pos</output>
+		</kinematic>
+
+		<!-- Shift by g oscillator  -->
+
+		<switch name="calculations/gascontrol/shift-oscillator-command">
+			<default value="systems/gascontrol/shift-oscillator-command"/>
+			<test logic="AND" value="1">
+				systems/gascontrol/shift-by-g-abs gt 0.001
+				systems/gascontrol/pilot-oscillator-pos lt 0.01
+				systems/gascontrol/shift-oscillator-pos lt 0.1
+			</test>
+			<test logic="OR" value="0">
+				systems/gascontrol/shift-by-g-abs lt 0.001
+				systems/gascontrol/shift-oscillator-pos gt 0.9
+			</test>
+			<output>systems/gascontrol/shift-oscillator-command</output>
+		</switch>
+
+		<kinematic name="calculations/gascontrol/shift-oscillator">
+			<input>systems/gascontrol/shift-oscillator-command</input>
+			<traverse>
+			<setting>
+				<position>0</position>
+				<time>0</time>
+			</setting>
+			<setting>
+				<position>1</position>
+				<time>0.02</time>
+			</setting>
+			</traverse>
+			<output>systems/gascontrol/shift-oscillator-pos</output>
+		</kinematic>
+
+		<!--	While oscillator goes up then lever moves only by g force.
+			In other cases it moves only by command and pos diff.
+		-->
+
+		<switch name="calculations/gascontrol/shift">
+			<default value="systems/gascontrol/lever-command-diff"/>
+			<test logic="AND" value="systems/gascontrol/shift-by-g">
+				systems/gascontrol/shift-oscillator-command eq 1
+			</test>
+			<output>systems/gascontrol/shift</output>
+		</switch>
+
+		<!-- Lock and fix  -->
+
+		<fcs_function name="calculations/gascontrol/shift-abs">
+		<function>
+			<abs>
+				<property>systems/gascontrol/shift</property>
+			</abs>
+		</function>
+			<output>systems/gascontrol/shift-abs</output>
+		</fcs_function>
+
+		<switch name="calculations/gascontrol/shift-serviceabled">
+			<default value="0"/>
+			<test logic="AND" value="systems/gascontrol/shift">
+				systems/gascontrol/serviceable eq 1.0
+			</test>
+			<output>systems/gascontrol/shift-serviceabled</output>
+		</switch>
+
+		<switch name="calculations/gascontrol/shift-locked">
+			<default value="0"/>
+			<test logic="AND" value="systems/gascontrol/shift-serviceabled">
+				systems/gascontrol/lock-pos lt 0.1
+			</test>
+			<output>systems/gascontrol/shift-locked</output>
+		</switch>
+
+		<fcs_function name="calculations/gascontrol/shift-locked-abs">
+		<function>
+			<abs>
+				<property>systems/gascontrol/shift-locked</property>
+			</abs>
+		</function>
+			<output>systems/gascontrol/shift-locked-abs</output>
+		</fcs_function>
+
+		<!-- Lever pid  -->
+
+		<pid name="calculations/gascontrol/lever-pos">
+			<input>systems/gascontrol/shift-locked</input>
+			<kp>0.0</kp>
+			<ki>100.0</ki>
+			<kd>0.0</kd>
+			<output>systems/gascontrol/lever-pos</output>
+		</pid>
+
+		<!-- Lever feedback  -->
+
+		<!--	Then shift by g oscillator moves from 0.8 to 0.9
+			or move prevented by lock
+			feedback lever pos to lever command.
+		-->
+
+		<!--	Thats no good to control global variable from JSB,
+			but there is no other way.
+		-->
+
+		<switch name="calculations/gascontrol/feedback">
+			<default value="/controls/engines/engine/throttle"/>
+			<test logic="AND" value="systems/gascontrol/lever-pos">
+				systems/gascontrol/shift-oscillator-command eq 1
+				systems/gascontrol/shift-oscillator-pos gt 0.8
+			</test>
+			<test logic="AND" value="systems/gascontrol/lever-pos">
+				systems/gascontrol/shift-abs gt 0.0
+				systems/gascontrol/shift-locked eq 0.0
+			</test>
+			<output>/controls/engines/engine/throttle</output>
+		</switch>
+
+		<!-- Pin pos-->
+
+		<fcs_function name="calculations/gascontrol/lever-angle">
+		<function>
+			<sum>
+				<value>-30</value>
+				<product>
+					<property>systems/gascontrol/lever-pos</property>
+					<value>90</value>
+				</product>
+			</sum>
+		</function>
+			<output>systems/gascontrol/lever-angle</output>
+		</fcs_function>
+
+		<fcs_function name="calculations/gascontrol/pin-pos">
+		<function>
+			<table>
+				<independentVar lookup="row">systems/gascontrol/lever-angle</independentVar>
+			<tableData>
+				-33.75		0.0
+				-28.125		1.0
+				-22.5		0.0
+				-16.875		1.0
+				-11.25		0.0
+				-5.625		1.0
+				0.0		0.0
+				5.625		1.0
+				11.25		0.0
+				16.875		1.0
+				22.5		0.0
+				28.125		1.0
+				33.75		0.0
+				39.375		1.0
+				45		0.0
+				50.625		1.0
+				56.25		0.0
+				61.875		1.0
+			</tableData>
+			</table>
+		</function>
+			<output>systems/gascontrol/pin-pos</output>
+		</fcs_function>
+
+		<!-- Crack-->
+
+		<switch name="calculations/gascontrol/crack-on">
+			<default value="systems/sounds/throttle-crack/on"/>
+			<test logic="AND" value="1">
+				systems/gascontrol/shift-oscillator-command eq 1
+				systems/gascontrol/shift-oscillator-pos gt 0.1
+				systems/gascontrol/shift-locked-abs gt 0
+				systems/sounds/throttle-crack/on == 0
+			</test>
+			<output>systems/sounds/throttle-crack/on</output>
+		</switch>
+
+		<kinematic name="calculations/sounds/throttle-crack/time-pos">
+			<input>systems/sounds/throttle-crack/on</input>
+			<traverse>
+			<setting>
+				<position>0</position>
+				<time>0</time>
+			</setting>
+			<setting>
+				<position>1</position>
+				<time>2.0</time>
+			</setting>
+			</traverse>
+			<output>systems/sounds/throttle-crack/time-pos</output>
+		</kinematic>
+
+		<switch name="calculations/sounds/throttle-crack/off">
+			<default value="systems/sounds/throttle-crack/on"/>
+			<test logic="AND" value="0">
+				systems/sounds/throttle-crack/time-pos ge 0.9
+				systems/sounds/throttle-crack/on == 1
+			</test>
+			<output>systems/sounds/throttle-crack/on</output>
+		</switch>
+
+		<!-- Click-->
+
+		<switch name="calculations/gascontrol/click">
+			<default value="systems/sounds/click/on"/>
+			<test logic="AND" value="1">
+				systems/gascontrol/lock-pos ge 0.25
+				systems/gascontrol/lock-pos le 0.75
+				systems/sounds/click/on == 0
+			</test>
+			<output>systems/sounds/click/on</output>
+		</switch>
+
+	</channel>
+
+</system>

@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+
+<!--
+	Author: Slavutinsky Victor
+-->
+
+
+<PropertyList>
+
+<!-- First Stage Submodel -->
+
+	<path>Vostok-1-Stage-1.ac</path>
+
+	<offsets>
+		<x-m>0.0</x-m>
+		<y-m>0.0</y-m>
+		<z-m>0.0</z-m>
+		<pitch-deg>3.5</pitch-deg>
+		<heading-deg>180.0</heading-deg>
+	</offsets>
+
+	<enable-hot type="bool">false</enable-hot>
+
+	<animation>
+		<type>spin</type>
+		<property>fdm/jsbsim/stages/unit[0]/dropped</property>
+		<factor>0.1</factor>
+		<center>
+			<x-m>-0.38</x-m>
+			<y-m>0.0</y-m>
+			<z-m>-15.87</z-m>
+		</center>
+		<axis>
+			<x>0.0</x>
+			<y>1.0</y>
+			<z>0.0</z>
+		</axis>
+	</animation>
+
+</PropertyList>

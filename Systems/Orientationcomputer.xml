@@ -1,0 +1,451 @@
+<?xml version="1.0"?>
+
+<!--
+	Author: Slavutinsky Victor
+-->
+
+<system>
+
+	<fileheader>
+		<author> Slavutinsky Victor </author>
+		<filecreationdate> 2011 </filecreationdate>
+		<version>$Revision: 1.00 $</version>
+		<description> Orientation computer </description>
+	</fileheader>
+
+	<channel name="Orientationcomputer">
+
+		<!--	If hold is on then set add to add to angles angle speeds multiplied on time. -->
+
+		<fcs_function name="calculations/orientationcomputer/q-drift">
+		<function>
+			<product>
+				<property>velocities/q-rad_sec</property>
+				<value>-1.0</value>
+			</product>
+		</function>
+			<output>systems/orientationcomputer/q-drift</output>
+		</fcs_function>
+
+		<fcs_function name="calculations/orientationcomputer/p-drift">
+		<function>
+			<product>
+				<property>velocities/p-rad_sec</property>
+				<value>-1.0</value>
+			</product>
+		</function>
+			<output>systems/orientationcomputer/p-drift</output>
+		</fcs_function>
+
+		<fcs_function name="calculations/orientationcomputer/r-drift">
+		<function>
+			<product>
+				<property>velocities/r-rad_sec</property>
+				<value>-1.0</value>
+			</product>
+		</function>
+			<output>systems/orientationcomputer/r-drift</output>
+		</fcs_function>
+
+		<!-- If not then quickly retirn it to zero. -->
+
+		<fcs_function name="calculations/orientationcomputer/q-return">
+		<function>
+			<product>
+				<property>systems/orientationcomputer/q-angle</property>
+				<value>-0.5</value><!--1/2 per second -->
+			</product>
+		</function>
+			<output>systems/orientationcomputer/q-return</output>
+		</fcs_function>
+
+		<fcs_function name="calculations/orientationcomputer/p-return">
+		<function>
+			<product>
+				<property>systems/orientationcomputer/p-angle</property>
+				<value>-0.5</value><!--1/2 per second -->
+			</product>
+		</function>
+			<output>systems/orientationcomputer/p-return</output>
+		</fcs_function>
+
+		<fcs_function name="calculations/orientationcomputer/r-return">
+		<function>
+			<product>
+				<property>systems/orientationcomputer/r-angle</property>
+				<value>-0.5</value><!--1/2 per second -->
+			</product>
+		</function>
+			<output>systems/orientationcomputer/r-return</output>
+		</fcs_function>
+
+		<!-- Set angles pid input -->
+
+		<switch name="calculations/orientationcomputer/q-pid-input">
+			<default value="systems/orientationcomputer/q-return"/>
+			<test logic="AND" value="systems/orientationcomputer/q-drift">
+				systems/orientationcomputer/q-hold eq 1.0
+			</test>
+			<test logic="AND" value="systems/orientationcomputer/q-return">
+				systems/orientationcomputer/q-hold eq 0.0
+			</test>
+			<output>systems/orientationcomputer/q-pid-input</output>
+		</switch>
+
+		<switch name="calculations/orientationcomputer/p-pid-input">
+			<default value="systems/orientationcomputer/p-return"/>
+			<test logic="AND" value="systems/orientationcomputer/p-drift">
+				systems/orientationcomputer/p-hold eq 1.0
+			</test>
+			<test logic="AND" value="systems/orientationcomputer/p-return">
+				systems/orientationcomputer/p-hold eq 0.0
+			</test>
+			<output>systems/orientationcomputer/p-pid-input</output>
+		</switch>
+
+		<switch name="calculations/orientationcomputer/r-pid-input">
+			<default value="systems/orientationcomputer/r-return"/>
+			<test logic="AND" value="systems/orientationcomputer/r-drift">
+				systems/orientationcomputer/r-hold eq 1.0
+			</test>
+			<test logic="AND" value="systems/orientationcomputer/r-return">
+				systems/orientationcomputer/r-hold eq 0.0
+			</test>
+			<output>systems/orientationcomputer/r-pid-input</output>
+		</switch>
+
+		<!-- Angle pids -->
+
+		<pid name="calculations/orientationcomputer/q-angle">
+			<input>systems/orientationcomputer/q-pid-input</input>
+			<kp>0.0</kp>
+			<ki>1.0</ki>
+			<kd>0.0</kd>
+			<output>systems/orientationcomputer/q-angle</output>
+		</pid>
+
+		<pid name="calculations/orientationcomputer/p-angle">
+			<input>systems/orientationcomputer/p-pid-input</input>
+			<kp>0.0</kp>
+			<ki>1.0</ki>
+			<kd>0.0</kd>
+			<output>systems/orientationcomputer/p-angle</output>
+		</pid>
+
+		<pid name="calculations/orientationcomputer/r-angle">
+			<input>systems/orientationcomputer/r-pid-input</input>
+			<kp>0.0</kp>
+			<ki>1.0</ki>
+			<kd>0.0</kd>
+			<output>systems/orientationcomputer/r-angle</output>
+		</pid>
+
+		<!-- Control angle inputs -->
+
+		<fcs_function name="calculations/orientationcomputer/q-angle-control">
+		<function>
+			<product>
+				<property>systems/orientationcomputer/q-angle</property>
+				<property>systems/orientationcomputer/factor-angle</property>
+			</product>
+		</function>
+		<clipto>
+			<min>-1</min>
+			<max>1</max>
+		</clipto>
+			<output>systems/orientationcomputer/q-angle-control</output>
+		</fcs_function>
+
+		<fcs_function name="calculations/orientationcomputer/p-angle-control">
+		<function>
+			<product>
+				<property>systems/orientationcomputer/p-angle</property>
+				<property>systems/orientationcomputer/factor-angle</property>
+			</product>
+		</function>
+		<clipto>
+			<min>-1</min>
+			<max>1</max>
+		</clipto>
+			<output>systems/orientationcomputer/p-angle-control</output>
+		</fcs_function>
+
+		<fcs_function name="calculations/orientationcomputer/r-angle-control">
+		<function>
+			<product>
+				<property>systems/orientationcomputer/r-angle</property>
+				<property>systems/orientationcomputer/factor-angle</property>
+			</product>
+		</function>
+		<clipto>
+			<min>-1</min>
+			<max>1</max>
+		</clipto>
+			<output>systems/orientationcomputer/r-angle-control</output>
+		</fcs_function>
+
+		<!-- Start hold later than set hold angles -->
+
+		<kinematic name="calculations/orientationcomputer/q-hold-active">
+			<input>systems/orientationcomputer/q-hold</input>
+			<traverse>
+			<setting>
+				<position>0.0</position>
+				<time>0</time>
+			</setting>
+			<setting>
+				<position>1.0</position>
+				<time>2</time>
+			</setting>
+			</traverse>
+			<output>systems/orientationcomputer/q-hold-active</output>
+		</kinematic>
+
+		<kinematic name="calculations/orientationcomputer/p-hold-active">
+			<input>systems/orientationcomputer/p-hold</input>
+			<traverse>
+			<setting>
+				<position>0.0</position>
+				<time>0</time>
+			</setting>
+			<setting>
+				<position>1.0</position>
+				<time>2</time>
+			</setting>
+			</traverse>
+			<output>systems/orientationcomputer/p-hold-active</output>
+		</kinematic>
+
+		<kinematic name="calculations/orientationcomputer/r-hold-active">
+			<input>systems/orientationcomputer/r-hold</input>
+			<traverse>
+			<setting>
+				<position>0.0</position>
+				<time>0</time>
+			</setting>
+			<setting>
+				<position>1.0</position>
+				<time>2</time>
+			</setting>
+			</traverse>
+			<output>systems/orientationcomputer/r-hold-active</output>
+		</kinematic>
+
+		<!-- Control by andle or by handle -->
+
+		<switch name="calculations/orientationcomputer/q-input">
+			<default value="systems/orientationcomputer/q-command"/>
+			<test logic="AND" value="systems/orientationcomputer/q-angle-control">
+				systems/orientationcomputer/q-hold-active gt 0.5
+			</test>
+			<test logic="AND" value="systems/orientationcomputer/q-command">
+				systems/orientationcomputer/q-hold-active le 0.5
+			</test>
+			<output>systems/orientationcomputer/q-input</output>
+		</switch>
+
+		<switch name="calculations/orientationcomputer/p-input">
+			<default value="systems/orientationcomputer/p-command"/>
+			<test logic="AND" value="systems/orientationcomputer/p-angle-control">
+				systems/orientationcomputer/p-hold-active gt 0.5
+			</test>
+			<test logic="AND" value="systems/orientationcomputer/p-command">
+				systems/orientationcomputer/p-hold-active le 0.5
+			</test>
+			<output>systems/orientationcomputer/p-input</output>
+		</switch>
+
+		<switch name="calculations/orientationcomputer/r-input">
+			<default value="systems/orientationcomputer/r-command"/>
+			<test logic="AND" value="systems/orientationcomputer/r-angle-control">
+				systems/orientationcomputer/r-hold-active gt 0.5
+			</test>
+			<test logic="AND" value="systems/orientationcomputer/r-command">
+				systems/orientationcomputer/r-hold-active le 0.5
+			</test>
+			<output>systems/orientationcomputer/r-input</output>
+		</switch>
+
+		<!-- q, elevator, pitch calculations -->
+
+		<fcs_function name="calculations/orientationcomputer/q-acceleration">
+			<function>
+				<difference>
+					<product>
+						<property>systems/orientationcomputer/q-input</property>
+						<property>systems/orientationcomputer/factor-input</property>
+					</product>
+					<property>velocities/q-rad_sec</property>
+				</difference>
+			</function>
+			<output>systems/orientationcomputer/q-acceleration</output>
+		</fcs_function>
+
+		<fcs_function name="calculations/orientationcomputer/q-control-acceleration">
+			<function>
+				<difference>
+					<product>
+						<property>systems/orientationcomputer/q-acceleration</property>
+						<property>systems/orientationcomputer/factor-acceleration</property>
+					</product>
+					<property>accelerations/qdot-rad_sec2</property>
+				</difference>
+			</function>
+			<output>systems/orientationcomputer/q-control-acceleration</output>
+		</fcs_function>
+
+		<fcs_function name="calculations/orientationcomputer/q-control-return">
+			<function>
+				<product>
+					<property>systems/orientationcomputer/q-control</property>
+					<value>-0.5</value><!--1/2 per second -->
+				</product>
+			</function>
+			<output>systems/orientationcomputer/q-control-return</output>
+		</fcs_function>
+
+		<pid name="calculations/orientationcomputer/q-control">
+			<input>systems/orientationcomputer/q-control-add</input>
+			<kp>0.0</kp>
+			<ki>systems/orientationcomputer/factor-control</ki>
+			<kd>0.0</kd>
+			<output>systems/orientationcomputer/q-control</output>
+		</pid>
+
+		<fcs_function name="calculations/orientationcomputer/q-output">
+			<function>
+				<product>
+					<property>systems/orientationcomputer/q-control</property>
+					<property>systems/orientationcomputer/factor-output</property>
+				</product>
+			</function>
+			<clipto>
+				<min>systems/orientationcomputer/output-min</min>
+				<max>systems/orientationcomputer/output-max</max>
+			</clipto>
+			<output>systems/orientationcomputer/q-output</output>
+		</fcs_function>
+
+		<!-- p, aileron, roll calculations -->
+
+		<fcs_function name="calculations/orientationcomputer/p-acceleration">
+			<function>
+				<difference>
+					<product>
+						<property>systems/orientationcomputer/p-input</property>
+						<property>systems/orientationcomputer/factor-input</property>
+					</product>
+					<property>velocities/p-rad_sec</property>
+				</difference>
+			</function>
+			<output>systems/orientationcomputer/p-acceleration</output>
+		</fcs_function>
+
+		<fcs_function name="calculations/orientationcomputer/p-control-acceleration">
+			<function>
+				<difference>
+					<product>
+						<property>systems/orientationcomputer/p-acceleration</property>
+						<property>systems/orientationcomputer/factor-acceleration</property>
+					</product>
+					<property>accelerations/pdot-rad_sec2</property>
+				</difference>
+			</function>
+			<output>systems/orientationcomputer/p-control-acceleration</output>
+		</fcs_function>
+
+		<fcs_function name="calculations/orientationcomputer/p-control-return">
+			<function>
+				<product>
+					<property>systems/orientationcomputer/p-control</property>
+					<value>-0.5</value><!--1/2 per second -->
+				</product>
+			</function>
+			<output>systems/orientationcomputer/p-control-return</output>
+		</fcs_function>
+
+		<pid name="calculations/orientationcomputer/p-control">
+			<input>systems/orientationcomputer/p-control-add</input>
+			<kp>0.0</kp>
+			<ki>systems/orientationcomputer/factor-control</ki>
+			<kd>0.0</kd>
+			<output>systems/orientationcomputer/p-control</output>
+		</pid>
+
+		<fcs_function name="calculations/orientationcomputer/p-output">
+			<function>
+				<product>
+					<property>systems/orientationcomputer/p-control</property>
+					<property>systems/orientationcomputer/factor-output</property>
+				</product>
+			</function>
+			<clipto>
+				<min>systems/orientationcomputer/output-min</min>
+				<max>systems/orientationcomputer/output-max</max>
+			</clipto>
+			<output>systems/orientationcomputer/p-output</output>
+		</fcs_function>
+
+		<!-- r, rudder, yaw calculations -->
+
+		<fcs_function name="calculations/orientationcomputer/r-acceleration">
+			<function>
+				<difference>
+					<product>
+						<property>systems/orientationcomputer/r-input</property>
+						<property>systems/orientationcomputer/factor-input</property>
+					</product>
+					<property>velocities/r-rad_sec</property>
+				</difference>
+			</function>
+			<output>systems/orientationcomputer/r-acceleration</output>
+		</fcs_function>
+
+		<fcs_function name="calculations/orientationcomputer/r-control-acceleration">
+			<function>
+				<difference>
+					<product>
+						<property>systems/orientationcomputer/r-acceleration</property>
+						<property>systems/orientationcomputer/factor-acceleration</property>
+					</product>
+					<property>accelerations/rdot-rad_sec2</property>
+				</difference>
+			</function>
+			<output>systems/orientationcomputer/r-control-acceleration</output>
+		</fcs_function>
+
+		<fcs_function name="calculations/orientationcomputer/r-control-return">
+			<function>
+				<product>
+					<property>systems/orientationcomputer/r-control</property>
+					<value>-0.5</value><!--1/2 per second -->
+				</product>
+			</function>
+			<output>systems/orientationcomputer/r-control-return</output>
+		</fcs_function>
+
+		<pid name="calculations/orientationcomputer/r-control">
+			<input>systems/orientationcomputer/r-control-add</input>
+			<kp>0.0</kp>
+			<ki>systems/orientationcomputer/factor-control</ki>
+			<kd>0.0</kd>
+			<output>systems/orientationcomputer/r-control</output>
+		</pid>
+
+		<fcs_function name="calculations/orientationcomputer/r-output">
+			<function>
+				<product>
+					<property>systems/orientationcomputer/r-control</property>
+					<property>systems/orientationcomputer/factor-output</property>
+				</product>
+			</function>
+			<clipto>
+				<min>systems/orientationcomputer/output-min</min>
+				<max>systems/orientationcomputer/output-max</max>
+			</clipto>
+			<output>systems/orientationcomputer/r-output</output>
+		</fcs_function>
+
+	</channel>
+
+</system>

@@ -1,0 +1,134 @@
+<?xml version="1.0"?>
+
+<!--
+	Author: Slavutinsky Victor
+-->
+
+
+<PropertyList>
+
+<!-- Left Antenna Stage Submodel -->
+
+	<path>Vostok-1-Left-Antenna.ac</path>
+
+	<offsets>
+		<x-m>0.0</x-m>
+		<y-m>0.0</y-m>
+		<z-m>0.0</z-m>
+		<pitch-deg>0.0</pitch-deg>
+		<heading-deg>0.0</heading-deg>
+	</offsets>
+
+	<enable-hot type="bool">false</enable-hot>
+
+	<!--Second-->
+
+	<animation>
+		<type>rotate</type>
+		<object-name>LA_UUEAntenna</object-name>
+		<object-name>LA_UURAntenna</object-name>
+		<object-name>LA_UUABHolder</object-name>
+		<object-name>LA_UUAHolder</object-name>
+		<object-name>LA_UUASafer</object-name>
+		<object-name>LA_UUAAxle</object-name>
+		<object-name>LA_UUAPin</object-name>
+		<property>/fdm/jsbsim/systems/spacecraft/whip-antennas-pos-norm</property>
+		<interpolation>
+			<entry><ind>0.0</ind><dep>70.0</dep></entry>
+			<entry><ind>1.0</ind><dep>-30.0</dep></entry>
+		</interpolation>
+		<axis>
+			<x1-m>0.023</x1-m>
+			<y1-m>-0.038</y1-m>
+			<z1-m>0.045</z1-m>
+			<x2-m>-0.023</x2-m>
+			<y2-m>-0.038</y2-m>
+			<z2-m>-0.045</z2-m>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>translate</type>
+		<object-name>LA_UUAPin</object-name>
+		<property>/fdm/jsbsim/systems/spacecraft/whip-antennas-extracted</property>
+		<factor>0.0117</factor>
+		<axis>
+			<x>0</x>
+			<y>1.0</y>
+			<z>0</z>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>translate</type>
+		<object-name>LA_UUASafer</object-name>
+		<object-name>LA_UUAAxle</object-name>
+		<object-name>LA_UUAHolder</object-name>
+		<property>/fdm/jsbsim/systems/spacecraft/whip-antennas-extracted</property>
+		<factor>0.0176</factor>
+		<axis>
+			<x>0.0</x>
+			<y>1.0</y>
+			<z>0.0</z>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>translate</type>
+		<object-name>LA_UUASafer</object-name>
+		<object-name>LA_UUAAxle</object-name>
+		<object-name>LA_UUAHolder</object-name>
+		<property>/fdm/jsbsim/systems/spacecraft/whip-antennas-extracted</property>
+		<factor>3.87</factor>
+		<axis>
+			<x>0.0</x>
+			<y>0.0</y>
+			<z>1.0</z>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>rotate</type>
+		<object-name>LA_UUAHolder</object-name>
+		<object-name>LA_UUASafer</object-name>
+		<object-name>LA_UUAAxle</object-name>
+		<property>/fdm/jsbsim/systems/spacecraft/whip-antennas-extracted</property>
+		<interpolation>
+			<entry><ind>0.0</ind><dep>0.0</dep></entry>
+			<entry><ind>1.0</ind><dep>180.0</dep></entry>
+		</interpolation>
+		<axis>
+			<x1-m>0.047</x1-m>
+			<y1-m>-0.051</y1-m>
+			<z1-m>0.193</z1-m>
+			<x2-m>-0.047</x2-m>
+			<y2-m>-0.051</y2-m>
+			<z2-m>0.193</z2-m>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>select</type>
+		<object-name>LA_UURAntenna</object-name>
+		<condition>
+			<equals>
+				<property>/fdm/jsbsim/systems/spacecraft/whip-antennas-extracted</property>
+				<value>false</value>
+			</equals>
+		</condition>
+	</animation>
+
+	<animation>
+		<type>select</type>
+		<object-name>LA_UUEAntenna</object-name>
+		<condition>
+			<equals>
+				<property>/fdm/jsbsim/systems/spacecraft/whip-antennas-extracted</property>
+				<value>true</value>
+			</equals>
+		</condition>
+	</animation>
+
+	<enable-hot type="bool">false</enable-hot>
+
+</PropertyList>

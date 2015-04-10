@@ -1,0 +1,175 @@
+<?xml version="1.0"?>
+
+<!--
+	Author: Slavutinsky Victor
+-->
+
+<PropertyList>
+
+<!-- Stage One Block A -->
+
+	<path>Vostok-1-Stage-1.ac</path>
+
+	<offsets>
+		<x-m>0.0</x-m>
+		<y-m>0.0</y-m>
+		<z-m>0.0</z-m>
+		<pitch-deg>0</pitch-deg>
+	</offsets>
+
+	<enable-hot type="bool">false</enable-hot>
+
+	<!-- Add exhaust models
+
+	<model>
+		<path>Aircraft/Vostok-1/Models/Exhausts/Stage1/Vostok-1-Stage-1-Block-A-Main-Exhaust.xml</path>
+		<name>EXT_Main</name>
+		<offsets>
+			<x-m>0.196</x-m>
+			<y-m>0.0</y-m>
+			<z-m>-19.553</z-m>
+			<pitch-deg>87.8</pitch-deg>
+			<heading-deg>0</heading-deg>
+		</offsets>
+	</model>
+
+	<model>
+		<path>Aircraft/Vostok-1/Models/Exhausts/Stage1/Vostok-1-Stage-1-Block-A-Maneur-One-Exhaust.xml</path>
+		<name>EXT_One</name>
+		<offsets>
+			<x-m>-1.034</x-m>
+			<y-m>0.497</y-m>
+			<z-m>-19.843</z-m>
+			<pitch-deg>90.0</pitch-deg>
+			<heading-deg>0</heading-deg>
+		</offsets>
+	</model>
+
+	<model>
+		<path>Aircraft/Vostok-1/Models/Exhausts/Stage1/Vostok-1-Stage-1-Block-A-Maneur-One-Exhaust.xml</path>
+		<name>EXT_Two</name>
+		<offsets>
+			<x-m>-1.034</x-m>
+			<y-m>-0.510</y-m>
+			<z-m>-19.843</z-m>
+			<pitch-deg>90.0</pitch-deg>
+			<heading-deg>0</heading-deg>
+		</offsets>
+	</model>
+
+-->
+
+	<animation>
+		<type>select</type>
+		<condition>
+			<equals>
+				<property>fdm/jsbsim/stages/unit[0]/active</property>
+				<value>true</value>
+			</equals>
+		</condition>
+	</animation>
+
+	<!--Main engine
+
+	<animation>
+		<type>material</type>
+		<object-name>FS_RD108MainI</object-name>
+		<emission>
+			<red-prop>fdm/jsbsim/propulsion/engine[0]/red</red-prop>
+			<green-prop>fdm/jsbsim/propulsion/engine[0]/green</green-prop>
+			<blue-prop>fdm/jsbsim/propulsion/engine[0]/blue</blue-prop>
+		</emission>
+	</animation>
+
+-->
+
+	<!--First engine-->
+
+	<animation>
+		<type>rotate</type>
+		<object-name>FS_RD107MOneI</object-name>
+		<object-name>FS_RD107MOneO</object-name>
+		<object-name>FS_RD107MPipeOne</object-name>
+		<object-name>FS_RD107MBaseOne</object-name>
+		<object-name>EXT_One</object-name>
+		<property>fdm/jsbsim/stages/unit[0]/forward-engine-delayed-rad</property>
+		<factor>57.295</factor>
+		<axis>
+			<x1-m>-1.213</x1-m>
+			<y1-m>0.499</y1-m>
+			<z1-m>-19.293</z1-m>
+			<x2-m>-0.859</x2-m>
+			<y2-m>0.499</y2-m>
+			<z2-m>-19.293</z2-m>
+		</axis>
+	</animation>
+
+<!--
+
+	<animation>
+		<type>material</type>
+		<object-name>FS_RD107MOneI</object-name>
+		<emission>
+			<red-prop>fdm/jsbsim/propulsion/engine[1]/red</red-prop>
+			<green-prop>fdm/jsbsim/propulsion/engine[1]/green</green-prop>
+			<blue-prop>fdm/jsbsim/propulsion/engine[1]/blue</blue-prop>
+		</emission>
+	</animation>
+
+-->
+
+	<!--Second engine-->
+
+	<animation>
+		<type>rotate</type>
+		<object-name>FS_RD107MTwoI</object-name>
+		<object-name>FS_RD107MTwoO</object-name>
+		<object-name>FS_RD107MPipeTwo</object-name>
+		<object-name>FS_RD107MBaseTwo</object-name>
+		<object-name>EXT_Two</object-name>
+		<property>fdm/jsbsim/stages/unit[0]/forward-engine-delayed-rad</property>
+		<factor>57.295</factor>
+		<axis>
+			<x1-m>-1.213</x1-m>
+			<y1-m>-0.510</y1-m>
+			<z1-m>-19.293</z1-m>
+			<x2-m>-0.859</x2-m>
+			<y2-m>-0.510</y2-m>
+			<z2-m>-19.293</z2-m>
+		</axis>
+	</animation>
+
+<!--
+
+	<animation>
+		<type>material</type>
+		<object-name>FS_RD107MTwoI</object-name>
+		<emission>
+			<red-prop>fdm/jsbsim/propulsion/engine[1]/red</red-prop>
+			<green-prop>fdm/jsbsim/propulsion/engine[1]/green</green-prop>
+			<blue-prop>fdm/jsbsim/propulsion/engine[1]/blue</blue-prop>
+		</emission>
+	</animation>
+
+-->
+
+	<!--Stabilisator-->
+
+	<animation>
+		<type>rotate</type>
+		<object-name>FS_StabO</object-name>
+		<property>fdm/jsbsim/stages/unit[0]/forward-engine-delayed-rad</property>
+		<factor>57.295</factor>
+		<axis>
+			<x1-m>-1.525</x1-m>
+			<y1-m>0.0</y1-m>
+			<z1-m>-18.553</z1-m>
+			<x2-m>-1.515</x2-m>
+			<y2-m>0.0</y2-m>
+			<z2-m>-18.553</z2-m>
+		</axis>
+	</animation>
+
+	<enable-hot type="bool">false</enable-hot>
+
+</PropertyList>

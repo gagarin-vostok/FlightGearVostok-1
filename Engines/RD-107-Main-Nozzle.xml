@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+
+<!--
+	Author: Slavutinsky Victor
+-->
+
+<!-- RD-107 Main Engine Nozzle -->
+
+<nozzle name="RD-107-Main-Nozzle">
+	<!--
+		pe      = Nozzle exit pressure, psf.
+		area    = Nozzle exit area, sqft.
+	-->
+	<pe unit="PSF"> 815.0  </pe>
+	<area unit="FT2"> 17.53  </area>
+</nozzle>

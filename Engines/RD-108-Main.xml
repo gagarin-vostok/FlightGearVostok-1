@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+
+<!--
+	Author: Slavutinsky Victor
+-->
+
+<!-- RD-108 Main Engine -->
+
+<rocket_engine name="RD-108-Main">
+<!--	<isp>               313.3 </isp> -->
+	<isp>               330.0 </isp>
+	<shr>              1.23 </shr>
+	<max_pc>       86556.00 </max_pc>
+	<variance>         0.1 </variance>
+	<prop_eff>         0.67 </prop_eff>
+	<maxthrottle>      1.00 </maxthrottle>
+	<minthrottle>      0.00 </minthrottle>
+	<sloxiflowmax>   230.16 </sloxiflowmax>
+	<slfuelflowmax>   91.7 </slfuelflowmax>
+</rocket_engine>

@@ -1,0 +1,90 @@
+<?xml version="1.0"?>
+
+<!--
+	Author: Slavutinsky Victor
+-->
+
+<PropertyList>
+
+<!-- Main Parachute -->
+
+	<path>Vostok-1-Main-Parachute.ac</path>
+
+	<offsets>
+		<x-m>0.0</x-m>
+		<y-m>0.0</y-m>
+		<z-m>0.0</z-m>
+		<pitch-deg>0</pitch-deg>
+	</offsets>
+
+	<enable-hot type="bool">false</enable-hot>
+
+	<animation>
+		<type>select</type>
+		<condition>
+			<and>
+				<equals>
+					<property>fdm/jsbsim/systems/spacecraft/main-chute-extracted</property>
+					<value>true</value>
+				</equals>
+				<equals>
+					<property>fdm/jsbsim/systems/spacecraft/main-chute-dropped</property>
+					<value>false</value>
+				</equals>
+				<equals>
+					<property>fdm/jsbsim/systems/spacecraft/main-chute-teared</property>
+					<value>false</value>
+				</equals>
+			</and>
+		</condition>
+	</animation>
+
+	<!-- Add exhaust models-->
+
+	<model>
+		<path>Aircraft/Vostok-1/Models/Exhausts/Spacecraft/Vostok-1-Landing-Engine-Exhaust.xml</path>
+		<offsets>
+			<x-m>-0.050</x-m>
+			<y-m>0.0</y-m>
+			<z-m>2.988</z-m>
+			<pitch-deg>121.0</pitch-deg>
+			<heading-deg>0</heading-deg>
+		</offsets>
+	</model>
+
+	<model>
+		<path>Aircraft/Vostok-1/Models/Exhausts/Spacecraft/Vostok-1-Landing-Engine-Exhaust.xml</path>
+		<offsets>
+			<x-m>0.050</x-m>
+			<y-m>0.0</y-m>
+			<z-m>2.988</z-m>
+			<pitch-deg>59.0</pitch-deg>
+			<heading-deg>0</heading-deg>
+		</offsets>
+	</model>
+
+	<model>
+		<path>Aircraft/Vostok-1/Models/Exhausts/Spacecraft/Vostok-1-Landing-Engine-Exhaust.xml</path>
+		<offsets>
+			<x-m>0.0</x-m>
+			<y-m>-0.050</y-m>
+			<z-m>2.988</z-m>
+			<pitch-deg>59.0</pitch-deg>
+			<heading-deg>-90</heading-deg>
+		</offsets>
+	</model>
+
+	<model>
+		<path>Aircraft/Vostok-1/Models/Exhausts/Spacecraft/Vostok-1-Landing-Engine-Exhaust.xml</path>
+		<offsets>
+			<x-m>0.0</x-m>
+			<y-m>0.050</y-m>
+			<z-m>2.988</z-m>
+			<pitch-deg>59.0</pitch-deg>
+			<heading-deg>90</heading-deg>
+		</offsets>
+	</model>
+
+	<enable-hot type="bool">false</enable-hot>
+
+</PropertyList>

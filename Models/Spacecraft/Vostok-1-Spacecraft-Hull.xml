@@ -1,0 +1,582 @@
+<?xml version="1.0"?>
+
+<!--
+	Author: Slavutinsky Victor
+-->
+
+<PropertyList>
+
+<!-- Spacecraft exterior -->
+
+	<path>Vostok-1-Spacecraft.ac</path>
+
+	<offsets>
+		<x-m>0.0</x-m>
+		<y-m>0.0</y-m>
+		<z-m>0.0</z-m>
+		<pitch-deg>0</pitch-deg>
+	</offsets>
+
+	<enable-hot type="bool">false</enable-hot>
+
+	<!-- Common light -->
+
+	<animation>
+		<type>material</type>
+		<object-name>SC_In</object-name>
+		<object-name>SC_PLeft</object-name>
+		<object-name>SC_HFIn</object-name>
+		<object-name>SC_HBIn</object-name>
+		<object-name>SC_PRight</object-name>
+		<object-name>SC_ICBox</object-name>
+		<object-name>SC_PBottom</object-name>
+		<object-name>SC_SRails</object-name>
+		<object-name>SC_SRod</object-name>
+		<object-name>SC_STray</object-name>
+		<object-name>SC_STBoxes</object-name>
+		<object-name>SC_STWires</object-name>
+		<object-name>SC_STWPins</object-name>
+		<object-name>SC_SRBases</object-name>
+		<emission>
+			<red-prop>fdm/jsbsim/systems/light/cabine/red</red-prop>
+			<green-prop>fdm/jsbsim/systems/light/cabine/green</green-prop>
+			<blue-prop>fdm/jsbsim/systems/light/cabine/blue</blue-prop>
+		</emission>
+	</animation>
+
+	<!-- Add exhaust models-->
+
+	<model>
+		<path>Aircraft/Vostok-1/Models/Exhausts/Spacecraft/Vostok-1-Flow-Cone.xml</path>
+		<name>SC_FlowCone</name>
+		<offsets>
+			<x-m>0.0</x-m>
+			<y-m>0.0</y-m>
+			<z-m>0.0</z-m>
+			<pitch-deg>0.0</pitch-deg>
+			<heading-deg>0</heading-deg>
+		</offsets>
+	</model>
+
+	<animation>
+		<type>translate</type>
+		<object-name>SC_FlowCone</object-name>
+		<property>fdm/jsbsim/one</property>
+		<factor>-1.124</factor>
+		<axis>
+			<x>0.0</x>
+			<y>0.0</y>
+			<z>1.0</z>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>rotate</type>
+		<object-name>SC_FlowCone</object-name>
+		<property>fdm/jsbsim/aero/beta-rad</property>
+		<factor>57.295</factor>
+		<axis>
+			<x1-m>0.0</x1-m>
+			<y1-m>0.0</y1-m>
+			<z1-m>1.0</z1-m>
+			<x2-m>0.0</x2-m>
+			<y2-m>0.0</y2-m>
+			<z2-m>-1.0</z2-m>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>rotate</type>
+		<object-name>SC_FlowCone</object-name>
+		<property>fdm/jsbsim/aero/alpha-rad</property>
+		<factor>57.295</factor>
+		<axis>
+			<x1-m>0.0</x1-m>
+			<y1-m>1.0</y1-m>
+			<z1-m>0.0</z1-m>
+			<x2-m>0.0</x2-m>
+			<y2-m>-1.0</y2-m>
+			<z2-m>0.0</z2-m>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>select</type>
+		<object-name>SC_FlowCone</object-name>
+		<condition>
+			<equals>
+				<property>fdm/jsbsim/stages/unit[5]/active</property>
+				<value>true</value>
+			</equals>
+		</condition>
+	</animation>
+
+	<!-- Make surface glow on reentry-->
+
+	<animation>
+		<type>material</type>
+		<object-name>SC_Out</object-name>
+		<object-name>SC_HFOut</object-name>
+		<object-name>SC_HLOut</object-name>
+		<object-name>SC_HBOut</object-name>
+		<object-name>SC_MCPBases</object-name>
+		<object-name>SC_CPanel</object-name>
+		<object-name>SC_UUEAntenna1</object-name>
+		<object-name>SC_UUASafer1</object-name>
+		<object-name>SC_UUAAxle1</object-name>
+		<object-name>SC_UUAHolder1</object-name>
+		<object-name>SC_UURAntenna1</object-name>
+		<object-name>SC_UUABHolder1</object-name>
+		<object-name>SC_UUABoxe1</object-name>
+		<object-name>SC_UUACables1</object-name>
+		<object-name>SC_UUAConnector1</object-name>
+		<object-name>SC_UUEAntenna2</object-name>
+		<object-name>SC_UUASafer2</object-name>
+		<object-name>SC_UUAAxle2</object-name>
+		<object-name>SC_UUAHolder2</object-name>
+		<object-name>SC_UURAntenna2</object-name>
+		<object-name>SC_UUABHolder2</object-name>
+		<object-name>SC_UUABoxe2</object-name>
+		<object-name>SC_UUACables2</object-name>
+		<object-name>SC_UUAConnector2</object-name>
+		<object-name>SC_UUACBases</object-name>
+		<emission>
+			<red-prop>fdm/jsbsim/aero/temperature/surface-mach-red</red-prop>
+			<green-prop>fdm/jsbsim/aero/temperature/surface-mach-green</green-prop>
+			<blue-prop>fdm/jsbsim/aero/temperature/surface-mach-blue</blue-prop>
+		</emission>
+	</animation>
+
+	<!--Up whip antennas-->
+
+		<!--First-->
+
+	<animation>
+		<type>rotate</type>
+		<object-name>SC_UUEAntenna1</object-name>
+		<object-name>SC_UURAntenna1</object-name>
+		<object-name>SC_UUABHolder1</object-name>
+		<object-name>SC_UUAHolder1</object-name>
+		<object-name>SC_UUASafer1</object-name>
+		<object-name>SC_UUAAxle1</object-name>
+		<object-name>SC_UUAPin1</object-name>
+		<property>fdm/jsbsim/systems/spacecraft/whip-antennas-pos-norm</property>
+		<interpolation>
+			<entry><ind>0.0</ind><dep>70.0</dep></entry>
+			<entry><ind>1.0</ind><dep>-30.0</dep></entry>
+		</interpolation>
+		<axis>
+			<x1-m>-0.039</x1-m>
+			<y1-m>0.394</y1-m>
+			<z1-m>-0.047</z1-m>
+			<x2-m>0.023</x2-m>
+			<y2-m>0.394</y2-m>
+			<z2-m>-0.047</z2-m>
+		</axis>
+	</animation>
+<!--
+	<animation>
+		<type>translate</type>
+		<object-name>SC_UUAPin1</object-name>
+		<property>fdm/jsbsim/systems/spacecraft/whip-antennas-extracted</property>
+		<factor>-0.0117</factor>
+		<axis>
+			<x>0</x>
+			<y>1.0</y>
+			<z>0</z>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>translate</type>
+		<object-name>SC_UUASafer1</object-name>
+		<object-name>SC_UUAAxle1</object-name>
+		<object-name>SC_UUAHolder1</object-name>
+		<property>fdm/jsbsim/systems/spacecraft/whip-antennas-extracted</property>
+		<factor>-0.0176</factor>
+		<axis>
+			<x>0.0</x>
+			<y>1.0</y>
+			<z>0.0</z>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>translate</type>
+		<object-name>SC_UUASafer1</object-name>
+		<object-name>SC_UUAAxle1</object-name>
+		<object-name>SC_UUAHolder1</object-name>
+		<property>fdm/jsbsim/systems/spacecraft/whip-antennas-extracted</property>
+		<factor>3.872</factor>
+		<axis>
+			<x>0.0</x>
+			<y>0.0</y>
+			<z>1.0</z>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>rotate</type>
+		<object-name>SC_UUAHolder1</object-name>
+		<object-name>SC_UUASafer1</object-name>
+		<object-name>SC_UUAAxle1</object-name>
+		<property>fdm/jsbsim/systems/spacecraft/whip-antennas-extracted</property>
+		<interpolation>
+			<entry><ind>0.0</ind><dep>0.0</dep></entry>
+			<entry><ind>1.0</ind><dep>180.0</dep></entry>
+		</interpolation>
+		<axis>
+			<x1-m>-0.047</x1-m>
+			<y1-m>0.407</y1-m>
+			<z1-m>0.101</z1-m>
+			<x2-m>0.046</x2-m>
+			<y2-m>0.407</y2-m>
+			<z2-m>0.101</z2-m>
+		</axis>
+	</animation>
+-->
+
+	<animation>
+		<type>select</type>
+		<object-name>SC_UURAntenna1</object-name>
+		<condition>
+			<equals>
+				<property>fdm/jsbsim/systems/spacecraft/whip-antennas-extracted</property>
+				<value>false</value>
+			</equals>
+		</condition>
+	</animation>
+
+	<animation>
+		<type>select</type>
+		<object-name>SC_UUEAntenna1</object-name>
+		<condition>
+			<equals>
+				<property>fdm/jsbsim/systems/spacecraft/whip-antennas-extracted</property>
+				<value>true</value>
+			</equals>
+		</condition>
+	</animation>
+
+	<!--Second-->
+
+	<animation>
+		<type>rotate</type>
+		<object-name>SC_UUEAntenna2</object-name>
+		<object-name>SC_UURAntenna2</object-name>
+		<object-name>SC_UUABHolder2</object-name>
+		<object-name>SC_UUAHolder2</object-name>
+		<object-name>SC_UUASafer2</object-name>
+		<object-name>SC_UUAAxle2</object-name>
+		<object-name>SC_UUAPin2</object-name>
+		<property>fdm/jsbsim/systems/spacecraft/whip-antennas-pos-norm</property>
+		<interpolation>
+			<entry><ind>0.0</ind><dep>70.0</dep></entry>
+			<entry><ind>1.0</ind><dep>-30.0</dep></entry>
+		</interpolation>
+		<axis>
+			<x1-m>0.038</x1-m>
+			<y1-m>-0.394</y1-m>
+			<z1-m>-0.047</z1-m>
+			<x2-m>-0.023</x2-m>
+			<y2-m>-0.394</y2-m>
+			<z2-m>-0.047</z2-m>
+		</axis>
+	</animation>
+
+<!--
+
+	<animation>
+		<type>translate</type>
+		<object-name>SC_UUAPin2</object-name>
+		<property>fdm/jsbsim/systems/spacecraft/whip-antennas-extracted</property>
+		<factor>0.0117</factor>
+		<axis>
+			<x>0</x>
+			<y>1.0</y>
+			<z>0</z>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>translate</type>
+		<object-name>SC_UUASafer2</object-name>
+		<object-name>SC_UUAAxle2</object-name>
+		<object-name>SC_UUAHolder2</object-name>
+		<property>fdm/jsbsim/systems/spacecraft/whip-antennas-extracted</property>
+		<factor>0.0176</factor>
+		<axis>
+			<x>0.0</x>
+			<y>1.0</y>
+			<z>0.0</z>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>translate</type>
+		<object-name>SC_UUASafer2</object-name>
+		<object-name>SC_UUAAxle2</object-name>
+		<object-name>SC_UUAHolder2</object-name>
+		<property>fdm/jsbsim/systems/spacecraft/whip-antennas-extracted</property>
+		<factor>3.872</factor>
+		<axis>
+			<x>0.0</x>
+			<y>0.0</y>
+			<z>1.0</z>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>rotate</type>
+		<object-name>SC_UUAHolder2</object-name>
+		<object-name>SC_UUASafer2</object-name>
+		<object-name>SC_UUAAxle2</object-name>
+		<property>fdm/jsbsim/systems/spacecraft/whip-antennas-extracted</property>
+		<interpolation>
+			<entry><ind>0.0</ind><dep>0.0</dep></entry>
+			<entry><ind>1.0</ind><dep>180.0</dep></entry>
+		</interpolation>
+		<axis>
+			<x1-m>0.047</x1-m>
+			<y1-m>-0.408</y1-m>
+			<z1-m>0.101</z1-m>
+			<x2-m>-0.047</x2-m>
+			<y2-m>-0.408</y2-m>
+			<z2-m>0.101</z2-m>
+		</axis>
+	</animation>
+
+-->
+
+	<animation>
+		<type>select</type>
+		<object-name>SC_UURAntenna2</object-name>
+		<condition>
+			<and>
+				<equals>
+					<property>fdm/jsbsim/systems/spacecraft/whip-antennas-extracted</property>
+					<value>false</value>
+				</equals>
+				<equals>
+					<property>fdm/jsbsim/systems/spacecraft/chute-cover-dropped</property>
+					<value>false</value>
+				</equals>
+			</and>
+		</condition>
+	</animation>
+
+	<animation>
+		<type>select</type>
+		<object-name>SC_UUEAntenna2</object-name>
+		<condition>
+			<and>
+				<equals>
+					<property>fdm/jsbsim/systems/spacecraft/whip-antennas-extracted</property>
+					<value>true</value>
+				</equals>
+				<equals>
+					<property>fdm/jsbsim/systems/spacecraft/chute-cover-dropped</property>
+					<value>false</value>
+				</equals>
+			</and>
+		</condition>
+	</animation>
+
+	<animation>
+		<type>select</type>
+		<object-name>SC_UUASafer2</object-name>
+		<object-name>SC_UUAHolder2</object-name>
+		<object-name>SC_UUABHolder2</object-name>
+		<object-name>SC_UUAAxle2</object-name>
+		<object-name>SC_UUAMotor2</object-name>
+		<object-name>SC_UUABoxe2</object-name>
+		<object-name>SC_UUAConnector2</object-name>
+		<object-name>SC_UUACable2</object-name>
+		<object-name>SC_UUABase2</object-name>
+		<object-name>SC_UUAPin2</object-name>
+		<condition>
+			<equals>
+				<property>fdm/jsbsim/systems/spacecraft/chute-cover-dropped</property>
+				<value>false</value>
+			</equals>
+		</condition>
+	</animation>
+
+	<!-- Chutes -->
+	
+	<animation>
+		<type>select</type>
+		<object-name>SC_HLOut</object-name>
+		<object-name>SC_HLIn</object-name>
+		<condition>
+			<equals>
+				<property>fdm/jsbsim/systems/spacecraft/chute-cover-dropped</property>
+				<value>false</value>
+			</equals>
+		</condition>
+	</animation>
+
+	<animation>
+		<type>select</type>
+		<object-name>SC_ChuteBox</object-name>
+		<object-name>SC_CCordDown</object-name>
+		<object-name>SC_CCDown</object-name>
+		<object-name>SC_CCPDown</object-name>
+		<object-name>SC_CDConnector</object-name>
+		<condition>
+			<equals>
+				<property>fdm/jsbsim/systems/spacecraft/main-chute-extracted</property>
+				<value>false</value>
+			</equals>
+		</condition>
+	</animation>
+
+	<model>
+		<path>Aircraft/Vostok-1/Models/Parachutes/Vostok-1-Brake-Parachute.xml</path>
+		<offsets>
+			<x-m>0.0</x-m>
+			<y-m>-0.8</y-m>
+			<z-m>-0.708</z-m>
+			<pitch-deg>0.0</pitch-deg>
+			<heading-deg>0.0</heading-deg>
+		</offsets>
+	</model>
+
+	<model>
+		<path>Aircraft/Vostok-1/Models/Parachutes/Vostok-1-Main-Parachute.xml</path>
+		<offsets>
+			<x-m>0.0</x-m>
+			<y-m>0.0</y-m>
+			<z-m>-0.402</z-m>
+			<pitch-deg>0.0</pitch-deg>
+			<heading-deg>0.0</heading-deg>
+		</offsets>
+	</model>
+
+	<!-- Soft landing engine sensor -->
+
+	<animation>
+		<type>translate</type>
+		<object-name>SC_LCPump</object-name>
+		<object-name>SC_LCBox</object-name>
+		<object-name>SC_LCConnector</object-name>
+		<object-name>SC_LCHolder</object-name>
+		<object-name>SC_LCPin</object-name>
+		<object-name>SC_LCCTurned</object-name>
+		<object-name>SC_LCCUnturned</object-name>
+		<object-name>SC_LCCovers</object-name>
+		<object-name>SC_LCAxle</object-name>
+		<property>fdm/jsbsim/systems/spacecraft/engine-sensor-pos-norm</property>
+		<factor>-0.1501</factor>
+		<axis>
+			<x>0</x>
+			<y>1</y>
+			<z>0</z>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>translate</type>
+		<object-name>SC_LCPump</object-name>
+		<object-name>SC_LCBox</object-name>
+		<object-name>SC_LCConnector</object-name>
+		<object-name>SC_LCHolder</object-name>
+		<object-name>SC_LCPin</object-name>
+		<object-name>SC_LCCTurned</object-name>
+		<object-name>SC_LCCUnturned</object-name>
+		<object-name>SC_LCCovers</object-name>
+		<object-name>SC_LCAxle</object-name>
+		<property>fdm/jsbsim/systems/spacecraft/engine-sensor-pos-norm</property>
+		<factor>0.042</factor>
+		<axis>
+			<x>0</x>
+			<y>0</y>
+			<z>1</z>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>translate</type>
+		<object-name>SC_LCPin</object-name>
+		<property>fdm/jsbsim/systems/spacecraft/engine-sensor-extracted</property>
+		<factor>0.0117</factor>
+		<axis>
+			<x>0</x>
+			<y>1.0</y>
+			<z>0</z>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>translate</type>
+		<object-name>SC_LCCovers</object-name>
+		<object-name>SC_LCHolder</object-name>
+		<object-name>SC_LCAxle</object-name>
+		<property>fdm/jsbsim/systems/spacecraft/engine-sensor-extracted</property>
+		<factor>-0.0176</factor>
+		<axis>
+			<x>0.0</x>
+			<y>1.0</y>
+			<z>0.0</z>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>translate</type>
+		<object-name>SC_LCCovers</object-name>
+		<object-name>SC_LCHolder</object-name>
+		<object-name>SC_LCAxle</object-name>
+		<property>fdm/jsbsim/systems/spacecraft/engine-sensor-extracted</property>
+		<factor>-3.872</factor>
+		<axis>
+			<x>0.0</x>
+			<y>0.0</y>
+			<z>1.0</z>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>rotate</type>
+		<object-name>SC_LCCovers</object-name>
+		<object-name>SC_LCHolder</object-name>
+		<object-name>SC_LCAxle</object-name>
+		<property>fdm/jsbsim/systems/spacecraft/engine-sensor-extracted</property>
+		<interpolation>
+			<entry><ind>0.0</ind><dep>0.0</dep></entry>
+			<entry><ind>1.0</ind><dep>180.0</dep></entry>
+		</interpolation>
+		<axis>
+			<x1-m>-0.047</x1-m>
+			<y1-m>-0.995</y1-m>
+			<z1-m>-1.345</z1-m>
+			<x2-m>0.047</x2-m>
+			<y2-m>-0.995</y2-m>
+			<z2-m>-1.345</z2-m>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>select</type>
+		<object-name>SC_LCCTurned</object-name>
+		<condition>
+			<equals>
+				<property>fdm/jsbsim/systems/spacecraft/engine-sensor-extracted</property>
+				<value>false</value>
+			</equals>
+		</condition>
+	</animation>
+
+	<animation>
+		<type>select</type>
+		<object-name>SC_LCCUnturned</object-name>
+		<condition>
+			<equals>
+				<property>fdm/jsbsim/systems/spacecraft/engine-sensor-extracted</property>
+				<value>true</value>
+			</equals>
+		</condition>
+	</animation>
+
+	<enable-hot type="bool">false</enable-hot>
+
+</PropertyList>

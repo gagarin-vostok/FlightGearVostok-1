@@ -1,0 +1,220 @@
+<?xml version="1.0"?>
+
+<!--
+	Author: Slavutinsky Victor
+-->
+
+<system>
+
+	<fileheader>
+		<author> Slavutinsky Victor </author>
+		<filecreationdate> 2011 </filecreationdate>
+		<version>$Revision: 1.00 $</version>
+		<description> Backilluminator </description>
+	</fileheader>
+
+<!--	That must be aded to set file
+
+	<fdm>
+		<jsbsim>
+			<systems>
+				<backilluminator>
+					<serviceable type="bool">1</serviceable>
+					<lock-command type="float">1</lock-command>
+					<lock-pos type="float">1</lock-pos>
+					<lever-command type="float">0</lever-command>
+					<lever-pos type="float">0</lever-pos>
+					<pilot-oscillator-pos>0</pilot-oscillator-pos>
+					<shift-oscillator-command>0</shift-oscillator-command>
+					<shift-oscillator-pos>0</shift-oscillator-pos>
+				</backilluminator>
+			</systems>
+		</jsbsim>
+	</fdm>
+
+-->
+
+	<channel name="Backilluminator">
+
+	<!-- cover -->
+
+		<switch name="calculations/backilluminator/cover-allowed">
+			<default value="systems/backilluminator/cover-command"/>
+			<test logic="AND" value="systems/backilluminator/cover-input">
+				systems/backilluminator/serviceable eq 1
+
+			</test>
+			<output>systems/backilluminator/cover-command</output>
+		</switch>
+
+		<kinematic name="calculations/backilluminator/cover-pos">
+			<input>systems/backilluminator/cover-command</input>
+			<traverse>
+			<setting>
+				<position>0</position>
+				<time>0</time>
+			</setting>
+			<setting>
+				<position>1</position>
+				<time>0.7</time>
+			</setting>
+			</traverse>
+			<output>systems/backilluminator/cover-pos</output>
+		</kinematic>
+
+		<fcs_function name="calculations/backilluminator/petal-angle">
+		<function>
+			<product>
+				<property>systems/backilluminator/cover-pos</property>
+				<value>180</value>
+				<value>0.475</value>
+			</product>
+		</function>
+			<output>systems/backilluminator/petal-angle</output>
+		</fcs_function>
+
+		<fcs_function name="calculations/backilluminator/petal-angle-rad">
+		<function>
+			<product>
+				<property>systems/backilluminator/cover-pos</property>
+				<value>3.14159265358979323846</value>
+				<value>0.475</value>
+			</product>
+		</function>
+			<output>systems/backilluminator/petal-angle-rad</output>
+		</fcs_function>
+
+		<fcs_function name="calculations/backilluminator/petal-shift">
+		<function>
+			<product>
+				<value>2.0</value>
+				<value>0.025</value> <!-- petal length-->
+				<difference>
+					<value>1.0</value>
+					<cos>
+						<property>systems/backilluminator/petal-angle-rad</property>
+					</cos>
+				</difference>
+			</product>
+		</function>
+			<output>systems/backilluminator/petal-shift</output>
+		</fcs_function>
+
+		<fcs_function name="calculations/backilluminator/petal-shift-one">
+		<function>
+			<product>
+				<property>systems/backilluminator/cover-pos</property>
+				<value>0.02</value>
+			</product>
+		</function>
+			<output>systems/backilluminator/petal-shift-one</output>
+		</fcs_function>
+
+		<fcs_function name="calculations/backilluminator/petal-shift-two">
+		<function>
+			<sum>
+				<property>systems/backilluminator/petal-shift-one</property>
+				<property>systems/backilluminator/petal-shift</property>
+			</sum>
+		</function>
+			<output>systems/backilluminator/petal-shift-two</output>
+		</fcs_function>
+
+		<fcs_function name="calculations/backilluminator/petal-shift-three">
+		<function>
+			<sum>
+				<property>systems/backilluminator/petal-shift-one</property>
+				<property>systems/backilluminator/petal-shift</property>
+			</sum>
+		</function>
+			<output>systems/backilluminator/petal-shift-three</output>
+		</fcs_function>
+
+		<fcs_function name="calculations/backilluminator/petal-shift-four">
+		<function>
+			<sum>
+				<property>systems/backilluminator/petal-shift-one</property>
+				<product>
+					<value>2.0</value>
+					<property>systems/backilluminator/petal-shift</property>
+				</product>
+			</sum>
+		</function>
+			<output>systems/backilluminator/petal-shift-four</output>
+		</fcs_function>
+
+		<fcs_function name="calculations/backilluminator/petal-shift-five">
+		<function>
+			<sum>
+				<property>systems/backilluminator/petal-shift-one</property>
+				<product>
+					<value>2.0</value>
+					<property>systems/backilluminator/petal-shift</property>
+				</product>
+			</sum>
+		</function>
+			<output>systems/backilluminator/petal-shift-five</output>
+		</fcs_function>
+
+		<fcs_function name="calculations/backilluminator/petal-shift-six">
+		<function>
+			<sum>
+				<property>systems/backilluminator/petal-shift-one</property>
+				<product>
+					<value>3.0</value>
+					<property>systems/backilluminator/petal-shift</property>
+				</product>
+			</sum>
+		</function>
+			<output>systems/backilluminator/petal-shift-six</output>
+		</fcs_function>
+
+		<fcs_function name="calculations/backilluminator/petal-shift-seven">
+		<function>
+			<sum>
+				<property>systems/backilluminator/petal-shift-one</property>
+				<product>
+					<value>3.0</value>
+					<property>systems/backilluminator/petal-shift</property>
+				</product>
+			</sum>
+		</function>
+			<output>systems/backilluminator/petal-shift-seven</output>
+		</fcs_function>
+
+		<fcs_function name="calculations/backilluminator/petal-shift-eight">
+		<function>
+			<sum>
+				<property>systems/backilluminator/petal-shift-one</property>
+				<product>
+					<value>4.0</value>
+					<property>systems/backilluminator/petal-shift</property>
+				</product>
+			</sum>
+		</function>
+			<output>systems/backilluminator/petal-shift-eight</output>
+		</fcs_function>
+
+		<switch name="calculations/backilluminator/cover-not-allowed">
+			<default value="systems/backilluminator/cover-input"/>
+			<test logic="AND" value="systems/backilluminator/cover-command">
+				systems/backilluminator/serviceable eq 0
+
+			</test>
+			<output>systems/backilluminator/cover-input</output>
+		</switch>
+
+		<switch name="calculations/backilluminator/cover-switch">
+			<default value="systems/backilluminator/cover-switch"/>
+			<test logic="AND" value="1">
+				systems/backilluminator/cover-pos ge 0.5
+			</test>
+			<test logic="AND" value="0">
+				systems/backilluminator/cover-pos lt 0.5
+			</test>
+			<output>systems/backilluminator/cover-switch</output>
+		</switch>
+
+	</channel>
+
+</system>

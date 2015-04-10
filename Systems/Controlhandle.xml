@@ -1,0 +1,167 @@
+<?xml version="1.0"?>
+
+<!--
+	Author: Slavutinsky Victor
+-->
+
+<system>
+
+	<fileheader>
+		<author> Slavutinsky Victor </author>
+		<filecreationdate> 2011 </filecreationdate>
+		<version>$Revision: 1.00 $</version>
+		<description> Controlhandle </description>
+	</fileheader>
+
+<!--	That must be aded to set file
+
+	<fdm>
+		<jsbsim>
+			<systems>
+				<controlhandle>
+					<serviceable type="bool">1</serviceable>
+					<lock-command type="float">1</lock-command>
+					<lock-pos type="float">1</lock-pos>
+					<lever-command type="float">0</lever-command>
+					<lever-pos type="float">0</lever-pos>
+					<pilot-oscillator-pos>0</pilot-oscillator-pos>
+					<shift-oscillator-command>0</shift-oscillator-command>
+					<shift-oscillator-pos>0</shift-oscillator-pos>
+				</controlhandle>
+			</systems>
+		</jsbsim>
+	</fdm>
+
+-->
+
+	<channel name="Controlhandle">
+
+		<!-- Input-->
+
+		<switch name="calculations/controlhandle/aileron-serviceabled">
+			<default value="systems/controlhandle/aileron-command"/>
+			<test logic="AND" value="fcs/aileron-cmd-norm">
+				systems/controlhandle/serviceable eq 1.0
+			</test>
+			<output>fcs/aileron-cmd-norm</output>
+		</switch>
+
+		<switch name="calculations/controlhandle/elevator-serviceabled">
+			<default value="systems/controlhandle/elevator-command"/>
+			<test logic="AND" value="fcs/elevator-cmd-norm">
+				systems/controlhandle/serviceable eq 1.0
+			</test>
+			<output>fcs/elevator-cmd-norm</output>
+		</switch>
+
+		<switch name="calculations/controlhandle/rudder-serviceabled">
+			<default value="systems/controlhandle/rudder-command"/>
+			<test logic="AND" value="fcs/rudder-cmd-norm">
+				systems/controlhandle/serviceable eq 1.0
+			</test>
+			<output>fcs/rudder-cmd-norm</output>
+		</switch>
+
+		<switch name="calculations/controlhandle/handle-moved">
+			<default value="0"/>
+			<test logic="OR" value="1">
+				fcs/aileron-cmd-norm gt 0
+				fcs/aileron-cmd-norm lt 0
+				fcs/elevator-cmd-norm gt 0
+				fcs/elevator-cmd-norm lt 0
+				fcs/rudder-cmd-norm gt 0
+				fcs/rudder-cmd-norm lt 0
+			</test>
+			<output>systems/controlhandle/handle-moved</output>
+		</switch>
+
+		<switch name="calculations/controlhandle/handle-stopped">
+			<default value="1"/>
+			<test logic="OR" value="0">
+				systems/controlhandle/handle-moved eq 1
+			</test>
+			<output>systems/controlhandle/handle-stopped</output>
+		</switch>
+
+		<!-- Button-->
+
+		<switch name="calculations/controlhandle/button-serviceabled">
+			<default value="systems/controlhandle/button-switch"/>
+			<test logic="AND" value="systems/controlhandle/button-input">
+				systems/controlhandle/serviceable eq 1.0
+			</test>
+			<output>systems/controlhandle/button-command</output>
+		</switch>
+
+		<kinematic name="calculations/controlhandle/button-pos">
+			<input>systems/controlhandle/button-command</input>
+			<traverse>
+			<setting>
+				<position>0</position>
+				<time>0</time>
+			</setting>
+			<setting>
+				<position>1</position>
+				<time>0.2</time>
+			</setting>
+			</traverse>
+			<output>systems/controlhandle/button-pos</output>
+		</kinematic>
+
+		<switch name="calculations/controlhandle/button-switch">
+			<default value="0"/>
+			<test logic="AND" value="1">
+				systems/controlhandle/button-pos gt 0.5
+			</test>
+			<output>systems/controlhandle/button-switch</output>
+		</switch>
+
+		<switch name="calculations/controlhandle/button-input">
+			<default value="systems/controlhandle/button-input"/>
+			<test logic="AND" value="systems/controlhandle/button-command">
+				systems/controlhandle/serviceable eq 0.0
+			</test>
+			<output>systems/controlhandle/button-input</output>
+		</switch>
+
+		<!-- Output-->
+
+		<switch name="calculations/controlhandle/aileron-pos">
+			<default value="systems/controlhandle/aileron-pos"/>
+			<test logic="AND" value="fcs/aileron-cmd-norm">
+				one eq 1.0
+			</test>
+			<output>systems/controlhandle/aileron-pos</output>
+		</switch>
+
+		<switch name="calculations/controlhandle/elevator-pos">
+			<default value="systems/controlhandle/elevator-pos"/>
+			<test logic="AND" value="fcs/elevator-cmd-norm">
+				one eq 1.0
+			</test>
+			<output>systems/controlhandle/elevator-pos</output>
+		</switch>
+
+		<switch name="calculations/controlhandle/rudder-pos">
+			<default value="systems/controlhandle/rudder-pos"/>
+			<test logic="AND" value="fcs/rudder-cmd-norm">
+				one eq 1.0
+			</test>
+			<output>systems/controlhandle/rudder-pos</output>
+		</switch>
+
+		<!-- Click-->
+
+		<switch name="calculations/controlhandle/click">
+			<default value="systems/sounds/click/on"/>
+			<test logic="AND" value="1">
+				systems/controlhandle/button-pos ge 0.25
+				systems/controlhandle/button-pos le 0.75
+				systems/sounds/click/on == 0
+			</test>
+			<output>systems/sounds/click/on</output>
+		</switch>
+
+	</channel>
+
+</system>

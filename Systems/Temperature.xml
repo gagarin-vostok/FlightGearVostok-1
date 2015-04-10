@@ -1,0 +1,809 @@
+<?xml version="1.0"?>
+
+<!--
+	Author: Slavutinsky Victor
+-->
+
+<system>
+
+	<fileheader>
+		<author> Slavutinsky Victor </author>
+		<filecreationdate> 2011 </filecreationdate>
+		<version>$Revision: 1.00 $</version>
+		<description> Temperature </description>
+	</fileheader>
+
+	<channel name="Temperature">
+
+		<!-- Flow -->
+
+		<!-- By NACA report 990
+
+		<fcs_function name="aero/temperature/stagnation-mach-c">
+		<function>
+			<description>
+				Stagnation temperature due to Mach number and altitude
+			</description>
+			<table>
+				<independentVar lookup="row">velocities/mach</independentVar>
+				<independentVar lookup="column">position/h-sl-ft</independentVar>
+			<tableData>
+	0	50000	100000	150000	200000	250000
+0.0	0.0	0.0	0.0	0.0	0.0	0.0
+1.0	88.2	0.0	0.0	146.9	117.6	44.1
+2.0	227.1	116.0	116.0	350.6	288.8	171.6
+3.0	560.0	264.1	264.1	671.6	782.7	412.1
+4.0	937.0	597.4	597.4	1091.3	1014.2	767.2
+5.0	1338.2	967.9	967.9	1708.6	1523.4	1153.0
+6.0	2017.2	1400.0	1400.0	2325.9	2171.6	1708.6
+7.0	2449.3	1893.8	1893.8	3004.9	2727.1	2171.6
+8.0	3128.3	2387.6	2387.6	3745.7	3437.0	2757.9
+9.0	3869.1	3004.9	3004.9	4795.0	4332.1	3437.0
+10.0	4671.6	3622.2	3622.2	5720.9	5196.2	4146.9
+11.0	5659.2	4201.2	4201.2	7079.0	6369.1	4930.2
+12.0	7079.0	5165.3	5165.3	8930.8	8004.9	6122.1
+13.0	8622.2	6029.6	6029.6	10474.0	9548.1	7325.9
+14.0	9856.8	7387.6	7387.6	11400.0	10628.3	8622.1
+15.0	10782.7	8315.8	8315.8	12325.9	11554.2	9549.2
+17.0	13560.4	9856.8	9856.8	16646.9	15103.7	11708.6
+19.0	16646.9	12017.2	12017.2	19116.0	17881.4	14332.0
+21.0	19733.3	14177.8	14177.8	22819.7	21276.4	16955.6
+23.0	22202.4	17881.4	17881.4	24918.4	23560.4	20041.9
+25.0	27140.7	20350.6	20350.6	31461.7	29301.1	23745.6
+			</tableData>
+			</table>
+		</function>
+		</fcs_function>
+ -->
+
+		<fcs_function name="aero/temperature/P-sum-psf">
+		<function>
+			<description>
+				Summar aerodynamical pressure
+			</description>
+				<sum>
+					<property>atmosphere/P-psf</property>
+					<property>aero/qbar-modified-psf</property>
+				</sum>
+		</function>
+		</fcs_function>
+
+		<fcs_function name="aero/temperature/stagnation-mach-c">
+		<function>
+			<description>
+				Stagnation temperature due to Mach number and altitude
+			</description>
+			<product>
+				<difference>
+					<product>
+						<sum>
+							<value>273</value>	<!-- Celsius to Kelvin -->
+							<value>15</value>	<!-- Standart mean temperature -->
+						</sum>
+						<sum>
+							<value>1</value>
+							<product>
+								<quotient>
+									<difference>
+										<value>1.4</value>	<!-- Cp/Cv coefficient for twoatomic gases -->
+										<value>1</value>
+									</difference>
+									<value>2</value>
+								</quotient>
+								<pow>
+									<property>velocities/mach</property>
+									<value>2</value>
+								</pow>
+							</product>
+						</sum>
+					</product>
+					<value>273</value>
+				</difference>
+			</product>
+		</function>
+		</fcs_function>
+
+		<fcs_function name="aero/temperature/flow-mach-red">
+		<function>
+			<description>
+				Red portion of flow color due temperature
+			</description>
+			<table>
+				<independentVar lookup="row">aero/temperature/stagnation-mach-c</independentVar>
+			<tableData>
+0	0
+1500	1
+2000	1
+2500	1
+3000	1
+3500	0.988
+4000	0.960
+5000	0.882
+6000	0.827
+7000	0.784
+8000	0.737
+9000	0.705
+10000	0.678
+30000	0.356
+			</tableData>
+			</table>
+		</function>
+		</fcs_function>
+
+		<fcs_function name="aero/temperature/flow-mach-green">
+		<function>
+			<description>
+				Green portion of color due temperature
+			</description>
+			<table>
+				<independentVar lookup="row">aero/temperature/stagnation-mach-c</independentVar>
+			<tableData>
+0	0
+1500	0.505
+2000	0.658
+2500	0.760
+3000	0.862
+3500	0.917
+4000	0.956
+5000	0.972
+6000	0.996
+7000	1
+8000	1
+9000	0.996
+10000	0.992
+30000	0.882
+			</tableData>
+			</table>
+		</function>
+		</fcs_function>
+
+		<fcs_function name="aero/temperature/flow-mach-blue">
+		<function>
+			<description>
+				Blue portion of color due temperature
+			</description>
+			<table>
+				<independentVar lookup="row">aero/temperature/stagnation-mach-c</independentVar>
+			<tableData>
+0	0
+1500	0
+2000	0.011
+2500	0.074
+3000	0.227
+3500	0.392
+4000	0.513
+5000	0.647
+6000	0.752
+7000	0.819
+8000	0.862
+9000	0.894
+10000	0.909
+30000	1
+			</tableData>
+			</table>
+		</function>
+		</fcs_function>
+
+		<fcs_function name="aero/temperature/flow-mach-transparency">
+		<function>
+			<description>
+				Transparency of flow due flow pressure
+			</description>
+			<table>
+				<independentVar lookup="row">aero/qbar-modified-psf</independentVar>
+			<tableData>
+0	0
+2116	0.1
+			</tableData>
+			</table>
+		</function>
+		</fcs_function>
+
+		<fcs_function name="aero/temperature/flow-mach-d2-c">
+		<function>
+			<quotient>
+				<property>aero/temperature/stagnation-mach-c</property>
+				<value>2</value>
+			</quotient>
+		</function>
+		</fcs_function>
+
+		<fcs_function name="aero/temperature/flow-mach-d2-red">
+		<function>
+			<description>
+				Red portion of flow color due temperature
+			</description>
+			<table>
+				<independentVar lookup="row">aero/temperature/flow-mach-d2-c</independentVar>
+			<tableData>
+0	0
+1500	1
+2000	1
+2500	1
+3000	1
+3500	0.988
+4000	0.960
+5000	0.882
+6000	0.827
+7000	0.784
+8000	0.737
+9000	0.705
+10000	0.678
+30000	0.356
+			</tableData>
+			</table>
+		</function>
+		</fcs_function>
+
+		<fcs_function name="aero/temperature/flow-mach-d2-green">
+		<function>
+			<description>
+				Green portion of color due temperature
+			</description>
+			<table>
+				<independentVar lookup="row">aero/temperature/flow-mach-d2-c</independentVar>
+			<tableData>
+0	0
+1500	0.505
+2000	0.658
+2500	0.760
+3000	0.862
+3500	0.917
+4000	0.956
+5000	0.972
+6000	0.996
+7000	1
+8000	1
+9000	0.996
+10000	0.992
+30000	0.882
+			</tableData>
+			</table>
+		</function>
+		</fcs_function>
+
+		<fcs_function name="aero/temperature/flow-mach-d2-blue">
+		<function>
+			<description>
+				Blue portion of color due temperature
+			</description>
+			<table>
+				<independentVar lookup="row">aero/temperature/flow-mach-d2-c</independentVar>
+			<tableData>
+0	0
+1500	0
+2000	0.011
+2500	0.074
+3000	0.227
+3500	0.392
+4000	0.513
+5000	0.647
+6000	0.752
+7000	0.819
+8000	0.862
+9000	0.894
+10000	0.909
+30000	1
+			</tableData>
+			</table>
+		</function>
+		</fcs_function>
+
+		<fcs_function name="aero/temperature/flow-mach-d2-transparency">
+		<function>
+			<description>
+				Transparency of flow due flow pressure
+			</description>
+			<table>
+				<independentVar lookup="row">aero/qbar-modified-psf</independentVar>
+			<tableData>
+0	0
+2116	0.1
+			</tableData>
+			</table>
+		</function>
+		</fcs_function>
+
+		<fcs_function name="aero/temperature/flow-mach-d4-c">
+		<function>
+			<quotient>
+				<property>aero/temperature/stagnation-mach-c</property>
+				<value>4</value>
+			</quotient>
+		</function>
+		</fcs_function>
+
+		<fcs_function name="aero/temperature/flow-mach-d4-red">
+		<function>
+			<description>
+				Red portion of flow color due temperature
+			</description>
+			<table>
+				<independentVar lookup="row">aero/temperature/flow-mach-d4-c</independentVar>
+			<tableData>
+0	0
+1500	1
+2000	1
+2500	1
+3000	1
+3500	0.988
+4000	0.960
+5000	0.882
+6000	0.827
+7000	0.784
+8000	0.737
+9000	0.705
+10000	0.678
+30000	0.356
+			</tableData>
+			</table>
+		</function>
+		</fcs_function>
+
+		<fcs_function name="aero/temperature/flow-mach-d4-green">
+		<function>
+			<description>
+				Green portion of color due temperature
+			</description>
+			<table>
+				<independentVar lookup="row">aero/temperature/flow-mach-d4-c</independentVar>
+			<tableData>
+0	0
+1500	0.505
+2000	0.658
+2500	0.760
+3000	0.862
+3500	0.917
+4000	0.956
+5000	0.972
+6000	0.996
+7000	1
+8000	1
+9000	0.996
+10000	0.992
+30000	0.882
+			</tableData>
+			</table>
+		</function>
+		</fcs_function>
+
+		<fcs_function name="aero/temperature/flow-mach-d4-blue">
+		<function>
+			<description>
+				Blue portion of color due temperature
+			</description>
+			<table>
+				<independentVar lookup="row">aero/temperature/flow-mach-d4-c</independentVar>
+			<tableData>
+0	0
+1500	0
+2000	0.011
+2500	0.074
+3000	0.227
+3500	0.392
+4000	0.513
+5000	0.647
+6000	0.752
+7000	0.819
+8000	0.862
+9000	0.894
+10000	0.909
+30000	1
+			</tableData>
+			</table>
+		</function>
+		</fcs_function>
+
+		<fcs_function name="aero/temperature/flow-mach-d4-transparency">
+		<function>
+			<description>
+				Transparency of flow due flow pressure
+			</description>
+			<table>
+				<independentVar lookup="row">aero/qbar-modified-psf</independentVar>
+			<tableData>
+0	0
+2116	0.1
+			</tableData>
+			</table>
+		</function>
+		</fcs_function>
+
+		<fcs_function name="aero/temperature/flow-mach-d8-c">
+		<function>
+			<quotient>
+				<property>aero/temperature/stagnation-mach-c</property>
+				<value>8</value>
+			</quotient>
+		</function>
+		</fcs_function>
+
+		<fcs_function name="aero/temperature/flow-mach-d8-red">
+		<function>
+			<description>
+				Red portion of flow color due temperature
+			</description>
+			<table>
+				<independentVar lookup="row">aero/temperature/flow-mach-d8-c</independentVar>
+			<tableData>
+0	0
+1500	1
+2000	1
+2500	1
+3000	1
+3500	0.988
+4000	0.960
+5000	0.882
+6000	0.827
+7000	0.784
+8000	0.737
+9000	0.705
+10000	0.678
+30000	0.356
+			</tableData>
+			</table>
+		</function>
+		</fcs_function>
+
+		<fcs_function name="aero/temperature/flow-mach-d8-green">
+		<function>
+			<description>
+				Green portion of color due temperature
+			</description>
+			<table>
+				<independentVar lookup="row">aero/temperature/flow-mach-d8-c</independentVar>
+			<tableData>
+0	0
+1500	0.505
+2000	0.658
+2500	0.760
+3000	0.862
+3500	0.917
+4000	0.956
+5000	0.972
+6000	0.996
+7000	1
+8000	1
+9000	0.996
+10000	0.992
+30000	0.882
+			</tableData>
+			</table>
+		</function>
+		</fcs_function>
+
+		<fcs_function name="aero/temperature/flow-mach-d8-blue">
+		<function>
+			<description>
+				Blue portion of color due temperature
+			</description>
+			<table>
+				<independentVar lookup="row">aero/temperature/flow-mach-d8-c</independentVar>
+			<tableData>
+0	0
+1500	0
+2000	0.011
+2500	0.074
+3000	0.227
+3500	0.392
+4000	0.513
+5000	0.647
+6000	0.752
+7000	0.819
+8000	0.862
+9000	0.894
+10000	0.909
+30000	1
+			</tableData>
+			</table>
+		</function>
+		</fcs_function>
+
+		<fcs_function name="aero/temperature/flow-mach-d8-transparency">
+		<function>
+			<description>
+				Transparency of flow due flow pressure
+			</description>
+			<table>
+				<independentVar lookup="row">aero/qbar-modified-psf</independentVar>
+			<tableData>
+0	0
+2116	0.1
+			</tableData>
+			</table>
+		</function>
+		</fcs_function>
+
+		<fcs_function name="aero/temperature/flow-mach-d16-c">
+		<function>
+			<quotient>
+				<property>aero/temperature/stagnation-mach-c</property>
+				<value>8</value>
+			</quotient>
+		</function>
+		</fcs_function>
+
+		<fcs_function name="aero/temperature/flow-mach-d16-red">
+		<function>
+			<description>
+				Red portion of flow color due temperature
+			</description>
+			<table>
+				<independentVar lookup="row">aero/temperature/flow-mach-d16-c</independentVar>
+			<tableData>
+0	0
+1500	1
+2000	1
+2500	1
+3000	1
+3500	0.988
+4000	0.960
+5000	0.882
+6000	0.827
+7000	0.784
+8000	0.737
+9000	0.705
+10000	0.678
+30000	0.356
+			</tableData>
+			</table>
+		</function>
+		</fcs_function>
+
+		<fcs_function name="aero/temperature/flow-mach-d16-green">
+		<function>
+			<description>
+				Green portion of color due temperature
+			</description>
+			<table>
+				<independentVar lookup="row">aero/temperature/flow-mach-d16-c</independentVar>
+			<tableData>
+0	0
+1500	0.505
+2000	0.658
+2500	0.760
+3000	0.862
+3500	0.917
+4000	0.956
+5000	0.972
+6000	0.996
+7000	1
+8000	1
+9000	0.996
+10000	0.992
+30000	0.882
+			</tableData>
+			</table>
+		</function>
+		</fcs_function>
+
+		<fcs_function name="aero/temperature/flow-mach-d16-blue">
+		<function>
+			<description>
+				Blue portion of color due temperature
+			</description>
+			<table>
+				<independentVar lookup="row">aero/temperature/flow-mach-d16-c</independentVar>
+			<tableData>
+0	0
+1500	0
+2000	0.011
+2500	0.074
+3000	0.227
+3500	0.392
+4000	0.513
+5000	0.647
+6000	0.752
+7000	0.819
+8000	0.862
+9000	0.894
+10000	0.909
+30000	1
+			</tableData>
+			</table>
+		</function>
+		</fcs_function>
+
+		<fcs_function name="aero/temperature/flow-mach-d16-transparency">
+		<function>
+			<description>
+				Transparency of flow due flow pressure
+			</description>
+			<table>
+				<independentVar lookup="row">aero/qbar-modified-psf</independentVar>
+			<tableData>
+0	0
+2116	0.1
+			</tableData>
+			</table>
+		</function>
+		</fcs_function>
+
+		<!-- Surface -->
+
+		<fcs_function name="aero/temperature/recovery-mach-c">
+		<function>
+			<description>
+				Surface temperature due to Mach number and altitude
+			</description>
+-			<product>
+				<difference>
+					<product>
+						<sum>
+							<value>273</value>	<!-- Celsius to Kelvin -->
+							<value>15</value>	<!-- Standart mean temperature -->
+						</sum>
+						<sum>
+							<value>1</value>
+							<product>
+								<pow>
+									<value>0.715</value>	<!-- Prandtl coefficient -->
+									<quotient>
+										<value>1</value>
+										<value>3</value>
+									</quotient>
+								</pow>
+								<quotient>
+									<difference>
+										<value>1.4</value>	<!-- Cp/Cv coefficient for twoatomic gases -->
+										<value>1</value>
+									</difference>
+									<value>2</value>
+								</quotient>
+								<pow>
+									<property>velocities/mach</property>
+									<value>2</value>
+								</pow>
+							</product>
+						</sum>
+					</product>
+					<value>273</value>
+				</difference>
+			</product>
+		</function>
+		</fcs_function>
+
+		<fcs_function name="aero/temperature/surface-mach-c">
+		<function>
+			<description>
+				Surface temperature due to Mach number and altitude
+			</description>
+			<product>
+				<difference>
+					<property>aero/temperature/recovery-mach-c</property>
+					<product>
+						<quotient>
+							<value>0.5</value>
+							<value>50</value>	<!-- Mean air heat transfer coefficient-->
+						</quotient>
+						<quotient>
+							<property>atmosphere/P-psf</property>
+							<product>
+								<value>0.3048</value>	<!--  Feets/sec to meters/sec-->
+								<value>0.3048</value>	<!--  Feets/sec to meters/sec-->
+							</product>
+						</quotient>
+						<pow>
+							<product>
+								<property>velocities/vt-fps</property>
+								<value>0.3048</value>	<!--  Feets/sec to meters/sec-->
+							</product>
+							<value>3</value>
+						</pow>
+					</product>
+				</difference>
+			</product>
+		</function>
+		</fcs_function>
+
+		<fcs_function name="aero/temperature/surface-mach-red">
+		<function>
+			<description>
+				Red portion of surface color due temperature
+			</description>
+			<product>
+				<table>
+					<independentVar lookup="row">aero/temperature/surface-mach-c</independentVar>
+				<tableData>
+0	0
+1500	1
+2000	1
+2500	1
+3000	1
+3500	0.988
+4000	0.960
+5000	0.882
+6000	0.827
+7000	0.784
+8000	0.737
+9000	0.705
+10000	0.678
+30000	0.356
+				</tableData>
+				</table>
+					<table>
+						<independentVar lookup="row">aero/qbar-modified-psf</independentVar>
+					<tableData>
+0	0
+2116	1
+				</tableData>
+				</table>
+			</product>
+		</function>
+		</fcs_function>
+
+		<fcs_function name="aero/temperature/surface-mach-green">
+		<function>
+			<description>
+				Green portion of surface color due temperature
+			</description>
+			<product>
+				<table>
+					<independentVar lookup="row">aero/temperature/surface-mach-c</independentVar>
+				<tableData>
+0	0
+1500	0.505
+2000	0.658
+2500	0.760
+3000	0.862
+3500	0.917
+4000	0.956
+5000	0.972
+6000	0.996
+7000	1
+8000	1
+9000	0.996
+10000	0.992
+30000	0.882
+				</tableData>
+				</table>
+				<table>
+					<independentVar lookup="row">aero/qbar-modified-psf</independentVar>
+				<tableData>
+0	0
+2116	1
+				</tableData>
+				</table>
+			</product>
+		</function>
+		</fcs_function>
+
+		<fcs_function name="aero/temperature/surface-mach-blue">
+		<function>
+			<description>
+				Blue portion of surface color due temperature
+			</description>
+			<product>
+				<table>
+					<independentVar lookup="row">aero/temperature/surface-mach-c</independentVar>
+				<tableData>
+0	0
+1500	0
+2000	0.011
+2500	0.074
+3000	0.227
+3500	0.392
+4000	0.513
+5000	0.647
+6000	0.752
+7000	0.819
+8000	0.862
+9000	0.894
+10000	0.909
+30000	1
+				</tableData>
+				</table>
+				<table>
+					<independentVar lookup="row">aero/qbar-modified-psf</independentVar>
+				<tableData>
+0	0
+2116	1
+				</tableData>
+				</table>
+			</product>
+		</function>
+		</fcs_function>
+
+	</channel>
+
+</system>

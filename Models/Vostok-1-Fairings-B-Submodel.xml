@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+
+<!--
+	Author: Slavutinsky Victor
+-->
+
+
+<PropertyList>
+
+<!-- Back Fairing Submodel -->
+
+	<path>Vostok-1-Fairings.ac</path>
+
+	<offsets>
+		<x-m>0.0</x-m>
+		<y-m>0.0</y-m>
+		<z-m>0.0</z-m>
+		<pitch-deg>0.0</pitch-deg>
+		<heading-deg>0.0</heading-deg>
+	</offsets>
+
+	<enable-hot type="bool">false</enable-hot>
+
+	<animation>
+		<type>select</type>
+		<object-name>FS_FTwo</object-name>
+		<object-name>FS_FCFThree</object-name>
+		<object-name>FS_FCFTwo</object-name>
+		<condition>
+			<equals>
+				<value>true</value>
+				<value>true</value>
+			</equals>
+		</condition>
+	</animation>
+
+	<animation>
+		<type>select</type>
+		<object-name>FS_FOne</object-name>
+		<object-name>FS_FCFOne</object-name>
+		<object-name>FS_FCFFour</object-name>
+		<object-name>FS_Hatch</object-name>
+		<condition>
+			<equals>
+				<value>true</value>
+				<value>false</value>
+			</equals>
+		</condition>
+	</animation>
+
+	<animation>
+		<type>spin</type>
+		<property>fdm/jsbsim/stages/unit[1]/dropped</property>
+		<factor>-0.4</factor>
+		<center>
+			<x-m>0.6</x-m>
+			<y-m>0.0</y-m>
+			<z-m>-4.052</z-m>
+		</center>
+		<axis>
+			<x>0.0</x>
+			<y>1.0</y>
+			<z>0.0</z>
+		</axis>
+	</animation>
+
+</PropertyList>

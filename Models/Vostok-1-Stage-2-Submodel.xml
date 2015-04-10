@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+
+<!--
+	Author: Slavutinsky Victor
+-->
+
+
+<PropertyList>
+
+<!-- Second Stage Submodel -->
+
+	<path>Vostok-1-Stage-2.ac</path>
+
+	<offsets>
+		<x-m>0.0</x-m>
+		<y-m>0.0</y-m>
+		<z-m>0.0</z-m>
+		<pitch-deg>0.0</pitch-deg>
+		<heading-deg>0.0</heading-deg>
+	</offsets>
+
+	<enable-hot type="bool">false</enable-hot>
+
+	<animation>
+		<type>select</type>
+		<object-name>SOT_RodOne</object-name>
+		<object-name>SOT_RodTwo</object-name>
+		<object-name>SOT_RodThree</object-name>
+		<object-name>SOT_RodFour</object-name>
+		<object-name>SOT_RodFive</object-name>
+		<object-name>SOT_RodSix</object-name>
+		<object-name>SOT_RodSeven</object-name>
+		<object-name>SOT_RodEight</object-name>
+		<object-name>SFS_Connectors</object-name>
+		<object-name>SS_LFCPlins</object-name>
+		<condition>
+			<equals>
+				<value>true</value>
+				<value>false</value>
+			</equals>
+		</condition>
+	</animation>
+
+<!--
+
+	<animation>
+		<type>spin</type>
+		<property>fdm/jsbsim/stages/unit[2]/dropped</property>
+		<factor>0.02</factor>
+		<center>
+			<x-m>0.0</x-m>
+			<y-m>0.0</y-m>
+			<z-m>-16.4</z-m>
+		</center>
+		<axis>
+			<x>0.0</x>
+			<y>1.0</y>
+			<z>0.0</z>
+		</axis>
+	</animation>
+
+-->
+
+</PropertyList>

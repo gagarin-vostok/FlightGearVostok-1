@@ -1,0 +1,333 @@
+<?xml version="1.0"?>
+
+<!--
+	Author: Slavutinsky Victor
+-->
+
+<PropertyList>
+
+	<path>Vostok-1-Left-Switch-Panel.ac</path>
+
+	<offsets>
+		<x-m>0.0</x-m>
+		<y-m>0.0</y-m>
+		<z-m>0.0</z-m>
+		<pitch-deg>0</pitch-deg>
+	</offsets>
+
+	<enable-hot type="bool">false</enable-hot>
+
+	<animation>
+		<type>material</type>
+		<emission>
+			<red-prop>fdm/jsbsim/systems/light/cabine/red</red-prop>
+			<green-prop>fdm/jsbsim/systems/light/cabine/green</green-prop>
+			<blue-prop>fdm/jsbsim/systems/light/cabine/blue</blue-prop>
+		</emission>
+	</animation>
+
+	<!-- Globus -->
+
+	<animation>
+		<type>rotate</type>
+		<object-name>LSP_GMSwitch</object-name>
+		<property>fdm/jsbsim/systems/leftswitchpanel/globus-pos</property>
+		<interpolation>
+			<entry><ind>0.0</ind><dep>-15.0</dep></entry>
+			<entry><ind>1.0</ind><dep>15.0</dep></entry>
+		</interpolation>
+		<center>
+			<x-m>0.0</x-m>
+			<y-m>0.069</y-m>
+			<z-m>0.029</z-m>
+		</center>
+		<axis>
+			<x>1</x>
+			<y>0</y>
+			<z>0</z>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>pick</type>
+		<object-name>LSP_GMSwitch</object-name>
+		<action>
+			<button>0</button>
+			<repeatable>false</repeatable>
+			<interval-sec>0.1</interval-sec>
+			<binding>
+				<command>nasal</command>
+				<script>Vostok1.bitswap("fdm/jsbsim/systems/leftswitchpanel/globus-input")</script>
+			</binding>
+		</action>
+		<action>
+			<button>1</button>
+			<repeatable>false</repeatable>
+			<interval-sec>0.1</interval-sec>
+			<binding>
+				<command>nasal</command>
+				<script>Vostok1.bitswap("fdm/jsbsim/systems/leftswitchpanel/globus-input")</script>
+			</binding>
+		</action>
+	</animation>
+
+	<!-- Vzor -->
+
+	<animation>
+		<type>rotate</type>
+		<object-name>LSP_VSSwitch</object-name>
+		<property>fdm/jsbsim/systems/leftswitchpanel/vzor-pos</property>
+		<interpolation>
+			<entry><ind>0.0</ind><dep>-15.0</dep></entry>
+			<entry><ind>1.0</ind><dep>15.0</dep></entry>
+		</interpolation>
+		<center>
+			<x-m>0.0</x-m>
+			<y-m>0.069</y-m>
+			<z-m>-0.022</z-m>
+		</center>
+		<axis>
+			<x>1</x>
+			<y>0</y>
+			<z>0</z>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>pick</type>
+		<object-name>LSP_VSSwitch</object-name>
+		<action>
+			<button>0</button>
+			<repeatable>false</repeatable>
+			<interval-sec>0.1</interval-sec>
+			<binding>
+				<command>nasal</command>
+				<script>Vostok1.bitswap("fdm/jsbsim/systems/leftswitchpanel/vzor-input")</script>
+			</binding>
+		</action>
+		<action>
+			<button>1</button>
+			<repeatable>false</repeatable>
+			<interval-sec>0.1</interval-sec>
+			<binding>
+				<command>nasal</command>
+				<script>Vostok1.bitswap("fdm/jsbsim/systems/leftswitchpanel/vzor-input")</script>
+			</binding>
+		</action>
+	</animation>
+
+	<animation>
+		<type>rotate</type>
+		<object-name>LSP_VLVernier</object-name>
+		<property>fdm/jsbsim/systems/leftswitchpanel/vzor-light-pos</property>
+		<interpolation>
+			<entry><ind>0.0</ind><dep>-60.0</dep></entry>
+			<entry><ind>1.0</ind><dep>300.0</dep></entry>
+		</interpolation>
+		<center>
+			<x-m>0.025553</x-m>
+			<y-m>0.085827</y-m>
+			<z-m>-0.023408</z-m>
+		</center>
+		<axis>
+			<x>0</x>
+			<y>-1</y>
+			<z>0</z>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>pick</type>
+		<object-name>LSP_VLDown</object-name>
+		<action>
+			<button>0</button>
+			<repeatable>false</repeatable>
+			<interval-sec>0.1</interval-sec>
+			<binding>
+				<command>property-adjust</command>
+				<property>fdm/jsbsim/systems/leftswitchpanel/vzor-light-input</property>
+				<step>-0.1</step>
+				<min>0</min>
+				<max>1</max>
+				<wrap>false</wrap>
+			</binding>
+		</action>
+		<action>
+			<button>1</button>
+			<repeatable>false</repeatable>
+			<interval-sec>0.1</interval-sec>
+			<binding>
+				<command>property-adjust</command>
+				<property>fdm/jsbsim/systems/leftswitchpanel/vzor-light-input</property>
+				<step>-0.1</step>
+				<min>0</min>
+				<max>1</max>
+				<wrap>false</wrap>
+			</binding>
+		</action>
+	</animation>
+
+	<animation>
+		<type>pick</type>
+		<object-name>LSP_VLUp</object-name>
+		<action>
+			<button>0</button>
+			<repeatable>false</repeatable>
+			<interval-sec>0.1</interval-sec>
+			<binding>
+				<command>property-adjust</command>
+				<property>fdm/jsbsim/systems/leftswitchpanel/vzor-light-input</property>
+				<step>0.1</step>
+				<min>0</min>
+				<max>1</max>
+				<wrap>false</wrap>
+			</binding>
+		</action>
+		<action>
+			<button>1</button>
+			<repeatable>false</repeatable>
+			<interval-sec>0.1</interval-sec>
+			<binding>
+				<command>property-adjust</command>
+				<property>fdm/jsbsim/systems/leftswitchpanel/vzor-light-input</property>
+				<step>0.1</step>
+				<min>0</min>
+				<max>1</max>
+				<wrap>false</wrap>
+			</binding>
+		</action>
+	</animation>
+
+	<!-- Light check -->
+
+	<animation>
+		<type>pick</type>
+		<object-name>LSP_LCButton</object-name>
+		<action>
+			<button>0</button>
+			<repeatable>false</repeatable>
+			<interval-sec>0.1</interval-sec>
+			<binding>
+				<command>nasal</command>
+				<script>Vostok1.bitswap("fdm/jsbsim/systems/leftswitchpanel/lightcheck-input")</script>
+			</binding>
+		</action>
+		<action>
+			<button>1</button>
+			<repeatable>false</repeatable>
+			<interval-sec>0.1</interval-sec>
+			<binding>
+				<command>nasal</command>
+				<script>Vostok1.bitswap("fdm/jsbsim/systems/leftswitchpanel/lightcheck-input")</script>
+			</binding>
+		</action>
+	</animation>
+
+	<animation>
+		<type>translate</type>
+		<object-name>LSP_LCButton</object-name>
+		<property>fdm/jsbsim/systems/leftswitchpanel/lightcheck-pos</property>
+		<interpolation>
+			<entry><ind>0.0</ind><dep>0.0</dep></entry>
+			<entry><ind>1.0</ind><dep>0.005</dep></entry>
+		</interpolation>
+			<axis>
+			<x>0.0</x>
+			<y>-1.0</y>
+			<z>0.0</z>
+		</axis>
+	</animation>
+
+	<!-- Right illuminator -->
+
+	<animation>
+		<type>rotate</type>
+		<object-name>LSP_LISSwitch</object-name>
+		<property>fdm/jsbsim/systems/leftswitchpanel/rightilluminator-pos</property>
+		<interpolation>
+			<entry><ind>0.0</ind><dep>-15.0</dep></entry>
+			<entry><ind>1.0</ind><dep>15.0</dep></entry>
+		</interpolation>
+		<center>
+			<x-m>0.0</x-m>
+			<y-m>0.069</y-m>
+			<z-m>-0.022</z-m>
+		</center>
+		<axis>
+			<x>1</x>
+			<y>0</y>
+			<z>0</z>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>pick</type>
+		<object-name>LSP_LISSwitch</object-name>
+		<action>
+			<button>0</button>
+			<repeatable>false</repeatable>
+			<interval-sec>0.1</interval-sec>
+			<binding>
+				<command>nasal</command>
+				<script>Vostok1.bitswap("fdm/jsbsim/systems/leftswitchpanel/rightilluminator-input")</script>
+			</binding>
+		</action>
+		<action>
+			<button>1</button>
+			<repeatable>false</repeatable>
+			<interval-sec>0.1</interval-sec>
+			<binding>
+				<command>nasal</command>
+				<script>Vostok1.bitswap("fdm/jsbsim/systems/leftswitchpanel/rightilluminator-input")</script>
+			</binding>
+		</action>
+	</animation>
+
+	<!-- Back illuminator -->
+
+	<animation>
+		<type>rotate</type>
+		<object-name>LSP_BISSwitch</object-name>
+		<property>fdm/jsbsim/systems/leftswitchpanel/backilluminator-pos</property>
+		<interpolation>
+			<entry><ind>0.0</ind><dep>-15.0</dep></entry>
+			<entry><ind>1.0</ind><dep>15.0</dep></entry>
+		</interpolation>
+		<center>
+			<x-m>0.0</x-m>
+			<y-m>0.069</y-m>
+			<z-m>-0.022</z-m>
+		</center>
+		<axis>
+			<x>1</x>
+			<y>0</y>
+			<z>0</z>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>pick</type>
+		<object-name>LSP_BISSwitch</object-name>
+		<action>
+			<button>0</button>
+			<repeatable>false</repeatable>
+			<interval-sec>0.1</interval-sec>
+			<binding>
+				<command>nasal</command>
+				<script>Vostok1.bitswap("fdm/jsbsim/systems/leftswitchpanel/backilluminator-input")</script>
+			</binding>
+		</action>
+		<action>
+			<button>1</button>
+			<repeatable>false</repeatable>
+			<interval-sec>0.1</interval-sec>
+			<binding>
+				<command>nasal</command>
+				<script>Vostok1.bitswap("fdm/jsbsim/systems/leftswitchpanel/backilluminator-input")</script>
+			</binding>
+		</action>
+	</animation>
+
+	<enable-hot type="bool">false</enable-hot>
+
+</PropertyList>

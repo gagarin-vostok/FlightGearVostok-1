@@ -1,0 +1,521 @@
+<?xml version="1.0"?>
+
+<!--
+	Author: Slavutinsky Victor
+-->
+
+<PropertyList>
+
+<!-- Right Panel -->
+
+	<path>Vostok-1-Right-Panel.ac</path>
+
+	<offsets>
+		<x-m>0.0</x-m>
+		<y-m>0.0</y-m>
+		<z-m>0.0</z-m>
+		<pitch-deg>0</pitch-deg>
+	</offsets>
+
+	<enable-hot type="bool">false</enable-hot>
+
+	<animation>
+		<type>select</type>
+		<condition>
+			<equals>
+				<property>sim/current-view/internal</property>
+				<value>true</value>
+			</equals>
+		</condition>
+	</animation>
+
+	<animation>
+		<type>material</type>
+		<emission>
+			<red-prop>fdm/jsbsim/systems/light/cabine/red</red-prop>
+			<green-prop>fdm/jsbsim/systems/light/cabine/green</green-prop>
+			<blue-prop>fdm/jsbsim/systems/light/cabine/blue</blue-prop>
+		</emission>
+	</animation>
+
+	<!-- First one-->
+
+	<animation>
+		<type>rotate</type>
+		<object-name>RP_BlockATNeedle</object-name>
+		<property>fdm/jsbsim/systems/enginespanel/stage-one-thrust-one-tons</property>
+		<interpolation>
+			<entry><ind>0.0</ind><dep>60.0</dep></entry>
+			<entry><ind>100.0</ind><dep>-60.0</dep></entry>
+		</interpolation>
+		<center>
+			<x-m>0</x-m>
+			<y-m>-0.122</y-m>
+			<z-m>-0.029</z-m>
+		</center>
+		<axis>
+			<x>1</x>
+			<y>0</y>
+			<z>0</z>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>rotate</type>
+		<object-name>RP_BlockAONeedle</object-name>
+		<property>fdm/jsbsim/systems/enginespanel/stage-one-oxigen-one-tons</property>
+		<interpolation>
+			<entry><ind>0.0</ind><dep>-60.0</dep></entry>
+			<entry><ind>30.0</ind><dep>60.0</dep></entry>
+		</interpolation>
+		<center>
+			<x-m>0</x-m>
+			<y-m>-0.139</y-m>
+			<z-m>-0.047</z-m>
+		</center>
+		<axis>
+			<x>1</x>
+			<y>0</y>
+			<z>0</z>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>rotate</type>
+		<object-name>RP_BlockAKNeedle</object-name>
+		<property>fdm/jsbsim/systems/enginespanel/stage-one-fuel-one-tons</property>
+		<interpolation>
+			<entry><ind>0.0</ind><dep>60.0</dep></entry>
+			<entry><ind>15.0</ind><dep>-60.0</dep></entry>
+		</interpolation>
+		<center>
+			<x-m>0.0</x-m>
+			<y-m>-0.105</y-m>
+			<z-m>-0.047</z-m>
+		</center>
+		<axis>
+			<x>1</x>
+			<y>0</y>
+			<z>0</z>
+		</axis>
+	</animation>
+
+	<!-- First two-->
+
+	<animation>
+		<type>rotate</type>
+		<object-name>RP_BlockBTNeedle</object-name>
+		<property>fdm/jsbsim/systems/enginespanel/stage-one-thrust-two-tons</property>
+		<interpolation>
+			<entry><ind>0.0</ind><dep>60.0</dep></entry>
+			<entry><ind>100.0</ind><dep>-60.0</dep></entry>
+		</interpolation>
+		<center>
+			<x-m>0</x-m>
+			<y-m>-0.046</y-m>
+			<z-m>-0.029</z-m>
+		</center>
+		<axis>
+			<x>1</x>
+			<y>0</y>
+			<z>0</z>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>rotate</type>
+		<object-name>RP_BlockBONeedle</object-name>
+		<property>fdm/jsbsim/systems/enginespanel/stage-one-oxigen-two-tons</property>
+		<interpolation>
+			<entry><ind>0.0</ind><dep>-60.0</dep></entry>
+			<entry><ind>30.0</ind><dep>60.0</dep></entry>
+		</interpolation>
+		<center>
+			<x-m>0</x-m>
+			<y-m>-0.063</y-m>
+			<z-m>-0.047</z-m>
+		</center>
+		<axis>
+			<x>1</x>
+			<y>0</y>
+			<z>0</z>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>rotate</type>
+		<object-name>RP_BlockBKNeedle</object-name>
+		<property>fdm/jsbsim/systems/enginespanel/stage-one-fuel-two-tons</property>
+		<interpolation>
+			<entry><ind>0.0</ind><dep>60.0</dep></entry>
+			<entry><ind>15.0</ind><dep>-60.0</dep></entry>
+		</interpolation>
+		<center>
+			<x-m>0.0</x-m>
+			<y-m>-0.029</y-m>
+			<z-m>-0.047</z-m>
+		</center>
+		<axis>
+			<x>1</x>
+			<y>0</y>
+			<z>0</z>
+		</axis>
+	</animation>
+
+	<!-- First three-->
+
+	<animation>
+		<type>rotate</type>
+		<object-name>RP_BlockCTNeedle</object-name>
+		<property>fdm/jsbsim/systems/enginespanel/stage-one-thrust-three-tons</property>
+		<interpolation>
+			<entry><ind>0.0</ind><dep>60.0</dep></entry>
+			<entry><ind>100.0</ind><dep>-60.0</dep></entry>
+		</interpolation>
+		<center>
+			<x-m>0</x-m>
+			<y-m>0.037</y-m>
+			<z-m>-0.029</z-m>
+		</center>
+		<axis>
+			<x>1</x>
+			<y>0</y>
+			<z>0</z>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>rotate</type>
+		<object-name>RP_BlockCONeedle</object-name>
+		<property>fdm/jsbsim/systems/enginespanel/stage-one-oxigen-three-tons</property>
+		<interpolation>
+			<entry><ind>0.0</ind><dep>-60.0</dep></entry>
+			<entry><ind>30.0</ind><dep>60.0</dep></entry>
+		</interpolation>
+		<center>
+			<x-m>0</x-m>
+			<y-m>0.020</y-m>
+			<z-m>-0.047</z-m>
+		</center>
+		<axis>
+			<x>1</x>
+			<y>0</y>
+			<z>0</z>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>rotate</type>
+		<object-name>RP_BlockCKNeedle</object-name>
+		<property>fdm/jsbsim/systems/enginespanel/stage-one-fuel-three-tons</property>
+		<interpolation>
+			<entry><ind>0.0</ind><dep>60.0</dep></entry>
+			<entry><ind>15.0</ind><dep>-60.0</dep></entry>
+		</interpolation>
+		<center>
+			<x-m>0.0</x-m>
+			<y-m>0.054</y-m>
+			<z-m>-0.047</z-m>
+		</center>
+		<axis>
+			<x>1</x>
+			<y>0</y>
+			<z>0</z>
+		</axis>
+	</animation>
+
+	<!-- First four-->
+
+	<animation>
+		<type>rotate</type>
+		<object-name>RP_BlockDTNeedle</object-name>
+		<property>fdm/jsbsim/systems/enginespanel/stage-one-thrust-four-tons</property>
+		<interpolation>
+			<entry><ind>0.0</ind><dep>60.0</dep></entry>
+			<entry><ind>100.0</ind><dep>-60.0</dep></entry>
+		</interpolation>
+		<center>
+			<x-m>0</x-m>
+			<y-m>0.120</y-m>
+			<z-m>-0.029</z-m>
+		</center>
+		<axis>
+			<x>1</x>
+			<y>0</y>
+			<z>0</z>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>rotate</type>
+		<object-name>RP_BlockDONeedle</object-name>
+		<property>fdm/jsbsim/systems/enginespanel/stage-one-oxigen-four-tons</property>
+		<interpolation>
+			<entry><ind>0.0</ind><dep>-60.0</dep></entry>
+			<entry><ind>30.0</ind><dep>60.0</dep></entry>
+		</interpolation>
+		<center>
+			<x-m>0</x-m>
+			<y-m>0.103</y-m>
+			<z-m>-0.047</z-m>
+		</center>
+		<axis>
+			<x>1</x>
+			<y>0</y>
+			<z>0</z>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>rotate</type>
+		<object-name>RP_BlockDKNeedle</object-name>
+		<property>fdm/jsbsim/systems/enginespanel/stage-one-fuel-four-tons</property>
+		<interpolation>
+			<entry><ind>0.0</ind><dep>60.0</dep></entry>
+			<entry><ind>15.0</ind><dep>-60.0</dep></entry>
+		</interpolation>
+		<center>
+			<x-m>0.0</x-m>
+			<y-m>0.138</y-m>
+			<z-m>-0.047</z-m>
+		</center>
+		<axis>
+			<x>1</x>
+			<y>0</y>
+			<z>0</z>
+		</axis>
+	</animation>
+
+	<!-- Second-->
+
+	<animation>
+		<type>rotate</type>
+		<object-name>RP_BlockETNeedle</object-name>
+		<property>fdm/jsbsim/systems/enginespanel/stage-two-thrust-tons</property>
+		<interpolation>
+			<entry><ind>0.0</ind><dep>60.0</dep></entry>
+			<entry><ind>100.0</ind><dep>-60.0</dep></entry>
+		</interpolation>
+		<center>
+			<x-m>0</x-m>
+			<y-m>-0.122</y-m>
+			<z-m>0.043</z-m>
+		</center>
+		<axis>
+			<x>1</x>
+			<y>0</y>
+			<z>0</z>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>rotate</type>
+		<object-name>RP_BlockEONeedle</object-name>
+		<property>fdm/jsbsim/systems/enginespanel/stage-two-oxigen-tons</property>
+		<interpolation>
+			<entry><ind>0.0</ind><dep>-60.0</dep></entry>
+			<entry><ind>80.0</ind><dep>60.0</dep></entry>
+		</interpolation>
+		<center>
+			<x-m>0</x-m>
+			<y-m>-0.139</y-m>
+			<z-m>0.025</z-m>
+		</center>
+		<axis>
+			<x>1</x>
+			<y>0</y>
+			<z>0</z>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>rotate</type>
+		<object-name>RP_BlockEKNeedle</object-name>
+		<property>fdm/jsbsim/systems/enginespanel/stage-two-fuel-tons</property>
+		<interpolation>
+			<entry><ind>0.0</ind><dep>60.0</dep></entry>
+			<entry><ind>30.0</ind><dep>-60.0</dep></entry>
+		</interpolation>
+		<center>
+			<x-m>0.0</x-m>
+			<y-m>-0.105</y-m>
+			<z-m>0.025</z-m>
+		</center>
+		<axis>
+			<x>1</x>
+			<y>0</y>
+			<z>0</z>
+		</axis>
+	</animation>
+
+	<!-- Third-->
+
+	<animation>
+		<type>rotate</type>
+		<object-name>RP_BlockFTNeedle</object-name>
+		<property>fdm/jsbsim/systems/enginespanel/stage-three-thrust-tons</property>
+		<interpolation>
+			<entry><ind>0.0</ind><dep>60.0</dep></entry>
+			<entry><ind>6.0</ind><dep>-60.0</dep></entry>
+		</interpolation>
+		<center>
+			<x-m>0</x-m>
+			<y-m>0.120</y-m>
+			<z-m>0.043</z-m>
+		</center>
+		<axis>
+			<x>1</x>
+			<y>0</y>
+			<z>0</z>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>rotate</type>
+		<object-name>RP_BlockFONeedle</object-name>
+		<property>fdm/jsbsim/systems/enginespanel/stage-three-oxigen-tons</property>
+		<interpolation>
+			<entry><ind>0.0</ind><dep>-60.0</dep></entry>
+			<entry><ind>5.0</ind><dep>60.0</dep></entry>
+		</interpolation>
+		<center>
+			<x-m>0</x-m>
+			<y-m>0.103</y-m>
+			<z-m>0.025</z-m>
+		</center>
+		<axis>
+			<x>1</x>
+			<y>0</y>
+			<z>0</z>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>rotate</type>
+		<object-name>RP_BlockFKNeedle</object-name>
+		<property>fdm/jsbsim/systems/enginespanel/stage-three-fuel-tons</property>
+		<interpolation>
+			<entry><ind>0.0</ind><dep>60.0</dep></entry>
+			<entry><ind>2.0</ind><dep>-60.0</dep></entry>
+		</interpolation>
+		<center>
+			<x-m>0.0</x-m>
+			<y-m>0.138</y-m>
+			<z-m>0.025</z-m>
+		</center>
+		<axis>
+			<x>1</x>
+			<y>0</y>
+			<z>0</z>
+		</axis>
+	</animation>
+
+	<!-- Perigee indicator-->
+
+	<animation>
+		<type>rotate</type>
+		<object-name>RP_PCDiskThree</object-name>
+		<property>fdm/jsbsim/systems/enginespanel/periapsis-hundreds-km</property>
+		<factor>36</factor>
+		<center>
+			<x-m>0.06361</x-m>
+			<y-m>-0.033166</y-m>
+			<z-m>0.023791</z-m>
+		</center>
+		<axis>
+			<x>0</x>
+			<y>1</y>
+			<z>0</z>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>rotate</type>
+		<object-name>RP_PCDiskTwo</object-name>
+		<property>fdm/jsbsim/systems/enginespanel/periapsis-tens-km</property>
+		<factor>36</factor>
+		<center>
+			<x-m>0.06361</x-m>
+			<y-m>-0.033166</y-m>
+			<z-m>0.023791</z-m>
+		</center>
+		<axis>
+			<x>0</x>
+			<y>1</y>
+			<z>0</z>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>rotate</type>
+		<object-name>RP_PCDiskOne</object-name>
+		<property>fdm/jsbsim/systems/enginespanel/periapsis-ones-km</property>
+		<factor>36</factor>
+		<center>
+			<x-m>0.06361</x-m>
+			<y-m>-0.033166</y-m>
+			<z-m>0.023791</z-m>
+		</center>
+		<axis>
+			<x>0</x>
+			<y>1</y>
+			<z>0</z>
+		</axis>
+	</animation>
+
+	<!-- Apogee indicator-->
+
+	<animation>
+		<type>rotate</type>
+		<object-name>RP_ACDiskThree</object-name>
+		<property>fdm/jsbsim/systems/enginespanel/apoapsis-hundreds-km</property>
+		<factor>36</factor>
+		<center>
+			<x-m>0.06361</x-m>
+			<y-m>-0.033166</y-m>
+			<z-m>0.023791</z-m>
+		</center>
+		<axis>
+			<x>0</x>
+			<y>1</y>
+			<z>0</z>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>rotate</type>
+		<object-name>RP_ACDiskTwo</object-name>
+		<property>fdm/jsbsim/systems/enginespanel/apoapsis-tens-km</property>
+		<factor>36</factor>
+		<center>
+			<x-m>0.06361</x-m>
+			<y-m>-0.033166</y-m>
+			<z-m>0.023791</z-m>
+		</center>
+		<axis>
+			<x>0</x>
+			<y>1</y>
+			<z>0</z>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>rotate</type>
+		<object-name>RP_ACDiskOne</object-name>
+		<property>fdm/jsbsim/systems/enginespanel/apoapsis-ones-km</property>
+		<factor>36</factor>
+		<center>
+			<x-m>0.06361</x-m>
+			<y-m>-0.033166</y-m>
+			<z-m>0.023791</z-m>
+		</center>
+		<axis>
+			<x>0</x>
+			<y>1</y>
+			<z>0</z>
+		</axis>
+	</animation>
+
+	<enable-hot type="bool">false</enable-hot>
+
+</PropertyList>

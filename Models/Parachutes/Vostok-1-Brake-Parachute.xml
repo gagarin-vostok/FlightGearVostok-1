@@ -1,0 +1,76 @@
+<?xml version="1.0"?>
+
+<!--
+	Author: Slavutinsky Victor
+-->
+
+<PropertyList>
+
+<!-- Brake Parachute -->
+
+	<path>Vostok-1-Brake-Parachute.ac</path>
+
+	<offsets>
+		<x-m>0.0</x-m>
+		<y-m>0.0</y-m>
+		<z-m>0.0</z-m>
+		<pitch-deg>0</pitch-deg>
+	</offsets>
+
+	<enable-hot type="bool">false</enable-hot>
+
+	<animation>
+		<type>select</type>
+		<condition>
+			<and>
+				<equals>
+					<property>fdm/jsbsim/systems/spacecraft/brake-chute-extracted</property>
+					<value>true</value>
+				</equals>
+				<equals>
+					<property>fdm/jsbsim/systems/spacecraft/brake-chute-dropped</property>
+					<value>false</value>
+				</equals>
+				<equals>
+					<property>fdm/jsbsim/systems/spacecraft/brake-chute-teared</property>
+					<value>false</value>
+				</equals>
+			</and>
+		</condition>
+	</animation>
+
+	<animation>
+		<type>rotate</type>
+		<property>fdm/jsbsim/attitude/pitch-rad</property>
+		<factor>-57.2957</factor>
+		<center>
+			<x-m>0.0</x-m>
+			<y-m>0.0</y-m>
+			<z-m>0.0</z-m>
+		</center>
+		<axis>
+			<x>0</x>
+			<y>1</y>
+			<z>0</z>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>rotate</type>
+		<property>fdm/jsbsim/attitude/roll-rad</property>
+		<factor>57.2957</factor>
+		<center>
+			<x-m>0.0</x-m>
+			<y-m>0.0</y-m>
+			<z-m>0.0</z-m>
+		</center>
+		<axis>
+			<x>1</x>
+			<y>0</y>
+			<z>0</z>
+		</axis>
+	</animation>
+
+	<enable-hot type="bool">false</enable-hot>
+
+</PropertyList>

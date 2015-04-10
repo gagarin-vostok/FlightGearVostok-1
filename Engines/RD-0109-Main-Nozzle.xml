@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+
+<!--
+	Author: Slavutinsky Victor
+-->
+
+<!-- RD-0109 Main Engine Nozzle-->
+
+<nozzle name="RD-0109-Main-Nozzle">
+	<!--
+		pe      = Nozzle exit pressure, psf.
+		area    = Nozzle exit area, sqft.
+	-->
+	<pe unit="PSF"> 200.0  </pe>
+	<area unit="FT2"> 4.048  </area>
+</nozzle>

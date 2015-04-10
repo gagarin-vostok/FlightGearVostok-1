@@ -1,0 +1,293 @@
+<?xml version="1.0"?>
+
+<!--
+	Author: Slavutinsky Victor
+-->
+
+<PropertyList>
+
+<!-- Stage Two -->
+
+	<path>Vostok-1-Stage-2.ac</path>
+
+	<offsets>
+		<x-m>0.0</x-m>
+		<y-m>0.0</y-m>
+		<z-m>0.0</z-m>
+		<pitch-deg>0</pitch-deg>
+	</offsets>
+
+	<enable-hot type="bool">false</enable-hot>
+
+	<!-- Add exhaust models
+
+	<model>
+		<path>Aircraft/Vostok-1/Models/Exhausts/Stage2/Vostok-1-Stage-2-Main-Exhaust.xml</path>
+		<name>EXT_Main</name>
+		<offsets>
+			<x-m>0.0</x-m>
+			<y-m>0.0</y-m>
+			<z-m>-28.677</z-m>
+			<pitch-deg>90.0</pitch-deg>
+			<heading-deg>0</heading-deg>
+		</offsets>
+	</model>
+
+	<model>
+		<path>Aircraft/Vostok-1/Models/Exhausts/Stage2/Vostok-1-Stage-2-Forward-Exhaust.xml</path>
+		<name>EXT_Forward</name>
+		<offsets>
+			<x-m>-1.200</x-m>
+			<y-m>0.0</y-m>
+			<z-m>-28.892</z-m>
+			<pitch-deg>90.0</pitch-deg>
+			<heading-deg>0</heading-deg>
+		</offsets>
+	</model>
+
+	<model>
+		<path>Aircraft/Vostok-1/Models/Exhausts/Stage2/Vostok-1-Stage-2-Back-Exhaust.xml</path>
+		<name>EXT_Back</name>
+		<offsets>
+			<x-m>1.200</x-m>
+			<y-m>0.0</y-m>
+			<z-m>-28.892</z-m>
+			<pitch-deg>90.0</pitch-deg>
+			<heading-deg>0</heading-deg>
+		</offsets>
+	</model>
+
+	<model>
+		<path>Aircraft/Vostok-1/Models/Exhausts/Stage2/Vostok-1-Stage-2-Left-Exhaust.xml</path>
+		<name>EXT_Left</name>
+		<offsets>
+			<x-m>0.0</x-m>
+			<y-m>-1.200</y-m>
+			<z-m>-28.892</z-m>
+			<pitch-deg>90.0</pitch-deg>
+			<heading-deg>0</heading-deg>
+		</offsets>
+	</model>
+
+	<model>
+		<path>Aircraft/Vostok-1/Models/Exhausts/Stage2/Vostok-1-Stage-2-Right-Exhaust.xml</path>
+		<name>EXT_Right</name>
+		<offsets>
+			<x-m>0.0</x-m>
+			<y-m>1.200</y-m>
+			<z-m>-28.892</z-m>
+			<pitch-deg>90.0</pitch-deg>
+			<heading-deg>0</heading-deg>
+		</offsets>
+	</model>
+
+-->
+
+	<!-- Visible/Unvisible animations-->
+
+	<animation>
+		<type>select</type>
+		<condition>
+			<or>
+				<equals>
+					<property>fdm/jsbsim/stages/unit[0]/active</property>
+					<value>true</value>
+				</equals>
+				<equals>
+					<property>fdm/jsbsim/stages/unit[2]/active</property>
+					<value>true</value>
+				</equals>
+			</or>
+		</condition>
+	</animation>
+
+	<animation>
+		<type>select</type>
+		<object-name>SOT_RodOne</object-name>
+		<object-name>SOT_RodTwo</object-name>
+		<object-name>SOT_RodThree</object-name>
+		<object-name>SOT_RodFour</object-name>
+		<object-name>SOT_RodFive</object-name>
+		<object-name>SOT_RodSix</object-name>
+		<object-name>SOT_RodSeven</object-name>
+		<object-name>SOT_RodEight</object-name>
+		<object-name>SFS_Connectors</object-name>
+		<object-name>SS_LFCPlins</object-name>
+		<condition>
+			<and>
+				<equals>
+					<property>fdm/jsbsim/stages/unit[0]/active</property>
+					<value>true</value>
+				</equals>
+				<equals>
+					<property>fdm/jsbsim/stages/unit[2]/active</property>
+					<value>true</value>
+				</equals>
+			</and>
+		</condition>
+	</animation>
+
+	<!--Main engine
+
+	<animation>
+		<type>material</type>
+		<object-name>SS_RD108MainI</object-name>
+		<emission>
+			<red-prop>fdm/jsbsim/propulsion/engine[9]/red</red-prop>
+			<green-prop>fdm/jsbsim/propulsion/engine[9]/green</green-prop>
+			<blue-prop>fdm/jsbsim/propulsion/engine[9]/blue</blue-prop>
+		</emission>
+	</animation>
+
+-->
+
+	<!--Forward engine-->
+
+	<animation>
+		<type>rotate</type>
+		<object-name>SS_RD108BaseForward</object-name>
+		<object-name>SS_RD108ForwardO</object-name>
+		<object-name>SS_RD108ForwardI</object-name>
+		<object-name>SS_RD108PipeForward</object-name>
+		<object-name>EXT_Forward</object-name>
+		<property>fdm/jsbsim/stages/unit[2]/forward-engine-delayed-rad</property>
+		<factor>57.295</factor>
+		<axis>
+			<x1-m>-1.376</x1-m>
+			<y1-m>0.0</y1-m>
+			<z1-m>-28.343</z1-m>
+			<x2-m>-1.023</x2-m>
+			<y2-m>0.0</y2-m>
+			<z2-m>-28.343</z2-m>
+		</axis>
+	</animation>
+
+<!--
+
+	<animation>
+		<type>material</type>
+		<object-name>SS_RD108ForwardI</object-name>
+		<emission>
+			<red-prop>fdm/jsbsim/propulsion/engine[10]/red</red-prop>
+			<green-prop>fdm/jsbsim/propulsion/engine[10]/green</green-prop>
+			<blue-prop>fdm/jsbsim/propulsion/engine[10]/blue</blue-prop>
+		</emission>
+	</animation>
+
+-->
+
+	<!--Back engine-->
+	<animation>
+		<type>rotate</type>
+		<object-name>SS_RD108BaseBack</object-name>
+		<object-name>SS_RD108BackO</object-name>
+		<object-name>SS_RD108BackI</object-name>
+		<object-name>SS_RD108PipeBack</object-name>
+		<object-name>EXT_Back</object-name>
+		<property>fdm/jsbsim/stages/unit[2]/back-engine-delayed-rad</property>
+		<factor>57.295</factor>
+		<axis>
+			<x1-m>1.376</x1-m>
+			<y1-m>0.0</y1-m>
+			<z1-m>-28.343</z1-m>
+			<x2-m>1.023</x2-m>
+			<y2-m>0.0</y2-m>
+			<z2-m>-28.343</z2-m>
+		</axis>
+	</animation>
+
+<!--
+
+	<animation>
+		<type>material</type>
+		<object-name>SS_RD108BackI</object-name>
+		<emission>
+			<red-prop>fdm/jsbsim/propulsion/engine[11]/red</red-prop>
+			<green-prop>fdm/jsbsim/propulsion/engine[11]/green</green-prop>
+			<blue-prop>fdm/jsbsim/propulsion/engine[11]/blue</blue-prop>
+		</emission>
+	</animation>
+
+-->
+
+	<!--Left engine-->
+	<animation>
+		<type>rotate</type>
+		<object-name>SS_RD108BaseLeft</object-name>
+		<object-name>SS_RD108LeftO</object-name>
+		<object-name>SS_RD108LeftI</object-name>
+		<object-name>SS_RD108PipeLeft</object-name>
+		<object-name>EXT_Left</object-name>
+		<property>fdm/jsbsim/stages/unit[2]/left-engine-delayed-rad</property>
+		<factor>57.295</factor>
+		<axis>
+			<x1-m>0.0</x1-m>
+			<y1-m>-1.380</y1-m>
+			<z1-m>-28.343</z1-m>
+			<x2-m>0.0</x2-m>
+			<y2-m>-1.027</y2-m>
+			<z2-m>-28.343</z2-m>
+		</axis>
+	</animation>
+
+<!--
+
+	<animation>
+		<type>material</type>
+		<object-name>SS_RD108LeftI</object-name>
+		<emission>
+			<red-prop>fdm/jsbsim/propulsion/engine[12]/red</red-prop>
+			<green-prop>fdm/jsbsim/propulsion/engine[12]/green</green-prop>
+			<blue-prop>fdm/jsbsim/propulsion/engine[12]/blue</blue-prop>
+		</emission>
+	</animation>
+
+-->
+
+	<!--Right engine-->
+	<animation>
+		<type>rotate</type>
+		<object-name>SS_RD108BaseRight</object-name>
+		<object-name>SS_RD108RightO</object-name>
+		<object-name>SS_RD108RightI</object-name>
+		<object-name>SS_RD108PipeRight</object-name>
+		<object-name>EXT_Right</object-name>
+		<property>fdm/jsbsim/stages/unit[2]/right-engine-delayed-rad</property>
+		<factor>57.295</factor>
+		<axis>
+			<x1-m>0.0</x1-m>
+			<y2-m>1.027</y2-m>
+			<z1-m>-28.343</z1-m>
+			<x2-m>0.0</x2-m>
+			<y1-m>1.380</y1-m>
+			<z2-m>-28.343</z2-m>
+		</axis>
+	</animation>
+
+<!--
+
+	<animation>
+		<type>material</type>
+		<object-name>SS_RD108RightI</object-name>
+		<emission>
+			<red-prop>fdm/jsbsim/propulsion/engine[13]/red</red-prop>
+			<green-prop>fdm/jsbsim/propulsion/engine[13]/green</green-prop>
+			<blue-prop>fdm/jsbsim/propulsion/engine[13]/blue</blue-prop>
+		</emission>
+	</animation>
+
+-->
+
+	<!--Whole model translation-->
+	<animation>
+		<type>translate</type>
+		<property>fdm/jsbsim/stages/unit[2]/show-translate</property>
+		<factor>1.0</factor>
+		<axis>
+			<x>0</x>
+			<y>0</y>
+			<z>1.0</z>
+		</axis>
+	</animation>
+
+</PropertyList>

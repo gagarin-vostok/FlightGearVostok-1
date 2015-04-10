@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+
+<!--
+	Author: Slavutinsky Victor
+-->
+
+<!-- TDU-1 Maneur Nozzle -->
+
+<nozzle name="TDU-1-Maneur-Nozzle">
+	<!--
+		pe      = Nozzle exit pressure, psf.
+		area    = Nozzle exit area, sqft.
+	-->
+	<pe unit="PSF"> 100.0  </pe>
+	<area unit="FT2"> 0.001  </area>
+</nozzle>

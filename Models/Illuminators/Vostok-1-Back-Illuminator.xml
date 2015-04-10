@@ -1,0 +1,334 @@
+<?xml version="1.0"?>
+
+<!--
+	Author: Slavutinsky Victor
+-->
+
+<PropertyList>
+
+<!-- Back Illuminator -->
+
+	<path>Vostok-1-Back-Illuminator.ac</path>
+
+	<offsets>
+		<x-m>0.0</x-m>
+		<y-m>0.0</y-m>
+		<z-m>0.0</z-m>
+		<pitch-deg>0</pitch-deg>
+	</offsets>
+
+	<enable-hot type="bool">false</enable-hot>
+
+	<!-- Common light -->
+
+	<animation>
+		<type>material</type>
+		<object-name>I_BIn</object-name>
+		<object-name>I_Cover</object-name>
+		<object-name>I_Handle</object-name>
+		<object-name>I_Runners</object-name>
+		<object-name>I_SBase</object-name>
+		<object-name>I_SOne</object-name>
+		<object-name>I_STwo</object-name>
+		<object-name>I_SThree</object-name>
+		<object-name>I_SFour</object-name>
+		<object-name>I_SFive</object-name>
+		<object-name>I_SSix</object-name>
+		<object-name>I_SSeven</object-name>
+		<object-name>I_SEight</object-name>
+		<object-name>I_SSliderOne</object-name>
+		<object-name>I_SSliderTwo</object-name>
+		<object-name>I_SSliderThree</object-name>
+		<object-name>I_SSliderFour</object-name>
+		<emission>
+			<red-prop>fdm/jsbsim/systems/light/cabine/red</red-prop>
+			<green-prop>fdm/jsbsim/systems/light/cabine/green</green-prop>
+			<blue-prop>fdm/jsbsim/systems/light/cabine/blue</blue-prop>
+		</emission>
+	</animation>
+
+	<!-- Make surface glow on reentry-->
+
+	<animation>
+		<type>material</type>
+		<object-name>I_BOut</object-name>
+		<emission>
+			<red-prop>fdm/jsbsim/aero/temperature/surface-mach-red</red-prop>
+			<green-prop>fdm/jsbsim/aero/temperature/surface-mach-green</green-prop>
+			<blue-prop>fdm/jsbsim/aero/temperature/surface-mach-blue</blue-prop>
+		</emission>
+	</animation>
+
+	<!-- Cover shifts -->
+
+	<animation>
+		<type>translate</type>
+		<object-name>I_SBase</object-name>
+		<object-name>I_SOne</object-name>
+		<property>fdm/jsbsim/systems/backilluminator/petal-shift-one</property>
+		<axis>
+			<x>0</x>
+			<y>-1</y>
+			<z>0</z>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>translate</type>
+		<object-name>I_STwo</object-name>
+		<object-name>I_SSliderOne</object-name>
+		<property>fdm/jsbsim/systems/backilluminator/petal-shift-two</property>
+		<axis>
+			<x>0</x>
+			<y>-1</y>
+			<z>0</z>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>translate</type>
+		<object-name>I_SThree</object-name>
+		<property>fdm/jsbsim/systems/backilluminator/petal-shift-three</property>
+		<axis>
+			<x>0</x>
+			<y>-1</y>
+			<z>0</z>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>translate</type>
+		<object-name>I_SFour</object-name>
+		<object-name>I_SSliderTwo</object-name>
+		<property>fdm/jsbsim/systems/backilluminator/petal-shift-four</property>
+		<axis>
+			<x>0</x>
+			<y>-1</y>
+			<z>0</z>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>translate</type>
+		<object-name>I_SFive</object-name>
+		<property>fdm/jsbsim/systems/backilluminator/petal-shift-five</property>
+		<axis>
+			<x>0</x>
+			<y>-1</y>
+			<z>0</z>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>translate</type>
+		<object-name>I_SSix</object-name>
+		<object-name>I_SSliderThree</object-name>
+		<property>fdm/jsbsim/systems/backilluminator/petal-shift-six</property>
+		<axis>
+			<x>0</x>
+			<y>-1</y>
+			<z>0</z>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>translate</type>
+		<object-name>I_SSeven</object-name>
+		<property>fdm/jsbsim/systems/backilluminator/petal-shift-seven</property>
+		<axis>
+			<x>0</x>
+			<y>-1</y>
+			<z>0</z>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>translate</type>
+		<object-name>I_SEight</object-name>
+		<object-name>I_SSliderFour</object-name>
+		<property>fdm/jsbsim/systems/backilluminator/petal-shift-eight</property>
+		<axis>
+			<x>0</x>
+			<y>-1</y>
+			<z>0</z>
+		</axis>
+	</animation>
+
+	<!-- Cover angles -->
+
+	<animation>
+		<type>rotate</type>
+		<object-name>I_SOne</object-name>
+		<property>fdm/jsbsim/systems/backilluminator/petal-angle</property>
+		<center>
+			<x-m>0.093905</x-m>
+			<y-m>-0.098461</y-m>
+			<z-m>0.0</z-m>
+		</center>
+		<axis>
+			<x>0</x>
+			<y>0</y>
+			<z>1</z>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>rotate</type>
+		<object-name>I_STwo</object-name>
+		<property>fdm/jsbsim/systems/backilluminator/petal-angle</property>
+		<center>
+			<x-m>0.093905</x-m>
+			<y-m>-0.049328</y-m>
+			<z-m>0.0</z-m>
+		</center>
+		<axis>
+			<x>0</x>
+			<y>0</y>
+			<z>-1</z>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>rotate</type>
+		<object-name>I_SThree</object-name>
+		<property>fdm/jsbsim/systems/backilluminator/petal-angle</property>
+		<center>
+			<x-m>0.093905</x-m>
+			<y-m>-0.049328</y-m>
+			<z-m>0.0</z-m>
+		</center>
+		<axis>
+			<x>0</x>
+			<y>0</y>
+			<z>1</z>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>rotate</type>
+		<object-name>I_SFour</object-name>
+		<property>fdm/jsbsim/systems/backilluminator/petal-angle</property>
+		<center>
+			<x-m>0.093905</x-m>
+			<y-m>0.000131</y-m>
+			<z-m>0.0</z-m>
+		</center>
+		<axis>
+			<x>0</x>
+			<y>0</y>
+			<z>-1</z>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>rotate</type>
+		<object-name>I_SFive</object-name>
+		<property>fdm/jsbsim/systems/backilluminator/petal-angle</property>
+		<center>
+			<x-m>0.093905</x-m>
+			<y-m>0.000131</y-m>
+			<z-m>0.0</z-m>
+		</center>
+		<axis>
+			<x>0</x>
+			<y>0</y>
+			<z>1</z>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>rotate</type>
+		<object-name>I_SSix</object-name>
+		<property>fdm/jsbsim/systems/backilluminator/petal-angle</property>
+		<center>
+			<x-m>0.093905</x-m>
+			<y-m>0.049322</y-m>
+			<z-m>0.0</z-m>
+		</center>
+		<axis>
+			<x>0</x>
+			<y>0</y>
+			<z>-1</z>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>rotate</type>
+		<object-name>I_SSeven</object-name>
+		<property>fdm/jsbsim/systems/backilluminator/petal-angle</property>
+		<center>
+			<x-m>0.093905</x-m>
+			<y-m>0.049322</y-m>
+			<z-m>0.0</z-m>
+		</center>
+		<axis>
+			<x>0</x>
+			<y>0</y>
+			<z>1</z>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>rotate</type>
+		<object-name>I_SEight</object-name>
+		<property>fdm/jsbsim/systems/backilluminator/petal-angle</property>
+		<center>
+			<x-m>0.093905</x-m>
+			<y-m>0.098491</y-m>
+			<z-m>0.0</z-m>
+		</center>
+		<axis>
+			<x>0</x>
+			<y>0</y>
+			<z>-1</z>
+		</axis>
+	</animation>
+
+	<!-- Handle -->
+
+	<animation>
+		<type>rotate</type>
+		<object-name>I_Handle</object-name>
+		<property>fdm/jsbsim/systems/backilluminator/cover-pos</property>
+		<interpolation>
+			<entry><ind>0.0</ind><dep>0.0</dep></entry>
+			<entry><ind>1.0</ind><dep>90.0</dep></entry>
+		</interpolation>
+		<center>
+			<x-m>0.0</x-m>
+			<y-m>0.0</y-m>
+			<z-m>0.0</z-m>
+		</center>
+		<axis>
+			<x>1</x>
+			<y>0</y>
+			<z>0</z>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>pick</type>
+		<object-name>I_Handle</object-name>
+		<action>
+			<button>0</button>
+			<repeatable>false</repeatable>
+			<interval-sec>0.1</interval-sec>
+			<binding>
+				<command>nasal</command>
+				<script>Vostok1.bitswap("fdm/jsbsim/systems/backilluminator/cover-input")</script>
+			</binding>
+		</action>
+		<action>
+			<button>1</button>
+			<repeatable>false</repeatable>
+			<interval-sec>0.1</interval-sec>
+			<binding>
+				<command>nasal</command>
+				<script>Vostok1.bitswap("fdm/jsbsim/systems/backilluminator/cover-input")</script>
+			</binding>
+		</action>
+	</animation>
+
+	<enable-hot type="bool">false</enable-hot>
+
+</PropertyList>

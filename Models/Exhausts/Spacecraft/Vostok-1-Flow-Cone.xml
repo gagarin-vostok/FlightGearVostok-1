@@ -1,0 +1,160 @@
+<?xml version="1.0"?>
+
+<!--
+	Author: Slavutinsky Victor
+-->
+
+<PropertyList>
+
+	<path>Vostok-1-Flow-Cone.ac</path>
+
+	<offsets>
+		<x-m>0.0</x-m>
+		<y-m>0.0</y-m>
+		<z-m>0.0</z-m>
+		<pitch-deg>0</pitch-deg>
+	</offsets>
+
+	<enable-hot type="bool">false</enable-hot>
+
+	<animation>
+		<type>material</type>
+		<object-name>SC_FlowCone1</object-name>
+		<diffuse>
+			<red-prop>fdm/jsbsim/aero/temperature/flow-mach-red</red-prop>
+			<green-prop>fdm/jsbsim/aero/temperature/flow-mach-green</green-prop>
+			<blue-prop>fdm/jsbsim/aero/temperature/flow-mach-blue</blue-prop>
+		</diffuse>
+		<ambient>
+			<red-prop>fdm/jsbsim/aero/temperature/flow-mach-red</red-prop>
+			<green-prop>fdm/jsbsim/aero/temperature/flow-mach-green</green-prop>
+			<blue-prop>fdm/jsbsim/aero/temperature/flow-mach-blue</blue-prop>
+		</ambient>
+		<specular>
+			<red-prop>fdm/jsbsim/aero/temperature/flow-mach-red</red-prop>
+			<green-prop>fdm/jsbsim/aero/temperature/flow-mach-green</green-prop>
+			<blue-prop>fdm/jsbsim/aero/temperature/flow-mach-blue</blue-prop>
+		</specular>
+		<emission>
+			<red-prop>fdm/jsbsim/aero/temperature/flow-mach-red</red-prop>
+			<green-prop>fdm/jsbsim/aero/temperature/flow-mach-green</green-prop>
+			<blue-prop>fdm/jsbsim/aero/temperature/flow-mach-blue</blue-prop>
+		</emission>
+		<transparency>
+			<alpha-prop>fdm/jsbsim/aero/temperature/flow-mach-transparency</alpha-prop>
+		</transparency>
+	</animation>
+
+	<animation>
+		<type>material</type>
+		<object-name>SC_FlowCone2</object-name>
+		<diffuse>
+			<red-prop>fdm/jsbsim/aero/temperature/flow-mach-d2-red</red-prop>
+			<green-prop>fdm/jsbsim/aero/temperature/flow-mach-d2-green</green-prop>
+			<blue-prop>fdm/jsbsim/aero/temperature/flow-mach-d2-blue</blue-prop>
+		</diffuse>
+		<ambient>
+			<red-prop>fdm/jsbsim/aero/temperature/flow-mach-d2-red</red-prop>
+			<green-prop>fdm/jsbsim/aero/temperature/flow-mach-d2-green</green-prop>
+			<blue-prop>fdm/jsbsim/aero/temperature/flow-mach-d2-blue</blue-prop>
+		</ambient>
+		<specular>
+			<red-prop>fdm/jsbsim/aero/temperature/flow-mach-d2-red</red-prop>
+			<green-prop>fdm/jsbsim/aero/temperature/flow-mach-d2-green</green-prop>
+			<blue-prop>fdm/jsbsim/aero/temperature/flow-mach-d2-blue</blue-prop>
+		</specular>
+		<emission>
+			<red-prop>fdm/jsbsim/aero/temperature/flow-mach-d2-red</red-prop>
+			<green-prop>fdm/jsbsim/aero/temperature/flow-mach-d2-green</green-prop>
+			<blue-prop>fdm/jsbsim/aero/temperature/flow-mach-d2-blue</blue-prop>
+		</emission>
+		<transparency>
+			<alpha-prop>fdm/jsbsim/aero/temperature/flow-mach-d2-transparency</alpha-prop>
+		</transparency>
+	</animation>
+
+	<animation>
+		<type>material</type>
+		<object-name>SC_FlowCone3</object-name>
+		<diffuse>
+			<red-prop>fdm/jsbsim/aero/temperature/flow-mach-d4-red</red-prop>
+			<green-prop>fdm/jsbsim/aero/temperature/flow-mach-d4-green</green-prop>
+			<blue-prop>fdm/jsbsim/aero/temperature/flow-mach-d4-blue</blue-prop>
+		</diffuse>
+		<ambient>
+			<red-prop>fdm/jsbsim/aero/temperature/flow-mach-d4-red</red-prop>
+			<green-prop>fdm/jsbsim/aero/temperature/flow-mach-d4-green</green-prop>
+			<blue-prop>fdm/jsbsim/aero/temperature/flow-mach-d4-blue</blue-prop>
+		</ambient>
+		<specular>
+			<red-prop>fdm/jsbsim/aero/temperature/flow-mach-d4-red</red-prop>
+			<green-prop>fdm/jsbsim/aero/temperature/flow-mach-d4-green</green-prop>
+			<blue-prop>fdm/jsbsim/aero/temperature/flow-mach-d4-blue</blue-prop>
+		</specular>
+		<emission>
+			<red-prop>fdm/jsbsim/aero/temperature/flow-mach-d4-red</red-prop>
+			<green-prop>fdm/jsbsim/aero/temperature/flow-mach-d4-green</green-prop>
+			<blue-prop>fdm/jsbsim/aero/temperature/flow-mach-d4-blue</blue-prop>
+		</emission>
+		<transparency>
+			<alpha-prop>fdm/jsbsim/aero/temperature/flow-mach-d4-transparency</alpha-prop>
+		</transparency>
+	</animation>
+
+	<animation>
+		<type>material</type>
+		<object-name>SC_FlowCone4</object-name>
+		<diffuse>
+			<red-prop>fdm/jsbsim/aero/temperature/flow-mach-d8-red</red-prop>
+			<green-prop>fdm/jsbsim/aero/temperature/flow-mach-d8-green</green-prop>
+			<blue-prop>fdm/jsbsim/aero/temperature/flow-mach-d8-blue</blue-prop>
+		</diffuse>
+		<ambient>
+			<red-prop>fdm/jsbsim/aero/temperature/flow-mach-d8-red</red-prop>
+			<green-prop>fdm/jsbsim/aero/temperature/flow-mach-d8-green</green-prop>
+			<blue-prop>fdm/jsbsim/aero/temperature/flow-mach-d8-blue</blue-prop>
+		</ambient>
+		<specular>
+			<red-prop>fdm/jsbsim/aero/temperature/flow-mach-d8-red</red-prop>
+			<green-prop>fdm/jsbsim/aero/temperature/flow-mach-d8-green</green-prop>
+			<blue-prop>fdm/jsbsim/aero/temperature/flow-mach-d8-blue</blue-prop>
+		</specular>
+		<emission>
+			<red-prop>fdm/jsbsim/aero/temperature/flow-mach-d8-red</red-prop>
+			<green-prop>fdm/jsbsim/aero/temperature/flow-mach-d8-green</green-prop>
+			<blue-prop>fdm/jsbsim/aero/temperature/flow-mach-d8-blue</blue-prop>
+		</emission>
+		<transparency>
+			<alpha-prop>fdm/jsbsim/aero/temperature/flow-mach-d8-transparency</alpha-prop>
+		</transparency>
+	</animation>
+
+	<animation>
+		<type>material</type>
+		<object-name>SC_FlowCone5</object-name>
+		<diffuse>
+			<red-prop>fdm/jsbsim/aero/temperature/flow-mach-d16-red</red-prop>
+			<green-prop>fdm/jsbsim/aero/temperature/flow-mach-d16-green</green-prop>
+			<blue-prop>fdm/jsbsim/aero/temperature/flow-mach-d16-blue</blue-prop>
+		</diffuse>
+		<ambient>
+			<red-prop>fdm/jsbsim/aero/temperature/flow-mach-d16-red</red-prop>
+			<green-prop>fdm/jsbsim/aero/temperature/flow-mach-d16-green</green-prop>
+			<blue-prop>fdm/jsbsim/aero/temperature/flow-mach-d16-blue</blue-prop>
+		</ambient>
+		<specular>
+			<red-prop>fdm/jsbsim/aero/temperature/flow-mach-d16-red</red-prop>
+			<green-prop>fdm/jsbsim/aero/temperature/flow-mach-d16-green</green-prop>
+			<blue-prop>fdm/jsbsim/aero/temperature/flow-mach-d16-blue</blue-prop>
+		</specular>
+		<emission>
+			<red-prop>fdm/jsbsim/aero/temperature/flow-mach-d16-red</red-prop>
+			<green-prop>fdm/jsbsim/aero/temperature/flow-mach-d16-green</green-prop>
+			<blue-prop>fdm/jsbsim/aero/temperature/flow-mach-d16-blue</blue-prop>
+		</emission>
+		<transparency>
+			<alpha-prop>fdm/jsbsim/aero/temperature/flow-mach-d16-transparency</alpha-prop>
+		</transparency>
+	</animation>
+
+</PropertyList>

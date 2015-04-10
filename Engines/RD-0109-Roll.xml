@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+
+<!--
+	Author: Slavutinsky Victor
+-->
+
+<!-- RD-0109 Roll Engine -->
+
+<rocket_engine name="RD-0109-Roll">
+	<isp>               326 </isp>
+	<shr>              1.23 </shr>
+	<max_pc>       86556.00 </max_pc>
+	<variance>         0.10 </variance>
+	<prop_eff>         0.67 </prop_eff>
+	<maxthrottle>      1.00 </maxthrottle>
+	<minthrottle>      0.00 </minthrottle>
+	<sloxiflowmax>   0.11 </sloxiflowmax>
+	<slfuelflowmax>   0.044 </slfuelflowmax>
+</rocket_engine>

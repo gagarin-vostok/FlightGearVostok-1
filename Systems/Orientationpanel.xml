@@ -1,0 +1,175 @@
+<?xml version="1.0"?>
+
+<!--
+	Author: Slavutinsky Victor
+-->
+
+<system>
+
+	<fileheader>
+		<author> Slavutinsky Victor </author>
+		<filecreationdate> 2011 </filecreationdate>
+		<version>$Revision: 1.00 $</version>
+		<description> Orientationpanel </description>
+	</fileheader>
+
+<!--	That must be aded to set file
+
+	<fdm>
+		<jsbsim>
+			<systems>
+				<orientationpanel>
+					<vertical-speed-absolute-ms type="float">0.0</vertical-speed-absolute-ms>
+					<pitch-indicated-rad type="float">0.0</pitch-indicated-rad>
+					<down-light type="float">0.0</down-light>
+				</orientationpanel>
+			</systems>
+		</jsbsim>
+	</fdm>
+
+
+-->
+
+	<channel name="Orientationpanel">
+
+		<fcs_function name="calculations/orientationpanel/g-force-absolute">
+		<function>
+			<abs>
+				<property>accelerations/Nz</property>
+			</abs>
+		</function>
+			<output>systems/orientationpanel/g-force-absolute</output>
+		</fcs_function>
+
+		<fcs_function name="calculations/orientationpanel/vertical-speed-absolute-ms">
+		<function>
+			<abs>
+				<product>
+					<property>velocities/v-down-fps</property>
+					<value>0.3048</value>
+				</product>
+			</abs>
+		</function>
+			<output>systems/orientationpanel/vertical-speed-absolute-ms</output>
+		</fcs_function>
+
+		<fcs_function name="calculations/orientationpanel/pitch-indicated-rad">
+		<function>
+			<sum>
+				<property>attitude/pitch-rad</property>
+				<value>1.57079632679489661923</value>
+			</sum>
+		</function>
+			<output>systems/orientationpanel/pitch-indicated-rad</output>
+		</fcs_function>
+
+		<switch name="calculations/orientationpanel/down-light">
+			<default value="0"/>
+			<test logic="AND" value="1.0">
+				velocities/v-down-fps gt 0.1
+			</test>
+			<test logic="AND" value="1">
+				systems/leftswitchpanel/lightcheck-switch eq 1
+			</test>
+			<output>systems/orientationpanel/down-light</output>
+		</switch>
+
+		<fcs_function name="calculations/orientationpanel/heading-calculated-rad">
+		<function>
+			<sum>
+				<value>3.14159265358979323846</value>
+				<property>attitude/heading-true-rad</property>
+			</sum>
+		</function>
+			<output>systems/orientationpanel/heading-calculated-rad</output>
+		</fcs_function>
+
+		<fcs_function name="calculations/orientationpanel/heading-diffed-rad">
+		<function>
+			<difference>
+				<property>systems/orientationpanel/heading-calculated-rad</property>
+				<value>6.28318530717958647693</value>
+			</difference>
+		</function>
+			<output>systems/orientationpanel/heading-diffed-rad</output>
+		</fcs_function>
+
+		<switch name="calculations/orientationpanel/heading-inversed-rad">
+			<default value="systems/orientationpanel/heading-calculated-rad"/>
+			<test logic="AND" value="systems/orientationpanel/heading-diffed-rad">
+				systems/orientationpanel/heading-calculated-rad gt 6.28318530717958647693
+			</test>
+			<output>systems/orientationpanel/heading-inversed-rad</output>
+		</switch>
+
+		<switch name="calculations/orientationpanel/heading-modified-rad">
+			<default value="attitude/heading-true-rad"/>
+			<test logic="AND" value="systems/orientationpanel/heading-inversed-rad">
+				attitude/pitch-rad gt 0.0
+				attitude/pitch-rad lt 1.57079632679489661923
+				attitude/roll-rad gt -1.57079632679489661923
+				attitude/roll-rad lt 1.57079632679489661923
+			</test>
+			<test logic="AND" value="systems/orientationpanel/heading-inversed-rad">
+				attitude/pitch-rad gt -1.57079632679489661923
+				attitude/pitch-rad lt 0.0
+				attitude/roll-rad gt -3.14159265358979323846
+				attitude/roll-rad lt -1.57079632679489661923
+			</test>
+			<test logic="AND" value="systems/orientationpanel/heading-inversed-rad">
+				attitude/pitch-rad gt -1.57079632679489661923
+				attitude/pitch-rad lt 0.0
+				attitude/roll-rad gt 1.57079632679489661923
+				attitude/roll-rad lt 3.14159265358979323846
+			</test>
+			<output>systems/orientationpanel/heading-modified-rad</output>
+		</switch>
+
+		<fcs_function name="calculations/orientationpanel/horizontal-speed-fps">
+		<function>
+			<pow>
+				<sum>
+					<product>
+						<sum>
+							<property>velocities/v-east-fps</property>
+							<property>velocities/initial-orbital-speed-fps</property>
+						</sum>
+						<sum>
+							<property>velocities/v-east-fps</property>
+							<property>velocities/initial-orbital-speed-fps</property>
+						</sum>
+					</product>
+					<product>
+						<property>velocities/v-north-fps</property>
+						<property>velocities/v-north-fps</property>
+					</product>
+				</sum>
+				<value>0.5</value>
+			</pow>
+		</function>
+			<output>systems/orientationpanel/horizontal-speed-fps</output>
+		</fcs_function>
+
+		<fcs_function name="calculations/orientationpanel/qbar-indicated-psf">
+		<function>
+			<product>
+				<property>aero/qbar-modified-psf</property>
+				<property>stages/unit[1]/active</property>
+			</product>
+		</function>
+			<output>systems/orientationpanel/qbar-indicated-psf</output>
+		</fcs_function>
+
+		<fcs_function name="calculations/orientationpanel/qbar-indicated-kgm2">
+		<function>
+			<product>
+				<property>aero/qbar-modified-kgm2</property>
+				<property>stages/unit[1]/active</property>
+			</product>
+		</function>
+			<output>systems/orientationpanel/qbar-indicated-kgm2</output>
+		</fcs_function>
+
+	</channel>
+
+</system>

@@ -1,0 +1,307 @@
+<?xml version="1.0"?>
+
+<!--
+	Author: Slavutinsky Victor
+-->
+
+<system>
+
+	<fileheader>
+		<author> Slavutinsky Victor </author>
+		<filecreationdate> 2011-01-05 </filecreationdate>
+		<version>$Revision: 1.00 $</version>
+		<description> Artifical horizon </description>
+	</fileheader>
+
+	<channel name="Arthorizon">
+
+		<!-- Button-->
+
+		<kinematic name="calculations/arthorizon/button-pos">
+			<input>systems/arthorizon/button-command</input>
+			<traverse>
+			<setting>
+				<position>0</position>
+				<time>0</time>
+			</setting>
+			<setting>
+				<position>1</position>
+				<time>0.2</time>
+			</setting>
+			</traverse>
+			<output>systems/arthorizon/button-pos</output>
+		</kinematic>
+
+		<switch name="calculations/arthorizon/click">
+			<default value="systems/sounds/click/on"/>
+			<test logic="AND" value="1">
+				systems/arthorizon/button-pos ge 0.25
+				systems/arthorizon/button-pos le 0.75
+				systems/sounds/click/on == 0
+			</test>
+			<output>systems/sounds/click/on</output>
+		</switch>
+
+		<!-- Roll of arthorizon-->
+
+		<!-- If button pressed then set to zero with speed=half_of_delta/sec -->
+
+		<fcs_function name="calculations/arthorizon/roll-speed-return">
+		<function>
+			<product>
+				<product>
+					<property>systems/arthorizon/roll-speed</property>
+					<value>-1.0</value>
+				</product>
+				<value>0.5</value><!--half per second -->
+			</product>
+		</function>
+			<output>systems/arthorizon/roll-speed-return</output>
+		</fcs_function>
+
+		<fcs_function name="calculations/arthorizon/roll-return-rad">
+		<function>
+			<product>
+				<product>
+					<property>systems/arthorizon/roll-rad</property>
+					<value>-1.0</value>
+				</product>
+				<value>0.5</value><!--half per second -->
+			</product>
+		</function>
+			<output>systems/arthorizon/roll-return-rad</output>
+		</fcs_function>
+
+		<!-- If not then drift with current angle speed and acceleration -->
+
+		<pure_gain name="calculations/arthorizon/roll-speed-drift">
+			<input>accelerations/pdot-rad_sec2</input>
+			<gain>1</gain>
+			<output>systems/arthorizon/roll-speed-drift</output>
+		</pure_gain>
+
+		<pure_gain name="calculations/arthorizon/roll-drift-rad">
+			<input>systems/arthorizon/roll-speed</input>
+			<gain>1</gain>
+			<output>systems/arthorizon/roll-drift-rad</output>
+		</pure_gain>
+
+		<!-- If switched off at all then goes to make it remain in store position after switch on -->
+
+		<pure_gain name="calculations/arthorizon/roll-store-rad">
+			<input>velocities/phidot-rad_sec</input>
+			<gain>0</gain>
+			<output>systems/arthorizon/roll-store-rad</output>
+		</pure_gain>
+
+		<!-- If no power then acceleration is zero, 
+			else is what given by drift -->
+
+		<switch name="calculations/arthorizon/roll-speed-input">
+			<default value="0"/>
+			<test logic="OR" value="systems/arthorizon/roll-speed-return">
+				systems/arthorizon/on == 0
+				systems/arthorizon/serviceable == 0
+			</test>
+			<test logic="AND" value="systems/arthorizon/roll-speed-drift">
+				systems/arthorizon/on == 1
+				systems/arthorizon/serviceable == 1
+				systems/arthorizon/button-pos lt 0.9
+			</test>
+			<test logic="AND" value="systems/arthorizon/roll-speed-return">
+				systems/arthorizon/on == 1
+				systems/arthorizon/serviceable == 1
+				systems/arthorizon/button-pos ge 0.9
+			</test>
+			<output>systems/arthorizon/roll-speed-input</output>
+		</switch>
+
+		<!-- If no power then moves angle to remain in store position
+			else it no button pressed then drift else return to current "zero"-->
+
+		<switch name="calculations/arthorizon/roll-input-rad">
+			<default value="0"/>
+			<test logic="OR" value="systems/arthorizon/roll-store-rad">
+				systems/arthorizon/on == 0
+				systems/arthorizon/serviceable == 0
+			</test>
+			<test logic="AND" value="systems/arthorizon/roll-drift-rad">
+				systems/arthorizon/on == 1
+				systems/arthorizon/serviceable == 1
+				systems/arthorizon/button-pos lt 0.9
+			</test>
+			<test logic="AND" value="systems/arthorizon/roll-return-rad">
+				systems/arthorizon/on == 1
+				systems/arthorizon/serviceable == 1
+				systems/arthorizon/button-pos ge 0.9
+			</test>
+			<output>systems/arthorizon/roll-input-rad</output>
+		</switch>
+
+		<!-- Proportional, Integrational and Derivative response. If kp=0, ki=1 and kd=0 then
+		 input rate of 1 increases the integrator output value of 1*input per second. -->
+
+		<pid name="calculations/arthorizon/roll-speed">
+			<input>systems/arthorizon/roll-speed-input</input>
+			<kp>0.0</kp>
+			<ki>1.0</ki>
+			<kd>0.0</kd>
+			<output>systems/arthorizon/roll-speed</output>
+		</pid>
+
+		<pid name="calculations/arthorizon/roll-rad">
+			<input>systems/arthorizon/roll-input-rad</input>
+			<kp>0.0</kp>
+			<ki>1.0</ki>
+			<kd>0.0</kd>
+			<output>systems/arthorizon/roll-rad</output>
+		</pid>
+
+		<!-- Final output in degrees -->
+
+		<fcs_function name="calculations/roll-indicated-deg">
+		<function>
+			<sum>
+				<product>
+					<property>systems/arthorizon/roll-rad</property>
+					<value>57.295779</value><!--rad to deg 180/pi -->
+				</product>
+				<property>systems/arthorizon/roll-offset-deg</property>
+			</sum>
+		</function>
+			<output>systems/arthorizon/roll-indicated-deg</output>
+		</fcs_function>
+
+		<!-- pitch of arthorizon-->
+
+		<!-- If button pressed then set to zero with speed=half_of_delta/sec -->
+
+		<fcs_function name="calculations/arthorizon/pitch-speed-return">
+		<function>
+			<product>
+				<product>
+					<property>systems/arthorizon/pitch-speed</property>
+					<value>-1.0</value>
+				</product>
+				<value>0.5</value><!--half per second -->
+			</product>
+		</function>
+			<output>systems/arthorizon/pitch-speed-return</output>
+		</fcs_function>
+
+		<fcs_function name="calculations/arthorizon/pitch-return-rad">
+		<function>
+			<product>
+				<product>
+					<property>systems/arthorizon/pitch-rad</property>
+					<value>-1.0</value>
+				</product>
+				<value>0.5</value><!--half per second -->
+			</product>
+		</function>
+			<output>systems/arthorizon/pitch-return-rad</output>
+		</fcs_function>
+
+		<!-- If not then drift with current angle speed and acceleration -->
+
+		<pure_gain name="calculations/arthorizon/pitch-speed-drift">
+			<input>accelerations/qdot-rad_sec2</input>
+			<gain>1</gain>
+			<output>systems/arthorizon/pitch-speed-drift</output>
+		</pure_gain>
+
+		<pure_gain name="calculations/arthorizon/pitch-drift-rad">
+			<input>systems/arthorizon/pitch-speed</input>
+			<gain>1</gain>
+			<output>systems/arthorizon/pitch-drift-rad</output>
+		</pure_gain>
+
+		<!-- If switched off at all then goes to make it remain in store position after switch on -->
+
+		<pure_gain name="calculations/arthorizon/pitch-store-rad">
+			<input>velocities/phidot-rad_sec</input>
+			<gain>0</gain>
+			<output>systems/arthorizon/pitch-store-rad</output>
+		</pure_gain>
+
+		<!-- If no power then acceleration is zero, 
+			else is what given by drift -->
+
+		<switch name="calculations/arthorizon/pitch-speed-input">
+			<default value="0"/>
+			<test logic="OR" value="systems/arthorizon/pitch-speed-return">
+				systems/arthorizon/on == 0
+				systems/arthorizon/serviceable == 0
+			</test>
+			<test logic="AND" value="systems/arthorizon/pitch-speed-drift">
+				systems/arthorizon/on == 1
+				systems/arthorizon/serviceable == 1
+				systems/arthorizon/button-pos lt 0.9
+			</test>
+			<test logic="AND" value="systems/arthorizon/pitch-speed-return">
+				systems/arthorizon/on == 1
+				systems/arthorizon/serviceable == 1
+				systems/arthorizon/button-pos ge 0.9
+			</test>
+			<output>systems/arthorizon/pitch-speed-input</output>
+		</switch>
+
+		<!-- If no power then moves angle to remain in store position
+			else it no button pressed then drift else return to current "zero"-->
+
+		<switch name="calculations/arthorizon/pitch-input-rad">
+			<default value="0"/>
+			<test logic="OR" value="systems/arthorizon/pitch-store-rad">
+				systems/arthorizon/on == 0
+				systems/arthorizon/serviceable == 0
+			</test>
+			<test logic="AND" value="systems/arthorizon/pitch-drift-rad">
+				systems/arthorizon/on == 1
+				systems/arthorizon/serviceable == 1
+				systems/arthorizon/button-pos lt 0.9
+			</test>
+			<test logic="AND" value="systems/arthorizon/pitch-return-rad">
+				systems/arthorizon/on == 1
+				systems/arthorizon/serviceable == 1
+				systems/arthorizon/button-pos ge 0.9
+			</test>
+			<output>systems/arthorizon/pitch-input-rad</output>
+		</switch>
+
+		<!-- Proportional, Integrational and Derivative response. If kp=0, ki=1 and kd=0 then
+		 input rate of 1 increases the integrator output value of 1*input per second. -->
+
+		<pid name="calculations/arthorizon/pitch-speed">
+			<input>systems/arthorizon/pitch-speed-input</input>
+			<kp>0.0</kp>
+			<ki>1.0</ki>
+			<kd>0.0</kd>
+			<output>systems/arthorizon/pitch-speed</output>
+		</pid>
+
+		<pid name="calculations/arthorizon/pitch-rad">
+			<input>systems/arthorizon/pitch-input-rad</input>
+			<kp>0.0</kp>
+			<ki>1.0</ki>
+			<kd>0.0</kd>
+			<output>systems/arthorizon/pitch-rad</output>
+		</pid>
+
+		<!-- Final output in degrees -->
+
+		<fcs_function name="calculations/pitch-indicated-deg">
+		<function>
+			<sum>
+				<product>
+					<property>systems/arthorizon/pitch-rad</property>
+					<value>57.295779</value><!--rad to deg 180/pi -->
+				</product>
+				<property>systems/arthorizon/pitch-offset-deg</property>
+			</sum>
+		</function>
+			<output>systems/arthorizon/pitch-indicated-deg</output>
+		</fcs_function>
+
+	</channel>
+
+</system>

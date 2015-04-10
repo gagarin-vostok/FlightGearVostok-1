@@ -1,0 +1,446 @@
+<?xml version="1.0"?>
+
+<!--
+	Author: Slavutinsky Victor
+-->
+
+<PropertyList>
+
+<!-- Vzor -->
+
+	<path>Vostok-1-Vzor.ac</path>
+
+	<offsets>
+		<x-m>0.0</x-m>
+		<y-m>0.0</y-m>
+		<z-m>0.0</z-m>
+		<pitch-deg>0</pitch-deg>
+	</offsets>
+
+	<enable-hot type="bool">false</enable-hot>
+
+	<!-- Common light -->
+
+	<animation>
+		<type>material</type>
+		<object-name>VIn</object-name>
+		<object-name>V_BBolts</object-name>
+		<object-name>V_Base</object-name>
+		<object-name>V_HBase</object-name>
+		<object-name>V_Handle</object-name>
+		<object-name>V_SBolts</object-name>
+		<emission>
+			<red-prop>fdm/jsbsim/systems/light/cabine/red</red-prop>
+			<green-prop>fdm/jsbsim/systems/light/cabine/green</green-prop>
+			<blue-prop>fdm/jsbsim/systems/light/cabine/blue</blue-prop>
+		</emission>
+	</animation>
+
+	<!-- Make surface glow on reentry-->
+
+	<animation>
+		<type>material</type>
+		<object-name>VOut</object-name>
+		<emission>
+			<red-prop>fdm/jsbsim/aero/temperature/surface-mach-red</red-prop>
+			<green-prop>fdm/jsbsim/aero/temperature/surface-mach-green</green-prop>
+			<blue-prop>fdm/jsbsim/aero/temperature/surface-mach-blue</blue-prop>
+		</emission>
+	</animation>
+
+	<animation>
+		<type>material</type>
+		<object-name>V_PDown</object-name>
+		<emission>
+			<factor-prop>fdm/jsbsim/systems/vzor/down-light</factor-prop>
+			<red-prop>fdm/jsbsim/systems/light/panel-green/red</red-prop>
+			<green-prop>fdm/jsbsim/systems/light/panel-green/green</green-prop>
+			<blue-prop>fdm/jsbsim/systems/light/panel-green/blue</blue-prop>
+		</emission>
+	</animation>
+
+	<animation>
+		<type>material</type>
+		<object-name>V_PLeft</object-name>
+		<emission>
+			<factor-prop>fdm/jsbsim/systems/vzor/left-light</factor-prop>
+			<red-prop>fdm/jsbsim/systems/light/panel-green/red</red-prop>
+			<green-prop>fdm/jsbsim/systems/light/panel-green/green</green-prop>
+			<blue-prop>fdm/jsbsim/systems/light/panel-green/blue</blue-prop>
+		</emission>
+	</animation>
+
+	<animation>
+		<type>material</type>
+		<object-name>V_PRight</object-name>
+		<emission>
+			<factor-prop>fdm/jsbsim/systems/vzor/right-light</factor-prop>
+			<red-prop>fdm/jsbsim/systems/light/panel-green/red</red-prop>
+			<green-prop>fdm/jsbsim/systems/light/panel-green/green</green-prop>
+			<blue-prop>fdm/jsbsim/systems/light/panel-green/blue</blue-prop>
+		</emission>
+	</animation>
+
+	<animation>
+		<type>material</type>
+		<object-name>V_PULeft</object-name>
+		<emission>
+			<factor-prop>fdm/jsbsim/systems/vzor/up-left-light</factor-prop>
+			<red-prop>fdm/jsbsim/systems/light/panel-green/red</red-prop>
+			<green-prop>fdm/jsbsim/systems/light/panel-green/green</green-prop>
+			<blue-prop>fdm/jsbsim/systems/light/panel-green/blue</blue-prop>
+		</emission>
+	</animation>
+
+	<animation>
+		<type>material</type>
+		<object-name>V_PURight</object-name>
+		<emission>
+			<factor-prop>fdm/jsbsim/systems/vzor/up-right-light</factor-prop>
+			<red-prop>fdm/jsbsim/systems/light/panel-green/red</red-prop>
+			<green-prop>fdm/jsbsim/systems/light/panel-green/green</green-prop>
+			<blue-prop>fdm/jsbsim/systems/light/panel-green/blue</blue-prop>
+		</emission>
+	</animation>
+
+	<animation>
+		<type>material</type>
+		<object-name>V_PUp</object-name>
+		<emission>
+			<factor-prop>fdm/jsbsim/systems/vzor/up-light</factor-prop>
+			<red-prop>fdm/jsbsim/systems/light/panel-green/red</red-prop>
+			<green-prop>fdm/jsbsim/systems/light/panel-green/green</green-prop>
+			<blue-prop>fdm/jsbsim/systems/light/panel-green/blue</blue-prop>
+		</emission>
+	</animation>
+
+	<animation>
+		<type>material</type>
+		<object-name>V_Arrows</object-name>
+		<object-name>V_Runners</object-name>
+		<object-name>V_SBase</object-name>
+		<object-name>V_SEight</object-name>
+		<object-name>V_SFive</object-name>
+		<object-name>V_SFour</object-name>
+		<object-name>V_SOne</object-name>
+		<object-name>V_SSeven</object-name>
+		<object-name>V_SSix</object-name>
+		<object-name>V_SSliderFour</object-name>
+		<object-name>V_SSliderOne</object-name>
+		<object-name>V_SSliderThree</object-name>
+		<object-name>V_SSliderTwo</object-name>
+		<object-name>V_SThree</object-name>
+		<object-name>V_STwo</object-name>
+		<emission>
+			<red-prop>fdm/jsbsim/systems/vzor/light-red</red-prop>
+			<green-prop>fdm/jsbsim/systems/vzor/light-green</green-prop>
+			<blue-prop>fdm/jsbsim/systems/vzor/light-blue</blue-prop>
+		</emission>
+	</animation>
+
+	<!-- Mirror shifts -->
+
+	<animation>
+		<type>textranslate</type>
+		<object-name>V_Mirror</object-name>
+		<property>fdm/jsbsim/systems/vzor/mirror-shift</property>
+		<factor>1</factor>
+		<center>
+			<x-m> 0 </x-m>
+			<y-m> 0 </y-m>
+			<z-m> 0 </z-m>
+		</center>
+		<axis>
+			<x>1</x>
+		</axis>
+	 </animation>
+
+	<animation>
+		<type>rotate</type>
+		<object-name>V_Mirror</object-name>
+		<property>fdm/jsbsim/systems/vzor/mirror-angle-deg</property>
+		<center>
+			<x-m>0.0</x-m>
+			<y-m>0.0</y-m>
+			<z-m>0.0</z-m>
+		</center>
+		<axis>
+			<x>1</x>
+			<y>0</y>
+			<z>0</z>
+		</axis>
+	</animation>
+
+	<!-- Cover shifts -->
+
+	<animation>
+		<type>translate</type>
+		<object-name>V_SBase</object-name>
+		<object-name>V_SOne</object-name>
+		<property>fdm/jsbsim/systems/vzor/petal-shift-one</property>
+		<axis>
+			<x>0</x>
+			<y>-1</y>
+			<z>0</z>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>translate</type>
+		<object-name>V_STwo</object-name>
+		<object-name>V_SSliderOne</object-name>
+		<property>fdm/jsbsim/systems/vzor/petal-shift-two</property>
+		<axis>
+			<x>0</x>
+			<y>-1</y>
+			<z>0</z>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>translate</type>
+		<object-name>V_SThree</object-name>
+		<property>fdm/jsbsim/systems/vzor/petal-shift-three</property>
+		<axis>
+			<x>0</x>
+			<y>-1</y>
+			<z>0</z>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>translate</type>
+		<object-name>V_SFour</object-name>
+		<object-name>V_SSliderTwo</object-name>
+		<property>fdm/jsbsim/systems/vzor/petal-shift-four</property>
+		<axis>
+			<x>0</x>
+			<y>-1</y>
+			<z>0</z>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>translate</type>
+		<object-name>V_SFive</object-name>
+		<property>fdm/jsbsim/systems/vzor/petal-shift-five</property>
+		<axis>
+			<x>0</x>
+			<y>-1</y>
+			<z>0</z>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>translate</type>
+		<object-name>V_SSix</object-name>
+		<object-name>V_SSliderThree</object-name>
+		<property>fdm/jsbsim/systems/vzor/petal-shift-six</property>
+		<axis>
+			<x>0</x>
+			<y>-1</y>
+			<z>0</z>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>translate</type>
+		<object-name>V_SSeven</object-name>
+		<property>fdm/jsbsim/systems/vzor/petal-shift-seven</property>
+		<axis>
+			<x>0</x>
+			<y>-1</y>
+			<z>0</z>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>translate</type>
+		<object-name>V_SEight</object-name>
+		<object-name>V_SSliderFour</object-name>
+		<property>fdm/jsbsim/systems/vzor/petal-shift-eight</property>
+		<axis>
+			<x>0</x>
+			<y>-1</y>
+			<z>0</z>
+		</axis>
+	</animation>
+
+	<!-- Cover angles -->
+
+	<animation>
+		<type>rotate</type>
+		<object-name>V_SOne</object-name>
+		<property>fdm/jsbsim/systems/vzor/petal-angle</property>
+		<center>
+			<x-m>0.192707</x-m>
+			<y-m>-0.098461</y-m>
+			<z-m>0.0</z-m>
+		</center>
+		<axis>
+			<x>0</x>
+			<y>0</y>
+			<z>1</z>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>rotate</type>
+		<object-name>V_STwo</object-name>
+		<property>fdm/jsbsim/systems/vzor/petal-angle</property>
+		<center>
+			<x-m>0.192707</x-m>
+			<y-m>-0.049328</y-m>
+			<z-m>0.0</z-m>
+		</center>
+		<axis>
+			<x>0</x>
+			<y>0</y>
+			<z>-1</z>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>rotate</type>
+		<object-name>V_SThree</object-name>
+		<property>fdm/jsbsim/systems/vzor/petal-angle</property>
+		<center>
+			<x-m>0.192707</x-m>
+			<y-m>-0.049328</y-m>
+			<z-m>0.0</z-m>
+		</center>
+		<axis>
+			<x>0</x>
+			<y>0</y>
+			<z>1</z>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>rotate</type>
+		<object-name>V_SFour</object-name>
+		<property>fdm/jsbsim/systems/vzor/petal-angle</property>
+		<center>
+			<x-m>0.192707</x-m>
+			<y-m>0.000131</y-m>
+			<z-m>0.0</z-m>
+		</center>
+		<axis>
+			<x>0</x>
+			<y>0</y>
+			<z>-1</z>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>rotate</type>
+		<object-name>V_SFive</object-name>
+		<property>fdm/jsbsim/systems/vzor/petal-angle</property>
+		<center>
+			<x-m>0.192707</x-m>
+			<y-m>0.000131</y-m>
+			<z-m>0.0</z-m>
+		</center>
+		<axis>
+			<x>0</x>
+			<y>0</y>
+			<z>1</z>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>rotate</type>
+		<object-name>V_SSix</object-name>
+		<property>fdm/jsbsim/systems/vzor/petal-angle</property>
+		<center>
+			<x-m>0.192707</x-m>
+			<y-m>0.049322</y-m>
+			<z-m>0.0</z-m>
+		</center>
+		<axis>
+			<x>0</x>
+			<y>0</y>
+			<z>-1</z>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>rotate</type>
+		<object-name>V_SSeven</object-name>
+		<property>fdm/jsbsim/systems/vzor/petal-angle</property>
+		<center>
+			<x-m>0.192707</x-m>
+			<y-m>0.049322</y-m>
+			<z-m>0.0</z-m>
+		</center>
+		<axis>
+			<x>0</x>
+			<y>0</y>
+			<z>1</z>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>rotate</type>
+		<object-name>V_SEight</object-name>
+		<property>fdm/jsbsim/systems/vzor/petal-angle</property>
+		<center>
+			<x-m>0.192707</x-m>
+			<y-m>0.098491</y-m>
+			<z-m>0.0</z-m>
+		</center>
+		<axis>
+			<x>0</x>
+			<y>0</y>
+			<z>-1</z>
+		</axis>
+	</animation>
+
+	<!-- Handle -->
+
+	<animation>
+		<type>rotate</type>
+		<object-name>V_Handle</object-name>
+		<property>fdm/jsbsim/systems/vzor/cover-pos</property>
+		<interpolation>
+			<entry><ind>0.0</ind><dep>0.0</dep></entry>
+			<entry><ind>1.0</ind><dep>180.0</dep></entry>
+		</interpolation>
+		<center>
+			<x-m>0.190943</x-m>
+			<y-m>0.160455</y-m>
+			<z-m>0.0</z-m>
+		</center>
+		<axis>
+			<x>0</x>
+			<y>1</y>
+			<z>0</z>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>pick</type>
+		<object-name>V_Handle</object-name>
+		<action>
+			<button>0</button>
+			<repeatable>false</repeatable>
+			<interval-sec>0.1</interval-sec>
+			<binding>
+				<command>nasal</command>
+				<script>Vostok1.bitswap("fdm/jsbsim/systems/vzor/cover-input")</script>
+			</binding>
+		</action>
+		<action>
+			<button>1</button>
+			<repeatable>false</repeatable>
+			<interval-sec>0.1</interval-sec>
+			<binding>
+				<command>nasal</command>
+				<script>Vostok1.bitswap("fdm/jsbsim/systems/vzor/cover-input")</script>
+			</binding>
+		</action>
+	</animation>
+
+	<enable-hot type="bool">false</enable-hot>
+
+</PropertyList>

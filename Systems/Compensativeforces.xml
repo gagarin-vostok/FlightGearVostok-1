@@ -1,0 +1,257 @@
+<?xml version="1.0"?>
+
+<!--
+	Author: Slavutinsky Victor
+-->
+
+<system>
+
+	<fileheader>
+		<author> Slavutinsky Victor </author>
+		<filecreationdate> 2011 </filecreationdate>
+		<version>$Revision: 1.00 $</version>
+		<description> Calculations </description>
+	</fileheader>
+
+	<channel name="Calculations">
+
+		<!-- To avoid errors if cg is not in 0, 0, 0-->
+
+		<switch name="calculations/calculations/cg-x-shifted-in">
+			<default value="inertia/cg-x-in"/>
+			<test logic="AND" value="0.000000001">
+				inertia/cg-x-in eq 0.0
+			</test>
+		</switch>
+
+		<switch name="calculations/calculations/cg-y-shifted-in">
+			<default value="inertia/cg-y-in"/>
+			<test logic="AND" value="0.000000001">
+				inertia/cg-y-in eq 0.0
+			</test>
+		</switch>
+
+		<switch name="calculations/calculations/cg-z-shifted-in">
+			<default value="inertia/cg-z-in"/>
+			<test logic="AND" value="0.000000001">
+				inertia/cg-z-in eq 0.0
+			</test>
+		</switch>
+
+		<fcs_function name="calculations/calculations/roll-calculated-rad">
+		<function>
+			<difference>
+				<value>3.14159265358979323846</value>
+				<property>attitude/roll-rad</property>
+			</difference>
+		</function>
+		</fcs_function>
+
+		<switch name="calculations/calculations/roll-modified-rad">
+			<default value="attitude/roll-rad"/>
+			<test logic="OR" value="calculations/calculations/roll-calculated-rad">
+				attitude/pitch-rad lt -1.57079632679489661923
+				attitude/pitch-rad gt 1.57079632679489661923
+			</test>
+		</switch>
+
+		<!-- To compensate vertical force moments if cg is not in 0, 0, 0-->
+
+		<fcs_function name="calculations/calculations/cg-z-vertical-rolled-in">
+		<function>
+			<product>
+				<sin>
+					<sum>
+						<atan2>
+							<property>calculations/calculations/cg-z-shifted-in</property>
+							<property>calculations/calculations/cg-y-shifted-in</property>
+						</atan2>
+						<product>
+							<value> -1.0 </value>
+							<property>calculations/calculations/roll-modified-rad</property>
+						</product>
+					</sum>
+				</sin>
+				<pow>
+					<sum>
+						<product>
+							<property>calculations/calculations/cg-z-shifted-in</property>
+							<property>calculations/calculations/cg-z-shifted-in</property>
+						</product>
+						<product>
+							<property>calculations/calculations/cg-y-shifted-in</property>
+							<property>calculations/calculations/cg-y-shifted-in</property>
+						</product>
+					</sum>
+					<value> 0.5 </value>
+				</pow>
+			</product>
+		</function>
+		</fcs_function>
+
+		<fcs_function name="calculations/calculations/cg-y-vertical-rolled-in">
+		<function>
+			<product>
+				<cos>
+					<sum>
+						<atan2>
+							<property>calculations/calculations/cg-z-shifted-in</property>
+							<property>calculations/calculations/cg-y-shifted-in</property>
+						</atan2>
+						<product>
+							<value> -1.0 </value>
+							<property>calculations/calculations/roll-modified-rad</property>
+						</product>
+					</sum>
+				</cos>
+				<pow>
+					<sum>
+						<product>
+							<property>calculations/calculations/cg-z-shifted-in</property>
+							<property>calculations/calculations/cg-z-shifted-in</property>
+						</product>
+						<product>
+							<property>calculations/calculations/cg-y-shifted-in</property>
+							<property>calculations/calculations/cg-y-shifted-in</property>
+						</product>
+					</sum>
+					<value> 0.5 </value>
+				</pow>
+			</product>
+		</function>
+		</fcs_function>
+
+		<fcs_function name="calculations/calculations/cg-z-vertical-pitched-in">
+		<function>
+			<product>
+				<sin>
+					<sum>
+						<atan2>
+							<property>calculations/calculations/cg-z-vertical-rolled-in</property>
+							<property>calculations/calculations/cg-x-shifted-in</property>
+						</atan2>
+						<property>attitude/pitch-rad</property>
+					</sum>
+				</sin>
+				<pow>
+					<sum>
+						<product>
+							<property>calculations/calculations/cg-z-vertical-rolled-in</property>
+							<property>calculations/calculations/cg-z-vertical-rolled-in</property>
+						</product>
+						<product>
+							<property>calculations/calculations/cg-x-shifted-in</property>
+							<property>calculations/calculations/cg-x-shifted-in</property>
+						</product>
+					</sum>
+					<value> 0.5 </value>
+				</pow>
+			</product>
+		</function>
+		</fcs_function>
+
+		<fcs_function name="calculations/calculations/cg-x-vertical-pitched-in">
+		<function>
+			<product>
+				<cos>
+					<sum>
+						<atan2>
+							<property>calculations/calculations/cg-z-vertical-rolled-in</property>
+							<property>calculations/calculations/cg-x-shifted-in</property>
+						</atan2>
+						<property>attitude/pitch-rad</property>
+					</sum>
+				</cos>
+				<pow>
+					<sum>
+						<product>
+							<property>calculations/calculations/cg-z-vertical-rolled-in</property>
+							<property>calculations/calculations/cg-z-vertical-rolled-in</property>
+						</product>
+						<product>
+							<property>calculations/calculations/cg-x-shifted-in</property>
+							<property>calculations/calculations/cg-x-shifted-in</property>
+						</product>
+					</sum>
+					<value> 0.5 </value>
+				</pow>
+			</product>
+		</function>
+		</fcs_function>
+
+		<fcs_function name="calculations/calculations/cg-vertical-sholder-x-in">
+		<function>
+			<pow>
+				<sum>
+					<product>
+						<property>calculations/calculations/cg-z-vertical-pitched-in</property>
+						<property>calculations/calculations/cg-z-vertical-pitched-in</property>
+					</product>
+					<product>
+						<property>calculations/calculations/cg-x-vertical-pitched-in</property>
+						<property>calculations/calculations/cg-x-vertical-pitched-in</property>
+					</product>
+				</sum>
+				<value>0.5</value>
+			</pow>
+		</function>
+		</fcs_function>
+
+		<fcs_function name="calculations/calculations/cg-vertical-sholder-y-in">
+		<function>
+			<pow>
+				<sum>
+					<product>
+						<property>calculations/calculations/cg-z-vertical-rolled-in</property>
+						<property>calculations/calculations/cg-z-vertical-rolled-in</property>
+					</product>
+					<product>
+						<property>calculations/calculations/cg-y-vertical-rolled-in</property>
+						<property>calculations/calculations/cg-y-vertical-rolled-in</property>
+					</product>
+				</sum>
+				<value>0.5</value>
+			</pow>
+		</function>
+		</fcs_function>
+
+		<fcs_function name="calculations/calculations/a-x-moment-norm">
+		<function>
+			<product>
+				<property>calculations/calculations/cg-vertical-sholder-x-in</property>
+				<cos>
+					<atan2>
+						<property>calculations/calculations/cg-z-vertical-pitched-in</property>
+						<property>calculations/calculations/cg-x-vertical-pitched-in</property>
+					</atan2>
+				</cos>
+				<value> 1 </value>
+			</product>
+			</function>
+		</fcs_function>
+
+		<fcs_function name="calculations/calculations/a-y-moment-norm">
+		<function>
+			<product>
+				<property>calculations/calculations/cg-vertical-sholder-y-in</property>
+				<cos>
+					<atan2>
+						<property>calculations/calculations/cg-z-vertical-pitched-in</property>
+						<property>calculations/calculations/cg-x-vertical-pitched-in</property>
+					</atan2>
+				</cos>
+				<cos>
+					<atan2>
+						<property>calculations/calculations/cg-z-vertical-rolled-in</property>
+						<property>calculations/calculations/cg-y-vertical-rolled-in</property>
+					</atan2>
+				</cos>
+				<value> -1 </value>
+			</product>
+			</function>
+		</fcs_function>
+
+
+	</channel>
+
+</system>

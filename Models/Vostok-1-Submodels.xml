@@ -1,0 +1,366 @@
+<?xml version="1.0"?>
+
+<!--
+	Author: Slavutinsky Victor
+-->
+
+<PropertyList>
+
+<!-- Submodels -->
+
+	<!-- First Stage -->
+
+	<submodel>
+		<name>First Stage Forward</name>
+		<model>Aircraft/Vostok-1/Models/Vostok-1-Block-A-Submodel.xml</model>
+		<trigger>fdm/jsbsim/stages/unit[0]/drop</trigger>
+		<repeat>false</repeat>
+		<delay>0.0</delay>
+		<count>10</count>
+		<x-offset>-5.016</x-offset>
+		<y-offset>0.0</y-offset>
+		<z-offset>17.982</z-offset>
+		<pitch-offset>0.0</pitch-offset>
+		<roll-offset>0.0</roll-offset>
+		<yaw-offset>0.0</yaw-offset>
+		<speed>0.0</speed>
+		<cd>0.1</cd>
+		<eda>15</eda>
+		<weight>8267</weight>
+		<buoyancy>0</buoyancy>
+		<wind>false</wind>
+		<aero-stabilised>false</aero-stabilised>
+		<no-roll>false</no-roll>
+		<impact>false</impact>
+		<collision>false</collision>
+		<life>100</life>
+		<slaved>true</slaved>
+		<external-force>true</external-force>
+		<force-path>ai/ballistic-forces/force[0]</force-path>
+		<fuze-range>0</fuze-range>
+	</submodel>
+
+	<submodel>
+		<name>First Stage Back</name>
+		<model>Aircraft/Vostok-1/Models/Vostok-1-Block-B-Submodel.xml</model>
+		<trigger>fdm/jsbsim/stages/unit[0]/drop</trigger>
+		<repeat>false</repeat>
+		<delay>0.0</delay>
+		<count>10</count>
+		<x-offset>5.016</x-offset>
+		<y-offset>0.0</y-offset>
+		<z-offset>17.982</z-offset>
+		<pitch-offset>0.0</pitch-offset>
+		<roll-offset>0.0</roll-offset>
+		<yaw-offset>180.0</yaw-offset>
+		<speed>0.0</speed>
+		<cd>0.1</cd>
+		<eda>15</eda>
+		<weight>8267</weight>
+		<buoyancy>0</buoyancy>
+		<wind>false</wind>
+		<aero-stabilised>false</aero-stabilised>
+		<no-roll>false</no-roll>
+		<impact>false</impact>
+		<collision>false</collision>
+		<life>100</life>
+		<slaved>true</slaved>
+		<external-force>true</external-force>
+		<force-path>ai/ballistic-forces/force[1]</force-path>
+		<fuze-range>0</fuze-range>
+	</submodel>
+
+	<submodel>
+		<name>First Stage Left</name>
+		<model>Aircraft/Vostok-1/Models/Vostok-1-Block-C-Submodel.xml</model>
+		<trigger>fdm/jsbsim/stages/unit[0]/drop</trigger>
+		<repeat>false</repeat>
+		<delay>0.0</delay>
+		<count>10</count>
+		<x-offset>0.0</x-offset>
+		<y-offset>-5.016</y-offset>
+		<z-offset>17.982</z-offset>
+		<pitch-offset>0.0</pitch-offset>
+		<roll-offset>0.0</roll-offset>
+		<yaw-offset>-90.0</yaw-offset>
+		<speed>0.0</speed>
+		<cd>0.1</cd>
+		<eda>15</eda>
+		<weight>8267</weight>
+		<buoyancy>0</buoyancy>
+		<wind>false</wind>
+		<aero-stabilised>false</aero-stabilised>
+		<no-roll>false</no-roll>
+		<impact>false</impact>
+		<collision>false</collision>
+		<life>100</life>
+		<slaved>true</slaved>
+		<external-force>true</external-force>
+		<force-path>ai/ballistic-forces/force[2]</force-path>
+		<fuze-range>0</fuze-range>
+	</submodel>
+
+	<submodel>
+		<name>First Stage Right</name>
+		<model>Aircraft/Vostok-1/Models/Vostok-1-Block-D-Submodel.xml</model>
+		<trigger>fdm/jsbsim/stages/unit[0]/drop</trigger>
+		<repeat>false</repeat>
+		<delay>0.0</delay>
+		<count>10</count>
+		<x-offset>0.0</x-offset>
+		<y-offset>5.016</y-offset>
+		<z-offset>17.982</z-offset>
+		<pitch-offset>0.0</pitch-offset>
+		<roll-offset>0.0</roll-offset>
+		<yaw-offset>90.0</yaw-offset>
+		<speed>0.0</speed>
+		<cd>0.1</cd>
+		<eda>15</eda>
+		<weight>8267</weight>
+		<buoyancy>0</buoyancy>
+		<wind>false</wind>
+		<aero-stabilised>false</aero-stabilised>
+		<no-roll>false</no-roll>
+		<impact>false</impact>
+		<collision>false</collision>
+		<life>100</life>
+		<slaved>true</slaved>
+		<external-force>true</external-force>
+		<force-path>ai/ballistic-forces/force[3]</force-path>
+		<fuze-range>0</fuze-range>
+	</submodel>
+
+	<!-- Fairings -->
+
+	<submodel>
+		<name>Fairings Forward</name>
+		<model>Aircraft/Vostok-1/Models/Vostok-1-Fairings-F-Submodel.xml</model>
+		<trigger>fdm/jsbsim/stages/unit[1]/drop</trigger>
+		<repeat>false</repeat>
+		<delay>0.0</delay>
+		<count>10</count>
+		<x-offset>0.0</x-offset>
+		<y-offset>0.0</y-offset>
+		<z-offset>79.009</z-offset>
+		<pitch-offset>0.0</pitch-offset>
+		<roll-offset>0.0</roll-offset>
+		<yaw-offset>0.0</yaw-offset>
+		<speed>0.0</speed>
+		<cd>0.1</cd>
+		<eda>15</eda>
+		<weight>716.50</weight>
+		<buoyancy>0</buoyancy>
+		<wind>false</wind>
+		<aero-stabilised>false</aero-stabilised>
+		<no-roll>false</no-roll>
+		<impact>false</impact>
+		<collision>false</collision>
+		<life>100</life>
+		<slaved>true</slaved>
+		<external-force>true</external-force>
+		<force-path>ai/ballistic-forces/force[4]</force-path>
+		<fuze-range>0</fuze-range>
+	</submodel>
+
+	<submodel>
+		<name>Fairings Back</name>
+		<model>Aircraft/Vostok-1/Models/Vostok-1-Fairings-B-Submodel.xml</model>
+		<trigger>fdm/jsbsim/stages/unit[1]/drop</trigger>
+		<repeat>false</repeat>
+		<delay>0.0</delay>
+		<count>10</count>
+		<x-offset>0.0</x-offset>
+		<y-offset>0.0</y-offset>
+		<z-offset>79.009</z-offset>
+		<pitch-offset>0.0</pitch-offset>
+		<roll-offset>0.0</roll-offset>
+		<yaw-offset>180.0</yaw-offset>
+		<speed>0.0</speed>
+		<cd>0.1</cd>
+		<eda>15</eda>
+		<weight>716.50</weight>
+		<buoyancy>0</buoyancy>
+		<wind>false</wind>
+		<aero-stabilised>false</aero-stabilised>
+		<no-roll>false</no-roll>
+		<impact>false</impact>
+		<collision>false</collision>
+		<life>100</life>
+		<slaved>true</slaved>
+		<external-force>true</external-force>
+		<force-path>ai/ballistic-forces/force[5]</force-path>
+		<fuze-range>0</fuze-range>
+	</submodel>
+
+	<!-- Second Stage -->
+
+	<submodel>
+		<name>Second Stage</name>
+		<model>Aircraft/Vostok-1/Models/Vostok-1-Stage-2-Submodel.xml</model>
+		<trigger>fdm/jsbsim/stages/unit[2]/drop</trigger>
+		<repeat>false</repeat>
+		<delay>0.0</delay>
+		<count>10</count>
+		<x-offset>0.0</x-offset>
+		<y-offset>0.0</y-offset>
+<!--		<z-offset>-9.550</z-offset> -->
+		<z-offset>-60</z-offset>
+		<pitch-offset>0.0</pitch-offset>
+		<roll-offset>0.0</roll-offset>
+		<yaw-offset>0</yaw-offset>
+		<speed>0.0</speed>
+		<cd>0.1</cd>
+		<eda>15</eda>
+		<weight>16312</weight>
+		<buoyancy>0</buoyancy>
+		<wind>false</wind>
+		<aero-stabilised>false</aero-stabilised>
+		<no-roll>false</no-roll>
+		<impact>false</impact>
+		<collision>false</collision>
+		<life>100</life>
+		<slaved>true</slaved>
+		<external-force>true</external-force>
+		<force-path>ai/ballistic-forces/force[6]</force-path>
+		<fuze-range>0</fuze-range>
+	</submodel>
+
+	<!-- Third Stage -->
+
+	<submodel>
+		<name>Third Stage</name>
+		<model>Aircraft/Vostok-1/Models/Vostok-1-Stage-3-Submodel.xml</model>
+		<trigger>fdm/jsbsim/stages/unit[3]/drop</trigger>
+		<repeat>false</repeat>
+		<delay>0.0</delay>
+		<count>10</count>
+		<x-offset>0</x-offset>
+		<y-offset>0</y-offset>
+<!--		<z-offset>-2.463</z-offset> -->
+		<z-offset>-20</z-offset>
+		<pitch-offset>0.0</pitch-offset>
+		<roll-offset>0.0</roll-offset>
+		<yaw-offset>0.0</yaw-offset>
+		<speed>0.0</speed>
+		<cd>0.1</cd>
+		<eda>15</eda>
+		<weight>3420</weight>
+		<buoyancy>0</buoyancy>
+		<wind>false</wind>
+		<aero-stabilised>false</aero-stabilised>
+		<no-roll>false</no-roll>
+		<impact>false</impact>
+		<collision>false</collision>
+		<life>100</life>
+		<slaved>true</slaved>
+		<external-force>true</external-force>
+		<force-path>ai/ballistic-forces/force[7]</force-path>
+		<fuze-range>0</fuze-range>
+	</submodel>
+
+	<!-- TDU -->
+
+	<submodel>
+		<name>TDU</name>
+		<model>Aircraft/Vostok-1/Models/Vostok-1-TDU-Submodel.xml</model>
+		<trigger>fdm/jsbsim/stages/unit[4]/drop</trigger>
+		<repeat>false</repeat>
+		<delay>0.0</delay>
+		<count>10</count>
+		<x-offset>0</x-offset>
+		<y-offset>0</y-offset>
+<!--		<z-offset>-5.528</z-offset> -->
+		<z-offset>-20</z-offset>
+		<pitch-offset>0.0</pitch-offset>
+		<roll-offset>0.0</roll-offset>
+		<yaw-offset>0.0</yaw-offset>
+		<speed>0.0</speed>
+		<cd>0.1</cd>
+		<eda>15</eda>
+		<weight>3368</weight>
+		<buoyancy>0</buoyancy>
+		<wind>false</wind>
+		<aero-stabilised>false</aero-stabilised>
+		<no-roll>false</no-roll>
+		<impact>false</impact>
+		<collision>false</collision>
+		<life>100</life>
+		<slaved>true</slaved>
+		<external-force>true</external-force>
+		<force-path>ai/ballistic-forces/force[8]</force-path>
+		<fuze-range>0</fuze-range>
+	</submodel>
+
+	<!-- Left hatch -->
+
+	<submodel>
+		<name>Left Hatch</name>
+		<model>Aircraft/Vostok-1/Models/Spacecraft/Vostok-1-Left-Hatch-Submodel.xml</model>
+		<trigger>fdm/jsbsim/systems/spacecraft/chute-cover-drop</trigger>
+		<repeat>false</repeat>
+		<delay>0.0</delay>
+		<count>10</count>
+		<x-offset>0</x-offset>
+<!--
+		<y-offset>-2.335</y-offset>
+		<z-offset>2.851</z-offset>
+-->
+		<y-offset>-3.699</y-offset>
+		<z-offset>3.192</z-offset>
+		<pitch-offset>0.0</pitch-offset>
+		<roll-offset>0.0</roll-offset>
+		<yaw-offset>0.0</yaw-offset>
+		<speed>0.0</speed>
+		<cd>0.1</cd>
+		<eda>15</eda>
+		<weight>200</weight>
+		<buoyancy>0</buoyancy>
+		<wind>false</wind>
+		<aero-stabilised>false</aero-stabilised>
+		<no-roll>false</no-roll>
+		<impact>false</impact>
+		<collision>false</collision>
+		<life>100</life>
+		<slaved>true</slaved>
+		<external-force>true</external-force>
+		<force-path>ai/ballistic-forces/force[9]</force-path>
+		<fuze-range>0</fuze-range>
+	</submodel>
+
+	<!-- Left antenna -->
+
+	<submodel>
+		<name>Left Antenna</name>
+		<model>Aircraft/Vostok-1/Models/Spacecraft/Vostok-1-Left-Antenna-Submodel.xml</model>
+		<trigger>fdm/jsbsim/systems/spacecraft/chute-cover-drop</trigger>
+		<repeat>false</repeat>
+		<delay>0.0</delay>
+		<count>10</count>
+		<x-offset>0</x-offset>
+<!--
+		<y-offset>-1.167</y-offset>
+		<z-offset>3.385</z-offset>
+-->
+		<y-offset>-3.699</y-offset>
+		<z-offset>4.762</z-offset>
+		<pitch-offset>0.0</pitch-offset>
+		<roll-offset>0.0</roll-offset>
+		<yaw-offset>0.0</yaw-offset>
+		<speed>0.0</speed>
+		<cd>0.1</cd>
+		<eda>15</eda>
+		<weight>2</weight>
+		<buoyancy>0</buoyancy>
+		<wind>false</wind>
+		<aero-stabilised>false</aero-stabilised>
+		<no-roll>false</no-roll>
+		<impact>false</impact>
+		<collision>false</collision>
+		<life>100</life>
+		<slaved>true</slaved>
+		<external-force>true</external-force>
+		<force-path>ai/ballistic-forces/force[10]</force-path>
+		<fuze-range>0</fuze-range>
+	</submodel>
+
+</PropertyList>

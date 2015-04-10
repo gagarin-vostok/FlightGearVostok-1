@@ -1,0 +1,270 @@
+<?xml version="1.0"?>
+
+<!--
+	Author: Slavutinsky Victor
+-->
+
+<PropertyList>
+
+<!-- Stage one block 3 -->
+
+	<path>Vostok-1-Stage-3.ac</path>
+
+	<offsets>
+		<x-m>0.0</x-m>
+		<y-m>0.0</y-m>
+		<z-m>0.0</z-m>
+		<pitch-deg>0</pitch-deg>
+	</offsets>
+
+	<enable-hot type="bool">false</enable-hot>
+
+	<animation>
+		<type>select</type>
+		<condition>
+			<or>
+				<equals>
+					<property>fdm/jsbsim/stages/unit[0]/active</property>
+					<value>true</value>
+				</equals>
+				<equals>
+					<property>fdm/jsbsim/stages/unit[2]/active</property>
+					<value>true</value>
+				</equals>
+				<equals>
+					<property>fdm/jsbsim/stages/unit[3]/active</property>
+					<value>true</value>
+				</equals>
+			</or>
+		</condition>
+	</animation>
+
+	<animation>
+		<type>translate</type>
+		<property>fdm/jsbsim/stages/unit[3]/show-translate</property>
+		<factor>1.0</factor>
+		<axis>
+			<x>0</x>
+			<y>0</y>
+			<z>1.0</z>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>select</type>
+		<object-name>FS_FCOne</object-name>
+		<object-name>FS_FCTwo</object-name>
+		<object-name>FS_FCThree</object-name>
+		<object-name>FS_FCFour</object-name>
+		<object-name>FS_FCFive</object-name>
+		<object-name>FS_FCSix</object-name>
+		<object-name>FS_FCSeven</object-name>
+		<object-name>FS_FCEight</object-name>
+		<condition>
+			<equals>
+				<property>fdm/jsbsim/stages/unit[1]/active</property>
+				<value>true</value>
+			</equals>
+		</condition>
+	</animation>
+
+	<!-- Exhausts -->
+
+	<!-- Main
+
+	<model>
+		<path>Aircraft/Vostok-1/Models/Exhausts/Stage3/Vostok-1-Stage-3-Main-Exhaust.xml</path>
+		<offsets>
+			<x-m>0.0</x-m>
+			<y-m>0.0</y-m>
+			<z-m>-3.411</z-m>
+			<pitch-deg>90.0</pitch-deg>
+			<heading-deg>0.0</heading-deg>
+		</offsets>
+	</model>
+
+	<animation>
+		<type>material</type>
+		<object-name>TS_R0109I</object-name>
+		<emission>
+			<red-prop>fdm/jsbsim/propulsion/engine[14]/red</red-prop>
+			<green-prop>fdm/jsbsim/propulsion/engine[14]/green</green-prop>
+			<blue-prop>fdm/jsbsim/propulsion/engine[14]/blue</blue-prop>
+		</emission>
+	</animation>
+
+ -->
+
+	<!-- Maneur
+
+	<model>
+		<path>Aircraft/Vostok-1/Models/Exhausts/Stage3/Vostok-1-Stage-3-Forward-Exhaust.xml</path>
+		<offsets>
+			<x-m>-1.394</x-m>
+			<y-m>0.0</y-m>
+			<z-m>-2.996</z-m>
+			<pitch-deg>58.0</pitch-deg>
+			<heading-deg>0.0</heading-deg>
+		</offsets>
+	</model>
+
+	<animation>
+		<type>material</type>
+		<object-name>TS_PEForwardI</object-name>
+		<emission>
+			<red-prop>fdm/jsbsim/propulsion/engine[15]/red</red-prop>
+			<green-prop>fdm/jsbsim/propulsion/engine[15]/green</green-prop>
+			<blue-prop>fdm/jsbsim/propulsion/engine[15]/blue</blue-prop>
+		</emission>
+	</animation>
+
+	<model>
+		<path>Aircraft/Vostok-1/Models/Exhausts/Stage3/Vostok-1-Stage-3-Back-Exhaust.xml</path>
+		<offsets>
+			<x-m>1.394</x-m>
+			<y-m>0.0</y-m>
+			<z-m>-2.996</z-m>
+			<pitch-deg>122.0</pitch-deg>
+			<heading-deg>0.0</heading-deg>
+		</offsets>
+	</model>
+
+	<animation>
+		<type>material</type>
+		<object-name>TS_PEBackI</object-name>
+		<emission>
+			<red-prop>fdm/jsbsim/propulsion/engine[16]/red</red-prop>
+			<green-prop>fdm/jsbsim/propulsion/engine[16]/green</green-prop>
+			<blue-prop>fdm/jsbsim/propulsion/engine[16]/blue</blue-prop>
+		</emission>
+	</animation>
+
+	<model>
+		<path>Aircraft/Vostok-1/Models/Exhausts/Stage3/Vostok-1-Stage-3-Left-Exhaust.xml</path>
+		<offsets>
+			<x-m>0.0</x-m>
+			<y-m>-1.394</y-m>
+			<z-m>-2.996</z-m>
+			<pitch-deg>58.0</pitch-deg>
+			<heading-deg>90.0</heading-deg>
+		</offsets>
+	</model>
+
+	<animation>
+		<type>material</type>
+		<object-name>TS_PELeftI</object-name>
+		<emission>
+			<red-prop>fdm/jsbsim/propulsion/engine[17]/red</red-prop>
+			<green-prop>fdm/jsbsim/propulsion/engine[17]/green</green-prop>
+			<blue-prop>fdm/jsbsim/propulsion/engine[17]/blue</blue-prop>
+		</emission>
+	</animation>
+
+	<model>
+		<path>Aircraft/Vostok-1/Models/Exhausts/Stage3/Vostok-1-Stage-3-Right-Exhaust.xml</path>
+		<offsets>
+			<x-m>0.0</x-m>
+			<y-m>1.394</y-m>
+			<z-m>-2.996</z-m>
+			<pitch-deg>58.0</pitch-deg>
+			<heading-deg>-90.0</heading-deg>
+		</offsets>
+	</model>
+
+	<animation>
+		<type>material</type>
+		<object-name>TS_PERightI</object-name>
+		<emission>
+			<red-prop>fdm/jsbsim/propulsion/engine[18]/red</red-prop>
+			<green-prop>fdm/jsbsim/propulsion/engine[18]/green</green-prop>
+			<blue-prop>fdm/jsbsim/propulsion/engine[18]/blue</blue-prop>
+		</emission>
+	</animation>
+
+	<model>
+		<path>Aircraft/Vostok-1/Models/Exhausts/Stage3/Vostok-1-Stage-3-Forward-Left-Exhaust.xml</path>
+		<offsets>
+			<x-m>-1.368</x-m>
+			<y-m>-0.079</y-m>
+			<z-m>-2.735</z-m>
+			<pitch-deg>0.0</pitch-deg>
+			<heading-deg>-90.0</heading-deg>
+		</offsets>
+	</model>
+
+	<animation>
+		<type>material</type>
+		<object-name>TS_REFLI</object-name>
+		<emission>
+			<red-prop>fdm/jsbsim/propulsion/engine[19]/red</red-prop>
+			<green-prop>fdm/jsbsim/propulsion/engine[19]/green</green-prop>
+			<blue-prop>fdm/jsbsim/propulsion/engine[19]/blue</blue-prop>
+		</emission>
+	</animation>
+
+	<model>
+		<path>Aircraft/Vostok-1/Models/Exhausts/Stage3/Vostok-1-Stage-3-Back-Right-Exhaust.xml</path>
+		<offsets>
+			<x-m>1.368</x-m>
+			<y-m>0.079</y-m>
+			<z-m>-2.735</z-m>
+			<pitch-deg>0.0</pitch-deg>
+			<heading-deg>90.0</heading-deg>
+		</offsets>
+	</model>
+
+	<animation>
+		<type>material</type>
+		<object-name>TS_REBRI</object-name>
+		<emission>
+			<red-prop>fdm/jsbsim/propulsion/engine[20]/red</red-prop>
+			<green-prop>fdm/jsbsim/propulsion/engine[20]/green</green-prop>
+			<blue-prop>fdm/jsbsim/propulsion/engine[20]/blue</blue-prop>
+		</emission>
+	</animation>
+
+	<model>
+		<path>Aircraft/Vostok-1/Models/Exhausts/Stage3/Vostok-1-Stage-3-Forward-Right-Exhaust.xml</path>
+		<offsets>
+			<x-m>-1.368</x-m>
+			<y-m>0.079</y-m>
+			<z-m>-2.735</z-m>
+			<pitch-deg>0.0</pitch-deg>
+			<heading-deg>90.0</heading-deg>
+		</offsets>
+	</model>
+
+	<animation>
+		<type>material</type>
+		<object-name>TS_REFRI</object-name>
+		<emission>
+			<red-prop>fdm/jsbsim/propulsion/engine[21]/red</red-prop>
+			<green-prop>fdm/jsbsim/propulsion/engine[21]/green</green-prop>
+			<blue-prop>fdm/jsbsim/propulsion/engine[21]/blue</blue-prop>
+		</emission>
+	</animation>
+
+	<model>
+		<path>Aircraft/Vostok-1/Models/Exhausts/Stage3/Vostok-1-Stage-3-Back-Left-Exhaust.xml</path>
+		<offsets>
+			<x-m>1.368</x-m>
+			<y-m>-0.079</y-m>
+			<z-m>-2.735</z-m>
+			<pitch-deg>0.0</pitch-deg>
+			<heading-deg>-90.0</heading-deg>
+		</offsets>
+	</model>
+
+	<animation>
+		<type>material</type>
+		<object-name>TS_REBLI</object-name>
+		<emission>
+			<red-prop>fdm/jsbsim/propulsion/engine[22]/red</red-prop>
+			<green-prop>fdm/jsbsim/propulsion/engine[22]/green</green-prop>
+			<blue-prop>fdm/jsbsim/propulsion/engine[22]/blue</blue-prop>
+		</emission>
+	</animation>
+
+ -->
+
+</PropertyList>

@@ -1,0 +1,707 @@
+<?xml version="1.0"?>
+
+<!--
+	Author: Slavutinsky Victor
+-->
+
+<system>
+
+	<fileheader>
+		<author> Slavutinsky Victor </author>
+		<filecreationdate> 2011 </filecreationdate>
+		<version>$Revision: 1.00 $</version>
+		<description> Enginespanel </description>
+	</fileheader>
+
+	<!-- Required input from FlightGear:
+	     /position/sea-level-radius-ft mapped to ic/sea-level-radius-ft
+	     A delay is necessary to give FG time to create the property.
+	-->
+	<channel name="input from FG">
+		<switch name="ic/sea-level-radius-ft">
+			<default value="0.0"/>
+			<test logic="AND" value="/position/sea-level-radius-ft">
+				simulation/sim-time-sec GT 0.1
+			</test>
+		</switch>
+	</channel>
+
+<!--	That must be aded to set file
+
+	<fdm>
+		<jsbsim>
+			<systems>
+				<enginespanel>
+					<stage-one-oxigen-one-lbs type="float">0.0</stage-one-oxigen-one-lbs>
+					<stage-one-fuel-one-lbs type="float">0.0</stage-one-fuel-one-lbs>
+					<stage-one-thrust-one-tons type="float">0.0</stage-one-thrust-one-tons>
+
+					<stage-one-oxigen-two-lbs type="float">0.0</stage-one-oxigen-two-lbs>
+					<stage-one-fuel-two-lbs type="float">0.0</stage-one-fuel-two-lbs>
+					<stage-one-thrust-two-tons type="float">0.0</stage-one-thrust-two-tons>
+
+					<stage-one-oxigen-three-lbs type="float">0.0</stage-one-oxigen-three-lbs>
+					<stage-one-fuel-three-lbs type="float">0.0</stage-one-fuel-three-lbs>
+					<stage-one-thrust-three-tons type="float">0.0</stage-one-thrust-three-tons>
+
+					<stage-one-oxigen-four-lbs type="float">0.0</stage-one-oxigen-four-lbs>
+					<stage-one-fuel-four-lbs type="float">0.0</stage-one-fuel-four-lbs>
+					<stage-one-thrust-four-tons type="float">0.0</stage-one-thrust-four-tons>
+
+					<stage-two-oxigen-lbs type="float">0.0</stage-two-oxigen-lbs>
+					<stage-two-fuel-lbs type="float">0.0</stage-two-fuel-lbs>
+					<stage-two-thrust-tons type="float">0.0</stage-two-thrust-tons>
+
+					<stage-three-oxigen-lbs type="float">0.0</stage-three-oxigen-lbs>
+					<stage-three-fuel-lbs type="float">0.0</stage-three-fuel-lbs>
+					<stage-three-thrust-tons type="float">0.0</stage-three-thrust-tons>
+				</enginespanel>
+			</systems>
+		</jsbsim>
+	</fdm>
+
+
+-->
+
+	<channel name="Enginespanel">
+
+	<!-- Stage one -->
+
+		<!-- First -->
+
+		<switch name="calculations/enginespanel/stage-one-oxigen-one-lbs">
+			<default value="0"/>
+			<test logic="AND" value="propulsion/tank[0]/contents-lbs">
+				stages/unit[0]/active eq 1
+			</test>
+			<output>systems/enginespanel/stage-one-oxigen-one-lbs</output>
+		</switch>
+
+		<fcs_function name="calculations/enginespanel/stage-one-oxigen-one-tons">
+		<function>
+			<quotient>
+				<product>
+					<property>systems/enginespanel/stage-one-oxigen-one-lbs</property>
+					<value>0.45359237</value>
+				</product>
+				<value>1000.0</value>
+			</quotient>
+		</function>
+			<output>systems/enginespanel/stage-one-oxigen-one-tons</output>
+		</fcs_function>
+
+		<switch name="calculations/enginespanel/stage-one-fuel-one-lbs">
+			<default value="0"/>
+			<test logic="AND" value="propulsion/tank[1]/contents-lbs">
+				stages/unit[0]/active eq 1
+			</test>
+			<output>systems/enginespanel/stage-one-fuel-one-lbs</output>
+		</switch>
+
+		<fcs_function name="calculations/enginespanel/stage-one-fuel-one-tons">
+		<function>
+			<quotient>
+				<product>
+					<property>systems/enginespanel/stage-one-fuel-one-lbs</property>
+					<value>0.45359237</value>
+				</product>
+				<value>1000.0</value>
+			</quotient>
+		</function>
+			<output>systems/enginespanel/stage-one-fuel-one-tons</output>
+		</fcs_function>
+
+		<fcs_function name="calculations/enginespanel/stage-one-thrust-one-tons">
+		<function>
+			<quotient>
+				<product>
+					<sum>
+						<property>propulsion/engine[0]/thrust-lbs</property>
+						<property>propulsion/engine[1]/thrust-lbs</property>
+					</sum>
+					<value>0.45359237</value>
+				</product>
+				<value>1000.0</value>
+			</quotient>
+		</function>
+			<output>systems/enginespanel/stage-one-thrust-one-tons</output>
+		</fcs_function>
+
+		<!-- Second -->
+
+		<switch name="calculations/enginespanel/stage-one-oxigen-two-lbs">
+			<default value="0"/>
+			<test logic="AND" value="propulsion/tank[2]/contents-lbs">
+				stages/unit[0]/active eq 1
+			</test>
+			<output>systems/enginespanel/stage-one-oxigen-two-lbs</output>
+		</switch>
+
+		<fcs_function name="calculations/enginespanel/stage-one-oxigen-two-tons">
+		<function>
+			<quotient>
+				<product>
+					<property>systems/enginespanel/stage-one-oxigen-two-lbs</property>
+					<value>0.45359237</value>
+				</product>
+				<value>1000.0</value>
+			</quotient>
+		</function>
+			<output>systems/enginespanel/stage-one-oxigen-two-tons</output>
+		</fcs_function>
+
+		<switch name="calculations/enginespanel/stage-one-fuel-two-lbs">
+			<default value="0"/>
+			<test logic="AND" value="propulsion/tank[3]/contents-lbs">
+				stages/unit[0]/active eq 1
+			</test>
+			<output>systems/enginespanel/stage-one-fuel-two-lbs</output>
+		</switch>
+
+		<fcs_function name="calculations/enginespanel/stage-one-fuel-two-tons">
+		<function>
+			<quotient>
+				<product>
+					<property>systems/enginespanel/stage-one-fuel-two-lbs</property>
+					<value>0.45359237</value>
+				</product>
+				<value>1000.0</value>
+			</quotient>
+		</function>
+			<output>systems/enginespanel/stage-one-fuel-two-tons</output>
+		</fcs_function>
+
+		<fcs_function name="calculations/enginespanel/stage-one-thrust-two-tons">
+		<function>
+			<quotient>
+				<product>
+				<sum>
+						<property>propulsion/engine[2]/thrust-lbs</property>
+						<property>propulsion/engine[3]/thrust-lbs</property>
+					</sum>
+					<value>0.45359237</value>
+				</product>
+				<value>1000.0</value>
+			</quotient>
+		</function>
+			<output>systems/enginespanel/stage-one-thrust-two-tons</output>
+		</fcs_function>
+
+		<!-- Third -->
+
+		<switch name="calculations/enginespanel/stage-one-oxigen-three-lbs">
+			<default value="0"/>
+			<test logic="AND" value="propulsion/tank[4]/contents-lbs">
+				stages/unit[0]/active eq 1
+			</test>
+			<output>systems/enginespanel/stage-one-oxigen-three-lbs</output>
+		</switch>
+
+		<fcs_function name="calculations/enginespanel/stage-one-oxigen-three-tons">
+		<function>
+			<quotient>
+				<product>
+					<property>systems/enginespanel/stage-one-oxigen-three-lbs</property>
+					<value>0.45359237</value>
+				</product>
+				<value>1000.0</value>
+			</quotient>
+		</function>
+			<output>systems/enginespanel/stage-one-oxigen-three-tons</output>
+		</fcs_function>
+
+		<switch name="calculations/enginespanel/stage-one-fuel-three-lbs">
+			<default value="0"/>
+			<test logic="AND" value="propulsion/tank[5]/contents-lbs">
+				stages/unit[0]/active eq 1
+			</test>
+			<output>systems/enginespanel/stage-one-fuel-three-lbs</output>
+		</switch>
+
+		<fcs_function name="calculations/enginespanel/stage-one-fuel-three-tons">
+		<function>
+			<quotient>
+				<product>
+					<property>systems/enginespanel/stage-one-fuel-three-lbs</property>
+					<value>0.45359237</value>
+				</product>
+				<value>1000.0</value>
+			</quotient>
+		</function>
+			<output>systems/enginespanel/stage-one-fuel-three-tons</output>
+		</fcs_function>
+
+		<fcs_function name="calculations/enginespanel/stage-one-thrust-three-tons">
+		<function>
+			<quotient>
+				<product>
+					<sum>
+						<property>propulsion/engine[4]/thrust-lbs</property>
+						<property>propulsion/engine[5]/thrust-lbs</property>
+					</sum>
+					<value>0.45359237</value>
+				</product>
+				<value>1000.0</value>
+			</quotient>
+		</function>
+			<output>systems/enginespanel/stage-one-thrust-three-tons</output>
+		</fcs_function>
+
+		<!-- Four -->
+
+		<switch name="calculations/enginespanel/stage-one-oxigen-four-lbs">
+			<default value="0"/>
+			<test logic="AND" value="propulsion/tank[6]/contents-lbs">
+				stages/unit[0]/active eq 1
+			</test>
+			<output>systems/enginespanel/stage-one-oxigen-four-lbs</output>
+		</switch>
+
+		<fcs_function name="calculations/enginespanel/stage-one-oxigen-four-tons">
+		<function>
+			<quotient>
+				<product>
+					<property>systems/enginespanel/stage-one-oxigen-four-lbs</property>
+					<value>0.45359237</value>
+				</product>
+				<value>1000.0</value>
+			</quotient>
+		</function>
+			<output>systems/enginespanel/stage-one-oxigen-four-tons</output>
+		</fcs_function>
+
+		<switch name="calculations/enginespanel/stage-one-fuel-four-lbs">
+			<default value="0"/>
+			<test logic="AND" value="propulsion/tank[7]/contents-lbs">
+				stages/unit[0]/active eq 1
+			</test>
+			<output>systems/enginespanel/stage-one-fuel-four-lbs</output>
+		</switch>
+
+		<fcs_function name="calculations/enginespanel/stage-one-fuel-four-tons">
+		<function>
+			<quotient>
+				<product>
+					<property>systems/enginespanel/stage-one-fuel-four-lbs</property>
+					<value>0.45359237</value>
+				</product>
+				<value>1000.0</value>
+			</quotient>
+		</function>
+			<output>systems/enginespanel/stage-one-fuel-four-tons</output>
+		</fcs_function>
+
+		<fcs_function name="calculations/enginespanel/stage-one-thrust-four-tons">
+		<function>
+			<quotient>
+				<product>
+					<sum>
+						<property>propulsion/engine[6]/thrust-lbs</property>
+						<property>propulsion/engine[7]/thrust-lbs</property>
+					</sum>
+					<value>0.45359237</value>
+				</product>
+				<value>1000.0</value>
+			</quotient>
+		</function>
+			<output>systems/enginespanel/stage-one-thrust-four-tons</output>
+		</fcs_function>
+
+	<!-- Stage two -->
+
+		<fcs_function name="calculations/enginespanel/stage-two-oxigen-sum-lbs">
+		<function>
+			<sum>
+				<property>propulsion/tank[8]/contents-lbs</property>
+				<property>propulsion/tank[9]/contents-lbs</property>
+			</sum>
+		</function>
+			<output>systems/enginespanel/stage-two-oxigen-sum-lbs</output>
+		</fcs_function>
+
+		<switch name="calculations/enginespanel/stage-two-oxigen-lbs">
+			<default value="0"/>
+			<test logic="AND" value="systems/enginespanel/stage-two-oxigen-sum-lbs">
+				stages/unit[2]/active eq 1
+			</test>
+			<output>systems/enginespanel/stage-two-oxigen-lbs</output>
+		</switch>
+
+		<fcs_function name="calculations/enginespanel/stage-two-oxigen-tons">
+		<function>
+			<quotient>
+				<product>
+					<property>systems/enginespanel/stage-two-oxigen-lbs</property>
+					<value>0.45359237</value>
+				</product>
+				<value>1000.0</value>
+			</quotient>
+		</function>
+			<output>systems/enginespanel/stage-two-oxigen-tons</output>
+		</fcs_function>
+
+		<fcs_function name="calculations/enginespanel/stage-two-fuel-sum-lbs">
+		<function>
+			<sum>
+				<property>propulsion/tank[10]/contents-lbs</property>
+				<property>propulsion/tank[11]/contents-lbs</property>
+			</sum>
+		</function>
+			<output>systems/enginespanel/stage-two-fuel-sum-lbs</output>
+		</fcs_function>
+
+		<switch name="calculations/enginespanel/stage-two-fuel-lbs">
+			<default value="0"/>
+			<test logic="AND" value="systems/enginespanel/stage-two-fuel-sum-lbs">
+				stages/unit[2]/active eq 1
+			</test>
+			<output>systems/enginespanel/stage-two-fuel-lbs</output>
+		</switch>
+
+		<fcs_function name="calculations/enginespanel/stage-two-fuel-tons">
+		<function>
+			<quotient>
+				<product>
+					<property>systems/enginespanel/stage-two-fuel-lbs</property>
+					<value>0.45359237</value>
+				</product>
+				<value>1000.0</value>
+			</quotient>
+		</function>
+			<output>systems/enginespanel/stage-two-fuel-tons</output>
+		</fcs_function>
+
+		<fcs_function name="calculations/enginespanel/stage-two-thrust-tons">
+		<function>
+			<quotient>
+				<product>
+					<sum>
+						<property>propulsion/engine[8]/thrust-lbs</property>
+						<property>propulsion/engine[9]/thrust-lbs</property>
+						<property>propulsion/engine[10]/thrust-lbs</property>
+						<property>propulsion/engine[11]/thrust-lbs</property>
+						<property>propulsion/engine[12]/thrust-lbs</property>
+						<property>propulsion/engine[13]/thrust-lbs</property>
+					</sum>
+					<value>0.45359237</value>
+				</product>
+				<value>1000.0</value>
+			</quotient>
+		</function>
+			<output>systems/enginespanel/stage-two-thrust-tons</output>
+		</fcs_function>
+
+	<!-- Stage three -->
+
+		<fcs_function name="calculations/enginespanel/stage-three-oxigen-sum-lbs">
+		<function>
+			<sum>
+				<property>propulsion/tank[12]/contents-lbs</property>
+				<property>propulsion/tank[13]/contents-lbs</property>
+			</sum>
+		</function>
+			<output>systems/enginespanel/stage-three-oxigen-sum-lbs</output>
+		</fcs_function>
+
+		<switch name="calculations/enginespanel/stage-three-oxigen-lbs">
+			<default value="0"/>
+			<test logic="AND" value="systems/enginespanel/stage-three-oxigen-sum-lbs">
+				stages/unit[3]/active eq 1
+			</test>
+			<test logic="AND" value="10000.00">
+				stages/unit[2]/active eq 1
+			</test>
+			<output>systems/enginespanel/stage-three-oxigen-lbs</output>
+		</switch>
+
+		<fcs_function name="calculations/enginespanel/stage-three-oxigen-tons">
+		<function>
+			<quotient>
+				<product>
+					<property>systems/enginespanel/stage-three-oxigen-lbs</property>
+					<value>0.45359237</value>
+				</product>
+				<value>1000.0</value>
+			</quotient>
+		</function>
+			<output>systems/enginespanel/stage-three-oxigen-tons</output>
+		</fcs_function>
+
+		<fcs_function name="calculations/enginespanel/stage-three-fuel-sum-lbs">
+		<function>
+			<sum>
+				<property>propulsion/tank[14]/contents-lbs</property>
+				<property>propulsion/tank[15]/contents-lbs</property>
+			</sum>
+		</function>
+			<output>systems/enginespanel/stage-three-fuel-sum-lbs</output>
+		</fcs_function>
+
+		<switch name="calculations/enginespanel/stage-three-fuel-lbs">
+			<default value="0"/>
+			<test logic="AND" value="systems/enginespanel/stage-three-fuel-sum-lbs">
+				stages/unit[3]/active eq 1
+			</test>
+			<test logic="AND" value="4408.00">
+				stages/unit[2]/active eq 1
+			</test>
+			<output>systems/enginespanel/stage-three-fuel-lbs</output>
+		</switch>
+
+		<fcs_function name="calculations/enginespanel/stage-three-fuel-tons">
+		<function>
+			<quotient>
+				<product>
+					<property>systems/enginespanel/stage-three-fuel-lbs</property>
+					<value>0.45359237</value>
+				</product>
+				<value>1000.0</value>
+			</quotient>
+		</function>
+			<output>systems/enginespanel/stage-three-fuel-tons</output>
+		</fcs_function>
+
+		<fcs_function name="calculations/enginespanel/stage-three-thrust-tons">
+		<function>
+			<quotient>
+				<product>
+					<sum>
+						<property>propulsion/engine[14]/thrust-lbs</property>
+						<property>propulsion/engine[15]/thrust-lbs</property>
+						<property>propulsion/engine[16]/thrust-lbs</property>
+						<property>propulsion/engine[17]/thrust-lbs</property>
+						<property>propulsion/engine[18]/thrust-lbs</property>
+						<property>propulsion/engine[19]/thrust-lbs</property>
+						<property>propulsion/engine[20]/thrust-lbs</property>
+						<property>propulsion/engine[21]/thrust-lbs</property>
+						<property>propulsion/engine[22]/thrust-lbs</property>
+					</sum>
+					<value>0.45359237</value>
+				</product>
+				<value>1000.0</value>
+			</quotient>
+		</function>
+			<output>systems/enginespanel/stage-three-thrust-tons</output>
+		</fcs_function>
+
+		<!-- Orbit parameters calculation -->
+
+		<fcs_function name="systems/enginespanel/semimajor-axis-length-ft">
+		<description>
+			This equation calculates the semimajor-axis length in feet. a = mu/(2*mu/r - v^2) 
+		</description>
+		<function>
+			<quotient>
+				<p> systems/enginespanel/gm </p>
+				<difference>
+					<quotient>
+						<product>
+							<v> 2.0 </v>
+							<p> systems/enginespanel/gm </p>
+						</product>
+						<p> position/radius-to-vehicle-ft </p>
+					</quotient>
+					<pow>
+						<p> velocities/eci-velocity-mag-fps </p>
+						<v> 2.0 </v>
+					</pow>
+				</difference>
+			</quotient>
+		</function>
+		</fcs_function>
+
+		<fcs_function name="systems/enginespanel/eccentricity">
+		<description>
+			This equation calculates eccentricity. e = sqrt (1 - [ r v cos(gamma) ]^2 / {a * mu})
+		</description>
+		<function>
+			<pow>
+				<difference>
+					<value> 1.0 </value>
+					<quotient>
+						<pow>
+							<product>
+								<property> position/radius-to-vehicle-ft </property>
+								<property> velocities/eci-velocity-mag-fps </property>
+								<cos>
+									<property> flight-path/gamma-rad </property>
+								</cos>
+							</product>
+							<value> 2.0 </value>
+						</pow>
+						<product>
+							<property> systems/enginespanel/semimajor-axis-length-ft </property>
+							<property> systems/enginespanel/gm </property>
+						</product>
+					</quotient>
+				</difference>
+				<value> 0.5 </value>
+			</pow>
+		</function>
+		</fcs_function>
+
+		<fcs_function name="systems/enginespanel/apoapsis-ft">
+		<function>
+			<difference>
+				<product>
+					<property>systems/enginespanel/semimajor-axis-length-ft</property>
+					<sum>
+						<value>1</value>
+						<property>systems/enginespanel/eccentricity</property>
+					</sum>
+				</product>
+				<property>ic/sea-level-radius-ft</property>
+			</difference>
+		</function>
+		</fcs_function>
+
+		<fcs_function name="systems/enginespanel/apoapsis-km">
+		<function>
+			<quotient>
+				<property>systems/enginespanel/apoapsis-ft</property>
+				<value>3280.83989501312335958005</value>
+			</quotient>
+		</function>
+		</fcs_function>
+
+		<fcs_function name="systems/enginespanel/apoapsis-indicated-km">
+		<function>
+			<table>
+				<independentVar lookup="row">systems/enginespanel/apoapsis-km</independentVar>
+				<tableData>
+					-1.0		0.0
+					0.0		0.0
+					999.0		999.0
+					1000.0		999.0
+				</tableData>
+			</table>
+		</function>
+		</fcs_function>
+
+		<fcs_function name="systems/enginespanel/apoapsis-hundreds-km">
+		<function>
+			<integer>	
+				<quotient>
+					<property>systems/enginespanel/apoapsis-indicated-km</property>
+					<value>100</value>
+				</quotient>
+			</integer>
+		</function>
+		</fcs_function>
+
+		<fcs_function name="systems/enginespanel/apoapsis-tens-km">
+		<function>
+			<integer>	
+				<product>
+					<fraction>
+						<quotient>
+							<property>systems/enginespanel/apoapsis-indicated-km</property>
+							<value>100</value>
+						</quotient>
+					</fraction>
+					<value>10</value>
+				</product>
+			</integer>
+		</function>
+		</fcs_function>
+
+		<fcs_function name="systems/enginespanel/apoapsis-ones-km">
+		<function>
+			<integer>	
+				<product>
+					<fraction>
+						<quotient>
+							<property>systems/enginespanel/apoapsis-indicated-km</property>
+							<value>10</value>
+						</quotient>
+					</fraction>
+					<value>10</value>
+				</product>
+			</integer>
+		</function>
+		</fcs_function>
+
+		<fcs_function name="systems/enginespanel/periapsis-ft">
+		<function>
+			<difference>
+				<product>
+					<property>systems/enginespanel/semimajor-axis-length-ft</property>
+					<difference>
+						<value>1</value>
+						<property>systems/enginespanel/eccentricity</property>
+					</difference>
+				</product>
+				<property>ic/sea-level-radius-ft</property>
+			</difference>
+		</function>
+		</fcs_function>
+
+		<fcs_function name="systems/enginespanel/periapsis-km">
+		<function>
+			<quotient>
+				<property>systems/enginespanel/periapsis-ft</property>
+				<value>3280.83989501312335958005</value>
+			</quotient>
+		</function>
+		</fcs_function>
+
+		<fcs_function name="systems/enginespanel/periapsis-indicated-km">
+		<function>
+			<table>
+				<independentVar lookup="row">systems/enginespanel/periapsis-km</independentVar>
+				<tableData>
+					-1.0		0.0
+					0.0		0.0
+					999.0		999.0
+					1000.0		999.0
+				</tableData>
+			</table>
+		</function>
+		</fcs_function>
+
+		<fcs_function name="systems/enginespanel/periapsis-hundreds-km">
+		<function>
+			<integer>	
+				<quotient>
+					<property>systems/enginespanel/periapsis-indicated-km</property>
+					<value>100</value>
+				</quotient>
+			</integer>
+		</function>
+		</fcs_function>
+
+		<fcs_function name="systems/enginespanel/periapsis-tens-km">
+		<function>
+			<integer>	
+				<product>
+					<fraction>
+						<quotient>
+							<property>systems/enginespanel/periapsis-indicated-km</property>
+							<value>100</value>
+						</quotient>
+					</fraction>
+					<value>10</value>
+				</product>
+			</integer>
+		</function>
+		</fcs_function>
+
+		<fcs_function name="systems/enginespanel/periapsis-ones-km">
+		<function>
+			<integer>	
+				<product>
+					<fraction>
+						<quotient>
+							<property>systems/enginespanel/periapsis-indicated-km</property>
+							<value>10</value>
+						</quotient>
+					</fraction>
+					<value>10</value>
+				</product>
+			</integer>
+		</function>
+		</fcs_function>
+
+	</channel>
+
+</system>

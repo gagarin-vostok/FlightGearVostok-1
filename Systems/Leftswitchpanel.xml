@@ -1,0 +1,405 @@
+<?xml version="1.0"?>
+
+<!--
+	Author: Slavutinsky Victor
+-->
+
+<system>
+
+	<fileheader>
+		<author> Slavutinsky Victor </author>
+		<filecreationdate> 2011 </filecreationdate>
+		<version>$Revision: 1.00 $</version>
+		<description> Leftswitchpanel </description>
+	</fileheader>
+
+<!--	That must be aded to set file
+
+	<fdm>
+		<jsbsim>
+			<systems>
+				<leftswitchpanel>
+					<serviceable type="bool">1</serviceable>
+					<lock-command type="float">1</lock-command>
+					<lock-pos type="float">1</lock-pos>
+					<lever-command type="float">0</lever-command>
+					<lever-pos type="float">0</lever-pos>
+					<pilot-oscillator-pos>0</pilot-oscillator-pos>
+					<shift-oscillator-command>0</shift-oscillator-command>
+					<shift-oscillator-pos>0</shift-oscillator-pos>
+				</leftswitchpanel>
+			</systems>
+		</jsbsim>
+	</fdm>
+
+-->
+
+	<channel name="Leftswitchpanel">
+
+	<!-- Globus switch -->
+
+		<switch name="calculations/leftswitchpanel/globus-allowed">
+			<default value="systems/leftswitchpanel/globus-command"/>
+			<test logic="AND" value="systems/leftswitchpanel/globus-input">
+				systems/leftswitchpanel/serviceable eq 1
+			</test>
+			<output>systems/leftswitchpanel/globus-command</output>
+		</switch>
+
+		<kinematic name="calculations/leftswitchpanel/globus-pos">
+			<input>systems/leftswitchpanel/globus-command</input>
+			<traverse>
+			<setting>
+				<position>0</position>
+				<time>0</time>
+			</setting>
+			<setting>
+				<position>1</position>
+				<time>0.1</time>
+			</setting>
+			</traverse>
+			<output>systems/leftswitchpanel/globus-pos</output>
+		</kinematic>
+
+		<switch name="calculations/leftswitchpanel/globus-not-allowed">
+			<default value="systems/leftswitchpanel/globus-input"/>
+			<test logic="AND" value="systems/leftswitchpanel/globus-command">
+				systems/leftswitchpanel/serviceable eq 0
+			</test>
+			<output>systems/leftswitchpanel/globus-input</output>
+		</switch>
+
+		<switch name="calculations/leftswitchpanel/globus-switch">
+			<default value="systems/leftswitchpanel/globus-switch"/>
+			<test logic="AND" value="1">
+				systems/leftswitchpanel/globus-pos ge 0.5
+			</test>
+			<test logic="AND" value="0">
+				systems/leftswitchpanel/globus-pos lt 0.5
+			</test>
+			<output>systems/leftswitchpanel/globus-switch</output>
+		</switch>
+
+	<!-- Vzor switch -->
+
+		<switch name="calculations/leftswitchpanel/vzor-allowed">
+			<default value="systems/leftswitchpanel/vzor-command"/>
+			<test logic="AND" value="systems/leftswitchpanel/vzor-input">
+				systems/leftswitchpanel/serviceable eq 1
+			</test>
+			<output>systems/leftswitchpanel/vzor-command</output>
+		</switch>
+
+		<kinematic name="calculations/leftswitchpanel/vzor-pos">
+			<input>systems/leftswitchpanel/vzor-command</input>
+			<traverse>
+			<setting>
+				<position>0</position>
+				<time>0</time>
+			</setting>
+			<setting>
+				<position>1</position>
+				<time>0.1</time>
+			</setting>
+			</traverse>
+			<output>systems/leftswitchpanel/vzor-pos</output>
+		</kinematic>
+
+		<switch name="calculations/leftswitchpanel/vzor-not-allowed">
+			<default value="systems/leftswitchpanel/vzor-input"/>
+			<test logic="AND" value="systems/leftswitchpanel/vzor-command">
+				systems/leftswitchpanel/serviceable eq 0
+			</test>
+			<output>systems/leftswitchpanel/vzor-input</output>
+		</switch>
+
+		<switch name="calculations/leftswitchpanel/vzor-switch">
+			<default value="systems/leftswitchpanel/vzor-switch"/>
+			<test logic="AND" value="1">
+				systems/leftswitchpanel/vzor-pos ge 0.5
+			</test>
+			<test logic="AND" value="0">
+				systems/leftswitchpanel/vzor-pos lt 0.5
+			</test>
+			<output>systems/leftswitchpanel/vzor-switch</output>
+		</switch>
+
+		<switch name="calculations/leftswitchpanel/vzor-output">
+			<default value="systems/vzor/cover-input"/>
+			<test logic="AND" value="systems/leftswitchpanel/vzor-switch">
+				systems/leftswitchpanel/serviceable eq 1
+				systems/leftswitchpanel/vzor-pos gt 0.1
+				systems/leftswitchpanel/vzor-pos lt 0.9
+			</test>
+			<output>systems/vzor/cover-input</output>
+		</switch>
+
+	<!-- Right illuminator switch -->
+
+		<switch name="calculations/leftswitchpanel/rightilluminator-allowed">
+			<default value="systems/leftswitchpanel/rightilluminator-command"/>
+			<test logic="AND" value="systems/leftswitchpanel/rightilluminator-input">
+				systems/leftswitchpanel/serviceable eq 1
+			</test>
+			<output>systems/leftswitchpanel/rightilluminator-command</output>
+		</switch>
+
+		<kinematic name="calculations/leftswitchpanel/rightilluminator-pos">
+			<input>systems/leftswitchpanel/rightilluminator-command</input>
+			<traverse>
+			<setting>
+				<position>0</position>
+				<time>0</time>
+			</setting>
+			<setting>
+				<position>1</position>
+				<time>0.1</time>
+			</setting>
+			</traverse>
+			<output>systems/leftswitchpanel/rightilluminator-pos</output>
+		</kinematic>
+
+		<switch name="calculations/leftswitchpanel/rightilluminator-not-allowed">
+			<default value="systems/leftswitchpanel/rightilluminator-input"/>
+			<test logic="AND" value="systems/leftswitchpanel/rightilluminator-command">
+				systems/leftswitchpanel/serviceable eq 0
+			</test>
+			<output>systems/leftswitchpanel/rightilluminator-input</output>
+		</switch>
+
+		<switch name="calculations/leftswitchpanel/rightilluminator-switch">
+			<default value="systems/leftswitchpanel/rightilluminator-switch"/>
+			<test logic="AND" value="1">
+				systems/leftswitchpanel/rightilluminator-pos ge 0.5
+			</test>
+			<test logic="AND" value="0">
+				systems/leftswitchpanel/rightilluminator-pos lt 0.5
+			</test>
+			<output>systems/leftswitchpanel/rightilluminator-switch</output>
+		</switch>
+
+		<switch name="calculations/leftswitchpanel/rightilluminator-output">
+			<default value="systems/rightilluminator/cover-input"/>
+			<test logic="AND" value="systems/leftswitchpanel/rightilluminator-switch">
+				systems/leftswitchpanel/serviceable eq 1
+				systems/leftswitchpanel/rightilluminator-pos gt 0.1
+				systems/leftswitchpanel/rightilluminator-pos lt 0.9
+			</test>
+			<output>systems/rightilluminator/cover-input</output>
+		</switch>
+
+	<!-- Back illuminator switch -->
+
+		<switch name="calculations/leftswitchpanel/backilluminator-allowed">
+			<default value="systems/leftswitchpanel/backilluminator-command"/>
+			<test logic="AND" value="systems/leftswitchpanel/backilluminator-input">
+				systems/leftswitchpanel/serviceable eq 1
+			</test>
+			<output>systems/leftswitchpanel/backilluminator-command</output>
+		</switch>
+
+		<kinematic name="calculations/leftswitchpanel/backilluminator-pos">
+			<input>systems/leftswitchpanel/backilluminator-command</input>
+			<traverse>
+			<setting>
+				<position>0</position>
+				<time>0</time>
+			</setting>
+			<setting>
+				<position>1</position>
+				<time>0.1</time>
+			</setting>
+			</traverse>
+			<output>systems/leftswitchpanel/backilluminator-pos</output>
+		</kinematic>
+
+		<switch name="calculations/leftswitchpanel/backilluminator-not-allowed">
+			<default value="systems/leftswitchpanel/backilluminator-input"/>
+			<test logic="AND" value="systems/leftswitchpanel/backilluminator-command">
+				systems/leftswitchpanel/serviceable eq 0
+			</test>
+			<output>systems/leftswitchpanel/backilluminator-input</output>
+		</switch>
+
+		<switch name="calculations/leftswitchpanel/backilluminator-switch">
+			<default value="systems/leftswitchpanel/backilluminator-switch"/>
+			<test logic="AND" value="1">
+				systems/leftswitchpanel/backilluminator-pos ge 0.5
+			</test>
+			<test logic="AND" value="0">
+				systems/leftswitchpanel/backilluminator-pos lt 0.5
+			</test>
+			<output>systems/leftswitchpanel/backilluminator-switch</output>
+		</switch>
+
+		<switch name="calculations/leftswitchpanel/backilluminator-output">
+			<default value="systems/backilluminator/cover-input"/>
+			<test logic="AND" value="systems/leftswitchpanel/backilluminator-switch">
+				systems/leftswitchpanel/serviceable eq 1
+				systems/leftswitchpanel/backilluminator-pos gt 0.1
+				systems/leftswitchpanel/backilluminator-pos lt 0.9
+			</test>
+			<output>systems/backilluminator/cover-input</output>
+		</switch>
+
+	<!-- Vzor light check switch -->
+
+		<switch name="calculations/leftswitchpanel/lightcheck-allowed">
+			<default value="systems/leftswitchpanel/lightcheck-command"/>
+			<test logic="AND" value="systems/leftswitchpanel/lightcheck-input">
+				systems/leftswitchpanel/serviceable eq 1
+			</test>
+			<output>systems/leftswitchpanel/lightcheck-command</output>
+		</switch>
+
+		<kinematic name="calculations/leftswitchpanel/lightcheck-pos">
+			<input>systems/leftswitchpanel/lightcheck-command</input>
+			<traverse>
+			<setting>
+				<position>0</position>
+				<time>0</time>
+			</setting>
+			<setting>
+				<position>1</position>
+				<time>0.1</time>
+			</setting>
+			</traverse>
+			<output>systems/leftswitchpanel/lightcheck-pos</output>
+		</kinematic>
+
+		<switch name="calculations/leftswitchpanel/lightcheck-not-allowed">
+			<default value="systems/leftswitchpanel/lightcheck-input"/>
+			<test logic="AND" value="systems/leftswitchpanel/lightcheck-command">
+				systems/leftswitchpanel/serviceable eq 0
+			</test>
+			<output>systems/leftswitchpanel/lightcheck-input</output>
+		</switch>
+
+		<switch name="calculations/leftswitchpanel/lightcheck-switch">
+			<default value="systems/leftswitchpanel/lightcheck-switch"/>
+			<test logic="AND" value="1">
+				systems/leftswitchpanel/lightcheck-pos ge 0.5
+			</test>
+			<test logic="AND" value="0">
+				systems/leftswitchpanel/lightcheck-pos lt 0.5
+			</test>
+			<output>systems/leftswitchpanel/lightcheck-switch</output>
+		</switch>
+
+	<!-- Vzor light switch -->
+
+		<switch name="calculations/leftswitchpanel/vzor-light-allowed">
+			<default value="systems/leftswitchpanel/vzor-light-pos"/>
+			<test logic="AND" value="systems/leftswitchpanel/vzor-light-input">
+				systems/leftswitchpanel/serviceable eq 1
+			</test>
+			<output>systems/leftswitchpanel/vzor-light-pos</output>
+		</switch>
+
+		<switch name="calculations/leftswitchpanel/vzor-light-not-allowed">
+			<default value="systems/leftswitchpanel/vzor-light-input"/>
+			<test logic="AND" value="systems/leftswitchpanel/vzor-light-pos">
+				systems/leftswitchpanel/serviceable eq 0
+			</test>
+			<output>systems/leftswitchpanel/vzor-light-input</output>
+		</switch>
+
+		<switch name="calculations/leftswitchpanel/vzor-light-command">
+			<default value="systems/leftswitchpanel/vzor-light-command"/>
+			<test logic="AND" value="0.0">
+				systems/leftswitchpanel/vzor-light-pos eq 0.0
+			</test>
+			<test logic="AND" value="1.0">
+				systems/leftswitchpanel/vzor-light-pos gt 0.0
+			</test>
+			<output>systems/leftswitchpanel/vzor-light-command</output>
+		</switch>
+
+		<kinematic name="calculations/leftswitchpanel/vzor-light-switch-pos">
+			<input>systems/leftswitchpanel/vzor-light-command</input>
+			<traverse>
+			<setting>
+				<position>0</position>
+				<time>0</time>
+			</setting>
+			<setting>
+				<position>1</position>
+				<time>0.1</time>
+			</setting>
+			</traverse>
+			<output>systems/leftswitchpanel/vzor-light-switch-pos</output>
+		</kinematic>
+
+		<switch name="calculations/leftswitchpanel/vzor-light-switch">
+			<default value="systems/leftswitchpanel/vzor-light-switch"/>
+			<test logic="AND" value="1">
+				systems/leftswitchpanel/vzor-light-switch-pos ge 0.5
+			</test>
+			<test logic="AND" value="0">
+				systems/leftswitchpanel/vzor-light-switch-pos lt 0.5
+			</test>
+			<output>systems/leftswitchpanel/vzor-light-switch</output>
+		</switch>
+
+		<switch name="calculations/vzor/light">
+			<default value="systems/leftswitchpanel/vzor-light-pos"/>
+			<test logic="AND" value="1">
+				systems/leftswitchpanel/lightcheck-switch eq 1.0
+			</test>
+			<output>systems/vzor/light</output>
+		</switch>
+
+<!--
+
+		<switch name="calculations/leftswitchpanel/lightcheck-output">
+			<default value="systems/lightcheck-/cover-input"/>
+			<test logic="AND" value="systems/leftswitchpanel/lightcheck-switch">
+				systems/leftswitchpanel/serviceable eq 1
+				systems/leftswitchpanel/lightcheck-pos gt 0.1
+				systems/leftswitchpanel/lightcheck-pos lt 0.9
+			</test>
+			<output>systems/lightcheck-/cover-input</output>
+		</switch>
+
+-->
+
+		<!-- Click-->
+
+		<switch name="calculations/leftswitchpanel/click">
+			<default value="systems/sounds/click/on"/>
+			<test logic="AND" value="1">
+				systems/leftswitchpanel/globus-pos ge 0.25
+				systems/leftswitchpanel/globus-pos le 0.75
+				systems/sounds/click/on == 0
+			</test>
+			<test logic="AND" value="1">
+				systems/leftswitchpanel/vzor-pos ge 0.25
+				systems/leftswitchpanel/vzor-pos le 0.75
+				systems/sounds/click/on == 0
+			</test>
+			<test logic="AND" value="1">
+				systems/leftswitchpanel/rightilluminator-pos ge 0.25
+				systems/leftswitchpanel/rightilluminator-pos le 0.75
+				systems/sounds/click/on == 0
+			</test>
+			<test logic="AND" value="1">
+				systems/leftswitchpanel/backilluminator-pos ge 0.25
+				systems/leftswitchpanel/backilluminator-pos le 0.75
+				systems/sounds/click/on == 0
+			</test>
+			<test logic="AND" value="1">
+				systems/leftswitchpanel/lightcheck-pos ge 0.25
+				systems/leftswitchpanel/lightcheck-pos le 0.75
+				systems/sounds/click/on == 0
+			</test>
+			<test logic="AND" value="1">
+				systems/leftswitchpanel/vzor-light-switch-pos ge 0.25
+				systems/leftswitchpanel/vzor-light-switch-pos le 0.75
+				systems/sounds/click/on == 0
+			</test>
+			<output>systems/sounds/click/on</output>
+		</switch>
+
+	</channel>
+
+</system>

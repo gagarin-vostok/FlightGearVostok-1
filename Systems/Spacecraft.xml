@@ -1,0 +1,320 @@
+<?xml version="1.0"?>
+
+<!--
+	Author: Slavutinsky Victor
+-->
+
+<system>
+
+	<fileheader>
+		<author> Slavutinsky Victor </author>
+		<filecreationdate> 2011 </filecreationdate>
+		<version>$Revision: 1.00 $</version>
+		<description> Spacecraft </description>
+	</fileheader>
+
+	<channel name="Spacecraft">
+
+		<switch name="calculations/spacecraft/whip-antennas-extraction-started">
+			<default value="systems/spacecraft/whip-antennas-extraction-started"/>
+			<test logic="AND" value="1.0">
+				systems/tdu/radiators-pos-norm gt 0.9
+			</test>
+			<output>systems/spacecraft/whip-antennas-extraction-started</output>
+		</switch>
+
+		<kinematic name="calculations/spacecraft/whip-antennas-pos-norm">
+			<input>systems/spacecraft/whip-antennas-extraction-started</input>
+			<traverse>
+			<setting>
+				<position>0.0</position>
+				<time>0</time>
+			</setting>
+			<setting>
+				<position>1.0</position>
+				<time>10</time>
+			</setting>
+			</traverse>
+			<output>systems/spacecraft/whip-antennas-pos-norm</output>
+		</kinematic>
+
+		<switch name="calculations/spacecraft/whip-antennas-extracted">
+			<default value="0"/>
+			<test logic="AND" value="1.0">
+				systems/spacecraft/whip-antennas-pos-norm gt 0.9
+			</test>
+			<output>systems/spacecraft/whip-antennas-extracted</output>
+		</switch>
+
+		<kinematic name="calculations/spacecraft/brake-chute-extraction">
+			<input>systems/spacecraft/brake-chute-extracted</input>
+			<traverse>
+			<setting>
+				<position>0.0</position>
+				<time>0</time>
+			</setting>
+			<setting>
+				<position>1.0</position>
+				<time>10</time>
+			</setting>
+			</traverse>
+			<output>systems/spacecraft/brake-chute-pos-norm</output>
+		</kinematic>
+
+		<kinematic name="calculations/spacecraft/main-chute-extraction">
+			<input>systems/spacecraft/main-chute-extracted</input>
+			<traverse>
+			<setting>
+				<position>0.0</position>
+				<time>0</time>
+			</setting>
+			<setting>
+				<position>1.0</position>
+				<time>30</time>
+			</setting>
+			</traverse>
+			<output>systems/spacecraft/main-chute-pos-norm</output>
+		</kinematic>
+
+		<kinematic name="calculations/spacecraft/engine-sensor-pos-norm">
+			<input>systems/spacecraft/engine-sensor-extraction-started</input>
+			<traverse>
+			<setting>
+				<position>0.0</position>
+				<time>0</time>
+			</setting>
+			<setting>
+				<position>1.0</position>
+				<time>0.1</time>
+			</setting>
+			</traverse>
+			<output>systems/spacecraft/engine-sensor-pos-norm</output>
+		</kinematic>
+
+		<switch name="calculations/spacecraft/engine-sensor-extracted">
+			<default value="0"/>
+			<test logic="AND" value="1.0">
+				systems/spacecraft/engine-sensor-pos-norm gt 0.9
+			</test>
+			<output>systems/spacecraft/engine-sensor-extracted</output>
+		</switch>
+
+		<kinematic name="calculations/spacecraft/activation">
+			<input>stages/unit[5]/active</input>
+			<traverse>
+			<setting>
+				<position>0.0</position>
+				<time>0</time>
+			</setting>
+			<setting>
+				<position>1.0</position>
+				<time>60</time>
+			</setting>
+			</traverse>
+			<output>stages/unit[5]/activated</output>
+		</kinematic>
+
+<!--
+
+		<fcs_function name="calculations/spacecraft/first-brake-chute">
+		<function>
+			<product>
+				<property>systems/spacecraft/brake-chute-pos-norm</property>
+				<difference>
+					<value>1.0</value>
+					<property>systems/spacecraft/brake-chute-dropped</property>
+				</difference>
+				<difference>
+					<value>1.0</value>
+					<property>systems/spacecraft/brake-chute-teared</property>
+				</difference>
+				<value>-10.0</value>
+			</product>
+		</function>
+			<output>inertia/pointmass-location-Y-inches[30]</output>
+		</fcs_function>
+
+		<fcs_function name="calculations/spacecraft/first-main-chute">
+		<function>
+			<product>
+				<difference>
+					<value>1.0</value>
+					<property>systems/spacecraft/main-chute-pos-norm</property>
+				</difference>
+				<difference>
+					<value>1.0</value>
+					<property>systems/spacecraft/main-chute-dropped</property>
+				</difference>
+				<difference>
+					<value>1.0</value>
+					<property>systems/spacecraft/main-chute-teared</property>
+				</difference>
+				<value>22.0866</value>
+			</product>
+		</function>
+			<output>inertia/pointmass-location-X-inches[31]</output>
+		</fcs_function>
+
+		<fcs_function name="calculations/spacecraft/second-main-chute">
+		<function>
+			<product>
+				<difference>
+					<value>1.0</value>
+					<property>systems/spacecraft/main-chute-pos-norm</property>
+				</difference>
+				<difference>
+					<value>1.0</value>
+					<property>systems/spacecraft/main-chute-dropped</property>
+				</difference>
+				<difference>
+					<value>1.0</value>
+					<property>systems/spacecraft/main-chute-teared</property>
+				</difference>
+				<value>22.0866</value>
+			</product>
+		</function>
+			<output>inertia/pointmass-location-X-inches[32]</output>
+		</fcs_function>
+
+-->
+
+		<switch name="calculations/spacecraft/soft-landing-engine">
+			<default value="0"/>
+			<test logic="AND" value="1">
+				stages/unit[5]/active eq 1.0
+				systems/spacecraft/engine-sensor-extracted eq 1.0
+				systems/spacecraft/engine-sensor-teared eq 0.0
+				position/h-agl-ft lt 9.84
+			</test>
+			<output>fcs/throttle-pos-norm[40]</output>
+		</switch>
+
+		<kinematic name="calculations/spacecraft/main-drop-pos">
+			<input>fcs/throttle-pos-norm[40]</input>
+			<traverse>
+			<setting>
+				<position>0.0</position>
+				<time>0</time>
+			</setting>
+			<setting>
+				<position>1.0</position>
+				<time>1</time>
+			</setting>
+			</traverse>
+			<output>systems/spacecraft/main-drop-pos</output>
+		</kinematic>
+
+		<switch name="calculations/spacecraft/main-drop-command">
+			<default value="0"/>
+			<test logic="AND" value="1">
+				stages/unit[5]/active eq 1.0
+				systems/spacecraft/main-drop-pos gt 0.9
+			</test>
+			<output>systems/spacecraft/main-drop-command</output>
+		</switch>
+
+		<switch name="calculations/spacecraft/ground-contact">
+			<default value="0"/>
+			<test logic="OR" value="1">
+				/gear/gear[4]/wow eq 1.0
+				/gear/gear[5]/wow eq 1.0
+				/gear/gear[6]/wow eq 1.0
+				/gear/gear[7]/wow eq 1.0
+				/gear/gear[8]/wow eq 1.0
+				/gear/gear[9]/wow eq 1.0
+				/gear/gear[10]/wow eq 1.0
+				/gear/gear[11]/wow eq 1.0
+				/gear/gear[12]/wow eq 1.0
+				/gear/gear[13]/wow eq 1.0
+				/gear/gear[14]/wow eq 1.0
+				/gear/gear[15]/wow eq 1.0
+			</test>
+			<output>systems/spacecraft/ground-contact</output>
+		</switch>
+
+		<switch name="calculations/spacecraft/brake-chute-drop">
+			<default value="systems/spacecraft/brake-chute-dropped"/>
+			<test logic="AND" value="1">
+				systems/spacecraft/main-drop-command gt 0.9
+			</test>
+			<output>systems/spacecraft/brake-chute-dropped</output>
+		</switch>
+
+		<switch name="calculations/spacecraft/main-chute-drop">
+			<default value="systems/spacecraft/main-chute-dropped"/>
+			<test logic="AND" value="1">
+				systems/spacecraft/main-drop-command gt 0.9
+			</test>
+			<output>systems/spacecraft/main-chute-dropped</output>
+		</switch>
+
+		<!-- Exhausts calculations -->
+
+<!-- 
+
+	That code is weird but since FG do not know about colour-property+colour-factor now
+	it's needed to count colour  property for every exhaust stripe. It could be shorter with Nasal
+	but it's does not matter. If FG code will be advanced then all that part will be removed
+	for shorter realisation.
+
+ -->
+
+		<!-- Main engines -->
+
+		<fcs_function name="propulsion/engine[40]/red">
+		<function>
+			<sum>
+				<value>0.949</value>
+				<product>
+					<difference>
+						<value>1.0</value>
+						<value>0.949</value>
+					</difference>
+					<quotient>
+						<property>propulsion/engine[40]/fuel-flow-rate-pps</property>
+						<value>20.69</value>
+					</quotient>
+				</product>
+			</sum>
+		</function>
+		</fcs_function>
+
+		<fcs_function name="propulsion/engine[40]/green">
+		<function>
+			<quotient>
+				<property>propulsion/engine[40]/fuel-flow-rate-pps</property>
+				<value>20.69</value>
+			</quotient>
+		</function>
+		</fcs_function>
+
+		<fcs_function name="propulsion/engine[40]/blue">
+		<function>
+			<sum>
+				<value>0.1</value>
+				<product>
+					<difference>
+						<value>0.25</value>
+						<value>0.1</value>
+					</difference>
+					<quotient>
+						<property>propulsion/engine[40]/fuel-flow-rate-pps</property>
+						<value>20.69</value>
+					</quotient>
+				</product>
+			</sum>
+		</function>
+		</fcs_function>
+
+		<fcs_function name="propulsion/engine[40]/transparency">
+		<function>
+			<quotient>
+				<property>propulsion/engine[40]/green</property>
+				<value>2</value>
+			</quotient>
+		</function>
+		</fcs_function>
+
+	</channel>
+
+</system>

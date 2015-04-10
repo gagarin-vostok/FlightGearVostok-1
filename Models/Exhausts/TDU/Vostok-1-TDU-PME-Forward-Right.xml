@@ -1,0 +1,137 @@
+<?xml version="1.0"?>
+
+<!--
+	Author: Slavutinsky Victor
+-->
+
+<PropertyList>
+
+	<path>Vostok-1-TDU-Maneur-Exhaust.ac</path>
+
+	<offsets>
+		<x-m>0.0</x-m>
+		<y-m>0.0</y-m>
+		<z-m>0.0</z-m>
+		<pitch-deg>0</pitch-deg>
+	</offsets>
+
+	<enable-hot type="bool">false</enable-hot>
+
+	<animation>
+		<type>material</type>
+		<object-name>TDU_PMEExhaust1</object-name>
+		<diffuse>
+			<red-prop>fdm/jsbsim/propulsion/engine[38]/red</red-prop>
+			<green-prop>fdm/jsbsim/propulsion/engine[38]/green</green-prop>
+			<blue-prop>fdm/jsbsim/propulsion/engine[38]/blue</blue-prop>
+		</diffuse>
+		<ambient>
+			<red-prop>fdm/jsbsim/propulsion/engine[38]/red</red-prop>
+			<green-prop>fdm/jsbsim/propulsion/engine[38]/green</green-prop>
+			<blue-prop>fdm/jsbsim/propulsion/engine[38]/blue</blue-prop>
+		</ambient>
+		<specular>
+			<red-prop>fdm/jsbsim/propulsion/engine[38]/red</red-prop>
+			<green-prop>fdm/jsbsim/propulsion/engine[38]/green</green-prop>
+			<blue-prop>fdm/jsbsim/propulsion/engine[38]/blue</blue-prop>
+		</specular>
+		<transparency>
+			<alpha-prop>fdm/jsbsim/propulsion/engine[38]/transparency</alpha-prop>
+		</transparency>
+	</animation>
+
+	<animation>
+		<type>material</type>
+		<object-name>TDU_PMEExhaust2</object-name>
+		<diffuse>
+			<red-prop>fdm/jsbsim/propulsion/engine[38]/red</red-prop>
+			<green-prop>fdm/jsbsim/propulsion/engine[38]/green</green-prop>
+			<blue-prop>fdm/jsbsim/propulsion/engine[38]/blue</blue-prop>
+		</diffuse>
+		<ambient>
+			<red-prop>fdm/jsbsim/propulsion/engine[38]/red</red-prop>
+			<green-prop>fdm/jsbsim/propulsion/engine[38]/green</green-prop>
+			<blue-prop>fdm/jsbsim/propulsion/engine[38]/blue</blue-prop>
+		</ambient>
+		<specular>
+			<red-prop>fdm/jsbsim/propulsion/engine[38]/red</red-prop>
+			<green-prop>fdm/jsbsim/propulsion/engine[38]/green</green-prop>
+			<blue-prop>fdm/jsbsim/propulsion/engine[38]/blue</blue-prop>
+		</specular>
+		<transparency>
+			<alpha-prop>fdm/jsbsim/propulsion/engine[38]/transparency-d2</alpha-prop>
+		</transparency>
+	</animation>
+
+	<animation>
+		<type>material</type>
+		<object-name>TDU_PMEExhaust3</object-name>
+		<diffuse>
+			<red-prop>fdm/jsbsim/propulsion/engine[38]/red</red-prop>
+			<green-prop>fdm/jsbsim/propulsion/engine[38]/green</green-prop>
+			<blue-prop>fdm/jsbsim/propulsion/engine[38]/blue</blue-prop>
+		</diffuse>
+		<ambient>
+			<red-prop>fdm/jsbsim/propulsion/engine[38]/red</red-prop>
+			<green-prop>fdm/jsbsim/propulsion/engine[38]/green</green-prop>
+			<blue-prop>fdm/jsbsim/propulsion/engine[38]/blue</blue-prop>
+		</ambient>
+		<specular>
+			<red-prop>fdm/jsbsim/propulsion/engine[38]/red</red-prop>
+			<green-prop>fdm/jsbsim/propulsion/engine[38]/green</green-prop>
+			<blue-prop>fdm/jsbsim/propulsion/engine[38]/blue</blue-prop>
+		</specular>
+		<transparency>
+			<alpha-prop>fdm/jsbsim/propulsion/engine[38]/transparency-d4</alpha-prop>
+		</transparency>
+	</animation>
+
+	<animation>
+		<type>material</type>
+		<object-name>TDU_PMEExhaust4</object-name>
+		<diffuse>
+			<red-prop>fdm/jsbsim/propulsion/engine[38]/red</red-prop>
+			<green-prop>fdm/jsbsim/propulsion/engine[38]/green</green-prop>
+			<blue-prop>fdm/jsbsim/propulsion/engine[38]/blue</blue-prop>
+		</diffuse>
+		<ambient>
+			<red-prop>fdm/jsbsim/propulsion/engine[38]/red</red-prop>
+			<green-prop>fdm/jsbsim/propulsion/engine[38]/green</green-prop>
+			<blue-prop>fdm/jsbsim/propulsion/engine[38]/blue</blue-prop>
+		</ambient>
+		<specular>
+			<red-prop>fdm/jsbsim/propulsion/engine[38]/red</red-prop>
+			<green-prop>fdm/jsbsim/propulsion/engine[38]/green</green-prop>
+			<blue-prop>fdm/jsbsim/propulsion/engine[38]/blue</blue-prop>
+		</specular>
+		<transparency>
+			<alpha-prop>fdm/jsbsim/propulsion/engine[38]/transparency-d8</alpha-prop>
+		</transparency>
+	</animation>
+
+	<animation>
+		<type>material</type>
+		<object-name>TDU_PMEExhaust5</object-name>
+		<diffuse>
+			<red-prop>fdm/jsbsim/propulsion/engine[38]/red</red-prop>
+			<green-prop>fdm/jsbsim/propulsion/engine[38]/green</green-prop>
+			<blue-prop>fdm/jsbsim/propulsion/engine[38]/blue</blue-prop>
+		</diffuse>
+		<ambient>
+			<red-prop>fdm/jsbsim/propulsion/engine[38]/red</red-prop>
+			<green-prop>fdm/jsbsim/propulsion/engine[38]/green</green-prop>
+			<blue-prop>fdm/jsbsim/propulsion/engine[38]/blue</blue-prop>
+		</ambient>
+		<specular>
+			<red-prop>fdm/jsbsim/propulsion/engine[38]/red</red-prop>
+			<green-prop>fdm/jsbsim/propulsion/engine[38]/green</green-prop>
+			<blue-prop>fdm/jsbsim/propulsion/engine[38]/blue</blue-prop>
+		</specular>
+		<transparency>
+			<alpha-prop>fdm/jsbsim/propulsion/engine[38]/transparency-d16</alpha-prop>
+		</transparency>
+	</animation>
+
+	<enable-hot type="bool">false</enable-hot>
+
+</PropertyList>

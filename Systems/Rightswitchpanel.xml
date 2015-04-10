@@ -1,0 +1,1065 @@
+<?xml version="1.0"?>
+
+<!--
+	Author: Slavutinsky Victor
+-->
+
+<system>
+
+	<fileheader>
+		<author> Slavutinsky Victor </author>
+		<filecreationdate> 2011 </filecreationdate>
+		<version>$Revision: 1.00 $</version>
+		<description> Rightswitchpanel </description>
+	</fileheader>
+
+<!--	That must be aded to set file
+
+	<fdm>
+		<jsbsim>
+			<systems>
+				<rightswitchpanel>
+					<serviceable type="bool">1</serviceable>
+					<lock-command type="float">1</lock-command>
+					<lock-pos type="float">1</lock-pos>
+					<lever-command type="float">0</lever-command>
+					<lever-pos type="float">0</lever-pos>
+					<pilot-oscillator-pos>0</pilot-oscillator-pos>
+					<shift-oscillator-command>0</shift-oscillator-command>
+					<shift-oscillator-pos>0</shift-oscillator-pos>
+				</rightswitchpanel>
+			</systems>
+		</jsbsim>
+	</fdm>
+
+-->
+
+	<channel name="Rightswitchpanel">
+
+	<!-- cover -->
+
+		<switch name="calculations/rightswitchpanel/cover-allowed">
+			<default value="systems/rightswitchpanel/cover-command"/>
+			<test logic="AND" value="systems/rightswitchpanel/cover-input">
+				systems/rightswitchpanel/serviceable eq 1
+				systems/rightswitchpanel/one-two-ignition-switch eq 0
+				systems/rightswitchpanel/one-drop-switch eq 0
+				systems/rightswitchpanel/fairings-drop-switch eq 0
+				systems/rightswitchpanel/two-drop-switch eq 0
+				systems/rightswitchpanel/three-ignition-switch eq 0
+				systems/rightswitchpanel/three-drop-switch eq 0
+				systems/rightswitchpanel/tdu-ignition-switch eq 0
+				systems/rightswitchpanel/tdu-drop-switch eq 0
+				systems/rightswitchpanel/brake-parachute-switch eq 0
+				systems/rightswitchpanel/main-parachute-switch eq 0
+				systems/rightswitchpanel/landing-engine-switch eq 0
+			</test>
+			<output>systems/rightswitchpanel/cover-command</output>
+		</switch>
+
+		<kinematic name="calculations/rightswitchpanel/cover-pos">
+			<input>systems/rightswitchpanel/cover-command</input>
+			<traverse>
+			<setting>
+				<position>0</position>
+				<time>0</time>
+			</setting>
+			<setting>
+				<position>1</position>
+				<time>0.1</time>
+			</setting>
+			</traverse>
+			<output>systems/rightswitchpanel/cover-pos</output>
+		</kinematic>
+
+		<switch name="calculations/rightswitchpanel/cover-not-allowed">
+			<default value="systems/rightswitchpanel/cover-input"/>
+			<test logic="AND" value="systems/rightswitchpanel/cover-command">
+				systems/rightswitchpanel/serviceable eq 0
+				systems/rightswitchpanel/one-two-ignition-switch eq 1
+				systems/rightswitchpanel/one-drop-switch eq 1
+				systems/rightswitchpanel/fairings-drop-switch eq 1
+				systems/rightswitchpanel/two-drop-switch eq 1
+				systems/rightswitchpanel/three-ignition-switch eq 1
+				systems/rightswitchpanel/three-drop-switch eq 1
+				systems/rightswitchpanel/tdu-ignition-switch eq 1
+				systems/rightswitchpanel/tdu-drop-switch eq 1
+				systems/rightswitchpanel/brake-parachute-switch eq 1
+				systems/rightswitchpanel/main-parachute-switch eq 1
+				systems/rightswitchpanel/landing-engine-switch eq 1
+			</test>
+			<output>systems/rightswitchpanel/cover-input</output>
+		</switch>
+
+		<switch name="calculations/rightswitchpanel/cover-switch">
+			<default value="systems/rightswitchpanel/cover-switch"/>
+			<test logic="AND" value="1">
+				systems/rightswitchpanel/cover-pos ge 0.5
+			</test>
+			<test logic="AND" value="0">
+				systems/rightswitchpanel/cover-pos lt 0.5
+			</test>
+			<output>systems/rightswitchpanel/cover-switch</output>
+		</switch>
+
+	<!-- one-two-ignition -->
+
+		<switch name="calculations/rightswitchpanel/one-two-ignition-allowed">
+			<default value="systems/rightswitchpanel/one-two-ignition-command"/>
+			<test logic="AND" value="systems/rightswitchpanel/one-two-ignition-input">
+				systems/rightswitchpanel/serviceable eq 1
+				systems/rightswitchpanel/cover-switch eq 1
+			</test>
+			<output>systems/rightswitchpanel/one-two-ignition-command</output>
+		</switch>
+
+		<switch name="calculations/rightswitchpanel/one-two-ignition-not-allowed">
+			<default value="systems/rightswitchpanel/one-two-ignition-input"/>
+			<test logic="OR" value="systems/rightswitchpanel/one-two-ignition-command">
+				systems/rightswitchpanel/serviceable eq 0
+				systems/rightswitchpanel/cover-switch eq 0
+			</test>
+			<output>systems/rightswitchpanel/one-two-ignition-input</output>
+		</switch>
+
+		<switch name="calculations/rightswitchpanel/one-two-ignition-safer-command">
+			<default value="systems/rightswitchpanel/one-two-ignition-safer-command"/>
+			<test logic="AND" value="systems/rightswitchpanel/one-two-ignition-command">
+				systems/rightswitchpanel/serviceable eq 1
+				systems/rightswitchpanel/cover-switch eq 1
+			</test>
+			<output>systems/rightswitchpanel/one-two-ignition-safer-command</output>
+		</switch>
+
+		<kinematic name="calculations/rightswitchpanel/one-two-ignition-safer-pos">
+			<input>systems/rightswitchpanel/one-two-ignition-safer-command</input>
+			<traverse>
+			<setting>
+				<position>0</position>
+				<time>0</time>
+			</setting>
+			<setting>
+				<position>1</position>
+				<time>0.2</time>
+			</setting>
+			</traverse>
+			<output>systems/rightswitchpanel/one-two-ignition-safer-pos</output>
+		</kinematic>
+
+		<switch name="calculations/rightswitchpanel/one-two-ignition-safer-switch">
+			<default value="systems/rightswitchpanel/one-two-ignition-safer-switch"/>
+			<test logic="AND" value="1">
+				systems/rightswitchpanel/one-two-ignition-safer-pos ge 0.9
+			</test>
+			<test logic="AND" value="0">
+				systems/rightswitchpanel/one-two-ignition-safer-pos lt 0.9
+			</test>
+			<output>systems/rightswitchpanel/one-two-ignition-safer-switch</output>
+		</switch>
+
+		<kinematic name="calculations/rightswitchpanel/one-two-ignition-pos">
+			<input>systems/rightswitchpanel/one-two-ignition-safer-switch</input>
+			<traverse>
+			<setting>
+				<position>0</position>
+				<time>0</time>
+			</setting>
+			<setting>
+				<position>1</position>
+				<time>0.2</time>
+			</setting>
+			</traverse>
+			<output>systems/rightswitchpanel/one-two-ignition-pos</output>
+		</kinematic>
+
+		<switch name="calculations/rightswitchpanel/one-two-ignition-switch">
+			<default value="systems/rightswitchpanel/one-two-ignition-switch"/>
+			<test logic="AND" value="1">
+				systems/rightswitchpanel/one-two-ignition-pos ge 0.9
+			</test>
+			<test logic="AND" value="0">
+				systems/rightswitchpanel/one-two-ignition-pos lt 0.9
+			</test>
+			<output>systems/rightswitchpanel/one-two-ignition-switch</output>
+		</switch>
+
+	<!-- one-drop -->
+
+		<switch name="calculations/rightswitchpanel/one-drop-allowed">
+			<default value="systems/rightswitchpanel/one-drop-command"/>
+			<test logic="AND" value="systems/rightswitchpanel/one-drop-input">
+				systems/rightswitchpanel/serviceable eq 1
+				systems/rightswitchpanel/cover-switch eq 1
+			</test>
+			<output>systems/rightswitchpanel/one-drop-command</output>
+		</switch>
+
+		<switch name="calculations/rightswitchpanel/one-drop-not-allowed">
+			<default value="systems/rightswitchpanel/one-drop-input"/>
+			<test logic="OR" value="systems/rightswitchpanel/one-drop-command">
+				systems/rightswitchpanel/serviceable eq 0
+				systems/rightswitchpanel/cover-switch eq 0
+			</test>
+			<output>systems/rightswitchpanel/one-drop-input</output>
+		</switch>
+
+		<switch name="calculations/rightswitchpanel/one-drop-safer-command">
+			<default value="systems/rightswitchpanel/one-drop-safer-command"/>
+			<test logic="AND" value="systems/rightswitchpanel/one-drop-command">
+				systems/rightswitchpanel/serviceable eq 1
+				systems/rightswitchpanel/cover-switch eq 1
+			</test>
+			<output>systems/rightswitchpanel/one-drop-safer-command</output>
+		</switch>
+
+		<kinematic name="calculations/rightswitchpanel/one-drop-safer-pos">
+			<input>systems/rightswitchpanel/one-drop-safer-command</input>
+			<traverse>
+			<setting>
+				<position>0</position>
+				<time>0</time>
+			</setting>
+			<setting>
+				<position>1</position>
+				<time>0.2</time>
+			</setting>
+			</traverse>
+			<output>systems/rightswitchpanel/one-drop-safer-pos</output>
+		</kinematic>
+
+		<switch name="calculations/rightswitchpanel/one-drop-safer-switch">
+			<default value="systems/rightswitchpanel/one-drop-safer-switch"/>
+			<test logic="AND" value="1">
+				systems/rightswitchpanel/one-drop-safer-pos ge 0.9
+			</test>
+			<test logic="AND" value="0">
+				systems/rightswitchpanel/one-drop-safer-pos lt 0.9
+			</test>
+			<output>systems/rightswitchpanel/one-drop-safer-switch</output>
+		</switch>
+
+		<kinematic name="calculations/rightswitchpanel/one-drop-pos">
+			<input>systems/rightswitchpanel/one-drop-safer-switch</input>
+			<traverse>
+			<setting>
+				<position>0</position>
+				<time>0</time>
+			</setting>
+			<setting>
+				<position>1</position>
+				<time>0.2</time>
+			</setting>
+			</traverse>
+			<output>systems/rightswitchpanel/one-drop-pos</output>
+		</kinematic>
+
+		<switch name="calculations/rightswitchpanel/one-drop-switch">
+			<default value="systems/rightswitchpanel/one-drop-switch"/>
+			<test logic="AND" value="1">
+				systems/rightswitchpanel/one-drop-pos ge 0.9
+			</test>
+			<test logic="AND" value="0">
+				systems/rightswitchpanel/one-drop-pos lt 0.9
+			</test>
+			<output>systems/rightswitchpanel/one-drop-switch</output>
+		</switch>
+
+	<!-- fairings-drop -->
+
+		<switch name="calculations/rightswitchpanel/fairings-drop-allowed">
+			<default value="systems/rightswitchpanel/fairings-drop-command"/>
+			<test logic="AND" value="systems/rightswitchpanel/fairings-drop-input">
+				systems/rightswitchpanel/serviceable eq 1
+				systems/rightswitchpanel/cover-switch eq 1
+			</test>
+			<output>systems/rightswitchpanel/fairings-drop-command</output>
+		</switch>
+
+		<switch name="calculations/rightswitchpanel/fairings-drop-not-allowed">
+			<default value="systems/rightswitchpanel/fairings-drop-input"/>
+			<test logic="OR" value="systems/rightswitchpanel/fairings-drop-command">
+				systems/rightswitchpanel/serviceable eq 0
+				systems/rightswitchpanel/cover-switch eq 0
+			</test>
+			<output>systems/rightswitchpanel/fairings-drop-input</output>
+		</switch>
+
+		<switch name="calculations/rightswitchpanel/fairings-drop-safer-command">
+			<default value="systems/rightswitchpanel/fairings-drop-safer-command"/>
+			<test logic="AND" value="systems/rightswitchpanel/fairings-drop-command">
+				systems/rightswitchpanel/serviceable eq 1
+				systems/rightswitchpanel/cover-switch eq 1
+			</test>
+			<output>systems/rightswitchpanel/fairings-drop-safer-command</output>
+		</switch>
+
+		<kinematic name="calculations/rightswitchpanel/fairings-drop-safer-pos">
+			<input>systems/rightswitchpanel/fairings-drop-safer-command</input>
+			<traverse>
+			<setting>
+				<position>0</position>
+				<time>0</time>
+			</setting>
+			<setting>
+				<position>1</position>
+				<time>0.2</time>
+			</setting>
+			</traverse>
+			<output>systems/rightswitchpanel/fairings-drop-safer-pos</output>
+		</kinematic>
+
+		<switch name="calculations/rightswitchpanel/fairings-drop-safer-switch">
+			<default value="systems/rightswitchpanel/fairings-drop-safer-switch"/>
+			<test logic="AND" value="1">
+				systems/rightswitchpanel/fairings-drop-safer-pos ge 0.9
+			</test>
+			<test logic="AND" value="0">
+				systems/rightswitchpanel/fairings-drop-safer-pos lt 0.9
+			</test>
+			<output>systems/rightswitchpanel/fairings-drop-safer-switch</output>
+		</switch>
+
+		<kinematic name="calculations/rightswitchpanel/fairings-drop-pos">
+			<input>systems/rightswitchpanel/fairings-drop-safer-switch</input>
+			<traverse>
+			<setting>
+				<position>0</position>
+				<time>0</time>
+			</setting>
+			<setting>
+				<position>1</position>
+				<time>0.2</time>
+			</setting>
+			</traverse>
+			<output>systems/rightswitchpanel/fairings-drop-pos</output>
+		</kinematic>
+
+		<switch name="calculations/rightswitchpanel/fairings-drop-switch">
+			<default value="systems/rightswitchpanel/fairings-drop-switch"/>
+			<test logic="AND" value="1">
+				systems/rightswitchpanel/fairings-drop-pos ge 0.9
+			</test>
+			<test logic="AND" value="0">
+				systems/rightswitchpanel/fairings-drop-pos lt 0.9
+			</test>
+			<output>systems/rightswitchpanel/fairings-drop-switch</output>
+		</switch>
+
+	<!-- two-drop -->
+
+		<switch name="calculations/rightswitchpanel/two-drop-allowed">
+			<default value="systems/rightswitchpanel/two-drop-command"/>
+			<test logic="AND" value="systems/rightswitchpanel/two-drop-input">
+				systems/rightswitchpanel/serviceable eq 1
+				systems/rightswitchpanel/cover-switch eq 1
+			</test>
+			<output>systems/rightswitchpanel/two-drop-command</output>
+		</switch>
+
+		<switch name="calculations/rightswitchpanel/two-drop-not-allowed">
+			<default value="systems/rightswitchpanel/two-drop-input"/>
+			<test logic="OR" value="systems/rightswitchpanel/two-drop-command">
+				systems/rightswitchpanel/serviceable eq 0
+				systems/rightswitchpanel/cover-switch eq 0
+			</test>
+			<output>systems/rightswitchpanel/two-drop-input</output>
+		</switch>
+
+		<switch name="calculations/rightswitchpanel/two-drop-safer-command">
+			<default value="systems/rightswitchpanel/two-drop-safer-command"/>
+			<test logic="AND" value="systems/rightswitchpanel/two-drop-command">
+				systems/rightswitchpanel/serviceable eq 1
+				systems/rightswitchpanel/cover-switch eq 1
+			</test>
+			<output>systems/rightswitchpanel/two-drop-safer-command</output>
+		</switch>
+
+		<kinematic name="calculations/rightswitchpanel/two-drop-safer-pos">
+			<input>systems/rightswitchpanel/two-drop-safer-command</input>
+			<traverse>
+			<setting>
+				<position>0</position>
+				<time>0</time>
+			</setting>
+			<setting>
+				<position>1</position>
+				<time>0.2</time>
+			</setting>
+			</traverse>
+			<output>systems/rightswitchpanel/two-drop-safer-pos</output>
+		</kinematic>
+
+		<switch name="calculations/rightswitchpanel/two-drop-safer-switch">
+			<default value="systems/rightswitchpanel/two-drop-safer-switch"/>
+			<test logic="AND" value="1">
+				systems/rightswitchpanel/two-drop-safer-pos ge 0.9
+			</test>
+			<test logic="AND" value="0">
+				systems/rightswitchpanel/two-drop-safer-pos lt 0.9
+			</test>
+			<output>systems/rightswitchpanel/two-drop-safer-switch</output>
+		</switch>
+
+		<kinematic name="calculations/rightswitchpanel/two-drop-pos">
+			<input>systems/rightswitchpanel/two-drop-safer-switch</input>
+			<traverse>
+			<setting>
+				<position>0</position>
+				<time>0</time>
+			</setting>
+			<setting>
+				<position>1</position>
+				<time>0.2</time>
+			</setting>
+			</traverse>
+			<output>systems/rightswitchpanel/two-drop-pos</output>
+		</kinematic>
+
+		<switch name="calculations/rightswitchpanel/two-drop-switch">
+			<default value="systems/rightswitchpanel/two-drop-switch"/>
+			<test logic="AND" value="1">
+				systems/rightswitchpanel/two-drop-pos ge 0.9
+			</test>
+			<test logic="AND" value="0">
+				systems/rightswitchpanel/two-drop-pos lt 0.9
+			</test>
+			<output>systems/rightswitchpanel/two-drop-switch</output>
+		</switch>
+
+	<!-- three-ignition -->
+
+		<switch name="calculations/rightswitchpanel/three-ignition-allowed">
+			<default value="systems/rightswitchpanel/three-ignition-command"/>
+			<test logic="AND" value="systems/rightswitchpanel/three-ignition-input">
+				systems/rightswitchpanel/serviceable eq 1
+				systems/rightswitchpanel/cover-switch eq 1
+			</test>
+			<output>systems/rightswitchpanel/three-ignition-command</output>
+		</switch>
+
+		<switch name="calculations/rightswitchpanel/three-ignition-not-allowed">
+			<default value="systems/rightswitchpanel/three-ignition-input"/>
+			<test logic="OR" value="systems/rightswitchpanel/three-ignition-command">
+				systems/rightswitchpanel/serviceable eq 0
+				systems/rightswitchpanel/cover-switch eq 0
+			</test>
+			<output>systems/rightswitchpanel/three-ignition-input</output>
+		</switch>
+
+		<switch name="calculations/rightswitchpanel/three-ignition-safer-command">
+			<default value="systems/rightswitchpanel/three-ignition-safer-command"/>
+			<test logic="AND" value="systems/rightswitchpanel/three-ignition-command">
+				systems/rightswitchpanel/serviceable eq 1
+				systems/rightswitchpanel/cover-switch eq 1
+			</test>
+			<output>systems/rightswitchpanel/three-ignition-safer-command</output>
+		</switch>
+
+		<kinematic name="calculations/rightswitchpanel/three-ignition-safer-pos">
+			<input>systems/rightswitchpanel/three-ignition-safer-command</input>
+			<traverse>
+			<setting>
+				<position>0</position>
+				<time>0</time>
+			</setting>
+			<setting>
+				<position>1</position>
+				<time>0.2</time>
+			</setting>
+			</traverse>
+			<output>systems/rightswitchpanel/three-ignition-safer-pos</output>
+		</kinematic>
+
+		<switch name="calculations/rightswitchpanel/three-ignition-safer-switch">
+			<default value="systems/rightswitchpanel/three-ignition-safer-switch"/>
+			<test logic="AND" value="1">
+				systems/rightswitchpanel/three-ignition-safer-pos ge 0.9
+			</test>
+			<test logic="AND" value="0">
+				systems/rightswitchpanel/three-ignition-safer-pos lt 0.9
+			</test>
+			<output>systems/rightswitchpanel/three-ignition-safer-switch</output>
+		</switch>
+
+		<kinematic name="calculations/rightswitchpanel/three-ignition-pos">
+			<input>systems/rightswitchpanel/three-ignition-safer-switch</input>
+			<traverse>
+			<setting>
+				<position>0</position>
+				<time>0</time>
+			</setting>
+			<setting>
+				<position>1</position>
+				<time>0.2</time>
+			</setting>
+			</traverse>
+			<output>systems/rightswitchpanel/three-ignition-pos</output>
+		</kinematic>
+
+		<switch name="calculations/rightswitchpanel/three-ignition-switch">
+			<default value="systems/rightswitchpanel/three-ignition-switch"/>
+			<test logic="AND" value="1">
+				systems/rightswitchpanel/three-ignition-pos ge 0.9
+			</test>
+			<test logic="AND" value="0">
+				systems/rightswitchpanel/three-ignition-pos lt 0.9
+			</test>
+			<output>systems/rightswitchpanel/three-ignition-switch</output>
+		</switch>
+
+	<!-- three-drop -->
+
+		<switch name="calculations/rightswitchpanel/three-drop-allowed">
+			<default value="systems/rightswitchpanel/three-drop-command"/>
+			<test logic="AND" value="systems/rightswitchpanel/three-drop-input">
+				systems/rightswitchpanel/serviceable eq 1
+				systems/rightswitchpanel/cover-switch eq 1
+			</test>
+			<output>systems/rightswitchpanel/three-drop-command</output>
+		</switch>
+
+		<switch name="calculations/rightswitchpanel/three-drop-not-allowed">
+			<default value="systems/rightswitchpanel/three-drop-input"/>
+			<test logic="OR" value="systems/rightswitchpanel/three-drop-command">
+				systems/rightswitchpanel/serviceable eq 0
+				systems/rightswitchpanel/cover-switch eq 0
+			</test>
+			<output>systems/rightswitchpanel/three-drop-input</output>
+		</switch>
+
+		<switch name="calculations/rightswitchpanel/three-drop-safer-command">
+			<default value="systems/rightswitchpanel/three-drop-safer-command"/>
+			<test logic="AND" value="systems/rightswitchpanel/three-drop-command">
+				systems/rightswitchpanel/serviceable eq 1
+				systems/rightswitchpanel/cover-switch eq 1
+			</test>
+			<output>systems/rightswitchpanel/three-drop-safer-command</output>
+		</switch>
+
+		<kinematic name="calculations/rightswitchpanel/three-drop-safer-pos">
+			<input>systems/rightswitchpanel/three-drop-safer-command</input>
+			<traverse>
+			<setting>
+				<position>0</position>
+				<time>0</time>
+			</setting>
+			<setting>
+				<position>1</position>
+				<time>0.2</time>
+			</setting>
+			</traverse>
+			<output>systems/rightswitchpanel/three-drop-safer-pos</output>
+		</kinematic>
+
+		<switch name="calculations/rightswitchpanel/three-drop-safer-switch">
+			<default value="systems/rightswitchpanel/three-drop-safer-switch"/>
+			<test logic="AND" value="1">
+				systems/rightswitchpanel/three-drop-safer-pos ge 0.9
+			</test>
+			<test logic="AND" value="0">
+				systems/rightswitchpanel/three-drop-safer-pos lt 0.9
+			</test>
+			<output>systems/rightswitchpanel/three-drop-safer-switch</output>
+		</switch>
+
+		<kinematic name="calculations/rightswitchpanel/three-drop-pos">
+			<input>systems/rightswitchpanel/three-drop-safer-switch</input>
+			<traverse>
+			<setting>
+				<position>0</position>
+				<time>0</time>
+			</setting>
+			<setting>
+				<position>1</position>
+				<time>0.2</time>
+			</setting>
+			</traverse>
+			<output>systems/rightswitchpanel/three-drop-pos</output>
+		</kinematic>
+
+		<switch name="calculations/rightswitchpanel/three-drop-switch">
+			<default value="systems/rightswitchpanel/three-drop-switch"/>
+			<test logic="AND" value="1">
+				systems/rightswitchpanel/three-drop-pos ge 0.9
+			</test>
+			<test logic="AND" value="0">
+				systems/rightswitchpanel/three-drop-pos lt 0.9
+			</test>
+			<output>systems/rightswitchpanel/three-drop-switch</output>
+		</switch>
+
+	<!-- tdu-ignition -->
+
+		<switch name="calculations/rightswitchpanel/tdu-ignition-allowed">
+			<default value="systems/rightswitchpanel/tdu-ignition-command"/>
+			<test logic="AND" value="systems/rightswitchpanel/tdu-ignition-input">
+				systems/rightswitchpanel/serviceable eq 1
+				systems/rightswitchpanel/cover-switch eq 1
+			</test>
+			<output>systems/rightswitchpanel/tdu-ignition-command</output>
+		</switch>
+
+		<switch name="calculations/rightswitchpanel/tdu-ignition-not-allowed">
+			<default value="systems/rightswitchpanel/tdu-ignition-input"/>
+			<test logic="OR" value="systems/rightswitchpanel/tdu-ignition-command">
+				systems/rightswitchpanel/serviceable eq 0
+				systems/rightswitchpanel/cover-switch eq 0
+			</test>
+			<output>systems/rightswitchpanel/tdu-ignition-input</output>
+		</switch>
+
+		<switch name="calculations/rightswitchpanel/tdu-ignition-safer-command">
+			<default value="systems/rightswitchpanel/tdu-ignition-safer-command"/>
+			<test logic="AND" value="systems/rightswitchpanel/tdu-ignition-command">
+				systems/rightswitchpanel/serviceable eq 1
+				systems/rightswitchpanel/cover-switch eq 1
+			</test>
+			<output>systems/rightswitchpanel/tdu-ignition-safer-command</output>
+		</switch>
+
+		<kinematic name="calculations/rightswitchpanel/tdu-ignition-safer-pos">
+			<input>systems/rightswitchpanel/tdu-ignition-safer-command</input>
+			<traverse>
+			<setting>
+				<position>0</position>
+				<time>0</time>
+			</setting>
+			<setting>
+				<position>1</position>
+				<time>0.2</time>
+			</setting>
+			</traverse>
+			<output>systems/rightswitchpanel/tdu-ignition-safer-pos</output>
+		</kinematic>
+
+		<switch name="calculations/rightswitchpanel/tdu-ignition-safer-switch">
+			<default value="systems/rightswitchpanel/tdu-ignition-safer-switch"/>
+			<test logic="AND" value="1">
+				systems/rightswitchpanel/tdu-ignition-safer-pos ge 0.9
+			</test>
+			<test logic="AND" value="0">
+				systems/rightswitchpanel/tdu-ignition-safer-pos lt 0.9
+			</test>
+			<output>systems/rightswitchpanel/tdu-ignition-safer-switch</output>
+		</switch>
+
+		<kinematic name="calculations/rightswitchpanel/tdu-ignition-pos">
+			<input>systems/rightswitchpanel/tdu-ignition-safer-switch</input>
+			<traverse>
+			<setting>
+				<position>0</position>
+				<time>0</time>
+			</setting>
+			<setting>
+				<position>1</position>
+				<time>0.2</time>
+			</setting>
+			</traverse>
+			<output>systems/rightswitchpanel/tdu-ignition-pos</output>
+		</kinematic>
+
+		<switch name="calculations/rightswitchpanel/tdu-ignition-switch">
+			<default value="systems/rightswitchpanel/tdu-ignition-switch"/>
+			<test logic="AND" value="1">
+				systems/rightswitchpanel/tdu-ignition-pos ge 0.9
+			</test>
+			<test logic="AND" value="0">
+				systems/rightswitchpanel/tdu-ignition-pos lt 0.9
+			</test>
+			<output>systems/rightswitchpanel/tdu-ignition-switch</output>
+		</switch>
+
+	<!-- tdu-drop -->
+
+		<switch name="calculations/rightswitchpanel/tdu-drop-allowed">
+			<default value="systems/rightswitchpanel/tdu-drop-command"/>
+			<test logic="AND" value="systems/rightswitchpanel/tdu-drop-input">
+				systems/rightswitchpanel/serviceable eq 1
+				systems/rightswitchpanel/cover-switch eq 1
+			</test>
+			<output>systems/rightswitchpanel/tdu-drop-command</output>
+		</switch>
+
+		<switch name="calculations/rightswitchpanel/tdu-drop-not-allowed">
+			<default value="systems/rightswitchpanel/tdu-drop-input"/>
+			<test logic="OR" value="systems/rightswitchpanel/tdu-drop-command">
+				systems/rightswitchpanel/serviceable eq 0
+				systems/rightswitchpanel/cover-switch eq 0
+			</test>
+			<output>systems/rightswitchpanel/tdu-drop-input</output>
+		</switch>
+
+		<switch name="calculations/rightswitchpanel/tdu-drop-safer-command">
+			<default value="systems/rightswitchpanel/tdu-drop-safer-command"/>
+			<test logic="AND" value="systems/rightswitchpanel/tdu-drop-command">
+				systems/rightswitchpanel/serviceable eq 1
+				systems/rightswitchpanel/cover-switch eq 1
+			</test>
+			<output>systems/rightswitchpanel/tdu-drop-safer-command</output>
+		</switch>
+
+		<kinematic name="calculations/rightswitchpanel/tdu-drop-safer-pos">
+			<input>systems/rightswitchpanel/tdu-drop-safer-command</input>
+			<traverse>
+			<setting>
+				<position>0</position>
+				<time>0</time>
+			</setting>
+			<setting>
+				<position>1</position>
+				<time>0.2</time>
+			</setting>
+			</traverse>
+			<output>systems/rightswitchpanel/tdu-drop-safer-pos</output>
+		</kinematic>
+
+		<switch name="calculations/rightswitchpanel/tdu-drop-safer-switch">
+			<default value="systems/rightswitchpanel/tdu-drop-safer-switch"/>
+			<test logic="AND" value="1">
+				systems/rightswitchpanel/tdu-drop-safer-pos ge 0.9
+			</test>
+			<test logic="AND" value="0">
+				systems/rightswitchpanel/tdu-drop-safer-pos lt 0.9
+			</test>
+			<output>systems/rightswitchpanel/tdu-drop-safer-switch</output>
+		</switch>
+
+		<kinematic name="calculations/rightswitchpanel/tdu-drop-pos">
+			<input>systems/rightswitchpanel/tdu-drop-safer-switch</input>
+			<traverse>
+			<setting>
+				<position>0</position>
+				<time>0</time>
+			</setting>
+			<setting>
+				<position>1</position>
+				<time>0.2</time>
+			</setting>
+			</traverse>
+			<output>systems/rightswitchpanel/tdu-drop-pos</output>
+		</kinematic>
+
+		<switch name="calculations/rightswitchpanel/tdu-drop-switch">
+			<default value="systems/rightswitchpanel/tdu-drop-switch"/>
+			<test logic="AND" value="1">
+				systems/rightswitchpanel/tdu-drop-pos ge 0.9
+			</test>
+			<test logic="AND" value="0">
+				systems/rightswitchpanel/tdu-drop-pos lt 0.9
+			</test>
+			<output>systems/rightswitchpanel/tdu-drop-switch</output>
+		</switch>
+
+	<!-- brake-parachute -->
+
+		<switch name="calculations/rightswitchpanel/brake-parachute-allowed">
+			<default value="systems/rightswitchpanel/brake-parachute-command"/>
+			<test logic="AND" value="systems/rightswitchpanel/brake-parachute-input">
+				systems/rightswitchpanel/serviceable eq 1
+				systems/rightswitchpanel/cover-switch eq 1
+			</test>
+			<output>systems/rightswitchpanel/brake-parachute-command</output>
+		</switch>
+
+		<switch name="calculations/rightswitchpanel/brake-parachute-not-allowed">
+			<default value="systems/rightswitchpanel/brake-parachute-input"/>
+			<test logic="OR" value="systems/rightswitchpanel/brake-parachute-command">
+				systems/rightswitchpanel/serviceable eq 0
+				systems/rightswitchpanel/cover-switch eq 0
+			</test>
+			<output>systems/rightswitchpanel/brake-parachute-input</output>
+		</switch>
+
+		<switch name="calculations/rightswitchpanel/brake-parachute-safer-command">
+			<default value="systems/rightswitchpanel/brake-parachute-safer-command"/>
+			<test logic="AND" value="systems/rightswitchpanel/brake-parachute-command">
+				systems/rightswitchpanel/serviceable eq 1
+				systems/rightswitchpanel/cover-switch eq 1
+			</test>
+			<output>systems/rightswitchpanel/brake-parachute-safer-command</output>
+		</switch>
+
+		<kinematic name="calculations/rightswitchpanel/brake-parachute-safer-pos">
+			<input>systems/rightswitchpanel/brake-parachute-safer-command</input>
+			<traverse>
+			<setting>
+				<position>0</position>
+				<time>0</time>
+			</setting>
+			<setting>
+				<position>1</position>
+				<time>0.2</time>
+			</setting>
+			</traverse>
+			<output>systems/rightswitchpanel/brake-parachute-safer-pos</output>
+		</kinematic>
+
+		<switch name="calculations/rightswitchpanel/brake-parachute-safer-switch">
+			<default value="systems/rightswitchpanel/brake-parachute-safer-switch"/>
+			<test logic="AND" value="1">
+				systems/rightswitchpanel/brake-parachute-safer-pos ge 0.9
+			</test>
+			<test logic="AND" value="0">
+				systems/rightswitchpanel/brake-parachute-safer-pos lt 0.9
+			</test>
+			<output>systems/rightswitchpanel/brake-parachute-safer-switch</output>
+		</switch>
+
+		<kinematic name="calculations/rightswitchpanel/brake-parachute-pos">
+			<input>systems/rightswitchpanel/brake-parachute-safer-switch</input>
+			<traverse>
+			<setting>
+				<position>0</position>
+				<time>0</time>
+			</setting>
+			<setting>
+				<position>1</position>
+				<time>0.2</time>
+			</setting>
+			</traverse>
+			<output>systems/rightswitchpanel/brake-parachute-pos</output>
+		</kinematic>
+
+		<switch name="calculations/rightswitchpanel/brake-parachute-switch">
+			<default value="systems/rightswitchpanel/brake-parachute-switch"/>
+			<test logic="AND" value="1">
+				systems/rightswitchpanel/brake-parachute-pos ge 0.9
+			</test>
+			<test logic="AND" value="0">
+				systems/rightswitchpanel/brake-parachute-pos lt 0.9
+			</test>
+			<output>systems/rightswitchpanel/brake-parachute-switch</output>
+		</switch>
+
+	<!-- main-parachute -->
+
+		<switch name="calculations/rightswitchpanel/main-parachute-allowed">
+			<default value="systems/rightswitchpanel/main-parachute-command"/>
+			<test logic="AND" value="systems/rightswitchpanel/main-parachute-input">
+				systems/rightswitchpanel/serviceable eq 1
+				systems/rightswitchpanel/cover-switch eq 1
+			</test>
+			<output>systems/rightswitchpanel/main-parachute-command</output>
+		</switch>
+
+		<switch name="calculations/rightswitchpanel/main-parachute-not-allowed">
+			<default value="systems/rightswitchpanel/main-parachute-input"/>
+			<test logic="OR" value="systems/rightswitchpanel/main-parachute-command">
+				systems/rightswitchpanel/serviceable eq 0
+				systems/rightswitchpanel/cover-switch eq 0
+			</test>
+			<output>systems/rightswitchpanel/main-parachute-input</output>
+		</switch>
+
+		<switch name="calculations/rightswitchpanel/main-parachute-safer-command">
+			<default value="systems/rightswitchpanel/main-parachute-safer-command"/>
+			<test logic="AND" value="systems/rightswitchpanel/main-parachute-command">
+				systems/rightswitchpanel/serviceable eq 1
+				systems/rightswitchpanel/cover-switch eq 1
+			</test>
+			<output>systems/rightswitchpanel/main-parachute-safer-command</output>
+		</switch>
+
+		<kinematic name="calculations/rightswitchpanel/main-parachute-safer-pos">
+			<input>systems/rightswitchpanel/main-parachute-safer-command</input>
+			<traverse>
+			<setting>
+				<position>0</position>
+				<time>0</time>
+			</setting>
+			<setting>
+				<position>1</position>
+				<time>0.2</time>
+			</setting>
+			</traverse>
+			<output>systems/rightswitchpanel/main-parachute-safer-pos</output>
+		</kinematic>
+
+		<switch name="calculations/rightswitchpanel/main-parachute-safer-switch">
+			<default value="systems/rightswitchpanel/main-parachute-safer-switch"/>
+			<test logic="AND" value="1">
+				systems/rightswitchpanel/main-parachute-safer-pos ge 0.9
+			</test>
+			<test logic="AND" value="0">
+				systems/rightswitchpanel/main-parachute-safer-pos lt 0.9
+			</test>
+			<output>systems/rightswitchpanel/main-parachute-safer-switch</output>
+		</switch>
+
+		<kinematic name="calculations/rightswitchpanel/main-parachute-pos">
+			<input>systems/rightswitchpanel/main-parachute-safer-switch</input>
+			<traverse>
+			<setting>
+				<position>0</position>
+				<time>0</time>
+			</setting>
+			<setting>
+				<position>1</position>
+				<time>0.2</time>
+			</setting>
+			</traverse>
+			<output>systems/rightswitchpanel/main-parachute-pos</output>
+		</kinematic>
+
+		<switch name="calculations/rightswitchpanel/main-parachute-switch">
+			<default value="systems/rightswitchpanel/main-parachute-switch"/>
+			<test logic="AND" value="1">
+				systems/rightswitchpanel/main-parachute-pos ge 0.9
+			</test>
+			<test logic="AND" value="0">
+				systems/rightswitchpanel/main-parachute-pos lt 0.9
+			</test>
+			<output>systems/rightswitchpanel/main-parachute-switch</output>
+		</switch>
+
+	<!-- landing-engine -->
+
+		<switch name="calculations/rightswitchpanel/landing-engine-allowed">
+			<default value="systems/rightswitchpanel/landing-engine-command"/>
+			<test logic="AND" value="systems/rightswitchpanel/landing-engine-input">
+				systems/rightswitchpanel/serviceable eq 1
+				systems/rightswitchpanel/cover-switch eq 1
+			</test>
+			<output>systems/rightswitchpanel/landing-engine-command</output>
+		</switch>
+
+		<switch name="calculations/rightswitchpanel/landing-engine-not-allowed">
+			<default value="systems/rightswitchpanel/landing-engine-input"/>
+			<test logic="OR" value="systems/rightswitchpanel/landing-engine-command">
+				systems/rightswitchpanel/serviceable eq 0
+				systems/rightswitchpanel/cover-switch eq 0
+			</test>
+			<output>systems/rightswitchpanel/landing-engine-input</output>
+		</switch>
+
+		<switch name="calculations/rightswitchpanel/landing-engine-safer-command">
+			<default value="systems/rightswitchpanel/landing-engine-safer-command"/>
+			<test logic="AND" value="systems/rightswitchpanel/landing-engine-command">
+				systems/rightswitchpanel/serviceable eq 1
+				systems/rightswitchpanel/cover-switch eq 1
+			</test>
+			<output>systems/rightswitchpanel/landing-engine-safer-command</output>
+		</switch>
+
+		<kinematic name="calculations/rightswitchpanel/landing-engine-safer-pos">
+			<input>systems/rightswitchpanel/landing-engine-safer-command</input>
+			<traverse>
+			<setting>
+				<position>0</position>
+				<time>0</time>
+			</setting>
+			<setting>
+				<position>1</position>
+				<time>0.2</time>
+			</setting>
+			</traverse>
+			<output>systems/rightswitchpanel/landing-engine-safer-pos</output>
+		</kinematic>
+
+		<switch name="calculations/rightswitchpanel/landing-engine-safer-switch">
+			<default value="systems/rightswitchpanel/landing-engine-safer-switch"/>
+			<test logic="AND" value="1">
+				systems/rightswitchpanel/landing-engine-safer-pos ge 0.9
+			</test>
+			<test logic="AND" value="0">
+				systems/rightswitchpanel/landing-engine-safer-pos lt 0.9
+			</test>
+			<output>systems/rightswitchpanel/landing-engine-safer-switch</output>
+		</switch>
+
+		<kinematic name="calculations/rightswitchpanel/landing-engine-pos">
+			<input>systems/rightswitchpanel/landing-engine-safer-switch</input>
+			<traverse>
+			<setting>
+				<position>0</position>
+				<time>0</time>
+			</setting>
+			<setting>
+				<position>1</position>
+				<time>0.2</time>
+			</setting>
+			</traverse>
+			<output>systems/rightswitchpanel/landing-engine-pos</output>
+		</kinematic>
+
+		<switch name="calculations/rightswitchpanel/landing-engine-switch">
+			<default value="systems/rightswitchpanel/landing-engine-switch"/>
+			<test logic="AND" value="1">
+				systems/rightswitchpanel/landing-engine-pos ge 0.9
+			</test>
+			<test logic="AND" value="0">
+				systems/rightswitchpanel/landing-engine-pos lt 0.9
+			</test>
+			<output>systems/rightswitchpanel/landing-engine-switch</output>
+		</switch>
+
+		<!-- Click-->
+
+		<switch name="calculations/rightswitchpanel/click">
+			<default value="systems/sounds/click/on"/>
+			<test logic="AND" value="1">
+				systems/rightswitchpanel/cover-pos ge 0.25
+				systems/rightswitchpanel/cover-pos le 0.75
+				systems/sounds/click/on == 0
+			</test>
+			<test logic="AND" value="1">
+				systems/rightswitchpanel/one-two-ignition-pos ge 0.25
+				systems/rightswitchpanel/one-two-ignition-pos le 0.75
+				systems/sounds/click/on == 0
+			</test>
+			<test logic="AND" value="1">
+				systems/rightswitchpanel/one-drop-pos ge 0.25
+				systems/rightswitchpanel/one-drop-pos le 0.75
+				systems/sounds/click/on == 0
+			</test>
+			<test logic="AND" value="1">
+				systems/rightswitchpanel/fairings-drop-pos ge 0.25
+				systems/rightswitchpanel/fairings-drop-pos le 0.75
+				systems/sounds/click/on == 0
+			</test>
+			<test logic="AND" value="1">
+				systems/rightswitchpanel/two-drop-pos ge 0.25
+				systems/rightswitchpanel/two-drop-pos le 0.75
+				systems/sounds/click/on == 0
+			</test>
+			<test logic="AND" value="1">
+				systems/rightswitchpanel/three-ignition-pos ge 0.25
+				systems/rightswitchpanel/three-ignition-pos le 0.75
+				systems/sounds/click/on == 0
+			</test>
+			<test logic="AND" value="1">
+				systems/rightswitchpanel/three-drop-pos ge 0.25
+				systems/rightswitchpanel/three-drop-pos le 0.75
+				systems/sounds/click/on == 0
+			</test>
+			<test logic="AND" value="1">
+				systems/rightswitchpanel/tdu-ignition-pos ge 0.25
+				systems/rightswitchpanel/tdu-ignition-pos le 0.75
+				systems/sounds/click/on == 0
+			</test>
+			<test logic="AND" value="1">
+				systems/rightswitchpanel/tdu-drop-pos ge 0.25
+				systems/rightswitchpanel/tdu-drop-pos le 0.75
+				systems/sounds/click/on == 0
+			</test>
+			<test logic="AND" value="1">
+				systems/rightswitchpanel/brake-parachute-pos ge 0.25
+				systems/rightswitchpanel/brake-parachute-pos le 0.75
+				systems/sounds/click/on == 0
+			</test>
+			<test logic="AND" value="1">
+				systems/rightswitchpanel/main-parachute-pos ge 0.25
+				systems/rightswitchpanel/main-parachute-pos le 0.75
+				systems/sounds/click/on == 0
+			</test>
+			<test logic="AND" value="1">
+				systems/rightswitchpanel/landing-engine-pos ge 0.25
+				systems/rightswitchpanel/landing-engine-pos le 0.75
+				systems/sounds/click/on == 0
+			</test>
+			<output>systems/sounds/click/on</output>
+		</switch>
+
+	</channel>
+
+</system>

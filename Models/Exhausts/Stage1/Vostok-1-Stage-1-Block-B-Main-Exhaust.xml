@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+
+<!--
+	Author: Slavutinsky Victor
+-->
+
+<PropertyList>
+
+	<path>Vostok-1-RD107-RD108-Main-Exhaust.ac</path>
+
+	<offsets>
+		<x-m>0.0</x-m>
+		<y-m>0.0</y-m>
+		<z-m>0.0</z-m>
+		<pitch-deg>0</pitch-deg>
+	</offsets>
+
+	<enable-hot type="bool">false</enable-hot>
+
+	<animation>
+		<type>material</type>
+		<object-name>RD107or108Exhaust</object-name>
+		<diffuse>
+			<red-prop>fdm/jsbsim/propulsion/engine[6]/red</red-prop>
+			<green-prop>fdm/jsbsim/propulsion/engine[6]/green</green-prop>
+			<blue-prop>fdm/jsbsim/propulsion/engine[6]/blue</blue-prop>
+		</diffuse>
+		<ambient>
+			<red-prop>fdm/jsbsim/propulsion/engine[6]/red</red-prop>
+			<green-prop>fdm/jsbsim/propulsion/engine[6]/green</green-prop>
+			<blue-prop>fdm/jsbsim/propulsion/engine[6]/blue</blue-prop>
+		</ambient>
+		<specular>
+			<red-prop>fdm/jsbsim/propulsion/engine[6]/red</red-prop>
+			<green-prop>fdm/jsbsim/propulsion/engine[6]/green</green-prop>
+			<blue-prop>fdm/jsbsim/propulsion/engine[6]/blue</blue-prop>
+		</specular>
+		<emission>
+			<red-prop>fdm/jsbsim/propulsion/engine[6]/red</red-prop>
+			<green-prop>fdm/jsbsim/propulsion/engine[6]/green</green-prop>
+			<blue-prop>fdm/jsbsim/propulsion/engine[6]/blue</blue-prop>
+		</emission>
+		<transparency>
+			<alpha-prop>fdm/jsbsim/propulsion/engine[6]/transparency</alpha-prop>
+		</transparency>
+	</animation>
+
+	<enable-hot type="bool">false</enable-hot>
+
+</PropertyList>

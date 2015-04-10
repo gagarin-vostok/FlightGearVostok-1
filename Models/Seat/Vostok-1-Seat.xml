@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+
+<!--
+	Author: Slavutinsky Victor
+-->
+
+<PropertyList>
+
+<!-- Seat -->
+
+	<path>Vostok-1-Seat.ac</path>
+
+	<offsets>
+		<x-m>0.0</x-m>
+		<y-m>0.0</y-m>
+		<z-m>0.0</z-m>
+		<pitch-deg>0</pitch-deg>
+	</offsets>
+
+	<enable-hot type="bool">false</enable-hot>
+
+	<animation>
+		<type>select</type>
+		<condition>
+			<equals>
+				<property>sim/current-view/internal</property>
+				<value>true</value>
+			</equals>
+		</condition>
+	</animation>
+
+	<animation>
+		<type>material</type>
+		<emission>
+			<red-prop>fdm/jsbsim/systems/light/cabine/red</red-prop>
+			<green-prop>fdm/jsbsim/systems/light/cabine/green</green-prop>
+			<blue-prop>fdm/jsbsim/systems/light/cabine/blue</blue-prop>
+		</emission>
+	</animation>
+
+	<model>
+		<path>Aircraft/Vostok-1/Models/GasHandle/Vostok-1-Gas-Handle.xml</path>
+		<offsets>
+			<x-m>-0.111</x-m>
+			<y-m>-0.279</y-m>
+			<z-m>-1.176</z-m>
+			<pitch-deg>-21.0</pitch-deg>
+			<heading-deg>0</heading-deg>
+		</offsets>
+	</model>
+
+	<enable-hot type="bool">false</enable-hot>
+
+</PropertyList>

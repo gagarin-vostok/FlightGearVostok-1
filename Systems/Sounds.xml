@@ -1,0 +1,731 @@
+<?xml version="1.0"?>
+
+<!--
+	Author: Slavutinsky Victor
+-->
+
+<system>
+
+	<!--Second stage-->
+
+	<fileheader>
+		<author> Slavutinsky Victor </author>
+		<filecreationdate> 2011 </filecreationdate>
+		<version>$Revision: 1.00 $</version>
+		<description> Sounds </description>
+	</fileheader>
+
+	<channel name="Sounds">
+
+		<!--View intenality-->
+
+		<switch name="systems/sounds/view-internal">
+			<default value="0"/>
+			<test logic="AND" value="1">
+				/sim/current-view/internal eq 1.0
+			</test>
+		</switch>
+
+		<switch name="systems/sounds/view-external">
+			<default value="0"/>
+			<test logic="AND" value="1">
+				/sim/current-view/internal eq 0.0
+			</test>
+		</switch>
+
+		<!--Sounds-->
+
+		<!--Wind -->
+
+		<fcs_function name="calculations/sounds/wind">
+			<function>
+				<product>
+					<quotient>
+						<property>aero/qbar-modified-psf</property>
+						<value>2116</value>
+					</quotient>
+					<quotient>
+						<property>atmosphere/P-psf</property>
+						<value>2116</value>
+					</quotient>
+				</product>
+			</function>
+			<output>systems/sounds/wind</output>
+		</fcs_function>
+
+		<!--Deorbit burning -->
+
+		<fcs_function name="calculations/sounds/spacecraft-burning-internal">
+			<function>
+				<product>
+					<quotient>
+						<property>aero/qbar-modified-psf</property>
+						<value>2116</value>
+					</quotient>
+					<quotient>
+						<property>aero/temperature/surface-mach-c</property>
+						<value>1539</value>
+					</quotient>
+				</product>
+			</function>
+			<output>systems/sounds/spacecraft-burning-internal</output>
+		</fcs_function>
+
+		<fcs_function name="calculations/sounds/spacecraft-burning-external">
+			<function>
+				<product>
+					<quotient>
+						<property>aero/qbar-modified-psf</property>
+						<value>2116</value>
+					</quotient>
+					<quotient>
+						<property>aero/temperature/surface-mach-c</property>
+						<value>1539</value>
+					</quotient>
+					<quotient>
+						<property>atmosphere/P-psf</property>
+						<value>2116</value>
+					</quotient>
+				</product>
+			</function>
+			<output>systems/sounds/spacecraft-burning-external</output>
+		</fcs_function>
+
+		<!--First stages -->
+
+		<fcs_function name="calculations/sounds/first-engines">
+			<function>
+				<quotient>
+					<sum>
+						<quotient>
+							<property>propulsion/engine[0]/vacuum-thrust_lbs</property>
+							<value>212450</value>
+						</quotient>
+						<quotient>
+							<property>propulsion/engine[2]/vacuum-thrust_lbs</property>
+							<value>212450</value>
+						</quotient>
+						<quotient>
+							<property>propulsion/engine[4]/vacuum-thrust_lbs</property>
+							<value>212450</value>
+						</quotient>
+						<quotient>
+							<property>propulsion/engine[6]/vacuum-thrust_lbs</property>
+							<value>212450</value>
+						</quotient>
+						<quotient>
+							<sum>
+								<quotient>
+									<property>propulsion/engine[8]/vacuum-thrust_lbs</property>
+									<value>106220</value>
+								</quotient>
+								<quotient>
+									<property>propulsion/engine[9]/vacuum-thrust_lbs</property>
+									<value>106220</value>
+								</quotient>
+							</sum>
+							<value>2</value>
+						</quotient>
+					</sum>
+					<value>5</value>
+				</quotient>
+			</function>
+			<output>systems/sounds/first-engines</output>
+		</fcs_function>
+
+		<fcs_function name="calculations/sounds/first-engines-internal">
+			<function>
+				<product>
+					<property>systems/sounds/first-engines</property>
+					<value>1</value>
+				</product>
+			</function>
+			<output>systems/sounds/first-engines-internal</output>
+		</fcs_function>
+
+		<fcs_function name="calculations/sounds/first-engines-external">
+			<function>
+				<product>
+					<property>systems/sounds/first-engines</property>
+					<quotient>
+						<property>atmosphere/P-psf</property>
+						<value>2116.0</value>
+					</quotient>
+				</product>
+			</function>
+			<output>systems/sounds/first-engines-external</output>
+		</fcs_function>
+
+		<fcs_function name="calculations/sounds/first-separation-internal">
+			<function>
+				<product>
+					<property>stages/unit[0]/drop</property>
+					<value>1</value>
+				</product>
+			</function>
+			<output>systems/sounds/first-separation-internal</output>
+		</fcs_function>
+
+		<fcs_function name="calculations/sounds/first-separation-external">
+			<function>
+				<product>
+					<property>stages/unit[0]/drop</property>
+					<quotient>
+						<property>atmosphere/P-psf</property>
+						<value>2116.0</value>
+					</quotient>
+				</product>
+			</function>
+			<output>systems/sounds/first-separation-external</output>
+		</fcs_function>
+
+		<fcs_function name="calculations/sounds/fairings-separation-internal">
+			<function>
+				<product>
+					<property>stages/unit[1]/drop</property>
+					<value>1</value>
+				</product>
+			</function>
+			<output>systems/sounds/fairings-separation-internal</output>
+		</fcs_function>
+
+		<fcs_function name="calculations/sounds/fairings-separation-external">
+			<function>
+				<product>
+					<property>stages/unit[1]/drop</property>
+					<quotient>
+						<property>atmosphere/P-psf</property>
+						<value>2116.0</value>
+					</quotient>
+				</product>
+			</function>
+			<output>systems/sounds/fairings-separation-external</output>
+		</fcs_function>
+
+		<fcs_function name="calculations/sounds/second-separation-internal">
+			<function>
+				<product>
+					<property>stages/unit[2]/drop</property>
+					<value>1</value>
+				</product>
+			</function>
+			<output>systems/sounds/second-separation-internal</output>
+		</fcs_function>
+
+		<fcs_function name="calculations/sounds/second-separation-external">
+			<function>
+				<product>
+					<property>stages/unit[2]/drop</property>
+					<quotient>
+						<property>atmosphere/P-psf</property>
+						<value>2116.0</value>
+					</quotient>
+				</product>
+			</function>
+			<output>systems/sounds/second-separation-external</output>
+		</fcs_function>
+
+		<!--Third stage -->
+
+		<fcs_function name="calculations/sounds/third-engine">
+			<function>
+				<quotient>
+					<property>propulsion/engine[14]/vacuum-thrust_lbs</property>
+					<value>9090</value>
+				</quotient>
+			</function>
+			<output>systems/sounds/third-engine</output>
+		</fcs_function>
+
+		<fcs_function name="calculations/sounds/third-engine-internal">
+			<function>
+				<product>
+					<property>systems/sounds/third-engine</property>
+					<value>1</value>
+				</product>
+			</function>
+			<output>systems/sounds/third-engine-internal</output>
+		</fcs_function>
+
+		<fcs_function name="calculations/sounds/third-engine-external">
+			<function>
+				<product>
+					<property>systems/sounds/third-engine</property>
+					<quotient>
+						<property>atmosphere/P-psf</property>
+						<value>2116.0</value>
+					</quotient>
+				</product>
+			</function>
+			<output>systems/sounds/third-engine-external</output>
+		</fcs_function>
+
+		<fcs_function name="calculations/sounds/third-separation-internal">
+			<function>
+				<product>
+					<property>stages/unit[3]/drop</property>
+					<value>1</value>
+				</product>
+			</function>
+			<output>systems/sounds/third-separation-internal</output>
+		</fcs_function>
+
+		<fcs_function name="calculations/sounds/third-separation-external">
+			<function>
+				<product>
+					<property>stages/unit[3]/drop</property>
+					<quotient>
+						<property>atmosphere/P-psf</property>
+						<value>2116.0</value>
+					</quotient>
+				</product>
+			</function>
+			<output>systems/sounds/third-separation-external</output>
+		</fcs_function>
+
+		<!--TDU -->
+
+		<fcs_function name="calculations/sounds/tdu-hard-antennas-internal">
+			<function>
+				<product>
+					<value>1</value>
+					<table>
+						<independentVar lookup="row">systems/tdu/hard-antennas-pos-norm</independentVar>
+						<tableData>
+							0.0		0.0
+							0.01		1.0
+							0.99		1.0
+							1.0		0.0
+						</tableData>
+					</table>
+				</product>
+			</function>
+			<output>systems/sounds/tdu-hard-antennas-internal</output>
+		</fcs_function>
+
+		<fcs_function name="calculations/sounds/tdu-hard-antennas-external">
+			<function>
+				<product>
+					<table>
+						<independentVar lookup="row">systems/tdu/hard-antennas-pos-norm</independentVar>
+						<tableData>
+							0.0		0.0
+							0.01		1.0
+							0.99		1.0
+							1.0		0.0
+						</tableData>
+					</table>
+					<quotient>
+						<property>atmosphere/P-psf</property>
+						<value>2116.0</value>
+					</quotient>
+				</product>
+			</function>
+			<output>systems/sounds/tdu-hard-antennas-external</output>
+		</fcs_function>
+
+		<fcs_function name="calculations/sounds/tdu-radiators-internal">
+			<function>
+				<product>
+					<value>1</value>
+					<table>
+						<independentVar lookup="row">systems/tdu/radiators-pos-norm</independentVar>
+						<tableData>
+							0.0		0.0
+							0.01		1.0
+							0.99		1.0
+							1.0		0.0
+						</tableData>
+					</table>
+				</product>
+			</function>
+			<output>systems/sounds/tdu-radiators-internal</output>
+		</fcs_function>
+
+		<fcs_function name="calculations/sounds/tdu-radiators-external">
+			<function>
+				<product>
+					<table>
+						<independentVar lookup="row">systems/tdu/radiators-pos-norm</independentVar>
+						<tableData>
+							0.0		0.0
+							0.01		1.0
+							0.99		1.0
+							1.0		0.0
+						</tableData>
+					</table>
+					<quotient>
+						<property>atmosphere/P-psf</property>
+						<value>2116.0</value>
+					</quotient>
+				</product>
+			</function>
+			<output>systems/sounds/tdu-radiators-external</output>
+		</fcs_function>
+
+		<fcs_function name="calculations/sounds/tdu-whip-antennas-internal">
+			<function>
+				<product>
+					<value>1</value>
+					<table>
+						<independentVar lookup="row">systems/tdu/whip-antennas-pos-norm</independentVar>
+						<tableData>
+							0.0		0.0
+							0.01		1.0
+							0.99		1.0
+							1.0		0.0
+						</tableData>
+					</table>
+				</product>
+			</function>
+			<output>systems/sounds/tdu-whip-antennas-internal</output>
+		</fcs_function>
+
+		<fcs_function name="calculations/sounds/tdu-whip-antennas-external">
+			<function>
+				<product>
+					<table>
+						<independentVar lookup="row">systems/tdu/whip-antennas-pos-norm</independentVar>
+						<tableData>
+							0.0		0.0
+							0.01		1.0
+							0.99		1.0
+							1.0		0.0
+						</tableData>
+					</table>
+					<quotient>
+						<property>atmosphere/P-psf</property>
+						<value>2116.0</value>
+					</quotient>
+				</product>
+			</function>
+			<output>systems/sounds/tdu-whip-antennas-external</output>
+		</fcs_function>
+
+		<fcs_function name="calculations/sounds/tdu-antennas-extraction-internal">
+			<function>
+				<product>
+					<value>1</value>
+					<table>
+						<independentVar lookup="row">systems/tdu/whip-antennas-pos-norm</independentVar>
+						<tableData>
+							0.0		0.0
+							0.9		0.0
+							0.91		1.0
+							0.99		1.0
+							1.0		0.0
+						</tableData>
+					</table>
+				</product>
+			</function>
+			<output>systems/sounds/tdu-antennas-extraction-internal</output>
+		</fcs_function>
+
+		<fcs_function name="calculations/sounds/tdu-antennas-extraction-external">
+			<function>
+				<product>
+					<table>
+						<independentVar lookup="row">systems/tdu/whip-antennas-pos-norm</independentVar>
+						<tableData>
+							0.0		0.0
+							0.9		0.0
+							0.91		1.0
+							0.99		1.0
+							1.0		0.0
+						</tableData>
+					</table>
+					<quotient>
+						<property>atmosphere/P-psf</property>
+						<value>2116.0</value>
+					</quotient>
+				</product>
+			</function>
+			<output>systems/sounds/tdu-antennas-extraction-external</output>
+		</fcs_function>
+
+		<fcs_function name="calculations/sounds/tdu-engine">
+			<function>
+				<quotient>
+					<property>propulsion/engine[23]/thrust-lbs</property>
+					<sum>
+						<property>propulsion/engine[23]/vacuum-thrust_lbs</property>
+						<value>1e-6</value>
+					</sum>
+				</quotient>
+			</function>
+			<output>systems/sounds/tdu-engine</output>
+		</fcs_function>
+
+		<fcs_function name="calculations/sounds/tdu-engine-internal">
+			<function>
+				<product>
+					<property>systems/sounds/tdu-engine</property>
+					<value>1</value>
+				</product>
+			</function>
+			<output>systems/sounds/tdu-engine-internal</output>
+		</fcs_function>
+
+		<fcs_function name="calculations/sounds/tdu-engine-external">
+			<function>
+				<product>
+					<property>systems/sounds/tdu-engine</property>
+					<quotient>
+						<property>atmosphere/P-psf</property>
+						<value>2116.0</value>
+					</quotient>
+				</product>
+			</function>
+			<output>systems/sounds/tdu-engine-external</output>
+		</fcs_function>
+
+		<fcs_function name="calculations/sounds/tdu-maneur-engines">
+			<function>
+				<quotient>
+					<sum>
+						<quotient>
+							<property>propulsion/engine[32]/thrust-lbs</property>
+							<value>100</value>
+						</quotient>
+						<quotient>
+							<property>propulsion/engine[33]/thrust-lbs</property>
+							<value>100</value>
+						</quotient>
+						<quotient>
+							<property>propulsion/engine[34]/thrust-lbs</property>
+							<value>100</value>
+						</quotient>
+						<quotient>
+							<property>propulsion/engine[35]/thrust-lbs</property>
+							<value>100</value>
+						</quotient>
+						<quotient>
+							<property>propulsion/engine[36]/thrust-lbs</property>
+							<value>100</value>
+						</quotient>
+						<quotient>
+							<property>propulsion/engine[37]/thrust-lbs</property>
+							<value>100</value>
+						</quotient>
+						<quotient>
+							<property>propulsion/engine[38]/thrust-lbs</property>
+							<value>100</value>
+						</quotient>
+						<quotient>
+							<property>propulsion/engine[39]/thrust-lbs</property>
+							<value>100</value>
+						</quotient>
+					</sum>
+					<value>6</value>
+				</quotient>
+			</function>
+			<output>systems/sounds/tdu-maneur-engines</output>
+		</fcs_function>
+
+		<fcs_function name="calculations/sounds/tdu-maneur-engines-internal">
+			<function>
+				<product>
+					<property>systems/sounds/tdu-maneur-engines</property>
+					<value>1</value>
+				</product>
+			</function>
+			<output>systems/sounds/tdu-maneur-engines-internal</output>
+		</fcs_function>
+
+		<fcs_function name="calculations/sounds/tdu-maneur-engines-external">
+			<function>
+				<product>
+					<property>systems/sounds/tdu-maneur-engines</property>
+					<quotient>
+						<property>atmosphere/P-psf</property>
+						<value>2116.0</value>
+					</quotient>
+				</product>
+			</function>
+			<output>systems/sounds/tdu-maneur-engines-external</output>
+		</fcs_function>
+
+		<fcs_function name="calculations/sounds/tdu-separation-internal">
+			<function>
+				<product>
+					<property>stages/unit[4]/drop</property>
+					<value>1</value>
+				</product>
+			</function>
+			<output>systems/sounds/tdu-separation-internal</output>
+		</fcs_function>
+
+		<fcs_function name="calculations/sounds/tdu-separation-external">
+			<function>
+				<product>
+					<property>stages/unit[4]/drop</property>
+					<quotient>
+						<property>atmosphere/P-psf</property>
+						<value>2116.0</value>
+					</quotient>
+				</product>
+			</function>
+			<output>systems/sounds/tdu-separation-external</output>
+		</fcs_function>
+
+		<!-- Spacecraft -->
+
+		<fcs_function name="calculations/sounds/brake-chute-internal">
+			<function>
+				<product>
+					<value>1</value>
+					<table>
+						<independentVar lookup="row">systems/spacecraft/brake-chute-pos-norm</independentVar>
+						<tableData>
+							0.0		0.0
+							0.01		1.0
+							0.1		1.0
+							0.11		0.0
+							1.0		0.0
+						</tableData>
+					</table>
+				</product>
+			</function>
+			<output>systems/sounds/brake-chute-internal</output>
+		</fcs_function>
+
+		<fcs_function name="calculations/sounds/brake-chute-external">
+			<function>
+				<product>
+					<table>
+						<independentVar lookup="row">systems/spacecraft/brake-chute-pos-norm</independentVar>
+						<tableData>
+							0.0		0.0
+							0.01		1.0
+							0.1		1.0
+							0.11		0.0
+							1.0		0.0
+						</tableData>
+					</table>
+					<quotient>
+						<property>atmosphere/P-psf</property>
+						<value>2116.0</value>
+					</quotient>
+				</product>
+			</function>
+			<output>systems/sounds/brake-chute-external</output>
+		</fcs_function>
+
+		<fcs_function name="calculations/sounds/main-chute-internal">
+			<function>
+				<product>
+					<value>1</value>
+					<table>
+						<independentVar lookup="row">systems/spacecraft/main-chute-pos-norm</independentVar>
+						<tableData>
+							0.0		0.0
+							0.01		1.0
+							0.1		1.0
+							0.11		0.0
+							1.0		0.0
+						</tableData>
+					</table>
+				</product>
+			</function>
+			<output>systems/sounds/main-chute-internal</output>
+		</fcs_function>
+
+		<fcs_function name="calculations/sounds/main-chute-external">
+			<function>
+				<product>
+					<table>
+						<independentVar lookup="row">systems/spacecraft/main-chute-pos-norm</independentVar>
+						<tableData>
+							0.0		0.0
+							0.01		1.0
+							0.1		1.0
+							0.11		0.0
+							1.0		0.0
+						</tableData>
+					</table>
+					<quotient>
+						<property>atmosphere/P-psf</property>
+						<value>2116.0</value>
+					</quotient>
+				</product>
+			</function>
+			<output>systems/sounds/main-chute-external</output>
+		</fcs_function>
+
+		<fcs_function name="calculations/sounds/landing-sensor-internal">
+			<function>
+				<product>
+					<value>1</value>
+					<table>
+						<independentVar lookup="row">systems/spacecraft/engine-sensor-pos-norm</independentVar>
+						<tableData>
+							0.0		0.0
+							0.1		1.0
+							0.9		1.0
+							1.0		0.0
+						</tableData>
+					</table>
+				</product>
+			</function>
+			<output>systems/sounds/landing-sensor-internal</output>
+		</fcs_function>
+
+		<fcs_function name="calculations/sounds/landing-sensor-external">
+			<function>
+				<product>
+					<table>
+						<independentVar lookup="row">systems/spacecraft/engine-sensor-pos-norm</independentVar>
+						<tableData>
+							0.0		0.0
+							0.1		1.0
+							0.9		1.0
+							1.0		0.0
+						</tableData>
+					</table>
+					<quotient>
+						<property>atmosphere/P-psf</property>
+						<value>2116.0</value>
+					</quotient>
+				</product>
+			</function>
+			<output>systems/sounds/landing-sensor-external</output>
+		</fcs_function>
+
+		<fcs_function name="calculations/sounds/landing-engine-internal">
+			<function>
+				<product>
+					<value>1</value>
+					<table>
+						<independentVar lookup="row">propulsion/engine[40]/thrust-lbs</independentVar>
+						<tableData>
+							0.0		0.0
+							1.0		1.0
+						</tableData>
+					</table>
+				</product>
+			</function>
+			<output>systems/sounds/landing-engine-internal</output>
+		</fcs_function>
+
+		<fcs_function name="calculations/sounds/landing-engine-external">
+			<function>
+				<product>
+					<table>
+						<independentVar lookup="row">propulsion/engine[40]/thrust-lbs</independentVar>
+						<tableData>
+							0.0		0.0
+							1.0		1.0
+						</tableData>
+					</table>
+					<quotient>
+						<property>atmosphere/P-psf</property>
+						<value>2116.0</value>
+					</quotient>
+				</product>
+			</function>
+			<output>systems/sounds/landing-engine-external</output>
+		</fcs_function>
+
+	</channel>
+
+</system>

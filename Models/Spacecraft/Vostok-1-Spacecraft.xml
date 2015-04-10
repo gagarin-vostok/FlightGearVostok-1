@@ -1,0 +1,155 @@
+<?xml version="1.0"?>
+
+<!--
+	Author: Slavutinsky Victor
+-->
+
+<PropertyList>
+
+<!-- Spacecraft interior -->
+
+	<offsets>
+		<x-m>0.0</x-m>
+		<y-m>0.0</y-m>
+		<z-m>0.0</z-m>
+		<pitch-deg>0</pitch-deg>
+	</offsets>
+
+	<enable-hot type="bool">false</enable-hot>
+
+	<model>
+		<path>Aircraft/Vostok-1/Models/Spacecraft/Vostok-1-Spacecraft-Hull.xml</path>
+		<offsets>
+			<x-m>0.0</x-m>
+			<y-m>0.0</y-m>
+			<z-m>0.0</z-m>
+			<pitch-deg>0.0</pitch-deg>
+			<heading-deg>0</heading-deg>
+		</offsets>
+	</model>
+
+	<model>
+		<path>Aircraft/Vostok-1/Models/Seat/Vostok-1-Seat.xml</path>
+		<offsets>
+			<x-m>0.834</x-m>
+			<y-m>0.0</y-m>
+			<z-m>-0.792</z-m>
+			<pitch-deg>66.71</pitch-deg>
+			<heading-deg>0</heading-deg>
+		</offsets>
+	</model>
+
+	<model>
+		<path>Aircraft/Vostok-1/Models/Vzor/Vostok-1-Vzor.xml</path>
+		<offsets>
+			<x-m>-1.094</x-m>
+			<y-m>0.0</y-m>
+			<z-m>-0.687</z-m>
+			<pitch-deg>0.0</pitch-deg>
+			<heading-deg>0</heading-deg>
+		</offsets>
+	</model>
+
+	<model>
+		<path>Aircraft/Vostok-1/Models/ControlHandle/Vostok-1-Control-Handle.xml</path>
+		<offsets>
+			<x-m>-0.290</x-m>
+			<y-m>0.545</y-m>
+			<z-m>-0.861</z-m>
+			<pitch-deg>0.0</pitch-deg>
+			<heading-deg>0</heading-deg>
+		</offsets>
+	</model>
+
+	<model>
+		<path>Aircraft/Vostok-1/Models/MainPanel/Vostok-1-Main-Panel.xml</path>
+		<offsets>
+			<x-m>-0.52</x-m>
+			<y-m>0.0</y-m>
+			<z-m>-0.24</z-m>
+			<pitch-deg>40.0</pitch-deg>
+			<heading-deg>0</heading-deg>
+		</offsets>
+	</model>
+
+	<model>
+		<path>Aircraft/Vostok-1/Models/RightPanel/Vostok-1-Right-Panel.xml</path>
+		<offsets>
+			<x-m>-1.0053</x-m>
+			<y-m>0.0</y-m>
+			<z-m>-0.933</z-m>
+			<pitch-deg>0.0</pitch-deg>
+			<heading-deg>0.0</heading-deg>
+		</offsets>
+	</model>
+
+	<model>
+		<path>Aircraft/Vostok-1/Models/LeftPanel/Vostok-1-Left-Panel.xml</path>
+		<offsets>
+			<x-m>-0.753</x-m>
+			<y-m>0.0</y-m>
+			<z-m>-0.470</z-m>
+			<pitch-deg>30.0</pitch-deg>
+			<heading-deg>0.0</heading-deg>
+		</offsets>
+	</model>
+
+	<model>
+		<path>Aircraft/Vostok-1/Models/LeftSwitchPanel/Vostok-1-Left-Switch-Panel.xml</path>
+		<offsets>
+			<x-m>0.21</x-m>
+			<y-m>-0.44</y-m>
+			<z-m>-0.70</z-m>
+			<pitch-deg>0.00</pitch-deg>
+			<heading-deg>-10</heading-deg>
+		</offsets>
+	</model>
+
+	<model>
+		<path>Aircraft/Vostok-1/Models/RightSwitchPanel/Vostok-1-Right-Switch-Panel.xml</path>
+		<offsets>
+			<x-m>-0.26</x-m>
+			<y-m>0.720</y-m>
+			<z-m>-0.874</z-m>
+			<pitch-deg>0.0</pitch-deg>
+			<heading-deg>0.0</heading-deg>
+		</offsets>
+	</model>
+
+	<model>
+		<path>Aircraft/Vostok-1/Models/Illuminators/Vostok-1-Back-Illuminator.xml</path>
+		<offsets>
+			<x-m>0.9275</x-m>
+			<y-m>0.0</y-m>
+			<z-m>-0.4569</z-m>
+			<pitch-deg>25.0</pitch-deg>
+			<heading-deg>180.0</heading-deg>
+		</offsets>
+	</model>
+
+	<model>
+		<path>Aircraft/Vostok-1/Models/Illuminators/Vostok-1-Right-Illuminator.xml</path>
+		<offsets>
+			<x-m>0.1483</x-m>
+			<y-m>0.6699</y-m>
+			<z-m>-0.1938</z-m>
+			<pitch-deg>90.0</pitch-deg>
+			<roll-deg>-35.0</roll-deg>
+			<heading-deg>-9.0</heading-deg>
+		</offsets>
+	</model>
+
+	<animation>
+		<type>translate</type>
+		<property>fdm/jsbsim/stages/unit[5]/show-translate</property>
+		<factor>1.0</factor>
+		<axis>
+			<x>0</x>
+			<y>0</y>
+			<z>1.0</z>
+		</axis>
+	</animation>
+
+	<enable-hot type="bool">false</enable-hot>
+
+</PropertyList>

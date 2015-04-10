@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+
+<!--
+	Author: Slavutinsky Victor
+-->
+
+
+<PropertyList>
+
+<!-- Left Hatch Stage Submodel -->
+
+	<path>Vostok-1-Left-Hatch.ac</path>
+
+	<offsets>
+		<x-m>0.0</x-m>
+		<y-m>0.0</y-m>
+		<z-m>0.0</z-m>
+		<pitch-deg>0.0</pitch-deg>
+		<heading-deg>0.0</heading-deg>
+	</offsets>
+
+	<enable-hot type="bool">false</enable-hot>
+
+</PropertyList>

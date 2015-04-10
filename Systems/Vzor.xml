@@ -1,0 +1,515 @@
+<?xml version="1.0"?>
+
+<!--
+	Author: Slavutinsky Victor
+-->
+
+<system>
+
+	<fileheader>
+		<author> Slavutinsky Victor </author>
+		<filecreationdate> 2011 </filecreationdate>
+		<version>$Revision: 1.00 $</version>
+		<description> Vzor </description>
+	</fileheader>
+
+<!--	That must be aded to set file
+
+	<fdm>
+		<jsbsim>
+			<systems>
+				<vzor>
+					<serviceable type="bool">1</serviceable>
+					<lock-command type="float">1</lock-command>
+					<lock-pos type="float">1</lock-pos>
+					<lever-command type="float">0</lever-command>
+					<lever-pos type="float">0</lever-pos>
+					<pilot-oscillator-pos>0</pilot-oscillator-pos>
+					<shift-oscillator-command>0</shift-oscillator-command>
+					<shift-oscillator-pos>0</shift-oscillator-pos>
+				</vzor>
+			</systems>
+		</jsbsim>
+	</fdm>
+
+-->
+
+	<channel name="Vzor">
+
+	<!-- mirror -->
+
+		<!-- field of view is 150deg -->
+
+		<fcs_function name="systems/vzor/mirror-shift-y">
+		<function>
+			<product>
+				<table>
+					<independentVar lookup="row">attitude/pitch-rad</independentVar>
+					<tableData>
+						-1.57079632679489661923		0.0
+						-0.26179938779914943654		-0.5
+					</tableData>
+				</table>
+				<table>
+					<independentVar lookup="row">attitude/roll-rad</independentVar>
+					<tableData>
+						-3.14159265358979323846		-1.0
+						-1.58				-1.0
+						-1.57079632679489661923		1.0
+						0.0				1.0
+						1.57079632679489661923		1.0
+						1.58				-1.0
+						3.14159265358979323846		-1.0
+					</tableData>
+				</table>
+			</product>
+		</function>
+		</fcs_function>
+
+		<fcs_function name="systems/vzor/mirror-shift-x">
+		<function>
+			<table>
+				<independentVar lookup="row">attitude/roll-rad</independentVar>
+				<tableData>
+					-3.14159265358979323846		0.5
+					-1.83259571459404605577		0.0
+					-1.30899693899574718269		-0.5
+					0.0				0.0
+					1.30899693899574718269		0.5
+					1.83259571459404605577		0.0
+					3.14159265358979323846		-0.5			
+				</tableData>
+			</table>
+		</function>
+		</fcs_function>
+
+		<fcs_function name="systems/vzor/mirror-shift-day">
+		<function>
+			<product>
+				<pow>
+					<sum>
+						<pow>
+							<property>systems/vzor/mirror-shift-x</property>
+							<value>2.0</value>
+						</pow>
+						<pow>
+							<property>systems/vzor/mirror-shift-y</property>
+							<value>2.0</value>
+						</pow>
+					</sum>
+					<value>0.5</value>
+				</pow>
+				<value>0.5</value>
+			</product>
+		</function>
+		</fcs_function>
+
+		<fcs_function name="systems/vzor/mirror-angle-deg">
+		<function>
+			<product>
+				<atan2>
+					<property>systems/vzor/mirror-shift-y</property>
+					<property>systems/vzor/mirror-shift-x</property>
+				</atan2>
+				<value>57.2957795130823208768</value>
+			</product>
+		</function>
+		</fcs_function>
+
+
+		<fcs_function name="systems/vzor/mirror-shift-night">
+		<function>
+			<sum>
+				<property>systems/vzor/mirror-shift-day</property>
+				<value>0.5</value>
+			</sum>
+		</function>
+		</fcs_function>
+
+
+		<switch name="systems/vzor/mirror-shift">
+			<default value="systems/vzor/mirror-shift-day"/>
+			<test logic="OR" value="0.25">
+				systems/vzor/serviceable eq 0
+				stages/unit[1]/active eq 1
+				position/h-agl-ft lt 164041
+			</test>
+			<test logic="AND" value="systems/vzor/mirror-shift-day">
+				systems/vzor/serviceable eq 1
+				stages/unit[1]/active eq 0
+				position/h-agl-ft gt 164041
+				/sim/time/sun-angle-rad lt 1.57079632679489661923
+			</test>
+			<test logic="AND" value="systems/vzor/mirror-shift-night">
+				systems/vzor/serviceable eq 1
+				stages/unit[1]/active eq 0
+				position/h-agl-ft gt 164041
+				/sim/time/sun-angle-rad ge 1.57079632679489661923
+			</test>
+		</switch>
+
+	<!-- cover -->
+
+		<switch name="calculations/vzor/cover-allowed">
+			<default value="systems/vzor/cover-command"/>
+			<test logic="AND" value="systems/vzor/cover-input">
+				systems/vzor/serviceable eq 1
+
+			</test>
+			<output>systems/vzor/cover-command</output>
+		</switch>
+
+		<kinematic name="calculations/vzor/cover-pos">
+			<input>systems/vzor/cover-command</input>
+			<traverse>
+			<setting>
+				<position>0</position>
+				<time>0</time>
+			</setting>
+			<setting>
+				<position>1</position>
+				<time>0.7</time>
+			</setting>
+			</traverse>
+			<output>systems/vzor/cover-pos</output>
+		</kinematic>
+
+		<fcs_function name="calculations/vzor/petal-angle">
+		<function>
+			<product>
+				<property>systems/vzor/cover-pos</property>
+				<value>180</value>
+				<value>0.475</value>
+			</product>
+		</function>
+			<output>systems/vzor/petal-angle</output>
+		</fcs_function>
+
+		<fcs_function name="calculations/vzor/petal-angle-rad">
+		<function>
+			<product>
+				<property>systems/vzor/cover-pos</property>
+				<value>3.14159265358979323846</value>
+				<value>0.475</value>
+			</product>
+		</function>
+			<output>systems/vzor/petal-angle-rad</output>
+		</fcs_function>
+
+		<fcs_function name="calculations/vzor/petal-shift">
+		<function>
+			<product>
+				<value>2.0</value>
+				<value>0.025</value> <!-- petal length-->
+				<difference>
+					<value>1.0</value>
+					<cos>
+						<property>systems/vzor/petal-angle-rad</property>
+					</cos>
+				</difference>
+			</product>
+		</function>
+			<output>systems/vzor/petal-shift</output>
+		</fcs_function>
+
+		<fcs_function name="calculations/vzor/petal-shift-one">
+		<function>
+			<product>
+				<property>systems/vzor/cover-pos</property>
+				<value>0.0</value>
+			</product>
+		</function>
+			<output>systems/vzor/petal-shift-one</output>
+		</fcs_function>
+
+		<fcs_function name="calculations/vzor/petal-shift-two">
+		<function>
+			<sum>
+				<property>systems/vzor/petal-shift-one</property>
+				<property>systems/vzor/petal-shift</property>
+			</sum>
+		</function>
+			<output>systems/vzor/petal-shift-two</output>
+		</fcs_function>
+
+		<fcs_function name="calculations/vzor/petal-shift-three">
+		<function>
+			<sum>
+				<property>systems/vzor/petal-shift-one</property>
+				<property>systems/vzor/petal-shift</property>
+			</sum>
+		</function>
+			<output>systems/vzor/petal-shift-three</output>
+		</fcs_function>
+
+		<fcs_function name="calculations/vzor/petal-shift-four">
+		<function>
+			<sum>
+				<property>systems/vzor/petal-shift-one</property>
+				<product>
+					<value>2.0</value>
+					<property>systems/vzor/petal-shift</property>
+				</product>
+			</sum>
+		</function>
+			<output>systems/vzor/petal-shift-four</output>
+		</fcs_function>
+
+		<fcs_function name="calculations/vzor/petal-shift-five">
+		<function>
+			<sum>
+				<property>systems/vzor/petal-shift-one</property>
+				<product>
+					<value>2.0</value>
+					<property>systems/vzor/petal-shift</property>
+				</product>
+			</sum>
+		</function>
+			<output>systems/vzor/petal-shift-five</output>
+		</fcs_function>
+
+		<fcs_function name="calculations/vzor/petal-shift-six">
+		<function>
+			<sum>
+				<property>systems/vzor/petal-shift-one</property>
+				<product>
+					<value>3.0</value>
+					<property>systems/vzor/petal-shift</property>
+				</product>
+			</sum>
+		</function>
+			<output>systems/vzor/petal-shift-six</output>
+		</fcs_function>
+
+		<fcs_function name="calculations/vzor/petal-shift-seven">
+		<function>
+			<sum>
+				<property>systems/vzor/petal-shift-one</property>
+				<product>
+					<value>3.0</value>
+					<property>systems/vzor/petal-shift</property>
+				</product>
+			</sum>
+		</function>
+			<output>systems/vzor/petal-shift-seven</output>
+		</fcs_function>
+
+		<fcs_function name="calculations/vzor/petal-shift-eight">
+		<function>
+			<sum>
+				<property>systems/vzor/petal-shift-one</property>
+				<product>
+					<value>4.0</value>
+					<property>systems/vzor/petal-shift</property>
+				</product>
+			</sum>
+		</function>
+			<output>systems/vzor/petal-shift-eight</output>
+		</fcs_function>
+
+		<switch name="calculations/vzor/cover-not-allowed">
+			<default value="systems/vzor/cover-input"/>
+			<test logic="AND" value="systems/vzor/cover-command">
+				systems/vzor/serviceable eq 0
+
+			</test>
+			<output>systems/vzor/cover-input</output>
+		</switch>
+
+		<switch name="calculations/vzor/cover-switch">
+			<default value="systems/vzor/cover-switch"/>
+			<test logic="AND" value="1">
+				systems/vzor/cover-pos ge 0.5
+			</test>
+			<test logic="AND" value="0">
+				systems/vzor/cover-pos lt 0.5
+			</test>
+			<output>systems/vzor/cover-switch</output>
+		</switch>
+
+		<switch name="calculations/vzor/light-red">
+			<default value="0"/>
+			<test logic="AND" value="systems/vzor/light">
+				systems/vzor/light gt systems/light/cabine/red
+			</test>
+			<test logic="AND" value="systems/light/cabine/red">
+				systems/vzor/light le systems/light/cabine/red
+			</test>
+			<output>systems/vzor/light-red</output>
+		</switch>
+
+		<switch name="calculations/vzor/light-green">
+			<default value="0"/>
+			<test logic="AND" value="systems/vzor/light">
+				systems/vzor/light gt systems/light/cabine/green
+			</test>
+			<test logic="AND" value="systems/light/cabine/green">
+				systems/vzor/light le systems/light/cabine/green
+			</test>
+			<output>systems/vzor/light-green</output>
+		</switch>
+
+		<switch name="calculations/vzor/light-blue">
+			<default value="0"/>
+			<test logic="AND" value="systems/vzor/light">
+				systems/vzor/light gt systems/light/cabine/blue
+			</test>
+			<test logic="AND" value="systems/light/cabine/blue">
+				systems/vzor/light le systems/light/cabine/blue
+			</test>
+			<output>systems/vzor/light-blue</output>
+		</switch>
+
+		<fcs_function name="calculations/vzor/left-light">
+		<function>
+			<product>
+				<table>
+					<independentVar lookup="row">systems/spacecraft/ground-contact</independentVar>
+					<tableData>
+						0.0		1.0
+						1.0		0.0
+					</tableData>
+				</table>
+				<table>
+					<independentVar lookup="row">velocities/r-rad_sec</independentVar>
+					<independentVar lookup="column">systems/leftswitchpanel/lightcheck-switch</independentVar>
+					<tableData>
+								0.0		1.0
+						-0.1		1.0		1.0
+						0.0		0.0		1.0
+						1.0		0.0		1.0
+					</tableData>
+				</table>
+			</product>
+		</function>
+			<output>systems/vzor/left-light</output>
+		</fcs_function>
+
+		<fcs_function name="calculations/vzor/right-light">
+		<function>
+			<product>
+				<table>
+					<independentVar lookup="row">systems/spacecraft/ground-contact</independentVar>
+					<tableData>
+						0.0		1.0
+						1.0		0.0
+					</tableData>
+				</table>
+				<table>
+					<independentVar lookup="row">velocities/r-rad_sec</independentVar>
+					<independentVar lookup="column">systems/leftswitchpanel/lightcheck-switch</independentVar>
+					<tableData>
+								0.0	1.0
+						-1.0		0.0	1.0
+						0.0		0.0	1.0
+						0.1		1.0	1.0
+					</tableData>
+				</table>
+			</product>
+		</function>
+			<output>systems/vzor/right-light</output>
+		</fcs_function>
+
+		<fcs_function name="calculations/vzor/up-light">
+		<function>
+			<product>
+				<table>
+					<independentVar lookup="row">systems/spacecraft/ground-contact</independentVar>
+					<tableData>
+						0.0		1.0
+						1.0		0.0
+					</tableData>
+				</table>
+				<table>
+					<independentVar lookup="row">velocities/q-rad_sec</independentVar>
+					<independentVar lookup="column">systems/leftswitchpanel/lightcheck-switch</independentVar>
+					<tableData>
+								0.0		1.0
+						-0.1		1.0		1.0
+						0.0		0.0		1.0
+						1.0		0.0		1.0
+					</tableData>
+				</table>
+			</product>
+		</function>
+			<output>systems/vzor/up-light</output>
+		</fcs_function>
+
+		<fcs_function name="calculations/vzor/down-light">
+		<function>
+			<product>
+				<table>
+					<independentVar lookup="row">systems/spacecraft/ground-contact</independentVar>
+					<tableData>
+						0.0		1.0
+						1.0		0.0
+					</tableData>
+				</table>
+				<table>
+					<independentVar lookup="row">velocities/q-rad_sec</independentVar>
+					<independentVar lookup="column">systems/leftswitchpanel/lightcheck-switch</independentVar>
+					<tableData>
+								0.0	1.0
+						-1.0		0.0	1.0
+						0.0		0.0	1.0
+						0.1		1.0	1.0
+					</tableData>
+				</table>
+			</product>
+		</function>
+			<output>systems/vzor/down-light</output>
+		</fcs_function>
+
+		<fcs_function name="calculations/vzor/up-left-light">
+		<function>
+			<product>
+				<table>
+					<independentVar lookup="row">systems/spacecraft/ground-contact</independentVar>
+					<tableData>
+						0.0		1.0
+						1.0		0.0
+					</tableData>
+				</table>
+				<table>
+					<independentVar lookup="row">velocities/p-rad_sec</independentVar>
+					<independentVar lookup="column">systems/leftswitchpanel/lightcheck-switch</independentVar>
+					<tableData>
+								0.0		1.0
+						-0.1		1.0		1.0
+						0.0		0.0		1.0
+						1.0		0.0		1.0
+					</tableData>
+				</table>
+			</product>
+		</function>
+			<output>systems/vzor/up-left-light</output>
+		</fcs_function>
+
+		<fcs_function name="calculations/vzor/up-right-light">
+		<function>
+			<product>
+				<table>
+					<independentVar lookup="row">systems/spacecraft/ground-contact</independentVar>
+					<tableData>
+						0.0		1.0
+						1.0		0.0
+					</tableData>
+				</table>
+				<table>
+					<independentVar lookup="row">velocities/p-rad_sec</independentVar>
+					<independentVar lookup="column">systems/leftswitchpanel/lightcheck-switch</independentVar>
+					<tableData>
+								0.0	1.0
+						-1.0		0.0	1.0
+						0.0		0.0	1.0
+						0.1		1.0	1.0
+					</tableData>
+				</table>
+			</product>
+		</function>
+			<output>systems/vzor/up-right-light</output>
+		</fcs_function>
+
+	</channel>
+
+</system>

@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+
+<!--
+	Author: Slavutinsky Victor
+-->
+
+<!-- Soft Landing Engine -->
+
+<rocket_engine name="Soft-Landing">
+	<isp>               300.0 </isp>
+	<shr>              1.23 </shr>
+	<max_pc>       86556.00 </max_pc>
+	<variance>         0.1 </variance>
+	<prop_eff>         0.67 </prop_eff>
+	<maxthrottle>      1.00 </maxthrottle>
+	<minthrottle>      0.00 </minthrottle>
+	<sloxiflowmax>   20.69 </sloxiflowmax>
+	<slfuelflowmax>   20.69 </slfuelflowmax>
+</rocket_engine>

@@ -1,0 +1,550 @@
+<?xml version="1.0"?>
+
+<!--
+	Author: Slavutinsky Victor
+-->
+
+<PropertyList>
+
+<!-- Left Panel -->
+
+	<path>Vostok-1-Left-Panel.ac</path>
+
+	<offsets>
+		<x-m>0.0</x-m>
+		<y-m>0.0</y-m>
+		<z-m>0.0</z-m>
+		<pitch-deg>0</pitch-deg>
+	</offsets>
+
+	<enable-hot type="bool">false</enable-hot>
+
+	<animation>
+		<type>select</type>
+		<condition>
+			<equals>
+				<property>sim/current-view/internal</property>
+				<value>true</value>
+			</equals>
+		</condition>
+	</animation>
+
+	<!-- Down indicator light -->
+
+	<animation>
+		<type>material</type>
+		<object-name>LP_DLPanel</object-name>
+		<object-name>LP_DLGlass</object-name>
+		<emission>
+			<factor-prop>fdm/jsbsim/systems/orientationpanel/down-light</factor-prop>
+			<red-prop>fdm/jsbsim/systems/light/panel-yellow/red</red-prop>
+			<green-prop>fdm/jsbsim/systems/light/panel-yellow/green</green-prop>
+			<blue-prop>fdm/jsbsim/systems/light/panel-yellow/blue</blue-prop>
+		</emission>
+	</animation>
+
+	<!-- Common light -->
+
+	<animation>
+		<type>material</type>
+		<object-name>LP_GBase</object-name>
+		<object-name>LP_GGlass</object-name>
+		<object-name>LP_GScale</object-name>
+		<object-name>LP_GLine</object-name>
+		<object-name>LP_ABase</object-name>
+		<object-name>LP_ACover</object-name>
+		<object-name>LP_AGlass</object-name>
+		<object-name>LP_ANeedleOne</object-name>
+		<object-name>LP_ANeedleThree</object-name>
+		<object-name>LP_ANeedleTwo</object-name>
+		<object-name>LP_APanel</object-name>
+		<object-name>LP_Bolts</object-name>
+		<object-name>LP_CRings</object-name>
+		<object-name>LP_Cables</object-name>
+		<object-name>LP_Connectors</object-name>
+		<object-name>LP_DLBase</object-name>
+		<object-name>LP_DLGlass</object-name>
+		<object-name>LP_FSPlates</object-name>
+		<object-name>LP_FSScrews</object-name>
+		<object-name>LP_FSprings</object-name>
+		<object-name>LP_Fastening</object-name>
+		<object-name>LP_HABase</object-name>
+		<object-name>LP_HAGlass</object-name>
+		<object-name>LP_HAScale</object-name>
+		<object-name>LP_HALine</object-name>
+		<object-name>LP_HBase</object-name>
+		<object-name>LP_HBolts</object-name>
+		<object-name>LP_HRing</object-name>
+		<object-name>LP_Horizon</object-name>
+		<object-name>LP_LPanel</object-name>
+		<object-name>LP_DPMBase</object-name>
+		<object-name>LP_DPMCover</object-name>
+		<object-name>LP_DPMGlass</object-name>
+		<object-name>LP_DPMNeedleOne</object-name>
+		<object-name>LP_DPMNeedleThree</object-name>
+		<object-name>LP_DPMNeedleTwo</object-name>
+		<object-name>LP_DPMPanel</object-name>
+		<object-name>LP_SBase</object-name>
+		<object-name>LP_SCover</object-name>
+		<object-name>LP_SGlass</object-name>
+		<object-name>LP_SNeedleOne</object-name>
+		<object-name>LP_SNeedleThree</object-name>
+		<object-name>LP_SNeedleTwo</object-name>
+		<object-name>LP_SPanel</object-name>
+		<object-name>LP_VSBase</object-name>
+		<object-name>LP_VSCover</object-name>
+		<object-name>LP_VSGlass</object-name>
+		<object-name>LP_VSNeedleOne</object-name>
+		<object-name>LP_VSNeedleThree</object-name>
+		<object-name>LP_VSNeedleTwo</object-name>
+		<object-name>LP_VSPanel</object-name>
+		<object-name>LP_PVernier</object-name>
+		<object-name>LP_PUp</object-name>
+		<object-name>LP_PDown</object-name>
+		<object-name>LP_RVernier</object-name>
+		<object-name>LP_RUp</object-name>
+		<object-name>LP_RDown</object-name>
+		<emission>
+			<red-prop>fdm/jsbsim/systems/light/cabine/red</red-prop>
+			<green-prop>fdm/jsbsim/systems/light/cabine/green</green-prop>
+			<blue-prop>fdm/jsbsim/systems/light/cabine/blue</blue-prop>
+		</emission>
+	</animation> 
+
+	<!-- Horizon -->
+
+	<animation>
+		<type>rotate</type>
+		<object-name>LP_Horizon</object-name>
+		<property>fdm/jsbsim/attitude/roll-rad</property>
+		<factor>57.2957795130823208768</factor>
+		<axis>
+			<x1-m>-1.0</x1-m>
+			<y1-m>-0.00016</y1-m>
+			<z1-m>0.053153</z1-m>
+			<x2-m>1.0</x2-m>
+			<y2-m>-0.00016</y2-m>
+			<z2-m>0.053153</z2-m>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>rotate</type>
+		<object-name>LP_Horizon</object-name>
+		<property>fdm/jsbsim/attitude/pitch-rad</property>
+		<factor>57.2957795130823208768</factor>
+		<axis>
+			<x1-m>0.059663</x1-m>
+			<y1-m>-1.0</y1-m>
+			<z1-m>0.053153</z1-m>
+			<x2-m>0.059663</x2-m>
+			<y2-m>1.0</y2-m>
+			<z2-m>0.053153</z2-m>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>rotate</type>
+		<object-name>LP_PVernier</object-name>
+		<property>fdm/jsbsim/systems/arthorizon/pitch-offset-deg</property>
+		<factor>1.0</factor>
+		<axis>
+			<x1-m>0.082</x1-m>
+			<y1-m>-0.066</y1-m>
+			<z1-m>0.080</z1-m>
+			<x2-m>0.107</x2-m>
+			<y2-m>-0.066</y2-m>
+			<z2-m>0.080</z2-m>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>pick</type>
+		<object-name>LP_PUp</object-name>
+		<action>
+			<button>0</button>
+			<repeatable>true</repeatable>
+			<interval-sec>0.1</interval-sec>
+			<binding>
+				<command>property-adjust</command>
+				<property>fdm/jsbsim/systems/arthorizon/pitch-offset-deg</property>
+				<step>1</step>
+				<wrap>false</wrap>
+			</binding>
+		</action>
+  		<action>
+			<button>1</button>
+			<repeatable>true</repeatable>
+			<interval-sec>0.1</interval-sec>
+			<binding>
+				<command>property-adjust</command>
+				<property>fdm/jsbsim/systems/arthorizon/pitch-offset-deg</property>
+				<step>1</step>
+				<wrap>false</wrap>
+			</binding>
+		</action>
+	</animation>
+
+	<animation>
+		<type>pick</type>
+		<object-name>LP_PDown</object-name>
+		<action>
+			<button>0</button>
+			<repeatable>true</repeatable>
+			<interval-sec>0.1</interval-sec>
+			<binding>
+				<command>property-adjust</command>
+				<property>fdm/jsbsim/systems/arthorizon/pitch-offset-deg</property>
+				<step>-1</step>
+				<wrap>false</wrap>
+			</binding>
+		</action>
+  		<action>
+			<button>1</button>
+			<repeatable>true</repeatable>
+			<interval-sec>0.1</interval-sec>
+			<binding>
+				<command>property-adjust</command>
+				<property>fdm/jsbsim/systems/arthorizon/pitch-offset-deg</property>
+				<step>-1</step>
+				<wrap>false</wrap>
+			</binding>
+		</action>
+	</animation>
+
+	<animation>
+		<type>rotate</type>
+		<object-name>LP_RVernier</object-name>
+		<property>fdm/jsbsim/systems/arthorizon/roll-offset-deg</property>
+		<factor>1.0</factor>
+		<axis>
+			<x1-m>0.082</x1-m>
+			<y1-m>0.067</y1-m>
+			<z1-m>0.080</z1-m>
+			<x2-m>0.107</x2-m>
+			<y2-m>0.067</y2-m>
+			<z2-m>0.080</z2-m>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>pick</type>
+		<object-name>LP_RUp</object-name>
+		<action>
+			<button>0</button>
+			<repeatable>true</repeatable>
+			<interval-sec>0.1</interval-sec>
+			<binding>
+				<command>property-adjust</command>
+				<property>fdm/jsbsim/systems/arthorizon/roll-offset-deg</property>
+				<step>1</step>
+				<wrap>false</wrap>
+			</binding>
+		</action>
+  		<action>
+			<button>1</button>
+			<repeatable>true</repeatable>
+			<interval-sec>0.1</interval-sec>
+			<binding>
+				<command>property-adjust</command>
+				<property>fdm/jsbsim/systems/arthorizon/roll-offset-deg</property>
+				<step>1</step>
+				<wrap>false</wrap>
+			</binding>
+		</action>
+	</animation>
+
+	<animation>
+		<type>pick</type>
+		<object-name>LP_RDown</object-name>
+		<action>
+			<button>0</button>
+			<repeatable>true</repeatable>
+			<interval-sec>0.1</interval-sec>
+			<binding>
+				<command>property-adjust</command>
+				<property>fdm/jsbsim/systems/arthorizon/roll-offset-deg</property>
+				<step>-1</step>
+				<wrap>false</wrap>
+			</binding>
+		</action>
+  		<action>
+			<button>1</button>
+			<repeatable>true</repeatable>
+			<interval-sec>0.1</interval-sec>
+			<binding>
+				<command>property-adjust</command>
+				<property>fdm/jsbsim/systems/arthorizon/roll-offset-deg</property>
+				<step>-1</step>
+				<wrap>false</wrap>
+			</binding>
+		</action>
+	</animation>
+
+	<!-- G force indicator -->
+
+	<animation>
+		<type>rotate</type>
+		<object-name>LP_GScale</object-name>
+		<property>fdm/jsbsim/systems/orientationpanel/g-force-absolute</property>
+		<factor>20</factor>
+		<center>
+		</center>
+		<axis>
+			<x1-m>0.055</x1-m>
+			<y1-m>-1.0</y1-m>
+			<z1-m>0.012</z1-m>
+			<x2-m>0.055</x2-m>
+			<y2-m>1.0</y2-m>
+			<z2-m>0.012</z2-m>
+		</axis>
+	</animation>
+
+	<!-- Compass -->
+
+	<animation>
+		<type>rotate</type>
+		<object-name>LP_HAScale</object-name>
+		<property>fdm/jsbsim/attitude/heading-true-rad</property>
+		<factor>57.2957795130823208768</factor>
+		<center>
+		</center>
+		<axis>
+			<x1-m>0.055</x1-m>
+			<y1-m>0.0</y1-m>
+			<z1-m>1.0</z1-m>
+			<x2-m>0.055</x2-m>
+			<y2-m>0.0</y2-m>
+			<z2-m>-1.0</z2-m>
+		</axis>
+	</animation>
+
+	<!-- Altimeter -->
+
+		<!-- ft -> 10km
+			(360*0.3048)/(1000 000)
+		-->
+
+	<animation>
+		<type>rotate</type>
+		<object-name>LP_ANeedleOne</object-name>
+		<property>fdm/jsbsim/position/h-sl-ft</property>
+		<factor>0.000109728</factor>
+		<center>
+		</center>
+		<axis>
+			<x1-m>1.0</x1-m>
+			<y1-m>-0.119</y1-m>
+			<z1-m>0.047</z1-m>
+			<x2-m>-1.0</x2-m>
+			<y2-m>-0.119</y2-m>
+			<z2-m>0.047</z2-m>
+		</axis>
+	</animation>
+
+		<!-- ft -> 10km
+			(360*0.3048)/(100 000)
+		-->
+
+	<animation>
+		<type>rotate</type>
+		<object-name>LP_ANeedleTwo</object-name>
+		<property>fdm/jsbsim/position/h-sl-ft</property>
+		<factor>0.00109728</factor>
+		<center>
+		</center>
+		<axis>
+			<x1-m>1.0</x1-m>
+			<y1-m>-0.119</y1-m>
+			<z1-m>0.047</z1-m>
+			<x2-m>-1.0</x2-m>
+			<y2-m>-0.119</y2-m>
+			<z2-m>0.047</z2-m>
+		</axis>
+	</animation>
+
+		<!-- ft -> 10km
+			(360*0.3048)/(10 000)
+		-->
+
+	<animation>
+		<type>rotate</type>
+		<object-name>LP_ANeedleThree</object-name>
+		<property>fdm/jsbsim/position/h-sl-ft</property>
+		<factor>0.0109728</factor>
+		<center>
+		</center>
+		<axis>
+			<x1-m>1.0</x1-m>
+			<y1-m>-0.119</y1-m>
+			<z1-m>0.047</z1-m>
+			<x2-m>-1.0</x2-m>
+			<y2-m>-0.119</y2-m>
+			<z2-m>0.047</z2-m>
+		</axis>
+	</animation>
+
+	<!-- Dynamical pressure meter -->
+
+		<!-- Up to 10000 Kg/M^2
+			(360)/(10000)
+		-->
+
+	<animation>
+		<type>rotate</type>
+		<object-name>LP_DPMNeedleOne</object-name>
+		<property>fdm/jsbsim/systems/orientationpanel/qbar-indicated-kgm2</property>
+		<factor>0.036</factor>
+		<center>
+		</center>
+		<axis>
+			<x1-m>1.0</x1-m>
+			<y1-m>0.119</y1-m>
+			<z1-m>-0.026</z1-m>
+			<x2-m>-1.0</x2-m>
+			<y2-m>0.119</y2-m>
+			<z2-m>-0.026</z2-m>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>rotate</type>
+		<object-name>LP_DPMNeedleTwo</object-name>
+		<property>fdm/jsbsim/systems/orientationpanel/qbar-indicated-kgm2</property>
+		<factor>0.36</factor>
+		<center>
+		</center>
+		<axis>
+			<x1-m>1.0</x1-m>
+			<y1-m>0.119</y1-m>
+			<z1-m>-0.026</z1-m>
+			<x2-m>-1.0</x2-m>
+			<y2-m>0.119</y2-m>
+			<z2-m>-0.026</z2-m>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>rotate</type>
+		<object-name>LP_DPMNeedleThree</object-name>
+		<property>fdm/jsbsim/systems/orientationpanel/qbar-indicated-kgm2</property>
+		<factor>3.6</factor>
+		<center>
+		</center>
+		<axis>
+			<x1-m>1.0</x1-m>
+			<y1-m>0.119</y1-m>
+			<z1-m>-0.026</z1-m>
+			<x2-m>-1.0</x2-m>
+			<y2-m>0.119</y2-m>
+			<z2-m>-0.026</z2-m>
+		</axis>
+	</animation>
+
+	<!-- Vertical speedometer -->
+
+	<animation>
+		<type>rotate</type>
+		<object-name>LP_VSNeedleOne</object-name>
+		<property>fdm/jsbsim/systems/orientationpanel/vertical-speed-absolute-ms</property>
+		<factor>0.36</factor>
+		<axis>
+			<x1-m>1.0</x1-m>
+			<y1-m>0.119</y1-m>
+			<z1-m>0.047</z1-m>
+			<x2-m>-1.0</x2-m>
+			<y2-m>0.119</y2-m>
+			<z2-m>0.047</z2-m>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>rotate</type>
+		<object-name>LP_VSNeedleTwo</object-name>
+		<property>fdm/jsbsim/systems/orientationpanel/vertical-speed-absolute-ms</property>
+		<factor>3.6</factor>
+		<axis>
+			<x1-m>1.0</x1-m>
+			<y1-m>0.119</y1-m>
+			<z1-m>0.047</z1-m>
+			<x2-m>-1.0</x2-m>
+			<y2-m>0.119</y2-m>
+			<z2-m>0.047</z2-m>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>rotate</type>
+		<object-name>LP_VSNeedleThree</object-name>
+		<property>fdm/jsbsim/systems/orientationpanel/vertical-speed-absolute-ms</property>
+		<factor>36</factor>
+		<axis>
+			<x1-m>1.0</x1-m>
+			<y1-m>0.119</y1-m>
+			<z1-m>0.047</z1-m>
+			<x2-m>-1.0</x2-m>
+			<y2-m>0.119</y2-m>
+			<z2-m>0.047</z2-m>
+		</axis>
+	</animation>
+
+	<!-- Speedometer -->
+
+	<animation>
+		<type>rotate</type>
+		<object-name>LP_SNeedleOne</object-name>
+		<property>fdm/jsbsim/systems/orientationpanel/horizontal-speed-fps</property>
+		<factor>0.003950208</factor>
+		<center>
+		</center>
+		<axis>
+			<x1-m>1.0</x1-m>
+			<y1-m>-0.119</y1-m>
+			<z1-m>-0.026</z1-m>
+			<x2-m>-1.0</x2-m>
+			<y2-m>-0.119</y2-m>
+			<z2-m>-0.026</z2-m>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>rotate</type>
+		<object-name>LP_SNeedleTwo</object-name>
+		<property>fdm/jsbsim/systems/orientationpanel/horizontal-speed-fps</property>
+		<factor>0.03950208</factor>
+		<center>
+		</center>
+		<axis>
+			<x1-m>1.0</x1-m>
+			<y1-m>-0.119</y1-m>
+			<z1-m>-0.026</z1-m>
+			<x2-m>-1.0</x2-m>
+			<y2-m>-0.119</y2-m>
+			<z2-m>-0.026</z2-m>
+		</axis>
+	</animation>
+
+		<!-- ft/s -> 1000km/h to one round of 360 degrees
+			(1*0.3048*(60*60/1000))*(360/1000)
+		-->
+
+	<animation>
+		<type>rotate</type>
+		<object-name>LP_SNeedleThree</object-name>
+		<property>fdm/jsbsim/systems/orientationpanel/horizontal-speed-fps</property>
+		<factor>0.3950208</factor>
+		<center>
+		</center>
+		<axis>
+			<x1-m>1.0</x1-m>
+			<y1-m>-0.119</y1-m>
+			<z1-m>-0.026</z1-m>
+			<x2-m>-1.0</x2-m>
+			<y2-m>-0.119</y2-m>
+			<z2-m>-0.026</z2-m>
+		</axis>
+	</animation>
+
+	<enable-hot type="bool">false</enable-hot>
+
+</PropertyList>

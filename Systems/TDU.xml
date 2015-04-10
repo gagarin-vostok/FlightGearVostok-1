@@ -1,0 +1,1965 @@
+<?xml version="1.0"?>
+
+<!--
+	Author: Slavutinsky Victor
+-->
+
+<system>
+
+	<fileheader>
+		<author> Slavutinsky Victor </author>
+		<filecreationdate> 2011 </filecreationdate>
+		<version>$Revision: 1.00 $</version>
+		<description>TDU</description>
+	</fileheader>
+
+	<channel name="TDU">
+
+		<!--TDU-->
+
+		<!-- Send control handle commands to orientation computer -->
+
+		<pure_gain name="calculations/stages/unit[4]/control/q-gained">
+			<input>systems/controlhandle/elevator-pos</input>
+			<gain>-1.0</gain>
+			<output>stages/unit[4]/control/q-gained</output>
+		</pure_gain>
+
+		<pure_gain name="calculations/stages/unit[4]/control/p-gained">
+			<input>systems/controlhandle/rudder-pos</input>
+			<gain>-1.0</gain>
+			<output>stages/unit[4]/control/p-gained</output>
+		</pure_gain>
+
+		<pure_gain name="calculations/stages/unit[4]/control/r-gained">
+			<input>systems/controlhandle/aileron-pos</input>
+			<gain>1.0</gain>
+			<output>stages/unit[4]/control/r-gained</output>
+		</pure_gain>
+
+		<switch name="calculations/stages/unit[4]/control/q-command">
+			<default value="systems/orientationcomputer/q-command"/>
+			<test logic="AND" value="stages/unit[4]/control/q-gained">
+				stages/unit[4]/active eq 1.0
+				systems/controlhandle/button-switch eq 1.0
+			</test>
+			<output>systems/orientationcomputer/q-command</output>
+		</switch>
+
+		<switch name="calculations/stages/unit[4]/control/p-command">
+			<default value="systems/orientationcomputer/p-command"/>
+			<test logic="AND" value="stages/unit[4]/control/p-gained">
+				stages/unit[4]/active eq 1.0
+				systems/controlhandle/button-switch eq 1.0
+			</test>
+			<output>systems/orientationcomputer/p-command</output>
+		</switch>
+
+		<switch name="calculations/stages/unit[4]/control/r-command">
+			<default value="systems/orientationcomputer/r-command"/>
+			<test logic="AND" value="stages/unit[4]/control/r-gained">
+				stages/unit[4]/active eq 1.0
+				systems/controlhandle/button-switch eq 1.0
+			</test>
+			<output>systems/orientationcomputer/r-command</output>
+		</switch>
+
+		<switch name="calculations/stages/unit[4]/control/q-hold">
+			<default value="systems/orientationcomputer/q-hold"/>
+			<test logic="AND" value="1">
+				stages/unit[4]/active eq 1.0
+				systems/controlhandle/button-switch eq 1.0
+				systems/controlhandle/elevator-pos eq 0.0
+			</test>
+			<test logic="AND" value="0">
+				stages/unit[4]/active eq 1.0
+				systems/controlhandle/button-switch eq 1.0
+				systems/controlhandle/elevator-pos gt 0.0
+			</test>
+			<test logic="AND" value="0">
+				stages/unit[4]/active eq 1.0
+				systems/controlhandle/button-switch eq 1.0
+				systems/controlhandle/elevator-pos lt 0.0
+			</test>
+			<test logic="AND" value="0">
+				stages/unit[4]/active eq 1.0
+				systems/controlhandle/button-switch eq 0.0
+			</test>
+			<output>systems/orientationcomputer/q-hold</output>
+		</switch>
+
+		<switch name="calculations/stages/unit[4]/control/p-hold">
+			<default value="systems/orientationcomputer/p-hold"/>
+			<test logic="AND" value="1">
+				stages/unit[4]/active eq 1.0
+				systems/controlhandle/button-switch eq 1.0
+				systems/controlhandle/rudder-pos eq 0.0
+			</test>
+			<test logic="AND" value="0">
+				stages/unit[4]/active eq 1.0
+				systems/controlhandle/button-switch eq 1.0
+				systems/controlhandle/rudder-pos gt 0.0
+			</test>
+			<test logic="AND" value="0">
+				stages/unit[4]/active eq 1.0
+				systems/controlhandle/button-switch eq 1.0
+				systems/controlhandle/rudder-pos lt 0.0
+			</test>
+			<test logic="AND" value="0">
+				stages/unit[4]/active eq 1.0
+				systems/controlhandle/button-switch eq 0.0
+			</test>
+			<output>systems/orientationcomputer/p-hold</output>
+		</switch>
+
+		<switch name="calculations/stages/unit[4]/control/r-hold">
+			<default value="systems/orientationcomputer/r-hold"/>
+			<test logic="AND" value="1">
+				stages/unit[4]/active eq 1.0
+				systems/controlhandle/button-switch eq 1.0
+				systems/controlhandle/aileron-pos eq 0.0
+			</test>
+			<test logic="AND" value="0">
+				stages/unit[4]/active eq 1.0
+				systems/controlhandle/button-switch eq 1.0
+				systems/controlhandle/aileron-pos gt 0.0
+			</test>
+			<test logic="AND" value="0">
+				stages/unit[4]/active eq 1.0
+				systems/controlhandle/button-switch eq 1.0
+				systems/controlhandle/aileron-pos lt 0.0
+			</test>
+			<test logic="AND" value="0">
+				stages/unit[4]/active eq 1.0
+				systems/controlhandle/button-switch eq 0.0
+			</test>
+			<output>systems/orientationcomputer/r-hold</output>
+		</switch>
+
+		<!--Return control pid to zero if no button pressed -->
+
+		<switch name="calculations/stages/unit[4]/control/q-control-add">
+			<default value="systems/orientationcomputer/q-control-add"/>
+			<test logic="AND" value="systems/orientationcomputer/q-control-acceleration">
+				stages/unit[4]/active eq 1.0
+				systems/controlhandle/button-switch eq 1.0
+			</test>
+			<test logic="AND" value="systems/orientationcomputer/q-control-return">
+				stages/unit[4]/active eq 1.0
+				systems/controlhandle/button-switch eq 0.0
+			</test>
+			<output>systems/orientationcomputer/q-control-add</output>
+		</switch>
+
+		<switch name="calculations/stages/unit[4]/control/p-control-add">
+			<default value="systems/orientationcomputer/p-control-add"/>
+			<test logic="AND" value="systems/orientationcomputer/p-control-acceleration">
+				stages/unit[4]/active eq 1.0
+				systems/controlhandle/button-switch eq 1.0
+			</test>
+			<test logic="AND" value="systems/orientationcomputer/p-control-return">
+				stages/unit[4]/active eq 1.0
+				systems/controlhandle/button-switch eq 0.0
+			</test>
+			<output>systems/orientationcomputer/p-control-add</output>
+		</switch>
+
+		<switch name="calculations/stages/unit[4]/control/r-control-add">
+			<default value="systems/orientationcomputer/r-control-add"/>
+			<test logic="AND" value="systems/orientationcomputer/r-control-acceleration">
+				stages/unit[4]/active eq 1.0
+				systems/controlhandle/button-switch eq 1.0
+			</test>
+			<test logic="AND" value="systems/orientationcomputer/r-control-return">
+				stages/unit[4]/active eq 1.0
+				systems/controlhandle/button-switch eq 0.0
+			</test>
+			<output>systems/orientationcomputer/r-control-add</output>
+		</switch>
+
+		<!--Calculating mass moment changes-->
+
+		<fcs_function name="calculations/stages/unit[4]/mass-part">
+			<function>
+				<quotient>
+					<sum>
+						<property>propulsion/tank[16]/contents-lbs</property>
+						<property>propulsion/tank[17]/contents-lbs</property>
+						<property>propulsion/tank[18]/contents-lbs</property>
+						<property>propulsion/tank[19]/contents-lbs</property>
+						<property>propulsion/tank[19]/contents-lbs</property>
+						<property>propulsion/tank[20]/contents-lbs</property>
+						<property>propulsion/tank[21]/contents-lbs</property>
+						<property>propulsion/tank[22]/contents-lbs</property>
+						<property>propulsion/tank[24]/contents-lbs</property>
+						<property>propulsion/tank[25]/contents-lbs</property>
+					</sum>
+					<sum>
+						<value>242.50</value>
+						<value>242.50</value>
+						<value>66.13</value>
+						<value>66.13</value>
+						<value>20.00</value>
+						<value>20.00</value>
+						<value>20.00</value>
+						<value>20.00</value>
+						<value>20.00</value>
+						<value>20.00</value>
+					</sum>
+				</quotient>
+			</function>
+			<output>stages/unit[4]/mass-part</output>
+		</fcs_function>
+
+		<!--Output orientation computer factors and limits -->
+
+		<fcs_function name="calculations/stages/unit[4]/control/mass-control">
+			<function>
+				<product>
+					<value>20.0</value>
+					<table>
+						<independentVar lookup="row">stages/unit[4]/mass-part</independentVar>
+						<tableData>
+							0.0		0.75
+							1.0		1.0
+						</tableData>
+					</table>
+				</product>
+			</function>
+			<output>stages/unit[4]/control/mass-control</output>
+		</fcs_function>
+
+		<switch name="calculations/stages/unit[4]/control/factor-control">
+			<default value="systems/orientationcomputer/factor-control"/>
+			<test logic="AND" value="stages/unit[4]/control/mass-control">
+				stages/unit[4]/active eq 1.0
+			</test>
+			<output>systems/orientationcomputer/factor-control</output>
+		</switch>
+
+		<switch name="calculations/stages/unit[4]/control/factor-input">
+			<default value="systems/orientationcomputer/factor-input"/>
+			<test logic="AND" value="0.1745">
+				stages/unit[4]/active eq 1.0
+			</test>
+			<output>systems/orientationcomputer/factor-input</output>
+		</switch>
+
+		<switch name="calculations/stages/unit[4]/control/output-min">
+			<default value="systems/orientationcomputer/output-min"/>
+			<test logic="AND" value="-1.0">
+				stages/unit[4]/active eq 1.0
+			</test>
+			<output>systems/orientationcomputer/output-min</output>
+		</switch>
+
+		<switch name="calculations/stages/unit[4]/control/output-max">
+			<default value="systems/orientationcomputer/output-max"/>
+			<test logic="AND" value="1.0">
+				stages/unit[4]/active eq 1.0
+			</test>
+			<output>systems/orientationcomputer/output-max</output>
+		</switch>
+
+		<!--Calculate throttles -->
+
+		<fcs_function name="calculations/stages/unit[4]/control/pitch-forward">
+			<function>
+				<product>
+					<property>systems/controlhandle/button-switch</property>
+					<table>
+						<independentVar lookup="row">systems/orientationcomputer/q-output</independentVar>
+						<tableData>
+							-1.0		0.0
+							0.0		0.0
+							1.0e-6		0.1
+							1.0		1.0
+						</tableData>
+					</table>
+				</product>
+			</function>
+			<output>stages/unit[4]/control/pitch-forward</output>
+		</fcs_function>
+
+		<fcs_function name="calculations/stages/unit[4]/control/pitch-back">
+			<function>
+				<product>
+					<property>systems/controlhandle/button-switch</property>
+					<table>
+						<independentVar lookup="row">systems/orientationcomputer/q-output</independentVar>
+						<tableData>
+							-1.0		1.0
+							-1.0e-6		0.1
+							0.0		0.0
+							1.0		0.0
+						</tableData>
+					</table>
+				</product>
+			</function>
+			<output>stages/unit[4]/control/pitch-back</output>
+		</fcs_function>
+
+		<fcs_function name="calculations/stages/unit[4]/control/yaw-left">
+			<function>
+				<product>
+					<property>systems/controlhandle/button-switch</property>
+					<table>
+						<independentVar lookup="row">systems/orientationcomputer/p-output</independentVar>
+						<tableData>
+							-1.0		0.0
+							0.0		0.0
+							1.0e-6		0.1
+							1.0		1.0
+						</tableData>
+					</table>
+				</product>
+			</function>
+			<output>stages/unit[4]/control/yaw-left</output>
+		</fcs_function>
+
+		<fcs_function name="calculations/stages/unit[4]/control/yaw-right">
+			<function>
+				<product>
+					<property>systems/controlhandle/button-switch</property>
+					<table>
+						<independentVar lookup="row">systems/orientationcomputer/p-output</independentVar>
+						<tableData>
+							-1.0		1.0
+							-1.0e-6		0.1
+							0.0		0.0
+							1.0		0.0
+						</tableData>
+					</table>
+				</product>
+			</function>
+			<output>stages/unit[4]/control/yaw-right</output>
+		</fcs_function>
+
+		<fcs_function name="calculations/stages/unit[4]/control/roll-forward-left">
+			<function>
+				<product>
+					<property>systems/controlhandle/button-switch</property>
+					<table>
+						<independentVar lookup="row">systems/orientationcomputer/r-output</independentVar>
+						<tableData>
+							-1.0		0.0
+							0.0		0.0
+							1.0e-6		0.1
+							1.0		1.0
+						</tableData>
+					</table>
+				</product>
+			</function>
+			<output>stages/unit[4]/control/roll-forward-left</output>
+		</fcs_function>
+
+		<fcs_function name="calculations/stages/unit[4]/control/roll-forward-right">
+			<function>
+				<product>
+					<property>systems/controlhandle/button-switch</property>
+					<table>
+						<independentVar lookup="row">systems/orientationcomputer/r-output</independentVar>
+						<tableData>
+							-1.0		1.0
+							-1.0e-6		0.1
+							0.0		0.0
+							1.0		0.0
+						</tableData>
+					</table>
+				</product>
+			</function>
+			<output>stages/unit[4]/control/roll-forward-right</output>
+		</fcs_function>
+
+		<pure_gain name="calculations/stages/unit[4]/control/roll-back-left">
+			<input>stages/unit[4]/control/roll-forward-right</input>
+			<gain>1.0</gain>
+			<output>stages/unit[4]/control/roll-back-left</output>
+		</pure_gain>
+
+		<pure_gain name="calculations/stages/unit[4]/control/roll-back-right">
+			<input>stages/unit[4]/control/roll-forward-left</input>
+			<gain>1.0</gain>
+			<output>stages/unit[4]/control/roll-back-right</output>
+		</pure_gain>
+
+		<!--TDU stage main engine-->
+
+		<switch name="calculations/tdu/main-engine">
+			<default value="0"/>
+			<test logic="AND" value="systems/gascontrol/lever-pos">
+				systems/gascontrol/lever-pos gt 0.2
+				stages/unit[4]/active eq 1.0
+				stages/unit[4]/ignited eq 1.0
+				stages/unit[4]/broken eq 0
+			</test>
+			<test logic="AND" value="0.2">
+				systems/gascontrol/lever-pos le 0.2
+				stages/unit[4]/active eq 1.0
+				stages/unit[4]/ignited eq 1.0
+				stages/unit[4]/broken eq 0
+			</test>
+			<output>fcs/throttle-pos-norm[23]</output>
+		</switch>
+
+		<switch name="calculations/tdu/back-engine">
+			<default value="0"/>
+			<test logic="AND" value="stages/unit[4]/control/pitch-back">
+				systems/gascontrol/lever-pos gt 0.1
+				stages/unit[4]/active eq 1.0
+				stages/unit[4]/ignited eq 1.0
+				stages/unit[4]/broken eq 0
+			</test>
+			<test logic="AND" value="0.1">
+				systems/gascontrol/lever-pos le 0.1
+				stages/unit[4]/active eq 1.0
+				stages/unit[4]/ignited eq 1.0
+				stages/unit[4]/broken eq 0
+			</test>
+			<output>fcs/throttle-pos-norm[24]</output>
+		</switch>
+
+		<switch name="calculations/tdu/forward-engine">
+			<default value="0"/>
+			<test logic="AND" value="stages/unit[4]/control/pitch-forward">
+				systems/gascontrol/lever-pos gt 0.1
+				stages/unit[4]/active eq 1.0
+				stages/unit[4]/ignited eq 1.0
+				stages/unit[4]/broken eq 0
+			</test>
+			<test logic="AND" value="0.1">
+				systems/gascontrol/lever-pos le 0.1
+				stages/unit[4]/active eq 1.0
+				stages/unit[4]/ignited eq 1.0
+				stages/unit[4]/broken eq 0
+			</test>
+			<output>fcs/throttle-pos-norm[25]</output>
+		</switch>
+
+		<switch name="calculations/tdu/left-engine">
+			<default value="0"/>
+			<test logic="AND" value="stages/unit[4]/control/yaw-right">
+				systems/gascontrol/lever-pos gt 0.1
+				stages/unit[4]/active eq 1.0
+				stages/unit[4]/ignited eq 1.0
+				stages/unit[4]/broken eq 0
+			</test>
+			<test logic="AND" value="0.1">
+				systems/gascontrol/lever-pos le 0.1
+				stages/unit[4]/active eq 1.0
+				stages/unit[4]/ignited eq 1.0
+				stages/unit[4]/broken eq 0
+			</test>
+			<output>fcs/throttle-pos-norm[26]</output>
+		</switch>
+
+		<switch name="calculations/tdu/right-engine">
+			<default value="0"/>
+			<test logic="AND" value="stages/unit[4]/control/yaw-left">
+				systems/gascontrol/lever-pos gt 0.1
+				stages/unit[4]/active eq 1.0
+				stages/unit[4]/ignited eq 1.0
+				stages/unit[4]/broken eq 0
+			</test>
+			<test logic="AND" value="0.1">
+				systems/gascontrol/lever-pos le 0.1
+				stages/unit[4]/active eq 1.0
+				stages/unit[4]/ignited eq 1.0
+				stages/unit[4]/broken eq 0
+			</test>
+			<output>fcs/throttle-pos-norm[27]</output>
+		</switch>
+
+		<switch name="calculations/tdu/forward-left-engine">
+			<default value="0"/>
+			<test logic="AND" value="stages/unit[4]/control/roll-forward-left">
+				systems/gascontrol/lever-pos gt 0.1
+				stages/unit[4]/active eq 1.0
+				stages/unit[4]/ignited eq 1.0
+				stages/unit[4]/broken eq 0
+			</test>
+			<test logic="AND" value="0.1">
+				systems/gascontrol/lever-pos le 0.1
+				stages/unit[4]/active eq 1.0
+				stages/unit[4]/ignited eq 1.0
+				stages/unit[4]/broken eq 0
+			</test>
+			<output>fcs/throttle-pos-norm[28]</output>
+		</switch>
+
+		<switch name="calculations/tdu/back-right-engine">
+			<default value="0"/>
+			<test logic="AND" value="stages/unit[4]/control/roll-back-right">
+				systems/gascontrol/lever-pos gt 0.1
+				stages/unit[4]/active eq 1.0
+				stages/unit[4]/ignited eq 1.0
+				stages/unit[4]/broken eq 0
+			</test>
+			<test logic="AND" value="0.1">
+				systems/gascontrol/lever-pos le 0.1
+				stages/unit[4]/active eq 1.0
+				stages/unit[4]/ignited eq 1.0
+				stages/unit[4]/broken eq 0
+			</test>
+			<output>fcs/throttle-pos-norm[29]</output>
+		</switch>
+
+		<switch name="calculations/tdu/forward-right-engine">
+			<default value="0"/>
+			<test logic="AND" value="stages/unit[4]/control/roll-forward-right">
+				systems/gascontrol/lever-pos gt 0.1
+				stages/unit[4]/active eq 1.0
+				stages/unit[4]/ignited eq 1.0
+				stages/unit[4]/broken eq 0
+			</test>
+			<test logic="AND" value="0.1">
+				systems/gascontrol/lever-pos le 0.1
+				stages/unit[4]/active eq 1.0
+				stages/unit[4]/ignited eq 1.0
+				stages/unit[4]/broken eq 0
+			</test>
+			<output>fcs/throttle-pos-norm[30]</output>
+		</switch>
+
+		<switch name="calculations/tdu/back-left-engine">
+			<default value="0"/>
+			<test logic="AND" value="stages/unit[4]/control/roll-back-left">
+				systems/gascontrol/lever-pos gt 0.1
+				stages/unit[4]/active eq 1.0
+				stages/unit[4]/ignited eq 1.0
+				stages/unit[4]/broken eq 0
+			</test>
+			<test logic="AND" value="0.1">
+				systems/gascontrol/lever-pos le 0.1
+				stages/unit[4]/active eq 1.0
+				stages/unit[4]/ignited eq 1.0
+				stages/unit[4]/broken eq 0
+			</test>
+			<output>fcs/throttle-pos-norm[31]</output>
+		</switch>
+
+		<!--TDU stage maneur engines-->
+
+		<switch name="calculations/tdu/back-maneur-engine">
+			<default value="0"/>
+			<test logic="AND" value="stages/unit[4]/control/pitch-back">
+				stages/unit[4]/active eq 1.0
+				stages/unit[4]/maneur-ignited eq 1.0
+			</test>
+			<output>fcs/throttle-pos-norm[32]</output>
+		</switch>
+
+		<switch name="calculations/tdu/forward-maneur-engine">
+			<default value="0"/>
+			<test logic="AND" value="stages/unit[4]/control/pitch-forward">
+				stages/unit[4]/active eq 1.0
+				stages/unit[4]/maneur-ignited eq 1.0
+			</test>
+			<output>fcs/throttle-pos-norm[33]</output>
+		</switch>
+
+		<switch name="calculations/tdu/right-maneur-engine">
+			<default value="0"/>
+			<test logic="AND" value="stages/unit[4]/control/yaw-right">
+				stages/unit[4]/active eq 1.0
+				stages/unit[4]/maneur-ignited eq 1.0
+			</test>
+			<output>fcs/throttle-pos-norm[34]</output>
+		</switch>
+
+		<switch name="calculations/tdu/left-maneur-engine">
+			<default value="0"/>
+			<test logic="AND" value="stages/unit[4]/control/yaw-left">
+				stages/unit[4]/active eq 1.0
+				stages/unit[4]/maneur-ignited eq 1.0
+			</test>
+			<output>fcs/throttle-pos-norm[35]</output>
+		</switch>
+
+		<switch name="calculations/tdu/forward-left-maneur">
+			<default value="0"/>
+			<test logic="AND" value="stages/unit[4]/control/roll-forward-left">
+				stages/unit[4]/active eq 1.0
+				stages/unit[4]/maneur-ignited eq 1.0
+			</test>
+			<output>fcs/throttle-pos-norm[36]</output>
+		</switch>
+
+		<switch name="calculations/tdu/back-right-maneur">
+			<default value="0"/>
+			<test logic="AND" value="stages/unit[4]/control/roll-back-right">
+				stages/unit[4]/active eq 1.0
+				stages/unit[4]/maneur-ignited eq 1.0
+			</test>
+			<output>fcs/throttle-pos-norm[37]</output>
+		</switch>
+
+		<switch name="calculations/tdu/forward-right-maneur">
+			<default value="0"/>
+			<test logic="AND" value="stages/unit[4]/control/roll-forward-right">
+				stages/unit[4]/active eq 1.0
+				stages/unit[4]/maneur-ignited eq 1.0
+			</test>
+			<output>fcs/throttle-pos-norm[38]</output>
+		</switch>
+
+		<switch name="calculations/tdu/back-left-maneur">
+			<default value="0"/>
+			<test logic="AND" value="stages/unit[4]/control/roll-back-left">
+				stages/unit[4]/active eq 1.0
+				stages/unit[4]/maneur-ignited eq 1.0
+			</test>
+			<output>fcs/throttle-pos-norm[39]</output>
+		</switch>
+
+<!--
+
+		<switch name="calculations/tdu/orientation-jet">
+			<default value="0"/>
+			<test logic="AND" value="1.0">
+				stages/unit[4]/active eq 1.0
+				stages/unit[4]/maneur-ignited eq 1.0
+				one eq <test logic="OR" value="1.0">
+					stages/unit[4]/control/pitch-back gt 0.0
+					stages/unit[4]/control/pitch-forward gt 0.0
+					stages/unit[4]/control/yaw-right gt 0.0
+					stages/unit[4]/control/yaw-left gt 0.0
+					stages/unit[4]/control/roll-forward-left gt 0.0
+					stages/unit[4]/control/roll-back-left gt 0.0
+					stages/unit[4]/control/roll-forward-right gt 0.0
+					stages/unit[4]/control/roll-back-right gt 0.0
+				</test>
+			</test>
+			<output>systems/tdu/orientation-jet</output>
+		</switch>
+-->
+
+		<!-- Exhausts calculations -->
+
+<!-- 
+
+	That code is weird but since FG do not know about colour-property+colour-factor now
+	it's needed to count colour  property for every exhaust stripe. It could be shorter with Nasal
+	but it's does not matter. If FG code will be advanced then all that part will be removed
+	for shorter realisation.
+
+ -->
+
+		<!-- Main engine -->
+
+		<fcs_function name="propulsion/engine[23]/green">
+		<function>
+			<quotient>
+				<property>propulsion/engine[23]/thrust-lbs</property>
+				<sum>
+					<property>propulsion/engine[23]/vacuum-thrust_lbs</property>
+					<value>1e-6</value>
+				</sum>
+			</quotient>
+		</function>
+		</fcs_function>
+
+		<switch name="propulsion/engine[23]/red">
+			<default value="0"/>
+			<test logic="AND" value="0.8901">
+				propulsion/engine[23]/thrust-lbs gt 0.0
+			</test>
+		</switch>
+
+		<switch name="propulsion/engine[23]/blue">
+			<default value="0"/>
+			<test logic="AND" value="0.0745">
+				propulsion/engine[23]/thrust-lbs gt 0.0
+			</test>
+		</switch>
+
+		<fcs_function name="propulsion/engine[23]/green-d2">
+		<function>
+			<quotient>
+				<property>propulsion/engine[23]/green</property>
+				<value>2</value>
+			</quotient>
+		</function>
+		</fcs_function>
+
+		<fcs_function name="propulsion/engine[23]/green-d4">
+		<function>
+			<quotient>
+				<property>propulsion/engine[23]/green</property>
+				<value>4</value>
+			</quotient>
+		</function>
+		</fcs_function>
+
+		<fcs_function name="propulsion/engine[23]/green-d8">
+		<function>
+			<quotient>
+				<property>propulsion/engine[23]/green</property>
+				<value>8</value>
+			</quotient>
+		</function>
+		</fcs_function>
+
+		<fcs_function name="propulsion/engine[23]/green-d16">
+		<function>
+			<quotient>
+				<property>propulsion/engine[23]/green</property>
+				<value>16</value>
+			</quotient>
+		</function>
+		</fcs_function>
+
+		<fcs_function name="propulsion/engine[23]/green-d32">
+		<function>
+			<quotient>
+				<property>propulsion/engine[23]/green</property>
+				<value>32</value>
+			</quotient>
+		</function>
+		</fcs_function>
+
+		<fcs_function name="propulsion/engine[23]/green-d64">
+		<function>
+			<quotient>
+				<property>propulsion/engine[23]/green</property>
+				<value>64</value>
+			</quotient>
+		</function>
+		</fcs_function>
+
+		<fcs_function name="propulsion/engine[23]/green-d128">
+		<function>
+			<quotient>
+				<property>propulsion/engine[23]/green</property>
+				<value>128</value>
+			</quotient>
+		</function>
+		</fcs_function>
+
+		<!-- Main forward pitch engine -->
+
+		<fcs_function name="propulsion/engine[24]/green">
+		<function>
+			<quotient>
+				<property>propulsion/engine[24]/thrust-lbs</property>
+				<sum>
+					<property>propulsion/engine[24]/vacuum-thrust_lbs</property>
+					<value>1e-6</value>
+				</sum>
+			</quotient>
+		</function>
+		</fcs_function>
+
+		<switch name="propulsion/engine[24]/red">
+			<default value="0"/>
+			<test logic="AND" value="0.8901">
+				propulsion/engine[24]/thrust-lbs gt 0.0
+			</test>
+		</switch>
+
+		<switch name="propulsion/engine[24]/blue">
+			<default value="0"/>
+			<test logic="AND" value="0.0745">
+				propulsion/engine[24]/thrust-lbs gt 0.0
+			</test>
+		</switch>
+
+
+		<fcs_function name="propulsion/engine[24]/green-d2">
+		<function>
+			<quotient>
+				<property>propulsion/engine[24]/green</property>
+				<value>2</value>
+			</quotient>
+		</function>
+		</fcs_function>
+
+		<fcs_function name="propulsion/engine[24]/green-d4">
+		<function>
+			<quotient>
+				<property>propulsion/engine[24]/green</property>
+				<value>4</value>
+			</quotient>
+		</function>
+		</fcs_function>
+
+		<fcs_function name="propulsion/engine[24]/green-d8">
+		<function>
+			<quotient>
+				<property>propulsion/engine[24]/green</property>
+				<value>8</value>
+			</quotient>
+		</function>
+		</fcs_function>
+
+		<fcs_function name="propulsion/engine[24]/green-d16">
+		<function>
+			<quotient>
+				<property>propulsion/engine[24]/green</property>
+				<value>16</value>
+			</quotient>
+		</function>
+		</fcs_function>
+
+		<fcs_function name="propulsion/engine[24]/green-d32">
+		<function>
+			<quotient>
+				<property>propulsion/engine[24]/green</property>
+				<value>32</value>
+			</quotient>
+		</function>
+		</fcs_function>
+
+		<fcs_function name="propulsion/engine[24]/green-d64">
+		<function>
+			<quotient>
+				<property>propulsion/engine[24]/green</property>
+				<value>64</value>
+			</quotient>
+		</function>
+		</fcs_function>
+
+		<fcs_function name="propulsion/engine[24]/green-d128">
+		<function>
+			<quotient>
+				<property>propulsion/engine[24]/green</property>
+				<value>128</value>
+			</quotient>
+		</function>
+		</fcs_function>
+
+		<!-- Main back pitch engine -->
+
+		<fcs_function name="propulsion/engine[25]/green">
+		<function>
+			<quotient>
+				<property>propulsion/engine[25]/thrust-lbs</property>
+				<sum>
+					<property>propulsion/engine[25]/vacuum-thrust_lbs</property>
+					<value>1e-6</value>
+				</sum>
+			</quotient>
+		</function>
+		</fcs_function>
+
+		<switch name="propulsion/engine[25]/red">
+			<default value="0"/>
+			<test logic="AND" value="0.8901">
+				propulsion/engine[25]/thrust-lbs gt 0.0
+			</test>
+		</switch>
+
+		<switch name="propulsion/engine[25]/blue">
+			<default value="0"/>
+			<test logic="AND" value="0.0745">
+				propulsion/engine[25]/thrust-lbs gt 0.0
+			</test>
+		</switch>
+
+		<fcs_function name="propulsion/engine[25]/green-d2">
+		<function>
+			<quotient>
+				<property>propulsion/engine[25]/green</property>
+				<value>2</value>
+			</quotient>
+		</function>
+		</fcs_function>
+
+		<fcs_function name="propulsion/engine[25]/green-d4">
+		<function>
+			<quotient>
+				<property>propulsion/engine[25]/green</property>
+				<value>4</value>
+			</quotient>
+		</function>
+		</fcs_function>
+
+		<fcs_function name="propulsion/engine[25]/green-d8">
+		<function>
+			<quotient>
+				<property>propulsion/engine[25]/green</property>
+				<value>8</value>
+			</quotient>
+		</function>
+		</fcs_function>
+
+		<fcs_function name="propulsion/engine[25]/green-d16">
+		<function>
+			<quotient>
+				<property>propulsion/engine[25]/green</property>
+				<value>16</value>
+			</quotient>
+		</function>
+		</fcs_function>
+
+		<fcs_function name="propulsion/engine[25]/green-d32">
+		<function>
+			<quotient>
+				<property>propulsion/engine[25]/green</property>
+				<value>32</value>
+			</quotient>
+		</function>
+		</fcs_function>
+
+		<fcs_function name="propulsion/engine[25]/green-d64">
+		<function>
+			<quotient>
+				<property>propulsion/engine[25]/green</property>
+				<value>64</value>
+			</quotient>
+		</function>
+		</fcs_function>
+
+		<fcs_function name="propulsion/engine[25]/green-d128">
+		<function>
+			<quotient>
+				<property>propulsion/engine[25]/green</property>
+				<value>128</value>
+			</quotient>
+		</function>
+		</fcs_function>
+
+		<!-- Main left pitch engine -->
+
+		<fcs_function name="propulsion/engine[26]/green">
+		<function>
+			<quotient>
+				<property>propulsion/engine[26]/thrust-lbs</property>
+				<sum>
+					<property>propulsion/engine[26]/vacuum-thrust_lbs</property>
+					<value>1e-6</value>
+				</sum>
+			</quotient>
+		</function>
+		</fcs_function>
+
+		<switch name="propulsion/engine[26]/red">
+			<default value="0"/>
+			<test logic="AND" value="0.8901">
+				propulsion/engine[26]/thrust-lbs gt 0.0
+			</test>
+		</switch>
+
+		<switch name="propulsion/engine[26]/blue">
+			<default value="0"/>
+			<test logic="AND" value="0.0745">
+				propulsion/engine[26]/thrust-lbs gt 0.0
+			</test>
+		</switch>
+
+		<fcs_function name="propulsion/engine[26]/green-d2">
+		<function>
+			<quotient>
+				<property>propulsion/engine[26]/green</property>
+				<value>2</value>
+			</quotient>
+		</function>
+		</fcs_function>
+
+		<fcs_function name="propulsion/engine[26]/green-d4">
+		<function>
+			<quotient>
+				<property>propulsion/engine[26]/green</property>
+				<value>4</value>
+			</quotient>
+		</function>
+		</fcs_function>
+
+		<fcs_function name="propulsion/engine[26]/green-d8">
+		<function>
+			<quotient>
+				<property>propulsion/engine[26]/green</property>
+				<value>8</value>
+			</quotient>
+		</function>
+		</fcs_function>
+
+		<fcs_function name="propulsion/engine[26]/green-d16">
+		<function>
+			<quotient>
+				<property>propulsion/engine[26]/green</property>
+				<value>16</value>
+			</quotient>
+		</function>
+		</fcs_function>
+
+		<fcs_function name="propulsion/engine[26]/green-d32">
+		<function>
+			<quotient>
+				<property>propulsion/engine[26]/green</property>
+				<value>32</value>
+			</quotient>
+		</function>
+		</fcs_function>
+
+		<fcs_function name="propulsion/engine[26]/green-d64">
+		<function>
+			<quotient>
+				<property>propulsion/engine[26]/green</property>
+				<value>64</value>
+			</quotient>
+		</function>
+		</fcs_function>
+
+		<fcs_function name="propulsion/engine[26]/green-d128">
+		<function>
+			<quotient>
+				<property>propulsion/engine[26]/green</property>
+				<value>128</value>
+			</quotient>
+		</function>
+		</fcs_function>
+
+		<!-- Main right pitch engine -->
+
+		<fcs_function name="propulsion/engine[27]/green">
+		<function>
+			<quotient>
+				<property>propulsion/engine[27]/thrust-lbs</property>
+				<sum>
+					<property>propulsion/engine[27]/vacuum-thrust_lbs</property>
+					<value>1e-6</value>
+				</sum>
+			</quotient>
+		</function>
+		</fcs_function>
+
+		<switch name="propulsion/engine[27]/red">
+			<default value="0"/>
+			<test logic="AND" value="0.8901">
+				propulsion/engine[27]/thrust-lbs gt 0.0
+			</test>
+		</switch>
+
+		<switch name="propulsion/engine[27]/blue">
+			<default value="0"/>
+			<test logic="AND" value="0.0745">
+				propulsion/engine[27]/thrust-lbs gt 0.0
+			</test>
+		</switch>
+
+		<fcs_function name="propulsion/engine[27]/green-d2">
+		<function>
+			<quotient>
+				<property>propulsion/engine[27]/green</property>
+				<value>2</value>
+			</quotient>
+		</function>
+		</fcs_function>
+
+		<fcs_function name="propulsion/engine[27]/green-d4">
+		<function>
+			<quotient>
+				<property>propulsion/engine[27]/green</property>
+				<value>4</value>
+			</quotient>
+		</function>
+		</fcs_function>
+
+		<fcs_function name="propulsion/engine[27]/green-d8">
+		<function>
+			<quotient>
+				<property>propulsion/engine[27]/green</property>
+				<value>8</value>
+			</quotient>
+		</function>
+		</fcs_function>
+
+		<fcs_function name="propulsion/engine[27]/green-d16">
+		<function>
+			<quotient>
+				<property>propulsion/engine[27]/green</property>
+				<value>16</value>
+			</quotient>
+		</function>
+		</fcs_function>
+
+		<fcs_function name="propulsion/engine[27]/green-d32">
+		<function>
+			<quotient>
+				<property>propulsion/engine[27]/green</property>
+				<value>32</value>
+			</quotient>
+		</function>
+		</fcs_function>
+
+		<fcs_function name="propulsion/engine[27]/green-d64">
+		<function>
+			<quotient>
+				<property>propulsion/engine[27]/green</property>
+				<value>64</value>
+			</quotient>
+		</function>
+		</fcs_function>
+
+		<fcs_function name="propulsion/engine[27]/green-d128">
+		<function>
+			<quotient>
+				<property>propulsion/engine[27]/green</property>
+				<value>128</value>
+			</quotient>
+		</function>
+		</fcs_function>
+
+		<!-- Main forward left roll engine -->
+
+		<fcs_function name="propulsion/engine[28]/green">
+		<function>
+			<quotient>
+				<property>propulsion/engine[28]/thrust-lbs</property>
+				<sum>
+					<property>propulsion/engine[28]/vacuum-thrust_lbs</property>
+					<value>1e-6</value>
+				</sum>
+			</quotient>
+		</function>
+		</fcs_function>
+
+		<switch name="propulsion/engine[28]/red">
+			<default value="0"/>
+			<test logic="AND" value="0.8901">
+				propulsion/engine[28]/thrust-lbs gt 0.0
+			</test>
+		</switch>
+
+		<switch name="propulsion/engine[28]/blue">
+			<default value="0"/>
+			<test logic="AND" value="0.0745">
+				propulsion/engine[28]/thrust-lbs gt 0.0
+			</test>
+		</switch>
+
+		<fcs_function name="propulsion/engine[28]/green-d2">
+		<function>
+			<quotient>
+				<property>propulsion/engine[28]/green</property>
+				<value>2</value>
+			</quotient>
+		</function>
+		</fcs_function>
+
+		<fcs_function name="propulsion/engine[28]/green-d4">
+		<function>
+			<quotient>
+				<property>propulsion/engine[28]/green</property>
+				<value>4</value>
+			</quotient>
+		</function>
+		</fcs_function>
+
+		<fcs_function name="propulsion/engine[28]/green-d8">
+		<function>
+			<quotient>
+				<property>propulsion/engine[28]/green</property>
+				<value>8</value>
+			</quotient>
+		</function>
+		</fcs_function>
+
+		<fcs_function name="propulsion/engine[28]/green-d16">
+		<function>
+			<quotient>
+				<property>propulsion/engine[28]/green</property>
+				<value>16</value>
+			</quotient>
+		</function>
+		</fcs_function>
+
+		<fcs_function name="propulsion/engine[28]/green-d32">
+		<function>
+			<quotient>
+				<property>propulsion/engine[28]/green</property>
+				<value>32</value>
+			</quotient>
+		</function>
+		</fcs_function>
+
+		<fcs_function name="propulsion/engine[28]/green-d64">
+		<function>
+			<quotient>
+				<property>propulsion/engine[28]/green</property>
+				<value>64</value>
+			</quotient>
+		</function>
+		</fcs_function>
+
+		<fcs_function name="propulsion/engine[28]/green-d128">
+		<function>
+			<quotient>
+				<property>propulsion/engine[28]/green</property>
+				<value>128</value>
+			</quotient>
+		</function>
+		</fcs_function>
+
+		<!-- Main back right roll engine -->
+
+		<fcs_function name="propulsion/engine[29]/green">
+		<function>
+			<quotient>
+				<property>propulsion/engine[29]/thrust-lbs</property>
+				<sum>
+					<property>propulsion/engine[29]/vacuum-thrust_lbs</property>
+					<value>1e-6</value>
+				</sum>
+			</quotient>
+		</function>
+		</fcs_function>
+
+		<switch name="propulsion/engine[29]/red">
+			<default value="0"/>
+			<test logic="AND" value="0.8901">
+				propulsion/engine[29]/thrust-lbs gt 0.0
+			</test>
+		</switch>
+
+		<switch name="propulsion/engine[29]/blue">
+			<default value="0"/>
+			<test logic="AND" value="0.0745">
+				propulsion/engine[29]/thrust-lbs gt 0.0
+			</test>
+		</switch>
+
+		<fcs_function name="propulsion/engine[29]/green-d2">
+		<function>
+			<quotient>
+				<property>propulsion/engine[29]/green</property>
+				<value>2</value>
+			</quotient>
+		</function>
+		</fcs_function>
+
+		<fcs_function name="propulsion/engine[29]/green-d4">
+		<function>
+			<quotient>
+				<property>propulsion/engine[29]/green</property>
+				<value>4</value>
+			</quotient>
+		</function>
+		</fcs_function>
+
+		<fcs_function name="propulsion/engine[29]/green-d8">
+		<function>
+			<quotient>
+				<property>propulsion/engine[29]/green</property>
+				<value>8</value>
+			</quotient>
+		</function>
+		</fcs_function>
+
+		<fcs_function name="propulsion/engine[29]/green-d16">
+		<function>
+			<quotient>
+				<property>propulsion/engine[29]/green</property>
+				<value>16</value>
+			</quotient>
+		</function>
+		</fcs_function>
+
+		<fcs_function name="propulsion/engine[29]/green-d32">
+		<function>
+			<quotient>
+				<property>propulsion/engine[29]/green</property>
+				<value>32</value>
+			</quotient>
+		</function>
+		</fcs_function>
+
+		<fcs_function name="propulsion/engine[29]/green-d64">
+		<function>
+			<quotient>
+				<property>propulsion/engine[29]/green</property>
+				<value>64</value>
+			</quotient>
+		</function>
+		</fcs_function>
+
+		<fcs_function name="propulsion/engine[29]/green-d128">
+		<function>
+			<quotient>
+				<property>propulsion/engine[29]/green</property>
+				<value>128</value>
+			</quotient>
+		</function>
+		</fcs_function>
+
+		<!-- Main forward right roll engine -->
+
+		<fcs_function name="propulsion/engine[30]/green">
+		<function>
+			<quotient>
+				<property>propulsion/engine[30]/thrust-lbs</property>
+				<sum>
+					<property>propulsion/engine[30]/vacuum-thrust_lbs</property>
+					<value>1e-6</value>
+				</sum>
+			</quotient>
+		</function>
+		</fcs_function>
+
+		<switch name="propulsion/engine[30]/red">
+			<default value="0"/>
+			<test logic="AND" value="0.8901">
+				propulsion/engine[30]/thrust-lbs gt 0.0
+			</test>
+		</switch>
+
+		<switch name="propulsion/engine[30]/blue">
+			<default value="0"/>
+			<test logic="AND" value="0.0745">
+				propulsion/engine[30]/thrust-lbs gt 0.0
+			</test>
+		</switch>
+
+		<fcs_function name="propulsion/engine[30]/green-d2">
+		<function>
+			<quotient>
+				<property>propulsion/engine[30]/green</property>
+				<value>2</value>
+			</quotient>
+		</function>
+		</fcs_function>
+
+		<fcs_function name="propulsion/engine[30]/green-d4">
+		<function>
+			<quotient>
+				<property>propulsion/engine[30]/green</property>
+				<value>4</value>
+			</quotient>
+		</function>
+		</fcs_function>
+
+		<fcs_function name="propulsion/engine[30]/green-d8">
+		<function>
+			<quotient>
+				<property>propulsion/engine[30]/green</property>
+				<value>8</value>
+			</quotient>
+		</function>
+		</fcs_function>
+
+		<fcs_function name="propulsion/engine[30]/green-d16">
+		<function>
+			<quotient>
+				<property>propulsion/engine[30]/green</property>
+				<value>16</value>
+			</quotient>
+		</function>
+		</fcs_function>
+
+		<fcs_function name="propulsion/engine[30]/green-d32">
+		<function>
+			<quotient>
+				<property>propulsion/engine[30]/green</property>
+				<value>32</value>
+			</quotient>
+		</function>
+		</fcs_function>
+
+		<fcs_function name="propulsion/engine[30]/green-d64">
+		<function>
+			<quotient>
+				<property>propulsion/engine[30]/green</property>
+				<value>64</value>
+			</quotient>
+		</function>
+		</fcs_function>
+
+		<fcs_function name="propulsion/engine[30]/green-d128">
+		<function>
+			<quotient>
+				<property>propulsion/engine[30]/green</property>
+				<value>128</value>
+			</quotient>
+		</function>
+		</fcs_function>
+
+		<!-- Main back left roll engine -->
+
+		<fcs_function name="propulsion/engine[31]/green">
+		<function>
+			<quotient>
+				<property>propulsion/engine[31]/thrust-lbs</property>
+				<sum>
+					<property>propulsion/engine[31]/vacuum-thrust_lbs</property>
+					<value>1e-6</value>
+				</sum>
+			</quotient>
+		</function>
+		</fcs_function>
+
+		<switch name="propulsion/engine[31]/red">
+			<default value="0"/>
+			<test logic="AND" value="0.8901">
+				propulsion/engine[31]/thrust-lbs gt 0.0
+			</test>
+		</switch>
+
+		<switch name="propulsion/engine[31]/blue">
+			<default value="0"/>
+			<test logic="AND" value="0.0745">
+				propulsion/engine[31]/thrust-lbs gt 0.0
+			</test>
+		</switch>
+
+		<fcs_function name="propulsion/engine[31]/green-d2">
+		<function>
+			<quotient>
+				<property>propulsion/engine[31]/green</property>
+				<value>2</value>
+			</quotient>
+		</function>
+		</fcs_function>
+
+		<fcs_function name="propulsion/engine[31]/green-d4">
+		<function>
+			<quotient>
+				<property>propulsion/engine[31]/green</property>
+				<value>4</value>
+			</quotient>
+		</function>
+		</fcs_function>
+
+		<fcs_function name="propulsion/engine[31]/green-d8">
+		<function>
+			<quotient>
+				<property>propulsion/engine[31]/green</property>
+				<value>8</value>
+			</quotient>
+		</function>
+		</fcs_function>
+
+		<fcs_function name="propulsion/engine[31]/green-d16">
+		<function>
+			<quotient>
+				<property>propulsion/engine[31]/green</property>
+				<value>16</value>
+			</quotient>
+		</function>
+		</fcs_function>
+
+		<fcs_function name="propulsion/engine[31]/green-d32">
+		<function>
+			<quotient>
+				<property>propulsion/engine[31]/green</property>
+				<value>32</value>
+			</quotient>
+		</function>
+		</fcs_function>
+
+		<fcs_function name="propulsion/engine[31]/green-d64">
+		<function>
+			<quotient>
+				<property>propulsion/engine[31]/green</property>
+				<value>64</value>
+			</quotient>
+		</function>
+		</fcs_function>
+
+		<fcs_function name="propulsion/engine[31]/green-d128">
+		<function>
+			<quotient>
+				<property>propulsion/engine[31]/green</property>
+				<value>128</value>
+			</quotient>
+		</function>
+		</fcs_function>
+
+		<!-- Maneur engines -->
+
+		<fcs_function name="propulsion/engine[32]/transparency">
+		<function>
+			<quotient>
+				<property>propulsion/engine[32]/thrust-lbs</property>
+				<sum>
+					<property>propulsion/engine[32]/vacuum-thrust_lbs</property>
+					<value>1e-6</value>
+				</sum>
+			</quotient>
+		</function>
+		</fcs_function>
+
+		<fcs_function name="propulsion/engine[32]/transparency-d2">
+		<function>
+			<quotient>
+				<property>propulsion/engine[32]/transparency</property>
+				<value>2</value>
+			</quotient>
+		</function>
+		</fcs_function>
+
+		<fcs_function name="propulsion/engine[32]/transparency-d4">
+		<function>
+			<quotient>
+				<property>propulsion/engine[32]/transparency</property>
+				<value>4</value>
+			</quotient>
+		</function>
+		</fcs_function>
+
+		<fcs_function name="propulsion/engine[32]/transparency-d8">
+		<function>
+			<quotient>
+				<property>propulsion/engine[32]/transparency</property>
+				<value>8</value>
+			</quotient>
+		</function>
+		</fcs_function>
+
+		<fcs_function name="propulsion/engine[32]/transparency-d16">
+		<function>
+			<quotient>
+				<property>propulsion/engine[32]/transparency</property>
+				<value>16</value>
+			</quotient>
+		</function>
+		</fcs_function>
+
+		<fcs_function name="propulsion/engine[33]/transparency">
+		<function>
+			<quotient>
+				<property>propulsion/engine[33]/thrust-lbs</property>
+				<sum>
+					<property>propulsion/engine[33]/vacuum-thrust_lbs</property>
+					<value>1e-6</value>
+				</sum>
+			</quotient>
+		</function>
+		</fcs_function>
+
+		<fcs_function name="propulsion/engine[33]/transparency-d2">
+		<function>
+			<quotient>
+				<property>propulsion/engine[33]/transparency</property>
+				<value>2</value>
+			</quotient>
+		</function>
+		</fcs_function>
+
+		<fcs_function name="propulsion/engine[33]/transparency-d4">
+		<function>
+			<quotient>
+				<property>propulsion/engine[33]/transparency</property>
+				<value>4</value>
+			</quotient>
+		</function>
+		</fcs_function>
+
+		<fcs_function name="propulsion/engine[33]/transparency-d8">
+		<function>
+			<quotient>
+				<property>propulsion/engine[33]/transparency</property>
+				<value>8</value>
+			</quotient>
+		</function>
+		</fcs_function>
+
+		<fcs_function name="propulsion/engine[33]/transparency-d16">
+		<function>
+			<quotient>
+				<property>propulsion/engine[33]/transparency</property>
+				<value>16</value>
+			</quotient>
+		</function>
+		</fcs_function>
+
+		<fcs_function name="propulsion/engine[34]/transparency">
+		<function>
+			<quotient>
+				<property>propulsion/engine[34]/thrust-lbs</property>
+				<sum>
+					<property>propulsion/engine[34]/vacuum-thrust_lbs</property>
+					<value>1e-6</value>
+				</sum>
+			</quotient>
+		</function>
+		</fcs_function>
+
+		<fcs_function name="propulsion/engine[34]/transparency-d2">
+		<function>
+			<quotient>
+				<property>propulsion/engine[34]/transparency</property>
+				<value>2</value>
+			</quotient>
+		</function>
+		</fcs_function>
+
+		<fcs_function name="propulsion/engine[34]/transparency-d4">
+		<function>
+			<quotient>
+				<property>propulsion/engine[34]/transparency</property>
+				<value>4</value>
+			</quotient>
+		</function>
+		</fcs_function>
+
+		<fcs_function name="propulsion/engine[34]/transparency-d8">
+		<function>
+			<quotient>
+				<property>propulsion/engine[34]/transparency</property>
+				<value>8</value>
+			</quotient>
+		</function>
+		</fcs_function>
+
+		<fcs_function name="propulsion/engine[34]/transparency-d16">
+		<function>
+			<quotient>
+				<property>propulsion/engine[34]/transparency</property>
+				<value>16</value>
+			</quotient>
+		</function>
+		</fcs_function>
+
+		<fcs_function name="propulsion/engine[35]/transparency">
+		<function>
+			<quotient>
+				<property>propulsion/engine[35]/thrust-lbs</property>
+				<sum>
+					<property>propulsion/engine[35]/vacuum-thrust_lbs</property>
+					<value>1e-6</value>
+				</sum>
+			</quotient>
+		</function>
+		</fcs_function>
+
+		<fcs_function name="propulsion/engine[35]/transparency-d2">
+		<function>
+			<quotient>
+				<property>propulsion/engine[35]/transparency</property>
+				<value>2</value>
+			</quotient>
+		</function>
+		</fcs_function>
+
+		<fcs_function name="propulsion/engine[35]/transparency-d4">
+		<function>
+			<quotient>
+				<property>propulsion/engine[35]/transparency</property>
+				<value>4</value>
+			</quotient>
+		</function>
+		</fcs_function>
+
+		<fcs_function name="propulsion/engine[35]/transparency-d8">
+		<function>
+			<quotient>
+				<property>propulsion/engine[35]/transparency</property>
+				<value>8</value>
+			</quotient>
+		</function>
+		</fcs_function>
+
+		<fcs_function name="propulsion/engine[35]/transparency-d16">
+		<function>
+			<quotient>
+				<property>propulsion/engine[35]/transparency</property>
+				<value>16</value>
+			</quotient>
+		</function>
+		</fcs_function>
+
+		<fcs_function name="propulsion/engine[36]/transparency">
+		<function>
+			<quotient>
+				<property>propulsion/engine[36]/thrust-lbs</property>
+				<sum>
+					<property>propulsion/engine[36]/vacuum-thrust_lbs</property>
+					<value>1e-6</value>
+				</sum>
+			</quotient>
+		</function>
+		</fcs_function>
+
+		<fcs_function name="propulsion/engine[36]/transparency-d2">
+		<function>
+			<quotient>
+				<property>propulsion/engine[36]/transparency</property>
+				<value>2</value>
+			</quotient>
+		</function>
+		</fcs_function>
+
+		<fcs_function name="propulsion/engine[36]/transparency-d4">
+		<function>
+			<quotient>
+				<property>propulsion/engine[36]/transparency</property>
+				<value>4</value>
+			</quotient>
+		</function>
+		</fcs_function>
+
+		<fcs_function name="propulsion/engine[36]/transparency-d8">
+		<function>
+			<quotient>
+				<property>propulsion/engine[36]/transparency</property>
+				<value>8</value>
+			</quotient>
+		</function>
+		</fcs_function>
+
+		<fcs_function name="propulsion/engine[36]/transparency-d16">
+		<function>
+			<quotient>
+				<property>propulsion/engine[36]/transparency</property>
+				<value>16</value>
+			</quotient>
+		</function>
+		</fcs_function>
+
+		<fcs_function name="propulsion/engine[37]/transparency">
+		<function>
+			<quotient>
+				<property>propulsion/engine[37]/thrust-lbs</property>
+				<sum>
+					<property>propulsion/engine[37]/vacuum-thrust_lbs</property>
+					<value>1e-6</value>
+				</sum>
+			</quotient>
+		</function>
+		</fcs_function>
+
+		<fcs_function name="propulsion/engine[37]/transparency-d2">
+		<function>
+			<quotient>
+				<property>propulsion/engine[37]/transparency</property>
+				<value>2</value>
+			</quotient>
+		</function>
+		</fcs_function>
+
+		<fcs_function name="propulsion/engine[37]/transparency-d4">
+		<function>
+			<quotient>
+				<property>propulsion/engine[37]/transparency</property>
+				<value>4</value>
+			</quotient>
+		</function>
+		</fcs_function>
+
+		<fcs_function name="propulsion/engine[37]/transparency-d8">
+		<function>
+			<quotient>
+				<property>propulsion/engine[37]/transparency</property>
+				<value>8</value>
+			</quotient>
+		</function>
+		</fcs_function>
+
+		<fcs_function name="propulsion/engine[37]/transparency-d16">
+		<function>
+			<quotient>
+				<property>propulsion/engine[37]/transparency</property>
+				<value>16</value>
+			</quotient>
+		</function>
+		</fcs_function>
+
+		<fcs_function name="propulsion/engine[38]/transparency">
+		<function>
+			<quotient>
+				<property>propulsion/engine[38]/thrust-lbs</property>
+				<sum>
+					<property>propulsion/engine[38]/vacuum-thrust_lbs</property>
+					<value>1e-6</value>
+				</sum>
+			</quotient>
+		</function>
+		</fcs_function>
+
+		<fcs_function name="propulsion/engine[38]/transparency-d2">
+		<function>
+			<quotient>
+				<property>propulsion/engine[38]/transparency</property>
+				<value>2</value>
+			</quotient>
+		</function>
+		</fcs_function>
+
+		<fcs_function name="propulsion/engine[38]/transparency-d4">
+		<function>
+			<quotient>
+				<property>propulsion/engine[38]/transparency</property>
+				<value>4</value>
+			</quotient>
+		</function>
+		</fcs_function>
+
+		<fcs_function name="propulsion/engine[38]/transparency-d8">
+		<function>
+			<quotient>
+				<property>propulsion/engine[38]/transparency</property>
+				<value>8</value>
+			</quotient>
+		</function>
+		</fcs_function>
+
+		<fcs_function name="propulsion/engine[38]/transparency-d16">
+		<function>
+			<quotient>
+				<property>propulsion/engine[38]/transparency</property>
+				<value>16</value>
+			</quotient>
+		</function>
+		</fcs_function>
+
+		<fcs_function name="propulsion/engine[39]/transparency">
+		<function>
+			<quotient>
+				<property>propulsion/engine[39]/thrust-lbs</property>
+				<sum>
+					<property>propulsion/engine[39]/vacuum-thrust_lbs</property>
+					<value>1e-6</value>
+				</sum>
+			</quotient>
+		</function>
+		</fcs_function>
+
+		<fcs_function name="propulsion/engine[39]/transparency-d2">
+		<function>
+			<quotient>
+				<property>propulsion/engine[39]/transparency</property>
+				<value>2</value>
+			</quotient>
+		</function>
+		</fcs_function>
+
+		<fcs_function name="propulsion/engine[39]/transparency-d4">
+		<function>
+			<quotient>
+				<property>propulsion/engine[39]/transparency</property>
+				<value>4</value>
+			</quotient>
+		</function>
+		</fcs_function>
+
+		<fcs_function name="propulsion/engine[39]/transparency-d8">
+		<function>
+			<quotient>
+				<property>propulsion/engine[39]/transparency</property>
+				<value>8</value>
+			</quotient>
+		</function>
+		</fcs_function>
+
+		<fcs_function name="propulsion/engine[39]/transparency-d16">
+		<function>
+			<quotient>
+				<property>propulsion/engine[39]/transparency</property>
+				<value>16</value>
+			</quotient>
+		</function>
+		</fcs_function>
+
+		<!-- Antennas and radiators -->
+
+		<kinematic name="calculations/tdu/activation">
+			<input>stages/unit[4]/active</input>
+			<traverse>
+			<setting>
+				<position>0.0</position>
+				<time>0</time>
+			</setting>
+			<setting>
+				<position>1.0</position>
+				<time>10</time>
+			</setting>
+			</traverse>
+			<output>stages/unit[4]/activated</output>
+		</kinematic>
+
+		<kinematic name="calculations/tdu/separation">
+			<input>stages/unit[4]/separate</input>
+			<traverse>
+			<setting>
+				<position>0.0</position>
+				<time>0</time>
+			</setting>
+			<setting>
+				<position>1.0</position>
+				<time>1</time>
+			</setting>
+			</traverse>
+			<output>stages/unit[4]/separated</output>
+		</kinematic>
+
+		<switch name="calculations/tdu/hard-antennas-extraction-started">
+			<default value="0"/>
+			<test logic="AND" value="1.0">
+				stages/unit[4]/activated gt 0.9
+			</test>
+			<output>systems/tdu/hard-antennas-extraction-started</output>
+		</switch>
+
+		<kinematic name="calculations/tdu/hard-antennas-pos-norm">
+			<input>systems/tdu/hard-antennas-extraction-started</input>
+			<traverse>
+			<setting>
+				<position>0.0</position>
+				<time>0</time>
+			</setting>
+			<setting>
+				<position>1.0</position>
+				<time>10</time>
+			</setting>
+			</traverse>
+			<output>systems/tdu/hard-antennas-pos-norm</output>
+		</kinematic>
+
+		<switch name="calculations/tdu/radiators-extraction-started">
+			<default value="0"/>
+			<test logic="AND" value="1.0">
+				systems/tdu/hard-antennas-pos-norm gt 0.9
+			</test>
+			<output>systems/tdu/radiators-extraction-started</output>
+		</switch>
+
+		<kinematic name="calculations/tdu/radiators-pos-norm">
+			<input>systems/tdu/radiators-extraction-started</input>
+			<traverse>
+			<setting>
+				<position>0.0</position>
+				<time>0</time>
+			</setting>
+			<setting>
+				<position>1.0</position>
+				<time>10</time>
+			</setting>
+			</traverse>
+			<output>systems/tdu/radiators-pos-norm</output>
+		</kinematic>
+
+		<switch name="calculations/tdu/whip-antennas-extraction-started">
+			<default value="0"/>
+			<test logic="AND" value="1.0">
+				systems/tdu/radiators-pos-norm gt 0.9
+			</test>
+			<output>systems/tdu/whip-antennas-extraction-started</output>
+		</switch>
+
+		<kinematic name="calculations/tdu/whip-antennas-pos-norm">
+			<input>systems/tdu/whip-antennas-extraction-started</input>
+			<traverse>
+			<setting>
+				<position>0.0</position>
+				<time>0</time>
+			</setting>
+			<setting>
+				<position>1.0</position>
+				<time>10</time>
+			</setting>
+			</traverse>
+			<output>systems/tdu/whip-antennas-pos-norm</output>
+		</kinematic>
+
+		<switch name="calculations/tdu/whip-antennas-extracted">
+			<default value="0"/>
+			<test logic="AND" value="1.0">
+				systems/tdu/whip-antennas-pos-norm gt 0.9
+			</test>
+			<output>systems/tdu/whip-antennas-extracted</output>
+		</switch>
+
+	</channel>
+
+</system>

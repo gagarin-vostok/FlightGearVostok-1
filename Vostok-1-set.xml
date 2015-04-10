@@ -1,0 +1,2005 @@
+<?xml version="1.0"?>
+
+<!--
+	Author: Slavutinsky Victor
+-->
+
+<!-- Vostok-1 Setup -->
+
+<PropertyList>
+
+<!-- JSB initialisation -->
+
+	<fdm>
+		<jsbsim>
+			<one type="float">1.0</one>
+			<fcs>
+				<center-brake-cmd-norm type="float">1.0</center-brake-cmd-norm>
+			</fcs>
+			<propulsion>
+				<engine n="0">
+					<green type="float">0.0</green>
+					<red type="float">0.0</red>
+					<blue type="float">0.0</blue>
+					<transparency type="float">0.0</transparency>
+				</engine>
+				<engine n="1">
+					<green type="float">0.0</green>
+					<red type="float">0.0</red>
+					<blue type="float">0.0</blue>
+					<transparency type="float">0.0</transparency>
+				</engine>
+				<engine n="2">
+					<green type="float">0.0</green>
+					<red type="float">0.0</red>
+					<blue type="float">0.0</blue>
+					<transparency type="float">0.0</transparency>
+				</engine>
+				<engine n="3">
+					<green type="float">0.0</green>
+					<red type="float">0.0</red>
+					<blue type="float">0.0</blue>
+					<transparency type="float">0.0</transparency>
+				</engine>
+				<engine n="4">
+					<green type="float">0.0</green>
+					<red type="float">0.0</red>
+					<blue type="float">0.0</blue>
+					<transparency type="float">0.0</transparency>
+				</engine>
+				<engine n="5">
+					<green type="float">0.0</green>
+					<red type="float">0.0</red>
+					<blue type="float">0.0</blue>
+					<transparency type="float">0.0</transparency>
+				</engine>
+				<engine n="6">
+					<green type="float">0.0</green>
+					<red type="float">0.0</red>
+					<blue type="float">0.0</blue>
+					<transparency type="float">0.0</transparency>
+				</engine>
+				<engine n="7">
+					<green type="float">0.0</green>
+					<red type="float">0.0</red>
+					<blue type="float">0.0</blue>
+					<transparency type="float">0.0</transparency>
+				</engine>
+				<engine n="8">
+					<green type="float">0.0</green>
+					<red type="float">0.0</red>
+					<blue type="float">0.0</blue>
+					<transparency type="float">0.0</transparency>
+				</engine>
+				<engine n="9">
+					<green type="float">0.0</green>
+					<red type="float">0.0</red>
+					<blue type="float">0.0</blue>
+					<transparency type="float">0.0</transparency>
+				</engine>
+				<engine n="10">
+					<green type="float">0.0</green>
+					<red type="float">0.0</red>
+					<blue type="float">0.0</blue>
+					<transparency type="float">0.0</transparency>
+				</engine>
+				<engine n="11">
+					<green type="float">0.0</green>
+					<red type="float">0.0</red>
+					<blue type="float">0.0</blue>
+					<transparency type="float">0.0</transparency>
+				</engine>
+				<engine n="12">
+					<green type="float">0.0</green>
+					<red type="float">0.0</red>
+					<blue type="float">0.0</blue>
+					<transparency type="float">0.0</transparency>
+				</engine>
+				<engine n="13">
+					<green type="float">0.0</green>
+					<red type="float">0.0</red>
+					<blue type="float">0.0</blue>
+					<transparency type="float">0.0</transparency>
+				</engine>
+				<engine n="14">
+					<green type="float">0.0</green>
+					<red type="float">0.0</red>
+					<blue type="float">0.0</blue>
+					<green-d2 type="float">0.0</green-d2>
+					<green-d4 type="float">0.0</green-d4>
+					<green-d8 type="float">0.0</green-d8>
+					<green-d16 type="float">0.0</green-d16>
+					<green-d32 type="float">0.0</green-d32>
+					<green-d64 type="float">0.0</green-d64>
+					<green-d128 type="float">0.0</green-d128>
+				</engine>
+				<engine n="15">
+					<green type="float">0.0</green>
+					<red type="float">0.0</red>
+					<blue type="float">0.0</blue>
+					<green-d2 type="float">0.0</green-d2>
+					<green-d4 type="float">0.0</green-d4>
+					<green-d8 type="float">0.0</green-d8>
+					<green-d16 type="float">0.0</green-d16>
+					<green-d32 type="float">0.0</green-d32>
+					<green-d64 type="float">0.0</green-d64>
+					<green-d128 type="float">0.0</green-d128>
+				</engine>
+				<engine n="16">
+					<green type="float">0.0</green>
+					<red type="float">0.0</red>
+					<blue type="float">0.0</blue>
+					<green-d2 type="float">0.0</green-d2>
+					<green-d4 type="float">0.0</green-d4>
+					<green-d8 type="float">0.0</green-d8>
+					<green-d16 type="float">0.0</green-d16>
+					<green-d32 type="float">0.0</green-d32>
+					<green-d64 type="float">0.0</green-d64>
+					<green-d128 type="float">0.0</green-d128>
+				</engine>
+				<engine n="17">
+					<green type="float">0.0</green>
+					<red type="float">0.0</red>
+					<blue type="float">0.0</blue>
+					<green-d2 type="float">0.0</green-d2>
+					<green-d4 type="float">0.0</green-d4>
+					<green-d8 type="float">0.0</green-d8>
+					<green-d16 type="float">0.0</green-d16>
+					<green-d32 type="float">0.0</green-d32>
+					<green-d64 type="float">0.0</green-d64>
+					<green-d128 type="float">0.0</green-d128>
+				</engine>
+				<engine n="18">
+					<green type="float">0.0</green>
+					<red type="float">0.0</red>
+					<blue type="float">0.0</blue>
+					<green-d2 type="float">0.0</green-d2>
+					<green-d4 type="float">0.0</green-d4>
+					<green-d8 type="float">0.0</green-d8>
+					<green-d16 type="float">0.0</green-d16>
+					<green-d32 type="float">0.0</green-d32>
+					<green-d64 type="float">0.0</green-d64>
+					<green-d128 type="float">0.0</green-d128>
+				</engine>
+				<engine n="19">
+					<green type="float">0.0</green>
+					<red type="float">0.0</red>
+					<blue type="float">0.0</blue>
+					<green-d2 type="float">0.0</green-d2>
+					<green-d4 type="float">0.0</green-d4>
+					<green-d8 type="float">0.0</green-d8>
+					<green-d16 type="float">0.0</green-d16>
+					<green-d32 type="float">0.0</green-d32>
+					<green-d64 type="float">0.0</green-d64>
+					<green-d128 type="float">0.0</green-d128>
+				</engine>
+				<engine n="20">
+					<green type="float">0.0</green>
+					<red type="float">0.0</red>
+					<blue type="float">0.0</blue>
+					<green-d2 type="float">0.0</green-d2>
+					<green-d4 type="float">0.0</green-d4>
+					<green-d8 type="float">0.0</green-d8>
+					<green-d16 type="float">0.0</green-d16>
+					<green-d32 type="float">0.0</green-d32>
+					<green-d64 type="float">0.0</green-d64>
+					<green-d128 type="float">0.0</green-d128>
+				</engine>
+				<engine n="21">
+					<green type="float">0.0</green>
+					<red type="float">0.0</red>
+					<blue type="float">0.0</blue>
+					<green-d2 type="float">0.0</green-d2>
+					<green-d4 type="float">0.0</green-d4>
+					<green-d8 type="float">0.0</green-d8>
+					<green-d16 type="float">0.0</green-d16>
+					<green-d32 type="float">0.0</green-d32>
+					<green-d64 type="float">0.0</green-d64>
+					<green-d128 type="float">0.0</green-d128>
+				</engine>
+				<engine n="22">
+					<green type="float">0.0</green>
+					<red type="float">0.0</red>
+					<blue type="float">0.0</blue>
+					<green-d2 type="float">0.0</green-d2>
+					<green-d4 type="float">0.0</green-d4>
+					<green-d8 type="float">0.0</green-d8>
+					<green-d16 type="float">0.0</green-d16>
+					<green-d32 type="float">0.0</green-d32>
+					<green-d64 type="float">0.0</green-d64>
+					<green-d128 type="float">0.0</green-d128>
+				</engine>
+				<engine n="23">
+					<green type="float">0.0</green>
+					<red type="float">0.0</red>
+					<blue type="float">0.0</blue>
+					<green-d2 type="float">0.0</green-d2>
+					<green-d4 type="float">0.0</green-d4>
+					<green-d8 type="float">0.0</green-d8>
+					<green-d16 type="float">0.0</green-d16>
+					<green-d32 type="float">0.0</green-d32>
+					<green-d64 type="float">0.0</green-d64>
+					<green-d128 type="float">0.0</green-d128>
+				</engine>
+				<engine n="24">
+					<green type="float">0.0</green>
+					<red type="float">0.0</red>
+					<blue type="float">0.0</blue>
+					<green-d2 type="float">0.0</green-d2>
+					<green-d4 type="float">0.0</green-d4>
+					<green-d8 type="float">0.0</green-d8>
+					<green-d16 type="float">0.0</green-d16>
+					<green-d32 type="float">0.0</green-d32>
+					<green-d64 type="float">0.0</green-d64>
+					<green-d128 type="float">0.0</green-d128>
+				</engine>
+				<engine n="25">
+					<green type="float">0.0</green>
+					<red type="float">0.0</red>
+					<blue type="float">0.0</blue>
+					<green-d2 type="float">0.0</green-d2>
+					<green-d4 type="float">0.0</green-d4>
+					<green-d8 type="float">0.0</green-d8>
+					<green-d16 type="float">0.0</green-d16>
+					<green-d32 type="float">0.0</green-d32>
+					<green-d64 type="float">0.0</green-d64>
+					<green-d128 type="float">0.0</green-d128>
+				</engine>
+				<engine n="26">
+					<green type="float">0.0</green>
+					<red type="float">0.0</red>
+					<blue type="float">0.0</blue>
+					<green-d2 type="float">0.0</green-d2>
+					<green-d4 type="float">0.0</green-d4>
+					<green-d8 type="float">0.0</green-d8>
+					<green-d16 type="float">0.0</green-d16>
+					<green-d32 type="float">0.0</green-d32>
+					<green-d64 type="float">0.0</green-d64>
+					<green-d128 type="float">0.0</green-d128>
+				</engine>
+				<engine n="27">
+					<green type="float">0.0</green>
+					<red type="float">0.0</red>
+					<blue type="float">0.0</blue>
+					<green-d2 type="float">0.0</green-d2>
+					<green-d4 type="float">0.0</green-d4>
+					<green-d8 type="float">0.0</green-d8>
+					<green-d16 type="float">0.0</green-d16>
+					<green-d32 type="float">0.0</green-d32>
+					<green-d64 type="float">0.0</green-d64>
+					<green-d128 type="float">0.0</green-d128>
+				</engine>
+				<engine n="28">
+					<green type="float">0.0</green>
+					<red type="float">0.0</red>
+					<blue type="float">0.0</blue>
+					<green-d2 type="float">0.0</green-d2>
+					<green-d4 type="float">0.0</green-d4>
+					<green-d8 type="float">0.0</green-d8>
+					<green-d16 type="float">0.0</green-d16>
+					<green-d32 type="float">0.0</green-d32>
+					<green-d64 type="float">0.0</green-d64>
+					<green-d128 type="float">0.0</green-d128>
+				</engine>
+				<engine n="29">
+					<green type="float">0.0</green>
+					<red type="float">0.0</red>
+					<blue type="float">0.0</blue>
+					<green-d2 type="float">0.0</green-d2>
+					<green-d4 type="float">0.0</green-d4>
+					<green-d8 type="float">0.0</green-d8>
+					<green-d16 type="float">0.0</green-d16>
+					<green-d32 type="float">0.0</green-d32>
+					<green-d64 type="float">0.0</green-d64>
+					<green-d128 type="float">0.0</green-d128>
+				</engine>
+				<engine n="30">
+					<green type="float">0.0</green>
+					<red type="float">0.0</red>
+					<blue type="float">0.0</blue>
+					<green-d2 type="float">0.0</green-d2>
+					<green-d4 type="float">0.0</green-d4>
+					<green-d8 type="float">0.0</green-d8>
+					<green-d16 type="float">0.0</green-d16>
+					<green-d32 type="float">0.0</green-d32>
+					<green-d64 type="float">0.0</green-d64>
+					<green-d128 type="float">0.0</green-d128>
+				</engine>
+				<engine n="31">
+					<green type="float">0.0</green>
+					<red type="float">0.0</red>
+					<blue type="float">0.0</blue>
+					<green-d2 type="float">0.0</green-d2>
+					<green-d4 type="float">0.0</green-d4>
+					<green-d8 type="float">0.0</green-d8>
+					<green-d16 type="float">0.0</green-d16>
+					<green-d32 type="float">0.0</green-d32>
+					<green-d64 type="float">0.0</green-d64>
+					<green-d128 type="float">0.0</green-d128>
+				</engine>
+				<engine n="32">
+					<green type="float">0.97</green>
+					<red type="float">0.97</red>
+					<blue type="float">0.97</blue>
+					<transparency type="float">0.0</transparency>
+					<transparency-d2 type="float">0.0</transparency-d2>
+					<transparency-d4 type="float">0.0</transparency-d4>
+					<transparency-d8 type="float">0.0</transparency-d8>
+					<transparency-d16 type="float">0.0</transparency-d16>
+				</engine>
+				<engine n="33">
+					<green type="float">0.97</green>
+					<red type="float">0.97</red>
+					<blue type="float">0.97</blue>
+					<transparency type="float">0.0</transparency>
+					<transparency-d2 type="float">0.0</transparency-d2>
+					<transparency-d4 type="float">0.0</transparency-d4>
+					<transparency-d8 type="float">0.0</transparency-d8>
+					<transparency-d16 type="float">0.0</transparency-d16>
+				</engine>
+				<engine n="34">
+					<green type="float">0.97</green>
+					<red type="float">0.97</red>
+					<blue type="float">0.97</blue>
+					<transparency type="float">0.0</transparency>
+					<transparency-d2 type="float">0.0</transparency-d2>
+					<transparency-d4 type="float">0.0</transparency-d4>
+					<transparency-d8 type="float">0.0</transparency-d8>
+					<transparency-d16 type="float">0.0</transparency-d16>
+				</engine>
+				<engine n="35">
+					<green type="float">0.97</green>
+					<red type="float">0.97</red>
+					<blue type="float">0.97</blue>
+					<transparency type="float">0.0</transparency>
+					<transparency-d2 type="float">0.0</transparency-d2>
+					<transparency-d4 type="float">0.0</transparency-d4>
+					<transparency-d8 type="float">0.0</transparency-d8>
+					<transparency-d16 type="float">0.0</transparency-d16>
+				</engine>
+				<engine n="36">
+					<green type="float">0.97</green>
+					<red type="float">0.97</red>
+					<blue type="float">0.97</blue>
+					<transparency type="float">0.0</transparency>
+					<transparency-d2 type="float">0.0</transparency-d2>
+					<transparency-d4 type="float">0.0</transparency-d4>
+					<transparency-d8 type="float">0.0</transparency-d8>
+					<transparency-d16 type="float">0.0</transparency-d16>
+				</engine>
+				<engine n="37">
+					<green type="float">0.97</green>
+					<red type="float">0.97</red>
+					<blue type="float">0.97</blue>
+					<transparency type="float">0.0</transparency>
+					<transparency-d2 type="float">0.0</transparency-d2>
+					<transparency-d4 type="float">0.0</transparency-d4>
+					<transparency-d8 type="float">0.0</transparency-d8>
+					<transparency-d16 type="float">0.0</transparency-d16>
+				</engine>
+				<engine n="38">
+					<green type="float">0.97</green>
+					<red type="float">0.97</red>
+					<blue type="float">0.97</blue>
+					<transparency type="float">0.0</transparency>
+					<transparency-d2 type="float">0.0</transparency-d2>
+					<transparency-d4 type="float">0.0</transparency-d4>
+					<transparency-d8 type="float">0.0</transparency-d8>
+					<transparency-d16 type="float">0.0</transparency-d16>
+				</engine>
+				<engine n="39">
+					<green type="float">0.97</green>
+					<red type="float">0.97</red>
+					<blue type="float">0.97</blue>
+					<transparency type="float">0.0</transparency>
+					<transparency-d2 type="float">0.0</transparency-d2>
+					<transparency-d4 type="float">0.0</transparency-d4>
+					<transparency-d8 type="float">0.0</transparency-d8>
+					<transparency-d16 type="float">0.0</transparency-d16>
+				</engine>
+				<engine n="40">
+					<green type="float">0.0</green>
+					<red type="float">0.0</red>
+					<blue type="float">0.0</blue>
+					<transparency type="float">0.0</transparency>
+				</engine>
+			</propulsion>
+			<accelerations>
+				<Nz-max type="float">15.0</Nz-max>
+			</accelerations>
+			<stages>
+				<first type="bool">0.0</first>
+				<second type="bool">0.0</second>
+				<third type="bool">0.0</third>
+				<tdu type="bool">0.0</tdu>
+				<spacecraft type="bool">0.0</spacecraft>
+				<change type="bool">0.0</change>
+				<unit n="0">
+					<active type="bool">1</active>
+					<ignited type="bool">0</ignited>
+					<g-allowed type="float">4</g-allowed>
+					<g-break-psec type="float">0.05</g-break-psec>
+					<qbar-allowed-kgm2 type="float">5000</qbar-allowed-kgm2>
+					<qbar-break-psec type="float">0.1</qbar-break-psec>
+					<broken type="bool">0</broken>
+					<broken-block n="0" type="bool">0</broken-block>
+					<broken-block n="1" type="bool">0</broken-block>
+					<broken-block n="2" type="bool">0</broken-block>
+					<broken-block n="3" type="bool">0</broken-block>
+					<show-translate type="float">0</show-translate>
+					<mass-translate type="float">0</mass-translate>
+					<drop type="bool">0</drop>
+					<dropped type="bool">0</dropped>
+					<elevator-delayed-norm type="float">0.0</elevator-delayed-norm>
+					<pitch-mass-moment-part type="float">0.0</pitch-mass-moment-part>
+					<control>
+						<left-engine-rad type="float">0.0</left-engine-rad>
+						<right-engine-rad type="float">0.0</right-engine-rad>
+						<forward-engine-rad type="float">0.0</forward-engine-rad>
+						<back-engine-rad type="float">0.0</back-engine-rad>
+						<mass-control type="float">0.0</mass-control>
+						<control-min type="float">-0.785</control-min>
+						<control-max type="float">0.785</control-max>
+						<pitch-cmd-norm type="float">0.0</pitch-cmd-norm>
+						<roll-cmd-norm type="float">0.0</roll-cmd-norm>
+						<factor-add type="float">0.0</factor-add>
+						<q-gained type="float">0.0</q-gained>
+						<p-gained type="float">0.0</p-gained>
+						<r-gained type="float">0.0</r-gained>
+					</control>
+				</unit>
+				<unit n="1">
+					<active type="bool">1</active>
+					<ignited type="bool">0</ignited>
+					<g-allowed type="float">10</g-allowed>
+					<g-break-psec type="float">0.05</g-break-psec>
+					<qbar-allowed-kgm2 type="float">7000</qbar-allowed-kgm2>
+					<qbar-break-psec type="float">0.1</qbar-break-psec>
+					<broken type="bool">0</broken>
+					<show-translate type="float">0</show-translate>
+					<mass-translate type="float">0</mass-translate>
+					<drop type="bool">0</drop>
+					<dropped type="bool">0</dropped>
+				</unit>
+				<unit n="2">
+					<active type="bool">1</active>
+					<ignited type="bool">0</ignited>
+					<g-allowed type="float">4.5</g-allowed>
+					<g-break-psec type="float">0.1</g-break-psec>
+					<qbar-allowed-kgm2 type="float">6000</qbar-allowed-kgm2>
+					<qbar-break-psec type="float">0.1</qbar-break-psec>
+					<broken type="bool">0</broken>
+					<show-translate type="float">14.595</show-translate>
+					<mass-translate type="float">0</mass-translate>
+					<drop type="bool">0</drop>
+					<dropped type="bool">0</dropped>
+					<pitch-mass-moment-part type="float">0.0</pitch-mass-moment-part>
+					<control>
+						<left-engine-rad type="float">0.0</left-engine-rad>
+						<right-engine-rad type="float">0.0</right-engine-rad>
+						<forward-engine-rad type="float">0.0</forward-engine-rad>
+						<back-engine-rad type="float">0.0</back-engine-rad>
+						<mass-control type="float">0.0</mass-control>
+						<control-min type="float">-0.785</control-min>
+						<control-max type="float">0.785</control-max>
+						<factor-add type="float">0.0</factor-add>
+						<q-gained type="float">0.0</q-gained>
+						<p-gained type="float">0.0</p-gained>
+						<r-gained type="float">0.0</r-gained>
+					</control>
+				</unit>
+				<unit n="3">
+					<active type="bool">0</active>
+					<ignited type="bool">0</ignited>
+					<g-allowed type="float">6</g-allowed>
+					<g-break-psec type="float">0.1</g-break-psec>
+					<qbar-allowed-kgm2 type="float">7000</qbar-allowed-kgm2>
+					<qbar-ignition-kgm2 type="float">1</qbar-ignition-kgm2>
+					<qbar-break-psec type="float">0.1</qbar-break-psec>
+					<broken type="bool">0</broken>
+					<show-translate type="float">0</show-translate>
+					<mass-translate type="float">0</mass-translate>
+					<drop type="bool">0</drop>
+					<dropped type="bool">0</dropped>
+					<pitch-mass-moment-part type="float">0.0</pitch-mass-moment-part>
+					<control>
+						<pitch-forward type="float">0.0</pitch-forward>
+						<pitch-back type="float">0.0</pitch-back>
+						<yaw-left type="float">0.0</yaw-left>
+						<yaw-right type="float">0.0</yaw-right>
+						<roll-forward-left type="float">0.0</roll-forward-left>
+						<roll-back-right type="float">0.0</roll-back-right>
+						<roll-forward-right type="float">0.0</roll-forward-right>
+						<roll-back-left type="float">0.0</roll-back-left>
+						<mass-control type="float">0.0</mass-control>
+						<control-min type="float">-1.0</control-min>
+						<control-max type="float">1.0</control-max>
+						<factor-add type="float">0.0</factor-add>
+						<q-gained type="float">0.0</q-gained>
+						<p-gained type="float">0.0</p-gained>
+						<r-gained type="float">0.0</r-gained>
+					</control>
+				</unit>
+				<unit n="4">
+					<active type="bool">0</active>
+					<activated type="float">0.0</activated>
+					<ignited type="bool">0</ignited>
+					<g-allowed type="float">6</g-allowed>
+					<g-break-psec type="float">0.1</g-break-psec>
+					<qbar-allowed-kgm2 type="float">500</qbar-allowed-kgm2>
+					<qbar-break-psec type="float">0.1</qbar-break-psec>
+					<broken type="bool">0</broken>
+					<maneur-ignited type="bool">0</maneur-ignited>
+					<show-translate type="float">0</show-translate>
+					<mass-translate type="float">0</mass-translate>
+					<drop type="bool">0</drop>
+					<dropped type="bool">0</dropped>
+					<separate type="bool">0</separate>
+					<separated type="float">0</separated>
+					<pitch-mass-moment-part type="float">0.0</pitch-mass-moment-part>
+					<control>
+						<pitch-forward type="float">0.0</pitch-forward>
+						<pitch-back type="float">0.0</pitch-back>
+						<yaw-left type="float">0.0</yaw-left>
+						<yaw-right type="float">0.0</yaw-right>
+						<roll-forward-left type="float">0.0</roll-forward-left>
+						<roll-back-right type="float">0.0</roll-back-right>
+						<roll-forward-right type="float">0.0</roll-forward-right>
+						<roll-back-left type="float">0.0</roll-back-left>
+						<mass-control type="float">0.0</mass-control>
+						<control-min type="float">-1.0</control-min>
+						<control-max type="float">1.0</control-max>
+						<factor-add type="float">0.0</factor-add>
+						<q-gained type="float">0.0</q-gained>
+						<p-gained type="float">0.0</p-gained>
+						<r-gained type="float">0.0</r-gained>
+					</control>
+				</unit>
+				<unit n="5">
+					<active type="bool">0</active>
+					<activated type="float">0.0</activated>
+					<ignited type="bool">0</ignited>
+					<g-allowed type="float">12</g-allowed>
+					<g-break-psec type="float">0.1</g-break-psec>
+					<qbar-allowed-kgm2 type="float">7000</qbar-allowed-kgm2>
+					<qbar-break-psec type="float">0.1</qbar-break-psec>
+					<broken type="bool">0</broken>
+					<broken-part n="0" type="bool">0</broken-part>
+					<broken-part n="1" type="bool">0</broken-part>
+					<broken-part n="2" type="bool">0</broken-part>
+					<broken-part n="3" type="bool">0</broken-part>
+					<show-translate type="float">0</show-translate>
+					<mass-translate type="float">0</mass-translate>
+					<drop type="bool">0</drop>
+					<dropped type="bool">0</dropped>
+				</unit>
+			</stages>
+			<aero>
+				<temperature>
+					<alpha-rad type="float">0.0</alpha-rad>
+					<beta-rad type="float">0.0</beta-rad>
+					<temp type="float">0.0</temp>
+					<P-sum-psf type="float">0.0</P-sum-psf>
+					<stagnation-mach-c type="float">0.0</stagnation-mach-c>
+					<flow-mach-red type="float">0.0</flow-mach-red>
+					<flow-mach-green type="float">0.0</flow-mach-green>
+					<flow-mach-blue type="float">0.0</flow-mach-blue>
+					<flow-mach-transparency type="float">0.0</flow-mach-transparency>
+					<flow-mach-d2-c type="float">0.0</flow-mach-d2-c>
+					<flow-mach-d2-red type="float">0.0</flow-mach-d2-red>
+					<flow-mach-d2-green type="float">0.0</flow-mach-d2-green>
+					<flow-mach-d2-blue type="float">0.0</flow-mach-d2-blue>
+					<flow-mach-d2-transparency type="float">0.0</flow-mach-d2-transparency>
+					<flow-mach-d4-c type="float">0.0</flow-mach-d4-c>
+					<flow-mach-d4-red type="float">0.0</flow-mach-d4-red>
+					<flow-mach-d4-green type="float">0.0</flow-mach-d4-green>
+					<flow-mach-d4-blue type="float">0.0</flow-mach-d4-blue>
+					<flow-mach-d4-transparency type="float">0.0</flow-mach-d4-transparency>
+					<flow-mach-d8-c type="float">0.0</flow-mach-d8-c>
+					<flow-mach-d8-red type="float">0.0</flow-mach-d8-red>
+					<flow-mach-d8-green type="float">0.0</flow-mach-d8-green>
+					<flow-mach-d8-blue type="float">0.0</flow-mach-d8-blue>
+					<flow-mach-d8-transparency type="float">0.0</flow-mach-d8-transparency>
+					<flow-mach-d16-c type="float">0.0</flow-mach-d16-c>
+					<flow-mach-d16-red type="float">0.0</flow-mach-d16-red>
+					<flow-mach-d16-green type="float">0.0</flow-mach-d16-green>
+					<flow-mach-d16-blue type="float">0.0</flow-mach-d16-blue>
+					<flow-mach-d16-transparency type="float">0.0</flow-mach-d16-transparency>
+					<recovery-mach-c type="float">0.0</recovery-mach-c>
+					<surface-mach-c type="float">0.0</surface-mach-c>
+					<surface-mach-red type="float">0.0</surface-mach-red>
+					<surface-mach-green type="float">0.0</surface-mach-green>
+					<surface-mach-blue type="float">0.0</surface-mach-blue>
+				</temperature>
+				<alpha-rotated-rad type="float">0.0</alpha-rotated-rad>
+				<beta-rotated-rad type="float">0.0</beta-rotated-rad>
+				<qbar-modified-psf type="float">0.0</qbar-modified-psf>
+				<qbar-modified-kgm2 type="float">0.0</qbar-modified-kgm2>
+				<coefficient>
+					<CD_First type="float">0.0</CD_First>
+					<CDbeta_First type="float">0.0</CDbeta_First>
+					<CD_Second type="float">0.0</CD_Second>
+					<CDbeta_Second type="float">0.0</CDbeta_Second>
+					<CD_Third type="float">0.0</CD_Third>
+					<CDbeta_Third type="float">0.0</CDbeta_Third>
+					<CD_TDU type="float">0.0</CD_TDU>
+					<CDbeta_TDU type="float">0.0</CDbeta_TDU>
+					<CD_Spacecraft type="float">0.0</CD_Spacecraft>
+
+					<CLwbh_First type="float">0.0</CLwbh_First>
+					<CLwbh_Second type="float">0.0</CLwbh_Second>
+					<CLwbh_Third type="float">0.0</CLwbh_Third>
+					<CLwbh_TDU type="float">0.0</CLwbh_TDU>
+				</coefficient>
+				<test type="float">0.0</test>
+				<maximum-altitude-ft type="float">492125.9</maximum-altitude-ft>
+			</aero>
+			<calculations>
+				<calculations>
+					<cg-z-vertical-rolled-in type="float">1e-20</cg-z-vertical-rolled-in>
+					<cg-y-vertical-rolled-in type="float">1e-20</cg-y-vertical-rolled-in>
+					<cg-z-vertical-pitched-in type="float">1e-20</cg-z-vertical-pitched-in>
+					<cg-x-vertical-pitched-in type="float">1e-20</cg-x-vertical-pitched-in>
+					<cg-x-shifted-in type="float">1e-20</cg-x-shifted-in>
+					<cg-y-shifted-in type="float">1e-20</cg-y-shifted-in>
+					<cg-z-shifted-in type="float">1e-20</cg-z-shifted-in>
+					<cg-vertical-sholder-x-in type="float">1e-20</cg-vertical-sholder-x-in>
+					<cg-vertical-sholder-y-in type="float">1e-20</cg-vertical-sholder-y-in>
+					<roll-calculated-rad type="float">0.0</roll-calculated-rad>
+					<roll-modified-rad type="float">0.0</roll-modified-rad>
+				</calculations>
+			</calculations>
+			<external_reactions>
+				<centrifugal-force-lbs type="float">0.0</centrifugal-force-lbs>
+				<altitude-limit-force-lbs type="float">0.0</altitude-limit-force-lbs>
+				<additional-vertical-force-lbs type="float">0.0</additional-vertical-force-lbs>
+				<pitch-compensative-force-lbs type="float">0.0</pitch-compensative-force-lbs>
+				<roll-compensative-force-lbs type="float">0.0</roll-compensative-force-lbs>
+				<pitch-drag-compensative-force-lbs type="float">0.0</pitch-drag-compensative-force-lbs>
+				<roll-drag-compensative-force-lbs type="float">0.0</roll-drag-compensative-force-lbs>
+			</external_reactions>
+			<systems>
+				<angles>
+					<r-orig-11 type="float" >0.0</r-orig-11>
+					<r-orig-12 type="float">0.0</r-orig-12>
+					<r-orig-13 type="float">0.0</r-orig-13>
+					<r-orig-21 type="float">0.0</r-orig-21>
+					<r-orig-22 type="float">0.0</r-orig-22>
+					<r-orig-23 type="float">0.0</r-orig-23>
+					<r-orig-31 type="float">0.0</r-orig-31>
+					<r-orig-32 type="float">0.0</r-orig-32>
+					<r-orig-33 type="float">0.0</r-orig-33>
+
+					<r-up-11 type="float">0.0</r-up-11>
+					<r-up-12 type="float">0.0</r-up-12>
+					<r-up-13 type="float">0.0</r-up-13>
+					<r-up-21 type="float">0.0</r-up-21>
+					<r-up-22 type="float">0.0</r-up-22>
+					<r-up-23 type="float">0.0</r-up-23>
+					<r-up-31 type="float">0.0</r-up-31>
+					<r-up-32 type="float">0.0</r-up-32>
+					<r-up-33 type="float">0.0</r-up-33>
+
+					<r-nose-11 type="float">0.0</r-nose-11>
+					<r-nose-12 type="float">0.0</r-nose-12>
+					<r-nose-13 type="float">0.0</r-nose-13>
+					<r-nose-21 type="float">0.0</r-nose-21>
+					<r-nose-22 type="float">0.0</r-nose-22>
+					<r-nose-23 type="float">0.0</r-nose-23>
+					<r-nose-31 type="float">0.0</r-nose-31>
+					<r-nose-32 type="float">0.0</r-nose-32>
+					<r-nose-33 type="float">0.0</r-nose-33>
+
+					<heading-true-rad type="float">0.0</heading-true-rad>
+					<pitch-rad type="float">0.0</pitch-rad>
+					<roll-rad type="float">0.0</roll-rad>
+
+					<nose-heading-rad type="float">0.0</nose-heading-rad>
+					<nose-pitch-rad type="float">0.0</nose-pitch-rad>
+					<nose-roll-rad type="float">0.0</nose-roll-rad>
+
+				</angles>
+				<orientationcomputer>
+					<factor-angle type="float">1.2732</factor-angle>
+
+					<factor-input type="float">0.0872</factor-input>
+					<factor-speed type="float">1.0</factor-speed>
+					<factor-acceleration type="float">1.0</factor-acceleration>
+					<factor-control type="float">1.0</factor-control>
+					<factor-output type="float">1.0</factor-output>
+					<output-min type="float">-0.785</output-min>
+					<output-max type="float">0.785</output-max>
+
+					<q-angle-control type="float">0.0</q-angle-control>
+					<q-angle type="float">0.0</q-angle>
+					<q-drift type="float">0.0</q-drift>
+					<q-return type="float">0.0</q-return>
+					<q-pid-input type="float">0.0</q-pid-input>
+					<q-hold type="bool">0</q-hold>
+					<q-hold-active type="float">0.0</q-hold-active>
+
+					<q-command type="float">0</q-command>
+					<q-input type="float">0</q-input>
+
+					<q-acceleration type="float">0.0</q-acceleration>
+					<q-control-acceleration type="float">0.0</q-control-acceleration>
+					<q-control-return type="float">0.0</q-control-return>
+					<q-control-add type="float">0.0</q-control-add>
+					<q-control type="float">0.0</q-control>
+					<q-output type="float">0.0</q-output>
+
+					<p-angle-control type="float">0.0</p-angle-control>
+					<p-angle type="float">0.0</p-angle>
+					<p-drift type="float">0.0</p-drift>
+					<p-return type="float">0.0</p-return>
+					<p-pid-input type="float">0.0</p-pid-input>
+					<p-hold type="bool">0</p-hold>
+					<p-hold-active type="float">0.0</p-hold-active>
+
+					<p-command type="float">0</p-command>
+					<p-input type="float">0</p-input>
+
+					<p-acceleration type="float">0.0</p-acceleration>
+					<p-control-acceleration type="float">0.0</p-control-acceleration>
+					<p-control-return type="float">0.0</p-control-return>
+					<p-control-add type="float">0.0</p-control-add>
+					<p-control type="float">0.0</p-control>
+					<p-output type="float">0.0</p-output>
+
+					<r-angle-control type="float">0.0</r-angle-control>
+					<r-angle type="float">0.0</r-angle>
+					<r-drift type="float">0.0</r-drift>
+					<r-return type="float">0.0</r-return>
+					<r-pid-input type="float">0.0</r-pid-input>
+					<r-hold type="bool">0</r-hold>
+					<r-hold-active type="float">0.0</r-hold-active>
+
+					<r-command type="float">0</r-command>
+					<r-input type="float">0</r-input>
+
+					<r-acceleration type="float">0.0</r-acceleration>
+					<r-control-acceleration type="float">0.0</r-control-acceleration>
+					<r-control-return type="float">0.0</r-control-return>
+					<r-control-add type="float">0.0</r-control-add>
+					<r-control type="float">0.0</r-control>
+					<r-output type="float">0.0</r-output>
+
+				</orientationcomputer>
+				<tdu>
+					<hard-antennas-extraction-started type="bool">0</hard-antennas-extraction-started>
+					<hard-antennas-pos-norm type="float">0.0</hard-antennas-pos-norm>
+					<radiators-extraction-started type="bool">0</radiators-extraction-started>
+					<radiators-pos-norm type="float">0.0</radiators-pos-norm>
+					<whip-antennas-extraction-started type="bool">0</whip-antennas-extraction-started>
+					<whip-antennas-pos-norm type="float">0.0</whip-antennas-pos-norm>
+					<whip-antennas-extracted type="bool">0.0</whip-antennas-extracted>
+					<maneur-engine-on type="bool">0.0</maneur-engine-on>
+					<main-engine-on type="bool">0.0</main-engine-on>
+				</tdu>
+				<spacecraft>
+					<whip-antennas-extraction-started type="bool">0</whip-antennas-extraction-started>
+					<whip-antennas-pos-norm type="float">0.0</whip-antennas-pos-norm>
+					<whip-antennas-extracted type="bool">0.0</whip-antennas-extracted>
+					<chute-cover-drop type="bool">0</chute-cover-drop>
+					<chute-cover-dropped type="float">0.0</chute-cover-dropped>
+					<brake-chute-extracted type="bool">0</brake-chute-extracted>
+					<brake-chute-pos-norm type="float">0</brake-chute-pos-norm>
+					<brake-chute-dropped type="bool">0</brake-chute-dropped>
+					<brake-qbar-max type="float">1500</brake-qbar-max>
+					<brake-rot-max type="float">3.14</brake-rot-max>
+					<brake-chute-teared type="bool">0</brake-chute-teared>
+					<main-chute-extracted type="bool">0</main-chute-extracted>
+					<main-chute-pos-norm type="float">0</main-chute-pos-norm>
+					<main-drop-pos type="float">0</main-drop-pos>
+					<main-drop-command  type="bool">0</main-drop-command>
+					<main-chute-dropped type="bool">0</main-chute-dropped>
+					<main-qbar-max type="float">750</main-qbar-max>
+					<main-chute-teared type="bool">0</main-chute-teared>
+					<engine-sensor-extraction-started type="bool">0</engine-sensor-extraction-started>
+					<engine-sensor-extracted type="bool">0</engine-sensor-extracted>
+					<engine-sensor-pos-norm type="float">0</engine-sensor-pos-norm>
+					<engine-sensor-teared type="bool">0</engine-sensor-teared>
+					<engine-qbar-max type="float">50</engine-qbar-max>
+					<engine-rot-max type="float">0.174</engine-rot-max>
+					<ground-contact type="bool">0</ground-contact>
+				</spacecraft>
+				<tdu_computer>
+					<on type="bool">1</on>
+					<stabilize type="bool">0</stabilize>
+					<pitch-forward type="float">0.0</pitch-forward>
+					<pitch-back type="float">0.0</pitch-back>
+					<yaw-left type="float">0.0</yaw-left>
+					<yaw-right type="float">0.0</yaw-right>
+					<roll-forward-left type="float">0.0</roll-forward-left>
+					<roll-back-right type="float">0.0</roll-back-right>
+					<roll-forward-right type="float">0.0</roll-forward-right>
+					<roll-back-left type="float">0.0</roll-back-left>
+					<pitch-factor type="float">10.0</pitch-factor>
+					<pitch-speed-factor type="float">100.0</pitch-speed-factor>
+					<pitch-speed-limit type="float">15.0</pitch-speed-limit>
+					<roll-factor type="float">20.0</roll-factor>
+					<roll-speed-factor type="float">200.0</roll-speed-factor>
+					<roll-speed-limit type="float">15.0</roll-speed-limit>
+					<command-factor type="float">0.1</command-factor>
+				</tdu_computer>
+				<gascontrol>
+					<serviceable type="bool">1</serviceable>
+					<lock-command type="float">1</lock-command>
+					<lock-pos type="float">1</lock-pos>
+					<lock-switch type="float">1</lock-switch>
+					<lever-command type="float">0</lever-command>
+					<lever-pos type="float">0</lever-pos>
+					<lever-angle type="float">1</lever-angle>
+					<pin-pos type="float">1</pin-pos>
+					<pilot-oscillator-pos type="float">0</pilot-oscillator-pos>
+					<shift-oscillator-command type="float">0</shift-oscillator-command>
+					<shift-oscillator-pos type="float">0</shift-oscillator-pos>
+				</gascontrol>
+				<controlhandle>
+					<serviceable type="bool">1</serviceable>
+					<handle-moved type="bool">0</handle-moved>
+					<button-input type="float">0</button-input>
+					<button-command type="float">0</button-command>
+					<button-pos type="float">0</button-pos>
+					<button-switch type="float">0</button-switch>
+					<aileron-command type="float">0</aileron-command>
+					<aileron-pos type="float">0</aileron-pos>
+					<elevator-pos type="float">0</elevator-pos>
+					<elevator-command type="float">0</elevator-command>
+					<rudder-pos type="float">0</rudder-pos>
+					<rudder-command type="float">0</rudder-command>
+				</controlhandle>
+				<enginespanel>
+					<stage-one-oxigen-one-lbs type="float">0.0</stage-one-oxigen-one-lbs>
+					<stage-one-oxigen-one-tons type="float">0.0</stage-one-oxigen-one-tons>
+					<stage-one-fuel-one-lbs type="float">0.0</stage-one-fuel-one-lbs>
+					<stage-one-fuel-one-tons type="float">0.0</stage-one-fuel-one-tons>
+					<stage-one-thrust-one-tons type="float">0.0</stage-one-thrust-one-tons>
+
+					<stage-one-oxigen-two-lbs type="float">0.0</stage-one-oxigen-two-lbs>
+					<stage-one-fuel-two-lbs type="float">0.0</stage-one-fuel-two-lbs>
+					<stage-one-thrust-two-tons type="float">0.0</stage-one-thrust-two-tons>
+
+					<stage-one-oxigen-three-lbs type="float">0.0</stage-one-oxigen-three-lbs>
+					<stage-one-fuel-three-lbs type="float">0.0</stage-one-fuel-three-lbs>
+					<stage-one-thrust-three-tons type="float">0.0</stage-one-thrust-three-tons>
+
+					<stage-one-oxigen-four-lbs type="float">0.0</stage-one-oxigen-four-lbs>
+					<stage-one-fuel-four-lbs type="float">0.0</stage-one-fuel-four-lbs>
+					<stage-one-thrust-four-tons type="float">0.0</stage-one-thrust-four-tons>
+
+					<stage-two-oxigen-lbs type="float">0.0</stage-two-oxigen-lbs>
+					<stage-two-fuel-lbs type="float">0.0</stage-two-fuel-lbs>
+					<stage-two-thrust-tons type="float">0.0</stage-two-thrust-tons>
+
+					<stage-three-oxigen-lbs type="float">0.0</stage-three-oxigen-lbs>
+					<stage-three-fuel-lbs type="float">0.0</stage-three-fuel-lbs>
+					<stage-three-thrust-tons type="float">0.0</stage-three-thrust-tons>
+
+					<gm type="float">14.07644180e15</gm>
+					<semimajor-axis-length-ft type="float">0.0</semimajor-axis-length-ft>
+					<eccentricity type="float">0.0</eccentricity>
+					<apoapsis-ft type="float">0.0</apoapsis-ft>
+					<apoapsis-km type="float">0.0</apoapsis-km>
+					<apoapsis-indicated-km type="float">0.0</apoapsis-indicated-km>
+					<apoapsis-hunderds-km type="float">0.0</apoapsis-hunderds-km>
+					<apoapsis-tens-km type="float">0.0</apoapsis-tens-km>
+					<apoapsis-ones-km type="float">0.0</apoapsis-ones-km>
+					<periapsis-ft type="float">0.0</periapsis-ft>
+					<periapsis-km type="float">0.0</periapsis-km>
+					<periapsis-indicated-km type="float">0.0</periapsis-indicated-km>
+					<periapsis-hunderds-km type="float">0.0</periapsis-hunderds-km>
+					<periapsis-tens-km type="float">0.0</periapsis-tens-km>
+					<periapsis-ones-km type="float">0.0</periapsis-ones-km>
+
+				</enginespanel>
+				<orientationpanel>
+					<g-force-absolute type="float">0.0</g-force-absolute>
+					<vertical-speed-absolute-ms type="float">0.0</vertical-speed-absolute-ms>
+					<pitch-indicated-rad type="float">0.0</pitch-indicated-rad>
+					<down-light type="float">0.0</down-light>
+					<horizontal-speed-fps type="float">0.0</horizontal-speed-fps>
+					<heading-calculated-rad type="float">0.0</heading-calculated-rad>
+					<heading-diffed-rad type="float">0.0</heading-diffed-rad>
+					<heading-inversed-rad type="float">0.0</heading-inversed-rad>
+					<heading-modified-rad type="float">0.0</heading-modified-rad>
+					<qbar-indicated-psf type="float">0.0</qbar-indicated-psf>
+					<qbar-indicated-psm type="float">0.0</qbar-indicated-psm>
+				</orientationpanel>
+				<mainpanel>
+					<serviceable type="bool">1</serviceable>
+					<prev-time type="float">0.0</prev-time>
+
+					<clock-main-vernier-input type="bool">0</clock-main-vernier-input>
+					<clock-main-vernier-command type="bool">0</clock-main-vernier-command>
+					<clock-main-vernier-pos type="float">0.0</clock-main-vernier-pos>
+					<clock-main-vernier-switch type="bool">0.0</clock-main-vernier-switch>
+					<clock-main-vernier-angle type="float">0.0</clock-main-vernier-angle>
+
+					<clock-inflight-sec type="float">0.0</clock-inflight-sec>
+					<clock-inflight-days type="float">0.0</clock-inflight-days>
+					<clock-inflight-vernier-input type="bool">0</clock-inflight-vernier-input>
+					<clock-inflight-vernier-command type="bool">0</clock-inflight-vernier-command>
+					<clock-inflight-vernier-pos type="float">0.0</clock-inflight-vernier-pos>
+					<clock-inflight-vernier-switch type="bool">0.0</clock-inflight-vernier-switch>
+					<clock-inflight-vernier-angle type="float">0.0</clock-inflight-vernier-angle>
+
+					<clock-daytime-sec type="float">0.0</clock-daytime-sec>
+					<clock-daytime-disk-sec type="float">0.0</clock-daytime-disk-sec>
+					<clock-daytime-vernier-input type="bool">0</clock-daytime-vernier-input>
+					<clock-daytime-vernier-command type="bool">0</clock-daytime-vernier-command>
+					<clock-daytime-vernier-pos type="float">0.0</clock-daytime-vernier-pos>
+					<clock-daytime-vernier-switch type="bool">0.0</clock-daytime-vernier-switch>
+					<clock-daytime-vernier-angle type="float">0.0</clock-daytime-vernier-angle>
+
+					<indicator n="0">
+						<on type="bool">0</on>
+					</indicator>
+					<indicator n="1">
+						<on type="bool">0</on>
+					</indicator>
+					<indicator n="2">
+						<on type="bool">0</on>
+					</indicator>
+					<indicator n="3">
+						<on type="bool">0</on>
+					</indicator>
+					<indicator n="4">
+						<on type="bool">0</on>
+					</indicator>
+					<indicator n="5">
+						<on type="bool">0</on>
+					</indicator>
+					<indicator n="6">
+						<on type="bool">0</on>
+					</indicator>
+					<indicator n="7">
+						<on type="bool">0</on>
+					</indicator>
+					<indicator n="8">
+						<on type="bool">0</on>
+					</indicator>
+					<indicator n="9">
+						<on type="bool">0</on>
+					</indicator>
+					<indicator n="10">
+						<on type="bool">0</on>
+					</indicator>
+					<indicator n="11">
+						<on type="bool">0</on>
+					</indicator>
+					<indicator n="12">
+						<on type="bool">0</on>
+					</indicator>
+					<indicator n="13">
+						<on type="bool">0</on>
+					</indicator>
+					<indicator n="14">
+						<on type="bool">0</on>
+					</indicator>
+					<indicator n="15">
+						<on type="bool">0</on>
+					</indicator>
+					<indicator n="16">
+						<on type="bool">0</on>
+					</indicator>
+					<indicator n="17">
+						<on type="bool">0</on>
+					</indicator>
+					<indicator n="18">
+						<on type="bool">0</on>
+					</indicator>
+					<indicator n="19">
+						<on type="bool">0</on>
+					</indicator>
+					<indicator n="20">
+						<on type="bool">0</on>
+					</indicator>
+					<indicator n="21">
+						<on type="bool">0</on>
+					</indicator>
+					<indicator n="22">
+						<on type="bool">0</on>
+					</indicator>
+					<indicator n="23">
+						<on type="bool">0</on>
+					</indicator>
+				</mainpanel>
+				<orbitcounter>
+					<launchpad-longitude type="float">0.0</launchpad-longitude>
+					<antipode-longitude-calculated type="float">0.0</antipode-longitude-calculated>
+					<antipode-longitude-circle type="float">0.0</antipode-longitude-circle>
+					<antipode-longitude type="float">180.0</antipode-longitude>
+					<pad-distance type="float">0.0</pad-distance>
+					<half-orbit-distance type="float">0.0</half-orbit-distance>
+					<near-pad type="bool">0.0</near-pad>
+					<near-half type="bool">0.0</near-half>
+					<orbit-half-command type="bool">0.0</orbit-half-command>
+					<orbit-half-pos type="float">0.0</orbit-half-pos>
+					<half-made type="bool">0.0</half-made>
+					<orbit-full-command type="bool">0.0</orbit-full-command>
+					<orbit-full-pos type="float">0.0</orbit-full-pos>
+					<orbit-next-calculated type="float">0.0</orbit-next-calculated>
+					<orbit-next type="float">0.0</orbit-next>
+					<orbit-incremented type="float">0.0</orbit-incremented>
+					<orbit type="float">0.0</orbit>
+					<orbit-hundreds type="float">0.0</orbit-hundreds>
+					<orbit-tens type="float">0.0</orbit-tens>
+					<orbit-ones type="float">0.0</orbit-ones>
+					<orbit-offset type="float">0.0</orbit-offset>
+					<orbit-setted type="float">0.0</orbit-setted>
+					<orbit-set type="bool">0.0</orbit-set>
+					<long-test type="float">0.0</long-test>
+				</orbitcounter>
+				<rightswitchpanel>
+					<serviceable type="bool">1</serviceable>
+
+					<cover-input type="bool">0</cover-input>
+					<cover-command type="bool">0</cover-command>
+					<cover-pos type="float">0.0</cover-pos>
+					<cover-switch type="bool">0.0</cover-switch>
+
+					<one-two-ignition-input type="bool">0</one-two-ignition-input>
+					<one-two-ignition-command type="bool">0</one-two-ignition-command>
+					<one-two-ignition-pos type="float">0</one-two-ignition-pos>
+					<one-two-ignition-switch type="bool">0</one-two-ignition-switch>
+					<one-two-ignition-safer-command type="bool">0</one-two-ignition-safer-command>
+					<one-two-ignition-safer-pos type="float">0</one-two-ignition-safer-pos>
+					<one-two-ignition-safer-switch type="bool">0</one-two-ignition-safer-switch>
+					<one-two-ignition-light type="bool">0</one-two-ignition-light>
+
+					<one-drop-input type="bool">0</one-drop-input>
+					<one-drop-command type="bool">0</one-drop-command>
+					<one-drop-pos type="float">0</one-drop-pos>
+					<one-drop-switch type="bool">0</one-drop-switch>
+					<one-drop-safer-command type="bool">0</one-drop-safer-command>
+					<one-drop-safer-pos type="float">0</one-drop-safer-pos>
+					<one-drop-safer-switch type="bool">0</one-drop-safer-switch>
+					<one-drop-light type="bool">0</one-drop-light>
+
+					<fairings-drop-input type="bool">0</fairings-drop-input>
+					<fairings-drop-command type="bool">0</fairings-drop-command>
+					<fairings-drop-pos type="float">0</fairings-drop-pos>
+					<fairings-drop-switch type="bool">0</fairings-drop-switch>
+					<fairings-drop-safer-command type="bool">0</fairings-drop-safer-command>
+					<fairings-drop-safer-pos type="float">0</fairings-drop-safer-pos>
+					<fairings-drop-safer-switch type="bool">0</fairings-drop-safer-switch>
+					<fairings-drop-light type="bool">0</fairings-drop-light>
+
+					<two-drop-input type="bool">0</two-drop-input>
+					<two-drop-command type="bool">0</two-drop-command>
+					<two-drop-pos type="float">0</two-drop-pos>
+					<two-drop-switch type="bool">0</two-drop-switch>
+					<two-drop-safer-command type="bool">0</two-drop-safer-command>
+					<two-drop-safer-pos type="float">0</two-drop-safer-pos>
+					<two-drop-safer-switch type="bool">0</two-drop-safer-switch>
+					<two-drop-light type="bool">0</two-drop-light>
+
+					<three-ignition-input type="bool">0</three-ignition-input>
+					<three-ignition-command type="bool">0</three-ignition-command>
+					<three-ignition-pos type="float">0</three-ignition-pos>
+					<three-ignition-switch type="bool">0</three-ignition-switch>
+					<three-ignition-safer-command type="bool">0</three-ignition-safer-command>
+					<three-ignition-safer-pos type="float">0</three-ignition-safer-pos>
+					<three-ignition-safer-switch type="bool">0</three-ignition-safer-switch>
+					<three-ignition-light type="bool">0</three-ignition-light>
+
+					<three-drop-input type="bool">0</three-drop-input>
+					<three-drop-command type="bool">0</three-drop-command>
+					<three-drop-pos type="float">0</three-drop-pos>
+					<three-drop-switch type="bool">0</three-drop-switch>
+					<three-drop-safer-command type="bool">0</three-drop-safer-command>
+					<three-drop-safer-pos type="float">0</three-drop-safer-pos>
+					<three-drop-safer-switch type="bool">0</three-drop-safer-switch>
+					<three-drop-light type="bool">0</three-drop-light>
+
+					<tdu-ignition-input type="bool">0</tdu-ignition-input>
+					<tdu-ignition-command type="bool">0</tdu-ignition-command>
+					<tdu-ignition-pos type="float">0</tdu-ignition-pos>
+					<tdu-ignition-switch type="bool">0</tdu-ignition-switch>
+					<tdu-ignition-safer-command type="bool">0</tdu-ignition-safer-command>
+					<tdu-ignition-safer-pos type="float">0</tdu-ignition-safer-pos>
+					<tdu-ignition-safer-switch type="bool">0</tdu-ignition-safer-switch>
+					<tdu-ignition-light type="bool">0</tdu-ignition-light>
+
+					<tdu-drop-input type="bool">0</tdu-drop-input>
+					<tdu-drop-command type="bool">0</tdu-drop-command>
+					<tdu-drop-pos type="float">0</tdu-drop-pos>
+					<tdu-drop-switch type="bool">0</tdu-drop-switch>
+					<tdu-drop-safer-command type="bool">0</tdu-drop-safer-command>
+					<tdu-drop-safer-pos type="float">0</tdu-drop-safer-pos>
+					<tdu-drop-safer-switch type="bool">0</tdu-drop-safer-switch>
+					<tdu-drop-light type="bool">0</tdu-drop-light>
+
+					<brake-parachute-input type="bool">0</brake-parachute-input>
+					<brake-parachute-command type="bool">0</brake-parachute-command>
+					<brake-parachute-pos type="float">0</brake-parachute-pos>
+					<brake-parachute-switch type="bool">0</brake-parachute-switch>
+					<brake-parachute-safer-command type="bool">0</brake-parachute-safer-command>
+					<brake-parachute-safer-pos type="float">0</brake-parachute-safer-pos>
+					<brake-parachute-safer-switch type="bool">0</brake-parachute-safer-switch>
+					<brake-parachute-light type="bool">0</brake-parachute-light>
+
+					<main-parachute-input type="bool">0</main-parachute-input>
+					<main-parachute-command type="bool">0</main-parachute-command>
+					<main-parachute-pos type="float">0</main-parachute-pos>
+					<main-parachute-switch type="bool">0</main-parachute-switch>
+					<main-parachute-safer-command type="bool">0</main-parachute-safer-command>
+					<main-parachute-safer-pos type="float">0</main-parachute-safer-pos>
+					<main-parachute-safer-switch type="bool">0</main-parachute-safer-switch>
+					<main-parachute-light type="bool">0</main-parachute-light>
+
+					<landing-engine-input type="bool">0</landing-engine-input>
+					<landing-engine-command type="bool">0</landing-engine-command>
+					<landing-engine-pos type="float">0</landing-engine-pos>
+					<landing-engine-switch type="bool">0</landing-engine-switch>
+					<landing-engine-safer-command type="bool">0</landing-engine-safer-command>
+					<landing-engine-safer-pos type="float">0</landing-engine-safer-pos>
+					<landing-engine-safer-switch type="bool">0</landing-engine-safer-switch>
+					<landing-engine-light type="bool">0</landing-engine-light>
+				</rightswitchpanel>
+				<vzor>
+					<serviceable type="bool">1</serviceable>
+
+					<mirror-shift-x type="float">0.0</mirror-shift-x>
+					<mirror-shift-y type="float">0.0</mirror-shift-y>
+					<mirror-shift-day type="float">0.0</mirror-shift-day>
+					<mirror-angle-deg type="float">0.0</mirror-angle-deg>
+
+					<mirror-shift-night type="float">0.0</mirror-shift-night>
+					<mirror-shift type="float">0.0</mirror-shift>
+
+					<cover-input type="bool">1</cover-input>
+					<cover-command type="bool">1</cover-command>
+					<cover-pos type="float">1.0</cover-pos>
+					<cover-switch type="bool">1</cover-switch>
+
+					<petal-angle type="float">0.0</petal-angle>
+					<petal-angle-rad type="float">0.0</petal-angle-rad>
+					<petal-shift type="float">0.0</petal-shift>
+					<petal-shift-one type="float">0.0</petal-shift-one>
+					<petal-shift-two type="float">0.0</petal-shift-two>
+					<petal-shift-three type="float">0.0</petal-shift-three>
+					<petal-shift-four type="float">0.0</petal-shift-four>
+					<petal-shift-five type="float">0.0</petal-shift-five>
+					<petal-shift-six type="float">0.0</petal-shift-six>
+					<petal-shift-seven type="float">0.0</petal-shift-seven>
+					<petal-shift-eight type="float">0.0</petal-shift-eight>
+
+					<light type="float">0.0</light>
+					<light-red type="float">0.0</light-red>
+					<light-green type="float">0.0</light-green>
+					<light-blue type="float">0.0</light-blue>
+
+					<up-light type="float">0.0</up-light>
+					<down-light type="float">0.0</down-light>
+					<left-light type="float">0.0</left-light>
+					<right-light type="float">0.0</right-light>
+					<up-left-light type="float">0.0</up-left-light>
+					<up-right-light type="float">0.0</up-right-light>
+				</vzor>
+				<globus>
+					<eci-modified-fps type="float">0.0</eci-modified-fps>
+					<landing-angle-calculated type="float">0.0</landing-angle-calculated>
+					<landing-angle-deg type="float">0.0</landing-angle-deg>
+					<landing-or-position type="float">0.0</landing-or-position>
+					<north-east-deg type="float">0.0</north-east-deg>
+					<heading-true-deg type="float">0.0</heading-true-deg>
+					<test1 type="float">0.0</test1>
+					<test2 type="float">0.0</test2>
+					<roll-deg type="float">0.0</roll-deg>
+					<pitch-deg type="float">0.0</pitch-deg>
+				</globus>
+				<backilluminator>
+					<serviceable type="bool">1</serviceable>
+
+					<cover-input type="bool">1</cover-input>
+					<cover-command type="bool">1</cover-command>
+					<cover-pos type="float">1.0</cover-pos>
+					<cover-switch type="bool">1</cover-switch>
+
+					<petal-angle type="float">0.0</petal-angle>
+					<petal-angle-rad type="float">0.0</petal-angle-rad>
+					<petal-shift type="float">0.0</petal-shift>
+					<petal-shift-one type="float">0.0</petal-shift-one>
+					<petal-shift-two type="float">0.0</petal-shift-two>
+					<petal-shift-three type="float">0.0</petal-shift-three>
+					<petal-shift-four type="float">0.0</petal-shift-four>
+					<petal-shift-five type="float">0.0</petal-shift-five>
+					<petal-shift-six type="float">0.0</petal-shift-six>
+					<petal-shift-seven type="float">0.0</petal-shift-seven>
+					<petal-shift-eight type="float">0.0</petal-shift-eight>
+				</backilluminator>
+				<rightilluminator>
+					<serviceable type="bool">1</serviceable>
+
+					<cover-input type="bool">1</cover-input>
+					<cover-command type="bool">1</cover-command>
+					<cover-pos type="float">1.0</cover-pos>
+					<cover-switch type="bool">1</cover-switch>
+
+					<petal-angle type="float">0.0</petal-angle>
+					<petal-angle-rad type="float">0.0</petal-angle-rad>
+					<petal-shift type="float">0.0</petal-shift>
+					<petal-shift-one type="float">0.0</petal-shift-one>
+					<petal-shift-two type="float">0.0</petal-shift-two>
+					<petal-shift-three type="float">0.0</petal-shift-three>
+					<petal-shift-four type="float">0.0</petal-shift-four>
+					<petal-shift-five type="float">0.0</petal-shift-five>
+					<petal-shift-six type="float">0.0</petal-shift-six>
+					<petal-shift-seven type="float">0.0</petal-shift-seven>
+					<petal-shift-eight type="float">0.0</petal-shift-eight>
+				</rightilluminator>
+				<leftswitchpanel>
+					<serviceable type="bool">1</serviceable>
+
+					<globus-input type="bool">1</globus-input>
+					<globus-command type="bool">1</globus-command>
+					<globus-pos type="float">1.0</globus-pos>
+					<globus-switch type="bool">1.0</globus-switch>
+
+					<vzor-input type="bool">0</vzor-input>
+					<vzor-command type="bool">0</vzor-command>
+					<vzor-pos type="float">0.0</vzor-pos>
+					<vzor-switch type="bool">0.0</vzor-switch>
+
+					<rightilluminator-input type="bool">0</rightilluminator-input>
+					<rightilluminator-command type="bool">0</rightilluminator-command>
+					<rightilluminator-pos type="float">0.0</rightilluminator-pos>
+					<rightilluminator-switch type="bool">0.0</rightilluminator-switch>
+
+					<backilluminator-input type="bool">0</backilluminator-input>
+					<backilluminator-command type="bool">0</backilluminator-command>
+					<backilluminator-pos type="float">0.0</backilluminator-pos>
+					<backilluminator-switch type="bool">0.0</backilluminator-switch>
+
+					<lightcheck-input type="bool">0</lightcheck-input>
+					<lightcheck-command type="bool">0</lightcheck-command>
+					<lightcheck-pos type="float">0.0</lightcheck-pos>
+					<lightcheck-switch type="bool">0.0</lightcheck-switch>
+
+					<vzor-light-input type="float">0</vzor-light-input>
+					<vzor-light-pos type="float">0</vzor-light-pos>
+					<vzor-light-command type="bool">0</vzor-light-command>
+					<vzor-light-switch-pos type="float">0.0</vzor-light-switch-pos>
+					<vzor-light-switch type="bool">0.0</vzor-light-switch>
+				</leftswitchpanel>
+				<light>
+					<cabine>
+						<factor type="float">1.0</factor>
+						<red type="float">0.5</red>
+						<green type="float">0.5</green>
+						<blue type="float">0.5</blue>
+					</cabine>
+					<panel-white>
+						<factor type="float">1.0</factor>
+						<red type="float">0.5</red>
+						<green type="float">0.5</green>
+						<blue type="float">0.5</blue>
+					</panel-white>
+					<panel-red>
+						<factor type="float">1.0</factor>
+						<red type="float">0.9</red>
+						<green type="float">0.2</green>
+						<blue type="float">0.2</blue>
+					</panel-red>
+					<panel-yellow>
+						<factor type="float">1.0</factor>
+						<red type="float">0.952</red>
+						<green type="float">0.894</green>
+						<blue type="float">0.242</blue>
+					</panel-yellow>
+					<panel-green>
+						<factor type="float">1.0</factor>
+						<red type="float">0.1</red>
+						<green type="float">0.9</green>
+						<blue type="float">0.1</blue>
+					</panel-green>
+				</light>
+				<sounds>
+					<click>
+						<on type="bool">0</on>
+						<time-sec type="float">0.0</time-sec>
+					</click>
+					<prev-time type="float">0.0</prev-time>
+					<wind type="float">0.0</wind>
+					<view-internal type="bool">0.0</view-internal>
+					<view-external type="bool">0.0</view-external>
+					<first-engines type="float">0.0</first-engines>
+					<first-engines-internal type="float">0.0</first-engines-internal>
+					<first-engines-external type="float">0.0</first-engines-external>
+					<first-separation-internal type="float">0.0</first-separation-internal>
+					<first-separation-external type="float">0.0</first-separation-external>
+					<fairings-separation-internal type="float">0.0</fairings-separation-internal>
+					<fairings-separation-external type="float">0.0</fairings-separation-external>
+					<second-separation-internal type="float">0.0</second-separation-internal>
+					<second-separation-external type="float">0.0</second-separation-external>
+					<third-engine type="float">0.0</third-engine>
+					<third-engine-internal type="float">0.0</third-engine-internal>
+					<third-engine-external type="float">0.0</third-engine-external>
+					<third-separation-internal type="float">0.0</third-separation-internal>
+					<third-separation-external type="float">0.0</third-separation-external>
+					<tdu-hard-antennas-internal type="float">0.0</tdu-hard-antennas-internal>
+					<tdu-hard-antennas-external type="float">0.0</tdu-hard-antennas-external>
+					<tdu-radiators-internal type="float">0.0</tdu-radiators-internal>
+					<tdu-radiators-external type="float">0.0</tdu-radiators-external>
+					<tdu-whip-antennas-internal type="float">0.0</tdu-whip-antennas-internal>
+					<tdu-whip-antennas-external type="float">0.0</tdu-whip-antennas-external>
+					<tdu-antennas-extraction-internal type="float">0.0</tdu-antennas-extraction-internal>
+					<tdu-antennas-extraction-external type="float">0.0</tdu-antennas-extraction-external>
+					<tdu-engine type="float">0.0</tdu-engine>
+					<tdu-engine-internal type="float">0.0</tdu-engine-internal>
+					<tdu-engine-external type="float">0.0</tdu-engine-external>
+					<tdu-maneur-engines type="float">0.0</tdu-maneur-engines>
+					<tdu-maneur-engines-internal type="float">0.0</tdu-maneur-engines-internal>
+					<tdu-maneur-engines-external type="float">0.0</tdu-maneur-engines-external>
+					<tdu-separation-internal type="float">0.0</tdu-separation-internal>
+					<tdu-separation-external type="float">0.0</tdu-separation-external>
+					<spacecraft-burning-internal type="float">0.0</spacecraft-burning-internal>
+					<spacecraft-burning-external type="float">0.0</spacecraft-burning-external>
+					<brake-chute-internal type="float">0.0</brake-chute-internal>
+					<brake-chute-external type="float">0.0</brake-chute-external>
+					<main-chute-internal type="float">0.0</main-chute-internal>
+					<main-chute-external type="float">0.0</main-chute-external>
+					<landing-sensor type="float">0.0</landing-sensor>
+					<landing-sensor-internal type="float">0.0</landing-sensor-internal>
+					<landing-sensor-external type="float">0.0</landing-sensor-external>
+					<landing-engine type="float">0.0</landing-engine>
+					<landing-engine-internal type="float">0.0</landing-engine-internal>
+					<landing-engine-external type="float">0.0</landing-engine-external>
+					<g-cracking>
+						<on type="bool">0</on>
+						<volume-internal type="float">0.0</volume-internal>
+						<volume-external type="float">0.0</volume-external>
+						<next-time type="float">0.0</next-time>
+					</g-cracking>
+				</sounds>
+				<crashes>
+					<serviceable type="bool">1</serviceable>
+					<prev-time type="float">0.0</prev-time>
+					<crashed type="bool">0</crashed>
+					<crash-type type="string"></crash-type>
+				</crashes>
+				<arthorizon>
+					<on type="bool">1</on>
+					<serviceable type="bool">1</serviceable>
+					<button-command type="bool">0</button-command>
+					<button-pos type="float">0</button-pos>
+
+					<roll-speed-drift type="float">0</roll-speed-drift>
+					<roll-speed-return type="float">0</roll-speed-return>
+					<roll-speed-input type="float">0</roll-speed-input>
+					<roll-speed type="float">0</roll-speed>
+
+					<roll-drift-rad type="float">0</roll-drift-rad>
+					<roll-return-rad type="float">0</roll-return-rad>
+					<roll-store-rad type="float">0</roll-store-rad>
+					<roll-input-rad type="float">0</roll-input-rad>
+					<roll-rad type="float">0</roll-rad>
+					<roll-offset-deg type="float">0</roll-offset-deg>
+					<roll-indicated-deg type="float">0</roll-indicated-deg>
+
+					<pitch-speed-drift type="float">0</pitch-speed-drift>
+					<pitch-speed-return type="float">0</pitch-speed-return>
+					<pitch-speed-input type="float">0</pitch-speed-input>
+					<pitch-speed type="float">0</pitch-speed>
+
+					<pitch-drift-rad type="float">0</pitch-drift-rad>
+					<pitch-return-rad type="float">0</pitch-return-rad>
+					<pitch-store-rad type="float">0</pitch-store-rad>
+					<pitch-input-rad type="float">0</pitch-input-rad>
+					<pitch-rad type="float">0</pitch-rad>
+					<pitch-offset-deg type="float">0</pitch-offset-deg>
+					<pitch-indicated-deg type="float">0</pitch-indicated-deg>
+
+				</arthorizon>
+			</systems>
+			<velocities>
+				<initial-orbital-speed-fps type="float">0.0</initial-orbital-speed-fps>
+			</velocities>
+		</jsbsim>
+	</fdm>
+
+<!-- ai initialisation -->
+
+	<ai>
+		<ballistic-forces>
+			<force n="0">
+				<force-lb type="float">0.0</force-lb>
+				<force-azimuth-deg type="float">0.0</force-azimuth-deg>
+				<force-elevation-deg type="float">0.0</force-elevation-deg>
+			</force>
+			<force n="1">
+				<force-lb type="float">0.0</force-lb>
+				<force-azimuth-deg type="float">0.0</force-azimuth-deg>
+				<force-elevation-deg type="float">0.0</force-elevation-deg>
+			</force>
+			<force n="2">
+				<force-lb type="float">0.0</force-lb>
+				<force-azimuth-deg type="float">0.0</force-azimuth-deg>
+				<force-elevation-deg type="float">0.0</force-elevation-deg>
+			</force>
+			<force n="3">
+				<force-lb type="float">0.0</force-lb>
+				<force-azimuth-deg type="float">0.0</force-azimuth-deg>
+				<force-elevation-deg type="float">0.0</force-elevation-deg>
+			</force>
+			<force n="4">
+				<force-lb type="float">0.0</force-lb>
+				<force-azimuth-deg type="float">0.0</force-azimuth-deg>
+				<force-elevation-deg type="float">0.0</force-elevation-deg>
+			</force>
+			<force n="5">
+				<force-lb type="float">0.0</force-lb>
+				<force-azimuth-deg type="float">0.0</force-azimuth-deg>
+				<force-elevation-deg type="float">0.0</force-elevation-deg>
+			</force>
+			<force n="6">
+				<force-lb type="float">0.0</force-lb>
+				<force-azimuth-deg type="float">0.0</force-azimuth-deg>
+				<force-elevation-deg type="float">0.0</force-elevation-deg>
+			</force>
+			<force n="7">
+				<force-lb type="float">0.0</force-lb>
+				<force-azimuth-deg type="float">0.0</force-azimuth-deg>
+				<force-elevation-deg type="float">0.0</force-elevation-deg>
+			</force>
+			<force n="8">
+				<force-lb type="float">0.0</force-lb>
+				<force-azimuth-deg type="float">0.0</force-azimuth-deg>
+				<force-elevation-deg type="float">0.0</force-elevation-deg>
+			</force>
+			<force n="9">
+				<force-lb type="float">0.0</force-lb>
+				<force-azimuth-deg type="float">0.0</force-azimuth-deg>
+				<force-elevation-deg type="float">0.0</force-elevation-deg>
+			</force>
+			<force n="10">
+				<force-lb type="float">0.0</force-lb>
+				<force-azimuth-deg type="float">0.0</force-azimuth-deg>
+				<force-elevation-deg type="float">0.0</force-elevation-deg>
+			</force>
+			<force n="11">
+				<force-lb type="float">0.0</force-lb>
+				<force-azimuth-deg type="float">0.0</force-azimuth-deg>
+				<force-elevation-deg type="float">0.0</force-elevation-deg>
+			</force>
+		</ballistic-forces>
+	</ai>
+
+<!-- gear initialisation -->
+
+	<gear>
+		<gear n="0">
+			<wow type="bool">0.0</wow>
+		</gear>
+		<gear n="1">
+			<wow type="bool">0.0</wow>
+		</gear>
+		<gear n="2">
+			<wow type="bool">0.0</wow>
+		</gear>
+		<gear n="3">
+			<wow type="bool">0.0</wow>
+		</gear>
+		<gear n="4">
+			<wow type="bool">0.0</wow>
+		</gear>
+		<gear n="5">
+			<wow type="bool">0.0</wow>
+		</gear>
+		<gear n="6">
+			<wow type="bool">0.0</wow>
+		</gear>
+		<gear n="7">
+			<wow type="bool">0.0</wow>
+		</gear>
+		<gear n="8">
+			<wow type="bool">0.0</wow>
+		</gear>
+		<gear n="9">
+			<wow type="bool">0.0</wow>
+		</gear>
+		<gear n="10">
+			<wow type="bool">0.0</wow>
+		</gear>
+		<gear n="11">
+			<wow type="bool">0.0</wow>
+		</gear>
+		<gear n="12">
+			<wow type="bool">0.0</wow>
+		</gear>
+		<gear n="13">
+			<wow type="bool">0.0</wow>
+		</gear>
+		<gear n="14">
+			<wow type="bool">0.0</wow>
+		</gear>
+		<gear n="15">
+			<wow type="bool">0.0</wow>
+		</gear>
+		<gear n="16">
+			<wow type="bool">0.0</wow>
+		</gear>
+		<gear n="17">
+			<wow type="bool">0.0</wow>
+		</gear>
+		<gear n="">
+			<wow type="bool">0.0</wow>
+		</gear>
+		<gear n="18">
+			<wow type="bool">0.0</wow>
+		</gear>
+		<gear n="19">
+			<wow type="bool">0.0</wow>
+		</gear>
+		<gear n="20">
+			<wow type="bool">0.0</wow>
+		</gear>
+		<gear n="21">
+			<wow type="bool">0.0</wow>
+		</gear>
+		<gear n="22">
+			<wow type="bool">0.0</wow>
+		</gear>
+		<gear n="23">
+			<wow type="bool">0.0</wow>
+		</gear>
+		<gear n="24">
+			<wow type="bool">0.0</wow>
+		</gear>
+		<gear n="25">
+			<wow type="bool">0.0</wow>
+		</gear>
+		<gear n="26">
+			<wow type="bool">0.0</wow>
+		</gear>
+		<gear n="27">
+			<wow type="bool">0.0</wow>
+		</gear>
+		<gear n="28">
+			<wow type="bool">0.0</wow>
+		</gear>
+		<gear n="29">
+			<wow type="bool">0.0</wow>
+		</gear>
+		<gear n="30">
+			<wow type="bool">0.0</wow>
+		</gear>
+		<gear n="31">
+			<wow type="bool">0.0</wow>
+		</gear>
+	</gear>
+
+<!-- sim initialisation -->
+
+	<sim>
+
+		<startup>
+			<splash-texture>Aircraft/Vostok-1/Vostok-1-Splash.png</splash-texture>
+		</startup>
+
+		<rendering>
+			<camera-group>
+				<zfar type="float">1.64e6</zfar>
+			</camera-group>
+		</rendering>
+
+		<help>
+			<title>Vostok-1</title>
+			<line>Aircraft documentation in /Vostok-1/Documentation directory</line>
+			<key>
+				<name>R</name>
+				<desc>Lock/Unlock thRottle handle (Locked at start up)</desc>
+			</key>
+			<key>
+				<name>C</name>
+				<desc>Control handle button</desc>
+			</key>
+			<key>
+				<name>O</name>
+				<desc>Open/Close cOntrol panel</desc>
+			</key>
+			<key>
+				<name>S</name>
+				<desc>Ignite first and Second stages</desc>
+			</key>
+			<key>
+				<name>F</name>
+				<desc>Drop Fairings</desc>
+			</key>
+			<key>
+				<name>G</name>
+				<desc>Globus position/landing positon</desc>
+			</key>
+			<key>
+				<name>Shift-F</name>
+				<desc>Drop First stage</desc>
+			</key>
+			<key>
+				<name>Shift-S</name>
+				<desc>Drop Second stage</desc>
+			</key>
+			<key>
+				<name>H</name>
+				<desc>Ignite tHird stage</desc>
+			</key>
+			<key>
+				<name>Shift-H</name>
+				<desc>Drop tHird stage</desc>
+			</key>
+			<key>
+				<name>U</name>
+				<desc>Ignite/Stop tdU engine</desc>
+			</key>
+			<key>
+				<name>Shift-U</name>
+				<desc>Drop tdU</desc>
+			</key>
+			<key>
+				<name>B</name>
+				<desc>Extract Brake parachute</desc>
+			</key>
+			<key>
+				<name>M</name>
+				<desc>Extract Main parachute</desc>
+			</key>
+			<key>
+				<name>L</name>
+				<desc>Extract Landing engine sensor</desc>
+			</key>
+		</help>
+
+		<flight-model>jsb</flight-model>
+		<status>alfa</status>
+		<author>Victor Slavutinskiy</author>
+		<aero>Vostok-1</aero>
+		<fuel-fraction>1.0</fuel-fraction>
+		<description>Vostok-1 (JBSim FDM)</description>
+		<virtual-cockpit archive="y">true</virtual-cockpit>
+
+		<chase-distance-m type="double" archive="y">50.0</chase-distance-m>
+
+		<view n="0">
+			<name>Cosmonaut View</name>
+			<type>lookfrom</type>
+			<internal type="bool" archive="y">true</internal>
+			<config>
+				<from-model type="bool">true</from-model>
+				<from-model-idx type="int">0</from-model-idx>
+				<x-offset-m type="double" archive="y">0.0</x-offset-m>
+				<y-offset-m type="double" archive="y">19.694</y-offset-m>
+				<z-offset-m type="double" archive="y">0.45</z-offset-m>
+				<pitch-offset-deg type="double">0.0</pitch-offset-deg>
+				<default-field-of-view-deg type="double">75</default-field-of-view-deg>
+			</config>
+		</view>
+
+		<view n="1">
+			<name>Tail View</name>
+			<internal type="bool" archive="y">false</internal>
+			<config>
+				<x-offset-m type="double" archive="y">0.0</x-offset-m>
+				<y-offset-m type="double" archive="y">-25.0</y-offset-m>
+				<z-offset-m type="double" archive="y">0.0</z-offset-m>
+				<pitch-offset-deg type="double">50.0</pitch-offset-deg>
+				<default-field-of-view-deg type="double">100</default-field-of-view-deg>
+			</config>
+		</view>
+
+		<view n="2">
+			<name>Side View</name>
+			<internal type="bool" archive="y">false</internal>
+			<config>
+				<x-offset-m type="double" archive="y">-50.0</x-offset-m>
+				<y-offset-m type="double" archive="y">0.0</y-offset-m>
+				<z-offset-m type="double" archive="y">0.0</z-offset-m>
+				<pitch-offset-deg type="double">0</pitch-offset-deg>
+				<default-field-of-view-deg type="double">90</default-field-of-view-deg>
+			</config>
+		</view>
+
+		<view n="3">
+			<enabled type="bool" archive="y">false</enabled>
+		</view>
+
+		<view n="4">
+			<enabled type="bool" archive="y">false</enabled>
+		</view>
+
+		<view n="101">
+			<name>Left Panel View</name>
+			<type>lookfrom</type>
+			<internal type="bool" archive="y">true</internal>
+			<config>
+				<from-model type="bool">true</from-model>
+				<from-model-idx type="int">0</from-model-idx>
+				<x-offset-m type="double" archive="y">0.0</x-offset-m>
+				<y-offset-m type="double" archive="y">19.694</y-offset-m>
+				<z-offset-m type="double" archive="y">0.45</z-offset-m>
+				<pitch-offset-deg type="double">-3.0</pitch-offset-deg>
+				<heading-offset-deg type="double">51.0</heading-offset-deg>
+				<default-field-of-view-deg type="double">97</default-field-of-view-deg>
+			</config>
+		</view>
+
+		<view n="102">
+			<name>Right Panel View</name>
+			<type>lookfrom</type>
+			<internal type="bool" archive="y">true</internal>
+			<config>
+				<from-model type="bool">true</from-model>
+				<from-model-idx type="int">0</from-model-idx>
+				<x-offset-m type="double" archive="y">0.0</x-offset-m>
+				<y-offset-m type="double" archive="y">19.694</y-offset-m>
+				<z-offset-m type="double" archive="y">0.45</z-offset-m>
+				<pitch-offset-deg type="double">-10.0</pitch-offset-deg>
+				<heading-offset-deg type="double">310.0</heading-offset-deg>
+				<default-field-of-view-deg type="double">35</default-field-of-view-deg>
+			</config>
+		</view>
+
+		<view n="103">
+			<name>Vzor View</name>
+			<type>lookfrom</type>
+			<internal type="bool" archive="y">true</internal>
+			<config>
+				<from-model type="bool">true</from-model>
+				<from-model-idx type="int">0</from-model-idx>
+				<x-offset-m type="double" archive="y">0.0</x-offset-m>
+				<y-offset-m type="double" archive="y">19.694</y-offset-m>
+				<z-offset-m type="double" archive="y">0.45</z-offset-m>
+				<pitch-offset-deg type="double">0.0</pitch-offset-deg>
+				<heading-offset-deg type="double">0.0</heading-offset-deg>
+				<default-field-of-view-deg type="double">50</default-field-of-view-deg>
+			</config>
+		</view>
+
+		<view n="104">
+			<name>Main Panel View</name>
+			<type>lookfrom</type>
+			<internal type="bool" archive="y">true</internal>
+			<config>
+				<from-model type="bool">true</from-model>
+				<from-model-idx type="int">0</from-model-idx>
+				<x-offset-m type="double" archive="y">0.0</x-offset-m>
+				<y-offset-m type="double" archive="y">19.694</y-offset-m>
+				<z-offset-m type="double" archive="y">0.45</z-offset-m>
+				<pitch-offset-deg type="double">19.0</pitch-offset-deg>
+				<heading-offset-deg type="double">0.0</heading-offset-deg>
+				<default-field-of-view-deg type="double">47</default-field-of-view-deg>
+			</config>
+		</view>
+
+		<sound>
+			<audible>true</audible>
+			<path>Aircraft/Vostok-1/Sounds/Vostok-1-Sounds.xml</path>
+		</sound>
+
+		<model>
+			<path>Aircraft/Vostok-1/Models/Vostok-1.xml</path>
+			<Vostok-1>
+				<particles>
+					<enabled type="bool">true</enabled>
+				</particles>
+			</Vostok-1>
+		</model>
+
+<!--
+
+		<submodels>
+			<serviceable type="bool">1</serviceable>
+			<path>Aircraft/Vostok-1/Models/Vostok-1-Submodels.xml</path>
+		</submodels>
+
+-->
+
+<!-- Main menu 
+
+		<menubar>
+
+			<default>
+
+				<menu n="50">
+					<label>Vostok-1</label>
+					<item n="0">
+						<label>Refuel aircraft</label>
+						<binding>
+							<command>nasal</command>
+							<script>Vostok1.aircraft_refuel();</script>
+						</binding>
+					</item>
+					<label>Vostok-1</label>
+					<item n="1">
+						<label>Full restart</label>
+						<binding>
+							<command>nasal</command>
+							<script>Vostok1.aircraft_restart();</script>
+						</binding>
+					</item>
+				</menu>
+
+			</default>
+
+		</menubar>
+
+-->
+
+	</sim>
+
+<!-- Key mapping -->
+
+	<input>
+		<keyboard>
+
+			<key n="114">
+				<name>R</name>
+				<desc>Lock/Unlock thRottle handle</desc>
+				<binding n="0">
+					<command>nasal</command>
+					<script>Vostok1.bitswap("fdm/jsbsim/systems/gascontrol/lock-command")</script>
+				</binding>
+			</key>
+
+			<key n="99">
+				<name>C</name>
+				<desc>Control On/Off</desc>
+				<binding n="0">
+					<command>nasal</command>
+					<script>setprop("fdm/jsbsim/systems/controlhandle/button-input", 1)</script>
+				</binding>
+				<mod-up>
+					<binding>
+						<command>nasal</command>
+						<script>setprop("fdm/jsbsim/systems/controlhandle/button-input", 0)</script>
+					</binding>
+				</mod-up>
+			</key>
+
+			<key n="111">
+				<name>O</name>
+				<desc>Open/Close cOntrol panel</desc>
+				<binding n="0">
+					<command>nasal</command>
+					<script>Vostok1.bitswap("fdm/jsbsim/systems/rightswitchpanel/cover-input")</script>
+				</binding>
+			</key>
+
+			<key n="115">
+				<name>S</name>
+				<desc>Ignite first and Second stage</desc>
+				<binding n="0">
+					<command>nasal</command>
+					<script>setprop("fdm/jsbsim/systems/rightswitchpanel/one-two-ignition-input", 1)</script>
+				</binding>
+			</key>
+
+			<key n="70">
+				<name>Shift-F</name>
+				<desc>Drop First stage</desc>
+				<binding n="0">
+					<command>nasal</command>
+					<script>setprop("fdm/jsbsim/systems/rightswitchpanel/one-drop-input", 1)</script>
+				</binding>
+			</key>
+
+			<key n="102">
+				<name>F</name>
+				<desc>Drop Fairings</desc>
+				<binding n="0">
+					<command>nasal</command>
+					<script>setprop("fdm/jsbsim/systems/rightswitchpanel/fairings-drop-input", 1)</script>
+				</binding>
+			</key>
+
+			<key n="103">
+				<name>G</name>
+				<desc>Globus position/landing position</desc>
+				<binding n="0">
+					<command>nasal</command>
+					<script>Vostok1.bitswap("fdm/jsbsim/systems/leftswitchpanel/globus-input")</script>
+				</binding>
+			</key>
+
+
+			<key n="83">
+				<name>Shift-S</name>
+				<desc>Drop Second stage</desc>
+				<binding n="0">
+					<command>nasal</command>
+					<script>setprop("fdm/jsbsim/systems/rightswitchpanel/two-drop-input", 1)</script>
+				</binding>
+			</key>
+
+			<key n="104">
+				<name>H</name>
+				<desc>Ignite tHird stage</desc>
+				<binding n="0">
+					<command>nasal</command>
+					<script>setprop("fdm/jsbsim/systems/rightswitchpanel/three-ignition-input", 1)</script>
+				</binding>
+			</key>
+
+			<key n="72">
+				<name>Shift-H</name>
+				<desc>Drop tHird stage</desc>
+				<binding n="0">
+					<command>nasal</command>
+					<script>setprop("fdm/jsbsim/systems/rightswitchpanel/three-drop-input", 1)</script>
+				</binding>
+			</key>
+
+			<key n="117">
+				<name>U</name>
+				<desc>Ignite/Stop tdU engine</desc>
+				<binding n="0">
+					<command>nasal</command>
+					<script>setprop("fdm/jsbsim/systems/rightswitchpanel/tdu-ignition-input", 1)</script>
+				</binding>
+			</key>
+
+			<key n="85">
+				<name>Shift-U</name>
+				<desc>Drop tdU</desc>
+				<binding n="0">
+					<command>nasal</command>
+					<script>setprop("fdm/jsbsim/systems/rightswitchpanel/tdu-drop-input", 1)</script>
+				</binding>
+			</key>
+
+			<key n="98">
+				<name>B</name>
+				<desc>Extract Brake parachute</desc>
+				<binding n="0">
+					<command>nasal</command>
+					<script>setprop("fdm/jsbsim/systems/rightswitchpanel/brake-parachute-input", 1)</script>
+				</binding>
+			</key>
+
+			<key n="109">
+				<name>M</name>
+				<desc>Extract Main parachute</desc>
+				<binding n="0">
+					<command>nasal</command>
+					<script>setprop("fdm/jsbsim/systems/rightswitchpanel/main-parachute-input", 1)</script>
+				</binding>
+			</key>
+
+			<key n="108">
+				<name>L</name>
+				<desc>Extract Landing engine sensor</desc>
+				<binding n="0">
+					<command>nasal</command>
+					<script>setprop("fdm/jsbsim/systems/rightswitchpanel/landing-engine-input", 1)</script>
+				</binding>
+			</key>
+
+		</keyboard>
+	</input>
+
+<!-- Nasal initialisation -->
+
+	<nasal>
+		<stages>
+			<file>Aircraft/Vostok-1/Nasal/Stages.nas</file>
+			<script>start_stages();</script>
+		</stages>
+		<mainpanel>
+			<file>Aircraft/Vostok-1/Nasal/Main_Panel.nas</file>
+			<script>start_mainpanel();</script>
+		</mainpanel>
+		<sounds>
+			<file>Aircraft/Vostok-1/Nasal/Sounds.nas</file>
+			<script>sounds();</script>
+		</sounds>
+		<crashchecker>
+			<file>Aircraft/Vostok-1/Nasal/Crashes.nas</file>
+			<script>start_crashes();</script>
+		</crashchecker>
+		<Vostok1>
+			<file>Aircraft/Vostok-1/Nasal/Vostok-1.nas</file>
+			<script>init_position();</script>
+		</Vostok1>
+	</nasal>
+
+</PropertyList>

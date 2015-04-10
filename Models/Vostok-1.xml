@@ -1,0 +1,134 @@
+<?xml version="1.0"?>
+
+<!--
+	Author: Slavutinsky Victor
+-->
+
+<PropertyList>
+
+<!-- Main Model -->
+
+	<offsets>
+		<x-m>0.0</x-m>
+		<y-m>0.0</y-m>
+		<z-m>0.0</z-m>
+		<pitch-deg>0.0</pitch-deg>
+		<roll-deg>0.0</roll-deg>
+		<heading-deg>0.0</heading-deg>
+	</offsets>
+
+<!-- Stage one -->
+
+	<model>
+		<path>Aircraft/Vostok-1/Models/Vostok-1-Stage-1-Block-A.xml</path>
+		<offsets>
+			<x-m>-1.529</x-m>
+			<y-m>0.0</y-m>
+			<z-m>5.481</z-m>
+			<pitch-deg>3.5</pitch-deg>
+			<heading-deg>0</heading-deg>
+		</offsets>
+	</model>
+
+	<model>
+		<path>Aircraft/Vostok-1/Models/Vostok-1-Stage-1-Block-B.xml</path>
+		<offsets>
+			<x-m>0.0</x-m>
+			<y-m>1.529</y-m>
+			<z-m>5.481</z-m>
+			<pitch-deg>3.5</pitch-deg>
+			<heading-deg>-90</heading-deg>
+		</offsets>
+	</model>
+
+	<model>
+		<path>Aircraft/Vostok-1/Models/Vostok-1-Stage-1-Block-C.xml</path>
+		<offsets>
+			<x-m>1.529</x-m>
+			<y-m>0.0</y-m>
+			<z-m>5.481</z-m>
+			<pitch-deg>3.5</pitch-deg>
+			<heading-deg>180</heading-deg>
+		</offsets>
+	</model>
+
+	<model>
+		<path>Aircraft/Vostok-1/Models/Vostok-1-Stage-1-Block-D.xml</path>
+		<offsets>
+			<x-m>0.0</x-m>
+			<y-m>-1.529</y-m>
+			<z-m>5.481</z-m>
+			<pitch-deg>3.5</pitch-deg>
+			<heading-deg>90</heading-deg>
+		</offsets>
+	</model>
+
+
+<!-- Stage two -->
+
+	<model>
+		<path>Aircraft/Vostok-1/Models/Vostok-1-Stage-2.xml</path>
+		<offsets>
+			<x-m>0.0</x-m>
+			<y-m>0.0</y-m>
+			<z-m>14.595</z-m>
+			<pitch-deg>0</pitch-deg>
+		</offsets>
+	</model>
+
+<!-- Fairings -->
+
+	<model>
+		<path>Aircraft/Vostok-1/Models/Vostok-1-Fairings.xml</path>
+		<offsets>
+			<x-m>0.0</x-m>
+			<y-m>0.0</y-m>
+			<z-m>24.08</z-m>
+			<pitch-deg>0</pitch-deg>
+		</offsets>
+	</model>
+
+<!-- Stage three -->
+
+	<model>
+		<path>Aircraft/Vostok-1/Models/Vostok-1-Stage-3.xml</path>
+		<offsets>
+			<x-m>0.0</x-m>
+			<y-m>0.0</y-m>
+			<z-m>17.408</z-m>
+			<pitch-deg>0</pitch-deg>
+		</offsets>
+	</model>
+
+<!-- TDU -->
+
+	<model>
+		<path>Aircraft/Vostok-1/Models/Vostok-1-TDU.xml</path>
+		<offsets>
+			<x-m>0.0</x-m>
+			<y-m>0.0</y-m>
+			<z-m>17.408</z-m>
+			<pitch-deg>0</pitch-deg>
+		</offsets>
+	</model>
+
+<!-- Space craft -->
+
+	<model>
+		<path>Aircraft/Vostok-1/Models/Spacecraft/Vostok-1-Spacecraft.xml</path>
+		<offsets>
+			<x-m>0.0</x-m>
+			<y-m>0.0</y-m>
+			<z-m>20.429</z-m>
+			<pitch-deg>0.0</pitch-deg>
+		</offsets>
+	</model>
+
+ <!-- LOD for the model as a whole =========================================-->
+	<animation>
+		<type>range</type>
+		<min-m>0</min-m>
+		<max-m>15000</max-m>
+	</animation>
+
+</PropertyList>

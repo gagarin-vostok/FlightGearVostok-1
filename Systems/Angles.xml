@@ -1,0 +1,523 @@
+<?xml version="1.0"?>
+
+<!--
+	Author: Slavutinsky Victor
+-->
+
+<system>
+
+	<fileheader>
+		<author> Slavutinsky Victor </author>
+		<filecreationdate> 2011 </filecreationdate>
+		<version>$Revision: 1.00 $</version>
+		<description> Rotation angles for nose </description>
+	</fileheader>
+
+	<channel name="Angles">
+
+		<fcs_function name="systems/angles/r-orig-11">
+		<function>
+			<product>
+				<cos>
+					<product>
+						<property>attitude/heading-true-rad</property>
+						<value>-1</value>
+					</product>
+				</cos>
+				<cos>
+					<property>attitude/pitch-rad</property>
+				</cos>
+			</product>
+		</function>
+		</fcs_function>
+
+		<fcs_function name="systems/angles/r-orig-12">
+		<function>
+			<difference>
+				<product>
+					<cos>
+						<product>
+							<property>attitude/heading-true-rad</property>
+							<value>-1</value>
+						</product>
+					</cos>
+					<sin>
+						<property>attitude/pitch-rad</property>
+					</sin>
+					<sin>
+						<property>attitude/roll-rad</property>
+					</sin>
+				</product>
+				<product>
+					<sin>
+						<product>
+							<property>attitude/heading-true-rad</property>
+							<value>-1</value>
+						</product>
+					</sin>
+					<cos>
+						<property>attitude/roll-rad</property>
+					</cos>
+				</product>
+			</difference>
+		</function>
+		</fcs_function>
+
+		<fcs_function name="systems/angles/r-orig-13">
+		<function>
+			<sum>
+				<product>
+					<sin>
+						<product>
+							<property>attitude/heading-true-rad</property>
+							<value>-1</value>
+						</product>
+					</sin>
+					<sin>
+						<property>attitude/roll-rad</property>
+					</sin>
+				</product>
+				<product>
+					<cos>
+						<product>
+							<property>attitude/heading-true-rad</property>
+							<value>-1</value>
+						</product>
+					</cos>
+					<sin>
+						<property>attitude/pitch-rad</property>
+					</sin>
+					<cos>
+						<property>attitude/roll-rad</property>
+					</cos>
+				</product>
+			</sum>
+		</function>
+		</fcs_function>
+
+		<fcs_function name="systems/angles/r-orig-21">
+		<function>
+			<product>
+				<sin>
+					<product>
+						<property>attitude/heading-true-rad</property>
+						<value>-1</value>
+					</product>
+				</sin>
+				<cos>
+					<property>attitude/pitch-rad</property>
+				</cos>
+			</product>
+		</function>
+		</fcs_function>
+
+		<fcs_function name="systems/angles/r-orig-22">
+		<function>
+			<sum>
+				<product>
+					<sin>
+						<product>
+							<property>attitude/heading-true-rad</property>
+							<value>-1</value>
+						</product>
+					</sin>
+					<sin>
+						<property>attitude/pitch-rad</property>
+					</sin>
+					<sin>
+						<property>attitude/roll-rad</property>
+					</sin>
+				</product>
+				<product>
+					<cos>
+						<product>
+							<property>attitude/heading-true-rad</property>
+							<value>-1</value>
+						</product>
+					</cos>
+					<cos>
+						<property>attitude/roll-rad</property>
+					</cos>
+				</product>
+			</sum>
+		</function>
+		</fcs_function>
+
+		<fcs_function name="systems/angles/r-orig-23">
+		<function>
+			<difference>
+				<product>
+					<sin>
+						<product>
+							<property>attitude/heading-true-rad</property>
+							<value>-1</value>
+						</product>
+					</sin>
+					<sin>
+						<property>attitude/pitch-rad</property>
+					</sin>
+					<cos>
+						<property>attitude/roll-rad</property>
+					</cos>
+				</product>
+				<product>
+					<cos>
+						<product>
+							<property>attitude/heading-true-rad</property>
+							<value>-1</value>
+						</product>
+					</cos>
+					<sin>
+						<property>attitude/roll-rad</property>
+					</sin>
+				</product>
+			</difference>
+		</function>
+		</fcs_function>
+
+		<fcs_function name="systems/angles/r-orig-31">
+		<function>
+			<product>
+				<value>-1</value>
+				<sin>
+					<property>attitude/pitch-rad</property>
+				</sin>
+			</product>
+		</function>
+		</fcs_function>
+
+		<fcs_function name="systems/angles/r-orig-32">
+		<function>
+			<product>
+				<cos>
+					<property>attitude/pitch-rad</property>
+				</cos>
+				<sin>
+					<property>attitude/roll-rad</property>
+				</sin>
+			</product>
+		</function>
+		</fcs_function>
+
+		<fcs_function name="systems/angles/r-orig-33">
+		<function>
+			<product>
+				<cos>
+					<property>attitude/pitch-rad</property>
+				</cos>
+				<cos>
+					<property>attitude/roll-rad</property>
+				</cos>
+			</product>
+		</function>
+		</fcs_function>
+
+		<fcs_function name="systems/angles/r-up-11">
+		<function>
+			<product>
+				<value>1.0</value>
+				<cos>
+					<value>1.57079632679489661923</value>
+				</cos>
+			</product>
+		</function>
+		</fcs_function>
+
+		<fcs_function name="systems/angles/r-up-12">
+		<function>
+			<product>
+				<value>1.0</value>
+				<value>0.0</value>
+			</product>
+		</function>
+		</fcs_function>
+
+		<fcs_function name="systems/angles/r-up-13">
+		<function>
+			<product>
+				<value>1.0</value>
+				<sin>
+					<value>1.57079632679489661923</value>
+				</sin>
+			</product>
+		</function>
+		</fcs_function>
+
+		<fcs_function name="systems/angles/r-up-21">
+		<function>
+			<product>
+				<value>1.0</value>
+				<value>0.0</value>
+			</product>
+		</function>
+		</fcs_function>
+
+		<fcs_function name="systems/angles/r-up-22">
+		<function>
+			<product>
+				<value>1.0</value>
+				<value>1.0</value>
+			</product>
+		</function>
+		</fcs_function>
+
+		<fcs_function name="systems/angles/r-up-23">
+		<function>
+			<product>
+				<value>1.0</value>
+				<value>0.0</value>
+			</product>
+		</function>
+		</fcs_function>
+
+		<fcs_function name="systems/angles/r-up-31">
+		<function>
+			<product>
+				<value>-1.0</value>
+				<sin>
+					<value>1.57079632679489661923</value>
+				</sin>
+			</product>
+		</function>
+		</fcs_function>
+
+		<fcs_function name="systems/angles/r-up-32">
+		<function>
+			<product>
+				<value>1.0</value>
+				<value>0.0</value>
+			</product>
+		</function>
+		</fcs_function>
+
+		<fcs_function name="systems/angles/r-up-33">
+		<function>
+			<product>
+				<value>1.0</value>
+				<cos>
+					<value>1.57079632679489661923</value>
+				</cos>
+			</product>
+		</function>
+		</fcs_function>
+
+		<fcs_function name="systems/angles/r-nose-11">
+		<function>
+			<sum>
+				<product>
+					<property>systems/angles/r-up-11</property>
+					<property>systems/angles/r-orig-11</property>
+				</product>
+				<product>
+					<property>systems/angles/r-up-12</property>
+					<property>systems/angles/r-orig-21</property>
+				</product>
+				<product>
+					<property>systems/angles/r-up-13</property>
+					<property>systems/angles/r-orig-31</property>
+				</product>
+			</sum>
+		</function>
+		</fcs_function>
+
+		<fcs_function name="systems/angles/r-nose-12">
+		<function>
+			<sum>
+				<product>
+					<property>systems/angles/r-up-11</property>
+					<property>systems/angles/r-orig-12</property>
+				</product>
+				<product>
+					<property>systems/angles/r-up-12</property>
+					<property>systems/angles/r-orig-22</property>
+				</product>
+				<product>
+					<property>systems/angles/r-up-13</property>
+					<property>systems/angles/r-orig-32</property>
+				</product>
+			</sum>
+		</function>
+		</fcs_function>
+
+		<fcs_function name="systems/angles/r-nose-13">
+		<function>
+			<sum>
+				<product>
+					<property>systems/angles/r-up-11</property>
+					<property>systems/angles/r-orig-13</property>
+				</product>
+				<product>
+					<property>systems/angles/r-up-12</property>
+					<property>systems/angles/r-orig-23</property>
+				</product>
+				<product>
+					<property>systems/angles/r-up-13</property>
+					<property>systems/angles/r-orig-33</property>
+				</product>
+			</sum>
+		</function>
+		</fcs_function>
+
+		<fcs_function name="systems/angles/r-nose-21">
+		<function>
+			<sum>
+				<product>
+					<property>systems/angles/r-up-21</property>
+					<property>systems/angles/r-orig-11</property>
+				</product>
+				<product>
+					<property>systems/angles/r-up-22</property>
+					<property>systems/angles/r-orig-21</property>
+				</product>
+				<product>
+					<property>systems/angles/r-up-23</property>
+					<property>systems/angles/r-orig-31</property>
+				</product>
+			</sum>
+		</function>
+		</fcs_function>
+
+		<fcs_function name="systems/angles/r-nose-22">
+		<function>
+			<sum>
+				<product>
+					<property>systems/angles/r-up-21</property>
+					<property>systems/angles/r-orig-12</property>
+				</product>
+				<product>
+					<property>systems/angles/r-up-22</property>
+					<property>systems/angles/r-orig-22</property>
+				</product>
+				<product>
+					<property>systems/angles/r-up-23</property>
+					<property>systems/angles/r-orig-32</property>
+				</product>
+			</sum>
+		</function>
+		</fcs_function>
+
+		<fcs_function name="systems/angles/r-nose-23">
+		<function>
+			<sum>
+				<product>
+					<property>systems/angles/r-up-21</property>
+					<property>systems/angles/r-orig-13</property>
+				</product>
+				<product>
+					<property>systems/angles/r-up-22</property>
+					<property>systems/angles/r-orig-23</property>
+				</product>
+				<product>
+					<property>systems/angles/r-up-23</property>
+					<property>systems/angles/r-orig-33</property>
+				</product>
+			</sum>
+		</function>
+		</fcs_function>
+
+		<fcs_function name="systems/angles/r-nose-31">
+		<function>
+			<sum>
+				<product>
+					<property>systems/angles/r-up-31</property>
+					<property>systems/angles/r-orig-11</property>
+				</product>
+				<product>
+					<property>systems/angles/r-up-32</property>
+					<property>systems/angles/r-orig-21</property>
+				</product>
+				<product>
+					<property>systems/angles/r-up-33</property>
+					<property>systems/angles/r-orig-31</property>
+				</product>
+			</sum>
+		</function>
+		</fcs_function>
+
+		<fcs_function name="systems/angles/r-nose-32">
+		<function>
+			<sum>
+				<product>
+					<property>systems/angles/r-up-31</property>
+					<property>systems/angles/r-orig-12</property>
+				</product>
+				<product>
+					<property>systems/angles/r-up-32</property>
+					<property>systems/angles/r-orig-22</property>
+				</product>
+				<product>
+					<property>systems/angles/r-up-33</property>
+					<property>systems/angles/r-orig-32</property>
+				</product>
+			</sum>
+		</function>
+		</fcs_function>
+
+		<fcs_function name="systems/angles/r-nose-33">
+		<function>
+			<sum>
+				<product>
+					<property>systems/angles/r-up-31</property>
+					<property>systems/angles/r-orig-13</property>
+				</product>
+				<product>
+					<property>systems/angles/r-up-32</property>
+					<property>systems/angles/r-orig-23</property>
+				</product>
+				<product>
+					<property>systems/angles/r-up-33</property>
+					<property>systems/angles/r-orig-33</property>
+				</product>
+			</sum>
+		</function>
+		</fcs_function>
+
+
+		<fcs_function name="systems/angles/nose-heading-rad">
+		<function>
+			<product>
+				<atan2>
+					<property>systems/angles/r-nose-21</property>
+					<property>systems/angles/r-nose-11</property>
+				</atan2>
+				<value>-1</value>
+			</product>
+		</function>
+		</fcs_function>
+
+		<fcs_function name="systems/angles/nose-pitch-rad">
+		<function>
+			<atan2>
+				<product>
+					<value>-1.0</value>
+					<property>systems/angles/r-nose-31</property>
+				</product>
+				<pow>
+					<sum>
+						<pow>
+							<property>systems/angles/r-nose-32</property>
+							<value>2.0</value>
+						</pow>
+						<pow>
+							<property>systems/angles/r-nose-33</property>
+							<value>2.0</value>
+						</pow>
+					</sum>
+					<value>0.5</value>
+				</pow>
+			</atan2>
+		</function>
+		</fcs_function>
+
+		<fcs_function name="systems/angles/nose-roll-rad">
+		<function>
+			<atan2>
+				<property>systems/angles/r-nose-32</property>
+				<property>systems/angles/r-nose-33</property>
+			</atan2>
+		</function>
+		</fcs_function>
+
+	</channel>
+
+</system>

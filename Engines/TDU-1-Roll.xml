@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+
+<!--
+	Author: Slavutinsky Victor
+-->
+
+<!-- TDU-1 Roll Engine-->
+<rocket_engine name="TDU-1-Roll">
+	<isp>               266 </isp>
+	<shr>              1.23 </shr>
+	<max_pc>       86556.00 </max_pc>
+	<variance>         0.10 </variance>
+	<prop_eff>         0.67 </prop_eff>
+	<maxthrottle>      1.00 </maxthrottle>
+	<minthrottle>      0.00 </minthrottle>
+	<sloxiflowmax>   0.212 </sloxiflowmax>
+	<slfuelflowmax>   0.0578 </slfuelflowmax>
+</rocket_engine>

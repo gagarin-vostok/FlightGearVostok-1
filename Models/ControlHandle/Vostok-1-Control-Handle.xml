@@ -1,0 +1,136 @@
+<?xml version="1.0"?>
+
+<!--
+	Author: Slavutinsky Victor
+-->
+
+<PropertyList>
+
+<!-- Control Handle -->
+
+	<path>Vostok-1-Control-Handle.ac</path>
+
+	<offsets>
+		<x-m>0.0</x-m>
+		<y-m>0.0</y-m>
+		<z-m>0.0</z-m>
+		<pitch-deg>0</pitch-deg>
+	</offsets>
+
+	<enable-hot type="bool">false</enable-hot>
+
+	<animation>
+		<type>material</type>
+		<emission>
+			<red-prop>fdm/jsbsim/systems/light/cabine/red</red-prop>
+			<green-prop>fdm/jsbsim/systems/light/cabine/green</green-prop>
+			<blue-prop>fdm/jsbsim/systems/light/cabine/blue</blue-prop>
+		</emission>
+	</animation>
+
+	<animation>
+		<type>translate</type>
+		<object-name>CH_Button</object-name>
+		<property>fdm/jsbsim/systems/controlhandle/button-pos</property>
+		<interpolation>
+			<entry><ind>0.0</ind><dep>0.0</dep></entry>
+			<entry><ind>1.0</ind><dep>0.0028</dep></entry>
+		</interpolation>
+		<axis>
+			<x>0</x>
+			<y>1</y>
+			<z>0</z>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>translate</type>
+		<object-name>CH_Button</object-name>
+		<property>fdm/jsbsim/systems/controlhandle/button-pos</property>
+		<interpolation>
+			<entry><ind>0.0</ind><dep>0.0</dep></entry>
+			<entry><ind>1.0</ind><dep>0.0011</dep></entry>
+		</interpolation>
+		<axis>
+			<x>0</x>
+			<y>0</y>
+			<z>1</z>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>rotate</type>
+		<object-name>CH_CHandle</object-name>
+		<object-name>CH_Button</object-name>
+		<object-name>CH_BBase</object-name>
+		<object-name>CH_Rod</object-name>
+		<object-name>CH_Tube</object-name>
+		<object-name>CH_Cover</object-name>
+		<property>fdm/jsbsim/fcs/aileron-cmd-norm</property>
+		<interpolation>
+			<entry><ind>-1.0</ind><dep>8.9</dep></entry>
+			<entry><ind>1.0</ind><dep>-8.9</dep></entry>
+		</interpolation>
+		<center>
+			<x-m>0.071</x-m>
+			<y-m>0.0</y-m>
+			<z-m>0.0</z-m>
+		</center>
+		<axis>
+			<x>0</x>
+			<y>0</y>
+			<z>-1</z>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>rotate</type>
+		<object-name>CH_CHandle</object-name>
+		<object-name>CH_Button</object-name>
+		<object-name>CH_BBase</object-name>
+		<object-name>CH_Rod</object-name>
+		<object-name>CH_Tube</object-name>
+		<object-name>CH_Cover</object-name>
+		<property>fdm/jsbsim/fcs/elevator-cmd-norm</property>
+		<interpolation>
+			<entry><ind>-1.0</ind><dep>-8.9</dep></entry>
+			<entry><ind>1.0</ind><dep>8.9</dep></entry>
+		</interpolation>
+		<center>
+			<x-m>0.071</x-m>
+			<y-m>0.0</y-m>
+			<z-m>0.0</z-m>
+		</center>
+		<axis>
+			<x>0</x>
+			<y>-1</y>
+			<z>0</z>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>rotate</type>
+		<object-name>CH_CHandle</object-name>
+		<object-name>CH_Button</object-name>
+		<object-name>CH_BBase</object-name>
+		<object-name>CH_Rod</object-name>
+		<property>fdm/jsbsim/fcs/rudder-cmd-norm</property>
+		<interpolation>
+			<entry><ind>-1.0</ind><dep>30.0</dep></entry>
+			<entry><ind>1.0</ind><dep>-30.0</dep></entry>
+		</interpolation>
+		<center>
+			<x-m>0.071</x-m>
+			<y-m>0.0</y-m>
+			<z-m>0.0</z-m>
+		</center>
+		<axis>
+			<x>-1</x>
+			<y>0</y>
+			<z>0</z>
+		</axis>
+	</animation>
+
+	<enable-hot type="bool">false</enable-hot>
+
+</PropertyList>

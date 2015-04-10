@@ -1,0 +1,1701 @@
+<?xml version="1.0"?>
+
+<!--
+	Author: Slavutinsky Victor
+-->
+
+<PropertyList>
+
+<!-- TDU -->
+
+	<path>Vostok-1-TDU.ac</path>
+
+	<offsets>
+		<x-m>0.0</x-m>
+		<y-m>0.0</y-m>
+		<z-m>0.0</z-m>
+		<pitch-deg>0</pitch-deg>
+	</offsets>
+
+	<enable-hot type="bool">false</enable-hot>
+
+	<animation>
+		<type>select</type>
+		<condition>
+			<and>
+				<or>
+					<equals>
+						<property>fdm/jsbsim/stages/unit[0]/active</property>
+						<value>true</value>
+					</equals>
+					<equals>
+						<property>fdm/jsbsim/stages/unit[2]/active</property>
+						<value>true</value>
+					</equals>
+					<equals>
+						<property>fdm/jsbsim/stages/unit[3]/active</property>
+						<value>true</value>
+					</equals>
+					<equals>
+						<property>fdm/jsbsim/stages/unit[4]/active</property>
+						<value>true</value>
+					</equals>
+				</or>
+				<and>
+					<equals>
+						<property>fdm/jsbsim/stages/unit[1]/active</property>
+						<value>false</value>
+					</equals>
+					<equals>
+						<property>sim/current-view/internal</property>
+						<value>false</value>
+					</equals>
+				</and>
+			</and>
+		</condition>
+	</animation>
+
+	<animation>
+		<type>translate</type>
+		<property>fdm/jsbsim/stages/unit[4]/show-translate</property>
+		<factor>1.0</factor>
+		<axis>
+			<x>0</x>
+			<y>0</y>
+			<z>1.0</z>
+		</axis>
+	</animation>
+
+	<!--Hard antennas-->
+	<animation>
+		<type>rotate</type>
+		<object-name>TDU_DAntenna1</object-name>
+		<object-name>TDU_DAM1Cable</object-name>
+		<property>fdm/jsbsim/systems/tdu/hard-antennas-pos-norm</property>
+		<interpolation>
+			<entry><ind>0.0</ind><dep>-42.0</dep></entry>
+			<entry><ind>1.0</ind><dep>0.0</dep></entry>
+		</interpolation>
+		<axis>
+			<x1-m>0.603</x1-m>
+			<y1-m>-0.575</y1-m>
+			<z1-m>-0.325</z1-m>
+			<x2-m>0.575</x2-m>
+			<y2-m>-0.603</y2-m>
+			<z2-m>-0.325</z2-m>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>rotate</type>
+		<object-name>TDU_DAntenna2</object-name>
+		<object-name>TDU_DAM2Cable</object-name>
+		<property>fdm/jsbsim/systems/tdu/hard-antennas-pos-norm</property>
+		<interpolation>
+			<entry><ind>0.0</ind><dep>-42.0</dep></entry>
+			<entry><ind>1.0</ind><dep>0.0</dep></entry>
+		</interpolation>
+		<axis>
+			<x1-m>0.575</x1-m>
+			<y1-m>0.603</y1-m>
+			<z1-m>-0.325</z1-m>
+			<x2-m>0.603</x2-m>
+			<y2-m>0.575</y2-m>
+			<z2-m>-0.325</z2-m>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>rotate</type>
+		<object-name>TDU_DAntenna3</object-name>
+		<object-name>TDU_DAM3Cable</object-name>
+		<property>fdm/jsbsim/systems/tdu/hard-antennas-pos-norm</property>
+		<interpolation>
+			<entry><ind>0.0</ind><dep>-42.0</dep></entry>
+			<entry><ind>1.0</ind><dep>0.0</dep></entry>
+		</interpolation>
+		<axis>
+			<x1-m>-0.604</x1-m>
+			<y1-m>0.575</y1-m>
+			<z1-m>-0.325</z1-m>
+			<x2-m>-0.576</x2-m>
+			<y2-m>0.603</y2-m>
+			<z2-m>-0.325</z2-m>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>rotate</type>
+		<object-name>TDU_DAntenna4</object-name>
+		<object-name>TDU_DAM4Cable</object-name>
+		<property>fdm/jsbsim/systems/tdu/hard-antennas-pos-norm</property>
+		<interpolation>
+			<entry><ind>0.0</ind><dep>-42.0</dep></entry>
+			<entry><ind>1.0</ind><dep>0.0</dep></entry>
+		</interpolation>
+		<axis>
+			<x1-m>-0.575</x1-m>
+			<y1-m>-0.604</y1-m>
+			<z1-m>-0.325</z1-m>
+			<x2-m>-0.603</x2-m>
+			<y2-m>-0.576</y2-m>
+			<z2-m>-0.325</z2-m>
+		</axis>
+	</animation>
+
+	<!--Radiators-->
+
+	<animation>
+		<type>rotate</type>
+		<object-name>TDU_Radiator1L</object-name>
+		<property>fdm/jsbsim/systems/tdu/radiators-pos-norm</property>
+		<interpolation>
+			<entry><ind>0.0</ind><dep>0.0</dep></entry>
+			<entry><ind>1.0</ind><dep>20.0</dep></entry>
+		</interpolation>
+		<axis>
+			<x1-m>0.205</x1-m>
+			<y1-m>-0.522</y1-m>
+			<z1-m>-0.558</z1-m>
+			<x2-m>0.377</x2-m>
+			<y2-m>-0.951</y2-m>
+			<z2-m>-0.150</z2-m>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>rotate</type>
+		<object-name>TDU_Radiator1R</object-name>
+		<property>fdm/jsbsim/systems/tdu/radiators-pos-norm</property>
+		<interpolation>
+			<entry><ind>0.0</ind><dep>0.0</dep></entry>
+			<entry><ind>1.0</ind><dep>-20.0</dep></entry>
+		</interpolation>
+		<axis>
+			<x1-m>0.223</x1-m>
+			<y1-m>-0.515</y1-m>
+			<z1-m>-0.557</z1-m>
+			<x2-m>0.406</x2-m>
+			<y2-m>-0.939</y2-m>
+			<z2-m>-0.150</z2-m>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>rotate</type>
+		<object-name>TDU_Radiator2L</object-name>
+		<property>fdm/jsbsim/systems/tdu/radiators-pos-norm</property>
+		<interpolation>
+			<entry><ind>0.0</ind><dep>0.0</dep></entry>
+			<entry><ind>1.0</ind><dep>20.0</dep></entry>
+		</interpolation>
+		<axis>
+			<x1-m>0.514</x1-m>
+			<y1-m>-0.224</y1-m>
+			<z1-m>-0.558</z1-m>
+			<x2-m>0.939</x2-m>
+			<y2-m>-0.406</y2-m>
+			<z2-m>-0.150</z2-m>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>rotate</type>
+		<object-name>TDU_Radiator2R</object-name>
+		<property>fdm/jsbsim/systems/tdu/radiators-pos-norm</property>
+		<interpolation>
+			<entry><ind>0.0</ind><dep>0.0</dep></entry>
+			<entry><ind>1.0</ind><dep>-20.0</dep></entry>
+		</interpolation>
+		<axis>
+			<x1-m>0.522</x1-m>
+			<y1-m>-0.206</y1-m>
+			<z1-m>-0.557</z1-m>
+			<x2-m>0.951</x2-m>
+			<y2-m>-0.377</y2-m>
+			<z2-m>-0.150</z2-m>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>rotate</type>
+		<object-name>TDU_Radiator3L</object-name>
+		<property>fdm/jsbsim/systems/tdu/radiators-pos-norm</property>
+		<interpolation>
+			<entry><ind>0.0</ind><dep>0.0</dep></entry>
+			<entry><ind>1.0</ind><dep>20.0</dep></entry>
+		</interpolation>
+		<axis>
+			<x1-m>0.522</x1-m>
+			<y1-m>0.205</y1-m>
+			<z1-m>-0.558</z1-m>
+			<x2-m>0.951</x2-m>
+			<y2-m>0.377</y2-m>
+			<z2-m>-0.150</z2-m>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>rotate</type>
+		<object-name>TDU_Radiator3R</object-name>
+		<property>fdm/jsbsim/systems/tdu/radiators-pos-norm</property>
+		<interpolation>
+			<entry><ind>0.0</ind><dep>0.0</dep></entry>
+			<entry><ind>1.0</ind><dep>-20.0</dep></entry>
+		</interpolation>
+		<axis>
+			<x1-m>0.515</x1-m>
+			<y1-m>0.223</y1-m>
+			<z1-m>-0.557</z1-m>
+			<x2-m>0.939</x2-m>
+			<y2-m>0.406</y2-m>
+			<z2-m>-0.150</z2-m>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>rotate</type>
+		<object-name>TDU_Radiator4L</object-name>
+		<property>fdm/jsbsim/systems/tdu/radiators-pos-norm</property>
+		<interpolation>
+			<entry><ind>0.0</ind><dep>0.0</dep></entry>
+			<entry><ind>1.0</ind><dep>20.0</dep></entry>
+		</interpolation>
+		<axis>
+			<x1-m>0.224</x1-m>
+			<y1-m>0.514</y1-m>
+			<z1-m>-0.558</z1-m>
+			<x2-m>0.405</x2-m>
+			<y2-m>0.939</y2-m>
+			<z2-m>-0.150</z2-m>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>rotate</type>
+		<object-name>TDU_Radiator4R</object-name>
+		<property>fdm/jsbsim/systems/tdu/radiators-pos-norm</property>
+		<interpolation>
+			<entry><ind>0.0</ind><dep>0.0</dep></entry>
+			<entry><ind>1.0</ind><dep>-20.0</dep></entry>
+		</interpolation>
+		<axis>
+			<x1-m>0.206</x1-m>
+			<y1-m>0.522</y1-m>
+			<z1-m>-0.557</z1-m>
+			<x2-m>0.377</x2-m>
+			<y2-m>0.951</y2-m>
+			<z2-m>-0.150</z2-m>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>rotate</type>
+		<object-name>TDU_Radiator5L</object-name>
+		<property>fdm/jsbsim/systems/tdu/radiators-pos-norm</property>
+		<interpolation>
+			<entry><ind>0.0</ind><dep>0.0</dep></entry>
+			<entry><ind>1.0</ind><dep>20.0</dep></entry>
+		</interpolation>
+		<axis>
+			<x1-m>-0.205</x1-m>
+			<y1-m>0.522</y1-m>
+			<z1-m>-0.558</z1-m>
+			<x2-m>-0.377</x2-m>
+			<y2-m>0.951</y2-m>
+			<z2-m>-0.150</z2-m>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>rotate</type>
+		<object-name>TDU_Radiator5R</object-name>
+		<property>fdm/jsbsim/systems/tdu/radiators-pos-norm</property>
+		<interpolation>
+			<entry><ind>0.0</ind><dep>0.0</dep></entry>
+			<entry><ind>1.0</ind><dep>-20.0</dep></entry>
+		</interpolation>
+		<axis>
+			<x1-m>-0.224</x1-m>
+			<y1-m>0.515</y1-m>
+			<z1-m>-0.557</z1-m>
+			<x2-m>-0.406</x2-m>
+			<y2-m>0.939</y2-m>
+			<z2-m>-0.150</z2-m>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>rotate</type>
+		<object-name>TDU_Radiator6L</object-name>
+		<property>fdm/jsbsim/systems/tdu/radiators-pos-norm</property>
+		<interpolation>
+			<entry><ind>0.0</ind><dep>0.0</dep></entry>
+			<entry><ind>1.0</ind><dep>20.0</dep></entry>
+		</interpolation>
+		<axis>
+			<x1-m>-0.514</x1-m>
+			<y1-m>0.224</y1-m>
+			<z1-m>-0.558</z1-m>
+			<x2-m>-0.939</x2-m>
+			<y2-m>0.405</y2-m>
+			<z2-m>-0.150</z2-m>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>rotate</type>
+		<object-name>TDU_Radiator6R</object-name>
+		<property>fdm/jsbsim/systems/tdu/radiators-pos-norm</property>
+		<interpolation>
+			<entry><ind>0.0</ind><dep>0.0</dep></entry>
+			<entry><ind>1.0</ind><dep>-20.0</dep></entry>
+		</interpolation>
+		<axis>
+			<x1-m>-0.522</x1-m>
+			<y1-m>0.206</y1-m>
+			<z1-m>-0.557</z1-m>
+			<x2-m>-0.951</x2-m>
+			<y2-m>0.377</y2-m>
+			<z2-m>-0.150</z2-m>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>rotate</type>
+		<object-name>TDU_Radiator7L</object-name>
+		<property>fdm/jsbsim/systems/tdu/radiators-pos-norm</property>
+		<interpolation>
+			<entry><ind>0.0</ind><dep>0.0</dep></entry>
+			<entry><ind>1.0</ind><dep>20.0</dep></entry>
+		</interpolation>
+		<axis>
+			<x1-m>-0.522</x1-m>
+			<y1-m>-0.205</y1-m>
+			<z1-m>-0.558</z1-m>
+			<x2-m>-0.951</x2-m>
+			<y2-m>-0.377</y2-m>
+			<z2-m>-0.150</z2-m>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>rotate</type>
+		<object-name>TDU_Radiator7R</object-name>
+		<property>fdm/jsbsim/systems/tdu/radiators-pos-norm</property>
+		<interpolation>
+			<entry><ind>0.0</ind><dep>0.0</dep></entry>
+			<entry><ind>1.0</ind><dep>-20.0</dep></entry>
+		</interpolation>
+		<axis>
+			<x1-m>-0.515</x1-m>
+			<y1-m>-0.224</y1-m>
+			<z1-m>-0.557</z1-m>
+			<x2-m>-0.939</x2-m>
+			<y2-m>-0.406</y2-m>
+			<z2-m>-0.150</z2-m>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>rotate</type>
+		<object-name>TDU_Radiator8L</object-name>
+		<property>fdm/jsbsim/systems/tdu/radiators-pos-norm</property>
+		<interpolation>
+			<entry><ind>0.0</ind><dep>0.0</dep></entry>
+			<entry><ind>1.0</ind><dep>20.0</dep></entry>
+		</interpolation>
+		<axis>
+			<x1-m>-0.224</x1-m>
+			<y1-m>-0.514</y1-m>
+			<z1-m>-0.558</z1-m>
+			<x2-m>-0.406</x2-m>
+			<y2-m>-0.939</y2-m>
+			<z2-m>-0.150</z2-m>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>rotate</type>
+		<object-name>TDU_Radiator8R</object-name>
+		<property>fdm/jsbsim/systems/tdu/radiators-pos-norm</property>
+		<interpolation>
+			<entry><ind>0.0</ind><dep>0.0</dep></entry>
+			<entry><ind>1.0</ind><dep>-20.0</dep></entry>
+		</interpolation>
+		<axis>
+			<x1-m>-0.206</x1-m>
+			<y1-m>-0.522</y1-m>
+			<z1-m>-0.557</z1-m>
+			<x2-m>-0.377</x2-m>
+			<y2-m>-0.951</y2-m>
+			<z2-m>-0.150</z2-m>
+		</axis>
+	</animation>
+
+	<effect>
+		<inherits-from>Aircraft/Generic/Effects/Fuselagereflect</inherits-from>
+		<object-name>TDU_Radiator1L</object-name>
+		<object-name>TDU_Radiator1R</object-name>
+		<object-name>TDU_Radiator2L</object-name>
+		<object-name>TDU_Radiator2R</object-name>
+		<object-name>TDU_Radiator3L</object-name>
+		<object-name>TDU_Radiator3R</object-name>
+		<object-name>TDU_Radiator4L</object-name>
+		<object-name>TDU_Radiator4R</object-name>
+		<object-name>TDU_Radiator5L</object-name>
+		<object-name>TDU_Radiator5R</object-name>
+		<object-name>TDU_Radiator6L</object-name>
+		<object-name>TDU_Radiator6R</object-name>
+		<object-name>TDU_Radiator7L</object-name>
+		<object-name>TDU_Radiator7R</object-name>
+		<object-name>TDU_Radiator8L</object-name>
+		<object-name>TDU_Radiator8R</object-name>
+	</effect>
+
+	<!--Down whip antennas-->
+
+		<!--First-->
+
+	<animation>
+		<type>rotate</type>
+		<object-name>TDU_DDEAntenna1</object-name>
+		<object-name>TDU_DDRAntenna1</object-name>
+		<object-name>TDU_DDABHolder1</object-name>
+		<object-name>TDU_DDAHolder1</object-name>
+		<object-name>TDU_DDASafer1</object-name>
+		<object-name>TDU_DDAAxle1</object-name>
+		<object-name>TDU_DDAPin1</object-name>
+		<property>fdm/jsbsim/systems/tdu/whip-antennas-pos-norm</property>
+		<interpolation>
+			<entry><ind>0.0</ind><dep>-40.66</dep></entry>
+			<entry><ind>1.0</ind><dep>30.0</dep></entry>
+		</interpolation>
+		<axis>
+			<x1-m>0.023</x1-m>
+			<y1-m>-0.256</y1-m>
+			<z1-m>-0.935</z1-m>
+			<x2-m>-0.026</x2-m>
+			<y2-m>-0.256</y2-m>
+			<z2-m>-0.935</z2-m>
+		</axis>
+	</animation>
+
+<!--
+
+	<animation>
+		<type>translate</type>
+		<object-name>TDU_DDAPin1</object-name>
+		<property>fdm/jsbsim/systems/tdu/whip-antennas-extracted</property>
+		<factor>-0.0117</factor>
+		<axis>
+			<x>0</x>
+			<y>1.0</y>
+			<z>0</z>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>translate</type>
+		<object-name>TDU_DDASafer1</object-name>
+		<object-name>TDU_DDAAxle1</object-name>
+		<object-name>TDU_DDAHolder1</object-name>
+		<property>fdm/jsbsim/systems/tdu/whip-antennas-extracted</property>
+		<factor>-0.0176</factor>
+		<axis>
+			<x>0.0</x>
+			<y>1.0</y>
+			<z>0.0</z>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>translate</type>
+		<object-name>TDU_DDASafer1</object-name>
+		<object-name>TDU_DDAAxle1</object-name>
+		<object-name>TDU_DDAHolder1</object-name>
+		<property>fdm/jsbsim/systems/tdu/whip-antennas-extracted</property>
+		<factor>-3.872</factor>
+		<axis>
+			<x>0.0</x>
+			<y>0.0</y>
+			<z>1.0</z>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>rotate</type>
+		<object-name>TDU_DDAHolder1</object-name>
+		<object-name>TDU_DDASafer1</object-name>
+		<object-name>TDU_DDAAxle1</object-name>
+		<property>fdm/jsbsim/systems/tdu/whip-antennas-extracted</property>
+		<interpolation>
+			<entry><ind>0.0</ind><dep>0.0</dep></entry>
+			<entry><ind>1.0</ind><dep>180.0</dep></entry>
+		</interpolation>
+		<axis>
+			<x1-m>0.047</x1-m>
+			<y1-m>-0.243</y1-m>
+			<z1-m>-1.083</z1-m>
+			<x2-m>-0.047</x2-m>
+			<y2-m>-0.243</y2-m>
+			<z2-m>-1.083</z2-m>
+		</axis>
+	</animation>
+
+-->
+
+	<animation>
+		<type>select</type>
+		<object-name>TDU_DDRAntenna1</object-name>
+		<condition>
+			<equals>
+				<property>fdm/jsbsim/systems/tdu/whip-antennas-extracted</property>
+				<value>false</value>
+			</equals>
+		</condition>
+	</animation>
+
+	<animation>
+		<type>select</type>
+		<object-name>TDU_DDEAntenna1</object-name>
+		<condition>
+			<equals>
+				<property>fdm/jsbsim/systems/tdu/whip-antennas-extracted</property>
+				<value>true</value>
+			</equals>
+		</condition>
+	</animation>
+
+		<!--Second-->
+
+	<animation>
+		<type>rotate</type>
+		<object-name>TDU_DDEAntenna2</object-name>
+		<object-name>TDU_DDRAntenna2</object-name>
+		<object-name>TDU_DDABHolder2</object-name>
+		<object-name>TDU_DDAHolder2</object-name>
+		<object-name>TDU_DDASafer2</object-name>
+		<object-name>TDU_DDAAxle2</object-name>
+		<object-name>TDU_DDAPin2</object-name>
+		<property>fdm/jsbsim/systems/tdu/whip-antennas-pos-norm</property>
+		<interpolation>
+			<entry><ind>0.0</ind><dep>-40.66</dep></entry>
+			<entry><ind>1.0</ind><dep>30.0</dep></entry>
+		</interpolation>
+		<axis>
+			<x1-m>0.210</x1-m>
+			<y1-m>0.148</y1-m>
+			<z1-m>-0.935</z1-m>
+			<x2-m>0.235</x2-m>
+			<y2-m>0.105</y2-m>
+			<z2-m>-0.935</z2-m>
+		</axis>
+	</animation>
+
+<!--
+
+	<animation>
+		<type>translate</type>
+		<object-name>TDU_DDAPin2</object-name>
+		<property>fdm/jsbsim/systems/tdu/whip-antennas-extracted</property>
+		<factor>0.0098</factor>
+		<axis>
+			<x>1.0</x>
+			<y>0</y>
+			<z>0</z>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>translate</type>
+		<object-name>TDU_DDAPin2</object-name>
+		<property>fdm/jsbsim/systems/tdu/whip-antennas-extracted</property>
+		<factor>0.0059</factor>
+		<axis>
+			<x>0</x>
+			<y>1.0</y>
+			<z>0</z>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>translate</type>
+		<object-name>TDU_DDASafer2</object-name>
+		<object-name>TDU_DDAAxle2</object-name>
+		<object-name>TDU_DDAHolder2</object-name>
+		<property>fdm/jsbsim/systems/tdu/whip-antennas-extracted</property>
+		<factor>0.0154</factor>
+		<axis>
+			<x>1.0</x>
+			<y>0.0</y>
+			<z>0.0</z>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>translate</type>
+		<object-name>TDU_DDASafer2</object-name>
+		<object-name>TDU_DDAAxle2</object-name>
+		<object-name>TDU_DDAHolder2</object-name>
+		<property>fdm/jsbsim/systems/tdu/whip-antennas-extracted</property>
+		<factor>0.0090</factor>
+		<axis>
+			<x>0.0</x>
+			<y>1.0</y>
+			<z>0.0</z>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>translate</type>
+		<object-name>TDU_DDASafer2</object-name>
+		<object-name>TDU_DDAAxle2</object-name>
+		<object-name>TDU_DDAHolder2</object-name>
+		<property>fdm/jsbsim/systems/tdu/whip-antennas-extracted</property>
+		<factor>-3.872</factor>
+		<axis>
+			<x>0.0</x>
+			<y>0.0</y>
+			<z>1.0</z>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>rotate</type>
+		<object-name>TDU_DDAHolder2</object-name>
+		<object-name>TDU_DDASafer2</object-name>
+		<object-name>TDU_DDAAxle2</object-name>
+		<property>fdm/jsbsim/systems/tdu/whip-antennas-extracted</property>
+		<interpolation>
+			<entry><ind>0.0</ind><dep>0.0</dep></entry>
+			<entry><ind>1.0</ind><dep>180.0</dep></entry>
+		</interpolation>
+		<axis>
+			<x1-m>0.186</x1-m>
+			<y1-m>0.162</y1-m>
+			<z1-m>-1.083</z1-m>
+			<x2-m>0.233</x2-m>
+			<y2-m>0.081</y2-m>
+			<z2-m>-1.083</z2-m>
+		</axis>
+	</animation>
+
+-->
+
+	<animation>
+		<type>select</type>
+		<object-name>TDU_DDRAntenna2</object-name>
+		<condition>
+			<equals>
+				<property>fdm/jsbsim/systems/tdu/whip-antennas-extracted</property>
+				<value>false</value>
+			</equals>
+		</condition>
+	</animation>
+
+	<animation>
+		<type>select</type>
+		<object-name>TDU_DDEAntenna2</object-name>
+		<condition>
+			<equals>
+				<property>fdm/jsbsim/systems/tdu/whip-antennas-extracted</property>
+				<value>true</value>
+			</equals>
+		</condition>
+	</animation>
+
+		<!--Third-->
+
+	<animation>
+		<type>rotate</type>
+		<object-name>TDU_DDEAntenna3</object-name>
+		<object-name>TDU_DDRAntenna3</object-name>
+		<object-name>TDU_DDABHolder3</object-name>
+		<object-name>TDU_DDAHolder3</object-name>
+		<object-name>TDU_DDASafer3</object-name>
+		<object-name>TDU_DDAAxle3</object-name>
+		<object-name>TDU_DDAPin3</object-name>
+		<property>fdm/jsbsim/systems/tdu/whip-antennas-pos-norm</property>
+		<interpolation>
+			<entry><ind>0.0</ind><dep>-40.66</dep></entry>
+			<entry><ind>1.0</ind><dep>30.0</dep></entry>
+		</interpolation>
+		<axis>
+			<x1-m>-0.233</x1-m>
+			<y1-m>0.108</y1-m>
+			<z1-m>-0.935</z1-m>
+			<x2-m>-0.209</x2-m>
+			<y2-m>0.150</y2-m>
+			<z2-m>-0.935</z2-m>
+		</axis>
+	</animation>
+
+<!--
+
+	<animation>
+		<type>translate</type>
+		<object-name>TDU_DDAPin3</object-name>
+		<property>fdm/jsbsim/systems/tdu/whip-antennas-extracted</property>
+		<factor>-0.099</factor>
+		<axis>
+			<x>1.0</x>
+			<y>0</y>
+			<z>0</z>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>translate</type>
+		<object-name>TDU_DDAPin3</object-name>
+		<property>fdm/jsbsim/systems/tdu/whip-antennas-extracted</property>
+		<factor>0.053</factor>
+		<axis>
+			<x>0</x>
+			<y>1.0</y>
+			<z>0</z>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>translate</type>
+		<object-name>TDU_DDASafer3</object-name>
+		<object-name>TDU_DDAAxle3</object-name>
+		<object-name>TDU_DDAHolder3</object-name>
+		<property>fdm/jsbsim/systems/tdu/whip-antennas-extracted</property>
+		<factor>-0.0144</factor>
+		<axis>
+			<x>1.0</x>
+			<y>0.0</y>
+			<z>0.0</z>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>translate</type>
+		<object-name>TDU_DDASafer3</object-name>
+		<object-name>TDU_DDAAxle3</object-name>
+		<object-name>TDU_DDAHolder3</object-name>
+		<property>fdm/jsbsim/systems/tdu/whip-antennas-extracted</property>
+		<factor>0.0092</factor>
+		<axis>
+			<x>0.0</x>
+			<y>1.0</y>
+			<z>0.0</z>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>translate</type>
+		<object-name>TDU_DDASafer3</object-name>
+		<object-name>TDU_DDAAxle3</object-name>
+		<object-name>TDU_DDAHolder3</object-name>
+		<property>fdm/jsbsim/systems/tdu/whip-antennas-extracted</property>
+		<factor>-3.872</factor>
+		<axis>
+			<x>0.0</x>
+			<y>0.0</y>
+			<z>1.0</z>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>rotate</type>
+		<object-name>TDU_DDAHolder3</object-name>
+		<object-name>TDU_DDASafer3</object-name>
+		<object-name>TDU_DDAAxle3</object-name>
+		<property>fdm/jsbsim/systems/tdu/whip-antennas-extracted</property>
+		<interpolation>
+			<entry><ind>0.0</ind><dep>0.0</dep></entry>
+			<entry><ind>1.0</ind><dep>180.0</dep></entry>
+		</interpolation>
+		<axis>
+			<x1-m>-0.234</x1-m>
+			<y1-m>0.080</y1-m>
+			<z1-m>-1.083</z1-m>
+			<x2-m>-0.187</x2-m>
+			<y2-m>0.161</y2-m>
+			<z2-m>-1.083</z2-m>
+		</axis>
+	</animation>
+
+-->
+
+	<animation>
+		<type>select</type>
+		<object-name>TDU_DDRAntenna3</object-name>
+		<condition>
+			<equals>
+				<property>fdm/jsbsim/systems/tdu/whip-antennas-extracted</property>
+				<value>false</value>
+			</equals>
+		</condition>
+	</animation>
+
+	<animation>
+		<type>select</type>
+		<object-name>TDU_DDEAntenna3</object-name>
+		<condition>
+			<equals>
+				<property>fdm/jsbsim/systems/tdu/whip-antennas-extracted</property>
+				<value>true</value>
+			</equals>
+		</condition>
+	</animation>
+
+	<!--Side whip antennas-->
+
+		<!--First-->
+
+	<animation>
+		<type>rotate</type>
+		<object-name>TDU_SEAntenna1</object-name>
+		<object-name>TDU_SRAntenna1</object-name>
+		<object-name>TDU_SABHolder1</object-name>
+		<object-name>TDU_SAHolder1</object-name>
+		<object-name>TDU_SASafer1</object-name>
+		<object-name>TDU_SAAxle1</object-name>
+		<object-name>TDU_SAPin1</object-name>
+		<property>fdm/jsbsim/systems/tdu/whip-antennas-pos-norm</property>
+		<interpolation>
+			<entry><ind>0.0</ind><dep>0.0</dep></entry>
+			<entry><ind>1.0</ind><dep>-30.0</dep></entry>
+		</interpolation>
+		<axis>
+			<x1-m>0.971</x1-m>
+			<y1-m>-0.094</y1-m>
+			<z1-m>0.560</z1-m>
+			<x2-m>0.974</x2-m>
+			<y2-m>-0.045</y2-m>
+			<z2-m>0.560</z2-m>
+		</axis>
+	</animation>
+
+<!--
+
+	<animation>
+		<type>translate</type>
+		<object-name>TDU_SAPin1</object-name>
+		<property>fdm/jsbsim/systems/tdu/whip-antennas-extracted</property>
+		<factor>0.005</factor>
+		<axis>
+			<x>0</x>
+			<y>1.0</y>
+			<z>0</z>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>translate</type>
+		<object-name>TDU_SAPin1</object-name>
+		<property>fdm/jsbsim/systems/tdu/whip-antennas-extracted</property>
+		<factor>-0.011</factor>
+		<axis>
+			<x>0</x>
+			<y>0</y>
+			<z>1.0</z>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>translate</type>
+		<object-name>TDU_SASafer1</object-name>
+		<object-name>TDU_SAAxle1</object-name>
+		<object-name>TDU_SAHolder1</object-name>
+		<property>fdm/jsbsim/systems/tdu/whip-antennas-extracted</property>
+		<factor>3.572</factor>
+		<axis>
+			<x>1.0</x>
+			<y>0.0</y>
+			<z>0.0</z>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>translate</type>
+		<object-name>TDU_SASafer1</object-name>
+		<object-name>TDU_SAAxle1</object-name>
+		<object-name>TDU_SAHolder1</object-name>
+		<property>fdm/jsbsim/systems/tdu/whip-antennas-extracted</property>
+		<factor>-0.263</factor>
+		<axis>
+			<x>0.0</x>
+			<y>1.0</y>
+			<z>0.0</z>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>translate</type>
+		<object-name>TDU_SASafer1</object-name>
+		<object-name>TDU_SAAxle1</object-name>
+		<object-name>TDU_SAHolder1</object-name>
+		<property>fdm/jsbsim/systems/tdu/whip-antennas-extracted</property>
+		<factor>1.475</factor>
+		<axis>
+			<x>0.0</x>
+			<y>0.0</y>
+			<z>1.0</z>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>rotate</type>
+		<object-name>TDU_SAHolder1</object-name>
+		<object-name>TDU_SASafer1</object-name>
+		<object-name>TDU_SAAxle1</object-name>
+		<property>fdm/jsbsim/systems/tdu/whip-antennas-extracted</property>
+		<interpolation>
+			<entry><ind>0.0</ind><dep>0.0</dep></entry>
+			<entry><ind>1.0</ind><dep>180.0</dep></entry>
+		</interpolation>
+		<axis>
+			<x1-m>1.107</x1-m>
+			<y1-m>-0.034</y1-m>
+			<z1-m>0.630</z1-m>
+			<x2-m>1.100</x2-m>
+			<y2-m>-0.128</y2-m>
+			<z2-m>0.630</z2-m>
+		</axis>
+	</animation>
+
+-->
+
+	<animation>
+		<type>select</type>
+		<object-name>TDU_SRAntenna1</object-name>
+		<condition>
+			<equals>
+				<property>fdm/jsbsim/systems/tdu/whip-antennas-extracted</property>
+				<value>false</value>
+			</equals>
+		</condition>
+	</animation>
+
+	<animation>
+		<type>select</type>
+		<object-name>TDU_SEAntenna1</object-name>
+		<condition>
+			<equals>
+				<property>fdm/jsbsim/systems/tdu/whip-antennas-extracted</property>
+				<value>true</value>
+			</equals>
+		</condition>
+	</animation>
+
+		<!--Second-->
+
+	<animation>
+		<type>rotate</type>
+		<object-name>TDU_SEAntenna2</object-name>
+		<object-name>TDU_SRAntenna2</object-name>
+		<object-name>TDU_SABHolder2</object-name>
+		<object-name>TDU_SAHolder2</object-name>
+		<object-name>TDU_SASafer2</object-name>
+		<object-name>TDU_SAAxle2</object-name>
+		<object-name>TDU_SAPin2</object-name>
+		<property>fdm/jsbsim/systems/tdu/whip-antennas-pos-norm</property>
+		<interpolation>
+			<entry><ind>0.0</ind><dep>0.0</dep></entry>
+			<entry><ind>1.0</ind><dep>-30.0</dep></entry>
+		</interpolation>
+		<axis>
+			<x1-m>0.987</x1-m>
+			<y1-m>-0.033</y1-m>
+			<z1-m>0.533</z1-m>
+			<x2-m>1.001</x2-m>
+			<y2-m>-0.059</y2-m>
+			<z2-m>0.494</z2-m>
+		</axis>
+	</animation>
+
+<!--
+
+	<animation>
+		<type>translate</type>
+		<object-name>TDU_SAPin2</object-name>
+		<property>fdm/jsbsim/systems/tdu/whip-antennas-extracted</property>
+		<factor>-0.002</factor>
+		<axis>
+			<x>1.0</x>
+			<y>0.0</y>
+			<z>0</z>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>translate</type>
+		<object-name>TDU_SAPin2</object-name>
+		<property>fdm/jsbsim/systems/tdu/whip-antennas-extracted</property>
+		<factor>-0.010</factor>
+		<axis>
+			<x>0</x>
+			<y>1.0</y>
+			<z>0</z>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>translate</type>
+		<object-name>TDU_SAPin2</object-name>
+		<property>fdm/jsbsim/systems/tdu/whip-antennas-extracted</property>
+		<factor>0.008</factor>
+		<axis>
+			<x>0</x>
+			<y>0</y>
+			<z>1.0</z>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>translate</type>
+		<object-name>TDU_SASafer2</object-name>
+		<object-name>TDU_SAAxle2</object-name>
+		<object-name>TDU_SAHolder2</object-name>
+		<property>fdm/jsbsim/systems/tdu/whip-antennas-extracted</property>
+		<factor>3.556</factor>
+		<axis>
+			<x>1.0</x>
+			<y>0.0</y>
+			<z>0.0</z>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>translate</type>
+		<object-name>TDU_SASafer2</object-name>
+		<object-name>TDU_SAAxle2</object-name>
+		<object-name>TDU_SAHolder2</object-name>
+		<property>fdm/jsbsim/systems/tdu/whip-antennas-extracted</property>
+		<factor>-0.282</factor>
+		<axis>
+			<x>0.0</x>
+			<y>1.0</y>
+			<z>0.0</z>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>translate</type>
+		<object-name>TDU_SASafer2</object-name>
+		<object-name>TDU_SAAxle2</object-name>
+		<object-name>TDU_SAHolder2</object-name>
+		<property>fdm/jsbsim/systems/tdu/whip-antennas-extracted</property>
+		<factor>1.508</factor>
+		<axis>
+			<x>0.0</x>
+			<y>0.0</y>
+			<z>1.0</z>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>rotate</type>
+		<object-name>TDU_SAHolder2</object-name>
+		<object-name>TDU_SASafer2</object-name>
+		<object-name>TDU_SAAxle2</object-name>
+		<property>fdm/jsbsim/systems/tdu/whip-antennas-extracted</property>
+		<interpolation>
+			<entry><ind>0.0</ind><dep>0.0</dep></entry>
+			<entry><ind>1.0</ind><dep>180.0</dep></entry>
+		</interpolation>
+		<axis>
+			<x1-m>1.119</x1-m>
+			<y1-m>-0.019</y1-m>
+			<z1-m>0.603</z1-m>
+			<x2-m>1.147</x2-m>
+			<y2-m>-0.068</y2-m>
+			<z2-m>0.528</z2-m>
+		</axis>
+	</animation>
+
+-->
+
+	<animation>
+		<type>select</type>
+		<object-name>TDU_SRAntenna2</object-name>
+		<condition>
+			<equals>
+				<property>fdm/jsbsim/systems/tdu/whip-antennas-extracted</property>
+				<value>false</value>
+			</equals>
+		</condition>
+	</animation>
+
+	<animation>
+		<type>select</type>
+		<object-name>TDU_SEAntenna2</object-name>
+		<condition>
+			<equals>
+				<property>fdm/jsbsim/systems/tdu/whip-antennas-extracted</property>
+				<value>true</value>
+			</equals>
+		</condition>
+	</animation>
+
+		<!--Third-->
+
+	<animation>
+		<type>rotate</type>
+		<object-name>TDU_SEAntenna3</object-name>
+		<object-name>TDU_SRAntenna3</object-name>
+		<object-name>TDU_SABHolder3</object-name>
+		<object-name>TDU_SAHolder3</object-name>
+		<object-name>TDU_SASafer3</object-name>
+		<object-name>TDU_SAAxle3</object-name>
+		<object-name>TDU_SAPin3</object-name>
+		<property>fdm/jsbsim/systems/tdu/whip-antennas-pos-norm</property>
+		<interpolation>
+			<entry><ind>0.0</ind><dep>0.0</dep></entry>
+			<entry><ind>1.0</ind><dep>-30.0</dep></entry>
+		</interpolation>
+		<axis>
+			<x1-m>0.998</x1-m>
+			<y1-m>-0.091</y1-m>
+			<z1-m>0.497</z1-m>
+			<x2-m>0.980</x2-m>
+			<y2-m>-0.114</y2-m>
+			<z2-m>0.536</z2-m>
+		</axis>
+	</animation>
+
+<!--
+
+	<animation>
+		<type>translate</type>
+		<object-name>TDU_SAPin3</object-name>
+		<property>fdm/jsbsim/systems/tdu/whip-antennas-extracted</property>
+		<factor>-0.001</factor>
+		<axis>
+			<x>1.0</x>
+			<y>0.0</y>
+			<z>0</z>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>translate</type>
+		<object-name>TDU_SAPin3</object-name>
+		<property>fdm/jsbsim/systems/tdu/whip-antennas-extracted</property>
+		<factor>0.010</factor>
+		<axis>
+			<x>0</x>
+			<y>1.0</y>
+			<z>0</z>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>translate</type>
+		<object-name>TDU_SAPin3</object-name>
+		<property>fdm/jsbsim/systems/tdu/whip-antennas-extracted</property>
+		<factor>0.005</factor>
+		<axis>
+			<x>0</x>
+			<y>0</y>
+			<z>1.0</z>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>translate</type>
+		<object-name>TDU_SASafer3</object-name>
+		<object-name>TDU_SAAxle3</object-name>
+		<object-name>TDU_SAHolder3</object-name>
+		<property>fdm/jsbsim/systems/tdu/whip-antennas-extracted</property>
+		<factor>3.56</factor>
+		<axis>
+			<x>1.0</x>
+			<y>0.0</y>
+			<z>0.0</z>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>translate</type>
+		<object-name>TDU_SASafer3</object-name>
+		<object-name>TDU_SAAxle3</object-name>
+		<object-name>TDU_SAHolder3</object-name>
+		<property>fdm/jsbsim/systems/tdu/whip-antennas-extracted</property>
+		<factor>-0.242</factor>
+		<axis>
+			<x>0.0</x>
+			<y>1.0</y>
+			<z>0.0</z>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>translate</type>
+		<object-name>TDU_SASafer3</object-name>
+		<object-name>TDU_SAAxle3</object-name>
+		<object-name>TDU_SAHolder3</object-name>
+		<property>fdm/jsbsim/systems/tdu/whip-antennas-extracted</property>
+		<factor>1.508</factor>
+		<axis>
+			<x>0.0</x>
+			<y>0.0</y>
+			<z>1.0</z>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>rotate</type>
+		<object-name>TDU_SAHolder3</object-name>
+		<object-name>TDU_SASafer3</object-name>
+		<object-name>TDU_SAAxle3</object-name>
+		<property>fdm/jsbsim/systems/tdu/whip-antennas-extracted</property>
+		<interpolation>
+			<entry><ind>0.0</ind><dep>0.0</dep></entry>
+			<entry><ind>1.0</ind><dep>180.0</dep></entry>
+		</interpolation>
+		<axis>
+			<x1-m>1.145</x1-m>
+			<y1-m>-0.101</y1-m>
+			<z1-m>0.528</z1-m>
+			<x2-m>1.110</x2-m>
+			<y2-m>-0.146</y2-m>
+			<z2-m>0.603</z2-m>
+		</axis>
+	</animation>
+
+-->
+
+	<animation>
+		<type>select</type>
+		<object-name>TDU_SRAntenna3</object-name>
+		<condition>
+			<equals>
+				<property>fdm/jsbsim/systems/tdu/whip-antennas-extracted</property>
+				<value>false</value>
+			</equals>
+		</condition>
+	</animation>
+
+	<animation>
+		<type>select</type>
+		<object-name>TDU_SEAntenna3</object-name>
+		<condition>
+			<equals>
+				<property>fdm/jsbsim/systems/tdu/whip-antennas-extracted</property>
+				<value>true</value>
+			</equals>
+		</condition>
+	</animation>
+
+	<!-- Light sensor covers-->
+
+	<animation>
+		<type>select</type>
+		<object-name>TDU_LSCover1</object-name>
+		<object-name>TDU_LSCover2</object-name>
+		<object-name>TDU_LSCover3</object-name>
+		<object-name>TDU_LSCover4</object-name>
+		<condition>
+			<equals>
+				<property>systems/tdu/hard-antennas-extraction-started</property>
+				<value>true</value>
+			</equals>
+		</condition>
+	</animation>
+
+	<!--  Separation -->
+
+	<animation>
+		<type>rotate</type>
+		<object-name>TDU_Stripe1</object-name>
+		<object-name>TDU_UACable1</object-name>
+		<object-name>TDU_UAntenna1</object-name>
+		<property>fdm/jsbsim/stages/unit[4]/separated</property>
+		<interpolation>
+			<entry><ind>0.0</ind><dep>0.0</dep></entry>
+			<entry><ind>1.0</ind><dep>130.0</dep></entry>
+		</interpolation>
+		<axis>
+			<x1-m>0.706</x1-m>
+			<y1-m>0.628</y1-m>
+			<z1-m>1.245</z1-m>
+			<x2-m>0.627</x2-m>
+			<y2-m>0.707</y2-m>
+			<z2-m>1.245</z2-m>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>rotate</type>
+		<object-name>TDU_Stripe2</object-name>
+		<object-name>TDU_UACable2</object-name>
+		<object-name>TDU_UAntenna2</object-name>
+		<object-name>TDU_TACable2</object-name>
+		<object-name>TDU_TAConnector2</object-name>
+		<property>fdm/jsbsim/stages/unit[4]/separated</property>
+		<interpolation>
+			<entry><ind>0.0</ind><dep>0.0</dep></entry>
+			<entry><ind>1.0</ind><dep>130.0</dep></entry>
+		</interpolation>
+		<axis>
+			<x1-m>0.627</x1-m>
+			<y1-m>-0.707</y1-m>
+			<z1-m>1.245</z1-m>
+			<x2-m>0.707</x2-m>
+			<y2-m>-0.628</y2-m>
+			<z2-m>1.245</z2-m>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>rotate</type>
+		<object-name>TDU_Stripe3</object-name>
+		<object-name>TDU_UACable3</object-name>
+		<object-name>TDU_UAntenna3</object-name>
+		<object-name>TDU_TopAntenna</object-name>
+		<property>fdm/jsbsim/stages/unit[4]/separated</property>
+		<interpolation>
+			<entry><ind>0.0</ind><dep>0.0</dep></entry>
+			<entry><ind>1.0</ind><dep>130.0</dep></entry>
+		</interpolation>
+		<axis>
+			<x1-m>-0.707</x1-m>
+			<y1-m>-0.628</y1-m>
+			<z1-m>1.245</z1-m>
+			<x2-m>-0.628</x2-m>
+			<y2-m>-0.707</y2-m>
+			<z2-m>1.245</z2-m>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>rotate</type>
+		<object-name>TDU_Stripe4</object-name>
+		<object-name>TDU_UACable4</object-name>
+		<object-name>TDU_UAntenna4</object-name>
+		<object-name>TDU_TACable1</object-name>
+		<object-name>TDU_TAConnector1</object-name>
+		<property>fdm/jsbsim/stages/unit[4]/separated</property>
+		<interpolation>
+			<entry><ind>0.0</ind><dep>0.0</dep></entry>
+			<entry><ind>1.0</ind><dep>130.0</dep></entry>
+		</interpolation>
+		<axis>
+			<x1-m>-0.628</x1-m>
+			<y1-m>0.707</y1-m>
+			<z1-m>1.245</z1-m>
+			<x2-m>-0.707</x2-m>
+			<y2-m>0.627</y2-m>
+			<z2-m>1.245</z2-m>
+		</axis>
+	</animation>
+
+	<animation>
+		<type>rotate</type>
+		<object-name>TDU_MConnector</object-name>
+		<object-name>TDU_MCPins</object-name>
+		<object-name>TDU_MCSCables</object-name>
+		<object-name>TDU_MCCables</object-name>
+		<property>fdm/jsbsim/stages/unit[4]/separated</property>
+		<interpolation>
+			<entry><ind>0.0</ind><dep>0.0</dep></entry>
+			<entry><ind>1.0</ind><dep>130.0</dep></entry>
+		</interpolation>
+		<axis>
+			<x1-m>0.335</x1-m>
+			<y1-m>0.842</y1-m>
+			<z1-m>0.739</z1-m>
+			<x2-m>0.222</x2-m>
+			<y2-m>0.878</y2-m>
+			<z2-m>0.739</z2-m>
+		</axis>
+	</animation>
+
+	<!-- Exhausts -->
+
+	<!-- Main
+
+	<model>
+		<path>Aircraft/Vostok-1/Models/Exhausts/TDU/Vostok-1-TDU-Main-Exhaust.xml</path>
+		<offsets>
+			<x-m>0.0</x-m>
+			<y-m>0.0</y-m>
+			<z-m>-1.021</z-m>
+			<pitch-deg>90.0</pitch-deg>
+			<heading-deg>0.0</heading-deg>
+		</offsets>
+	</model>
+
+	<animation>
+		<type>material</type>
+		<object-name>TDU_S5dot4</object-name>
+		<emission>
+			<red-prop>fdm/jsbsim/propulsion/engine[23]/red</red-prop>
+			<green-prop>fdm/jsbsim/propulsion/engine[23]/green</green-prop>
+			<blue-prop>fdm/jsbsim/propulsion/engine[23]/blue</blue-prop>
+		</emission>
+	</animation>
+
+ -->
+
+	<!-- Main Maneur
+
+	<model>
+		<path>Aircraft/Vostok-1/Models/Exhausts/TDU/Vostok-1-TDU-Main-Forward-Exhaust.xml</path>
+		<offsets>
+			<x-m>-0.456</x-m>
+			<y-m>0.0</y-m>
+			<z-m>-0.713</z-m>
+			<pitch-deg>0.0</pitch-deg>
+			<heading-deg>180.0</heading-deg>
+		</offsets>
+	</model>
+
+	<animation>
+		<type>material</type>
+		<object-name>TDU_MMEForward</object-name>
+		<emission>
+			<red-prop>fdm/jsbsim/propulsion/engine[24]/red</red-prop>
+			<green-prop>fdm/jsbsim/propulsion/engine[24]/green</green-prop>
+			<blue-prop>fdm/jsbsim/propulsion/engine[24]/blue</blue-prop>
+		</emission>
+	</animation>
+
+	<model>
+		<path>Aircraft/Vostok-1/Models/Exhausts/TDU/Vostok-1-TDU-Main-Back-Exhaust.xml</path>
+		<offsets>
+			<x-m>0.456</x-m>
+			<y-m>0.0</y-m>
+			<z-m>-0.713</z-m>
+			<pitch-deg>0.0</pitch-deg>
+			<heading-deg>0.0</heading-deg>
+		</offsets>
+	</model>
+
+	<animation>
+		<type>material</type>
+		<object-name>TDU_MMEBack</object-name>
+		<emission>
+			<red-prop>fdm/jsbsim/propulsion/engine[25]/red</red-prop>
+			<green-prop>fdm/jsbsim/propulsion/engine[25]/green</green-prop>
+			<blue-prop>fdm/jsbsim/propulsion/engine[25]/blue</blue-prop>
+		</emission>
+	</animation>
+
+	<model>
+		<path>Aircraft/Vostok-1/Models/Exhausts/TDU/Vostok-1-TDU-Main-Left-Exhaust.xml</path>
+		<offsets>
+			<x-m>0.0</x-m>
+			<y-m>-0.456</y-m>
+			<z-m>-0.713</z-m>
+			<pitch-deg>0.0</pitch-deg>
+			<heading-deg>-90.0</heading-deg>
+		</offsets>
+	</model>
+
+	<animation>
+		<type>material</type>
+		<object-name>TDU_MMELeft</object-name>
+		<emission>
+			<red-prop>fdm/jsbsim/propulsion/engine[26]/red</red-prop>
+			<green-prop>fdm/jsbsim/propulsion/engine[26]/green</green-prop>
+			<blue-prop>fdm/jsbsim/propulsion/engine[26]/blue</blue-prop>
+		</emission>
+	</animation>
+
+	<model>
+		<path>Aircraft/Vostok-1/Models/Exhausts/TDU/Vostok-1-TDU-Main-Right-Exhaust.xml</path>
+		<offsets>
+			<x-m>0.0</x-m>
+			<y-m>0.456</y-m>
+			<z-m>-0.713</z-m>
+			<pitch-deg>0.0</pitch-deg>
+			<heading-deg>90.0</heading-deg>
+		</offsets>
+	</model>
+
+	<animation>
+		<type>material</type>
+		<object-name>TDU_MMERight</object-name>
+		<emission>
+			<red-prop>fdm/jsbsim/propulsion/engine[27]/red</red-prop>
+			<green-prop>fdm/jsbsim/propulsion/engine[27]/green</green-prop>
+			<blue-prop>fdm/jsbsim/propulsion/engine[27]/blue</blue-prop>
+		</emission>
+	</animation>
+
+	<model>
+		<path>Aircraft/Vostok-1/Models/Exhausts/TDU/Vostok-1-TDU-Main-Forward-Left-Exhaust.xml</path>
+		<offsets>
+			<x-m>-0.395</x-m>
+			<y-m>-0.084</y-m>
+			<z-m>-0.766</z-m>
+			<pitch-deg>0.0</pitch-deg>
+			<heading-deg>-90.0</heading-deg>
+		</offsets>
+	</model>
+
+	<animation>
+		<type>material</type>
+		<object-name>TDU_MMEForwardLeft</object-name>
+		<emission>
+			<red-prop>fdm/jsbsim/propulsion/engine[28]/red</red-prop>
+			<green-prop>fdm/jsbsim/propulsion/engine[28]/green</green-prop>
+			<blue-prop>fdm/jsbsim/propulsion/engine[28]/blue</blue-prop>
+		</emission>
+	</animation>
+
+	<model>
+		<path>Aircraft/Vostok-1/Models/Exhausts/TDU/Vostok-1-TDU-Main-Back-Right-Exhaust.xml</path>
+		<offsets>
+			<x-m>0.395</x-m>
+			<y-m>0.084</y-m>
+			<z-m>-0.766</z-m>
+			<pitch-deg>0.0</pitch-deg>
+			<heading-deg>90.0</heading-deg>
+		</offsets>
+	</model>
+
+	<animation>
+		<type>material</type>
+		<object-name>TDU_MMEBackRight</object-name>
+		<emission>
+			<red-prop>fdm/jsbsim/propulsion/engine[29]/red</red-prop>
+			<green-prop>fdm/jsbsim/propulsion/engine[29]/green</green-prop>
+			<blue-prop>fdm/jsbsim/propulsion/engine[29]/blue</blue-prop>
+		</emission>
+	</animation>
+
+	<model>
+		<path>Aircraft/Vostok-1/Models/Exhausts/TDU/Vostok-1-TDU-Main-Forward-Right-Exhaust.xml</path>
+		<offsets>
+			<x-m>-0.395</x-m>
+			<y-m>0.084</y-m>
+			<z-m>-0.766</z-m>
+			<pitch-deg>0.0</pitch-deg>
+			<heading-deg>90.0</heading-deg>
+		</offsets>
+	</model>
+
+	<animation>
+		<type>material</type>
+		<object-name>TDU_MMEForwardRight</object-name>
+		<emission>
+			<red-prop>fdm/jsbsim/propulsion/engine[30]/red</red-prop>
+			<green-prop>fdm/jsbsim/propulsion/engine[30]/green</green-prop>
+			<blue-prop>fdm/jsbsim/propulsion/engine[30]/blue</blue-prop>
+		</emission>
+	</animation>
+
+	<model>
+		<path>Aircraft/Vostok-1/Models/Exhausts/TDU/Vostok-1-TDU-Main-Back-Left-Exhaust.xml</path>
+		<offsets>
+			<x-m>0.395</x-m>
+			<y-m>-0.084</y-m>
+			<z-m>-0.766</z-m>
+			<pitch-deg>0.0</pitch-deg>
+			<heading-deg>-90.0</heading-deg>
+		</offsets>
+	</model>
+
+	<animation>
+		<type>material</type>
+		<object-name>TDU_MMEBackLeft</object-name>
+		<emission>
+			<red-prop>fdm/jsbsim/propulsion/engine[31]/red</red-prop>
+			<green-prop>fdm/jsbsim/propulsion/engine[31]/green</green-prop>
+			<blue-prop>fdm/jsbsim/propulsion/engine[31]/blue</blue-prop>
+		</emission>
+	</animation>
+
+ -->
+
+	<!-- Maneur -->
+
+	<model>
+		<path>Aircraft/Vostok-1/Models/Exhausts/TDU/Vostok-1-TDU-PME-Forward.xml</path>
+		<offsets>
+			<x-m>-1.404</x-m>
+			<y-m>0.0</y-m>
+			<z-m>0.2</z-m>
+			<pitch-deg>-54.58</pitch-deg>
+			<heading-deg>180</heading-deg>
+		</offsets>
+	</model>
+
+	<model>
+		<path>Aircraft/Vostok-1/Models/Exhausts/TDU/Vostok-1-TDU-PME-Back.xml</path>
+		<offsets>
+			<x-m>1.404</x-m>
+			<y-m>0.0</y-m>
+			<z-m>0.2</z-m>
+			<pitch-deg>-54.58</pitch-deg>
+			<heading-deg>0</heading-deg>
+		</offsets>
+	</model>
+
+	<model>
+		<path>Aircraft/Vostok-1/Models/Exhausts/TDU/Vostok-1-TDU-PME-Left.xml</path>
+		<offsets>
+			<x-m>0.0</x-m>
+			<y-m>-1.207</y-m>
+			<z-m>0.149</z-m>
+			<pitch-deg>-54.58</pitch-deg>
+			<heading-deg>-90</heading-deg>
+		</offsets>
+	</model>
+
+	<model>
+		<path>Aircraft/Vostok-1/Models/Exhausts/TDU/Vostok-1-TDU-PME-Right.xml</path>
+		<offsets>
+			<x-m>0.0</x-m>
+			<y-m>1.207</y-m>
+			<z-m>0.149</z-m>
+			<pitch-deg>-54.58</pitch-deg>
+			<heading-deg>90</heading-deg>
+		</offsets>
+	</model>
+
+	<model>
+		<path>Aircraft/Vostok-1/Models/Exhausts/TDU/Vostok-1-TDU-PME-Forward-Left.xml</path>
+		<offsets>
+			<x-m>-0.751</x-m>
+			<y-m>-0.871</y-m>
+			<z-m>0.559</z-m>
+			<pitch-deg>0.0</pitch-deg>
+			<heading-deg>-45</heading-deg>
+		</offsets>
+	</model>
+
+	<model>
+		<path>Aircraft/Vostok-1/Models/Exhausts/TDU/Vostok-1-TDU-PME-Back-Right.xml</path>
+		<offsets>
+			<x-m>0.751</x-m>
+			<y-m>0.871</y-m>
+			<z-m>0.559</z-m>
+			<pitch-deg>0.0</pitch-deg>
+			<heading-deg>135</heading-deg>
+		</offsets>
+	</model>
+
+	<model>
+		<path>Aircraft/Vostok-1/Models/Exhausts/TDU/Vostok-1-TDU-PME-Forward-Right.xml</path>
+		<offsets>
+			<x-m>-0.751</x-m>
+			<y-m>0.871</y-m>
+			<z-m>0.576</z-m>
+			<pitch-deg>0.0</pitch-deg>
+			<heading-deg>45</heading-deg>
+		</offsets>
+	</model>
+
+	<model>
+		<path>Aircraft/Vostok-1/Models/Exhausts/TDU/Vostok-1-TDU-PME-Back-Left.xml</path>
+		<offsets>
+			<x-m>0.751</x-m>
+			<y-m>-0.871</y-m>
+			<z-m>0.589</z-m>
+			<pitch-deg>0.0</pitch-deg>
+			<heading-deg>-135</heading-deg>
+		</offsets>
+	</model>
+
+	<enable-hot type="bool">false</enable-hot>
+
+</PropertyList>
